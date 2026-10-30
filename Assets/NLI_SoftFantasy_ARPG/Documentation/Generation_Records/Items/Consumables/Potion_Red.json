@@ -1,0 +1,39 @@
+{
+  "original_name": "Potion_Red",
+  "category": "Items/Consumables",
+  "source_crop_relative": "Source_Crops/Items/Consumables/Potion_Red.png",
+  "source_sha256": "3c908edf1611859edf946d0bf4118fba5216fe3b1f75338477af3db129cb5df8",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Items/Consumables/Potion_Red.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-3f8d658e-0b2b-4e50-9513-f144ced96c71.png",
+  "generated_sha256": "6b8591ebbd24b579c9652fd2be99fe12c48a67d748a28097ed60948685f82e7a",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    269,
+    121,
+    986,
+    1107
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Upgrade/repaint the single existing game asset in image 1 at native high resolution. Image 1 is the EDIT TARGET and identity/shape reference; image 2 is STYLE/MATERIAL QUALITY reference only, do not depict the portal.\nSubject Potion_Red: ONE small round glass health-potion bottle, vivid red liquid filling about two thirds, narrow glass neck, tan cork with a small gold rim. Preserve visible glass transparency and volume, white upper-left reflections. No floating label or background.\nMatch NL-ARPG-SOFT-766DF2B7: polished 2D hand-painted cartoon fantasy ARPG, thin restrained warm dark outlines, clean smooth antialiased contours, soft upper-left warm light, subtle painterly material texture, rich yet controlled dimensional shading. Preserve the target's primary colors, proportions, direction and semantic function. Redraw details naturally at high resolution rather than interpolating the old pixels. Reconstruct damaged/clipped areas; omit any stray neighboring subject visible in the crop.\nONE complete individual asset on a genuine transparent RGBA background, square canvas around 1024px, centered and occupying no more than 74% of each canvas dimension so there is at least 13% empty transparent margin all around. Everything including tips/border visible. No background, no drop-shadow rectangle, no painted checkerboard, no backdrop from the original, no captions, lettering, watermark, contact sheet, extra item, UI badge or frame unless the subject itself is a UI button. No plastic 3D, photorealism, coarse pixelation or excessively thick outlines.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Items/Consumables/Potion_Red.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Visually inspected: complete round bottle, cork, transparent glass, vivid red liquid and highlights; no crop damage or extra object.",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "visual_review_status": "reviewed",
+  "package_sprite_path": "Sprites/Items/Consumables/Potion_Red.png",
+  "package_native_source_path": "Source/Generated/Items/Consumables/Potion_Red.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Items/Consumables/Potion_Red.png",
+  "package_original_crop_path": "Source_Crops/Items/Consumables/Potion_Red.png"
+}

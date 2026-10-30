@@ -1,0 +1,39 @@
+{
+  "original_name": "Gold_Arc_01",
+  "category": "VFX/Static_Elements",
+  "source_crop_relative": "Source_Crops/VFX/Static_Elements/Gold_Arc_01.png",
+  "source_sha256": "028f72755c883345c6c8681ba9da1e2787ab894439f3779b584b405d9cddc41e",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/VFX/Static_Elements/Gold_Arc_01.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-8e5e171a-1606-4891-b892-c95b2f3c0988.png",
+  "generated_sha256": "77dc1c004e99754bbdefd1ee40ef5af470d3acbd2682b5e007d58fa48268109c",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    254
+  ],
+  "solid_alpha_bbox": [
+    239,
+    227,
+    1060,
+    1036
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer / precise asset redraw.\nRedraw the FIRST reference into one complete high-resolution standalone fantasy game VFX sprite. First reference is a low-resolution damaged source crop defining THIS effect's shape and colors. Second reference is the approved PyQuest portal specifying rendering quality, clean edges and soft-painted fantasy style; DO NOT depict the portal itself.\nSubject: Gold_Arc_01, ONE narrow crescent-shaped golden sword-slash trail, sweeping rightward, open on the left, elegantly tapered upper-left and lower-left tips, brightest warm ivory core along the curved right edge, amber-gold outer rim. Preserve that distinct slender crescent silhouette. Reconstruct any clipped tips and exclude bits of neighboring effects from the old crop.\nStyle NL-ARPG-SOFT-766DF2B7: polished hand-painted 2D fantasy ARPG, smooth clean contours, rich soft golden light, readable compact shape, restrained magical glow. The effect should be beautiful at UI scale, no muddy background recovery or pixel enlargement.\nSquare high-resolution RGBA canvas, target1024x1024. Center one complete effect at about65% canvas size, leave at least15% fully transparent space on every edge even around glow; genuine transparent background, preserving soft semitransparent glow and bright core. No character, sword, hands, stone portal, scenery, text, captions, contact sheet or checkerboard. Native redraw with new detail, not interpolation.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/VFX/Static_Elements/Gold_Arc_01.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Reviewed native generated image: complete tapered gold crescent, clear luminous core, no neighboring effect remnants; generous outside space. Semitransparent glow will also be reviewed against light/dark preview backgrounds.",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "visual_review_status": "reviewed",
+  "package_sprite_path": "Sprites/VFX/Static_Elements/Gold_Arc_01.png",
+  "package_native_source_path": "Source/Generated/VFX/Static_Elements/Gold_Arc_01.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/VFX/Static_Elements/Gold_Arc_01.png",
+  "package_original_crop_path": "Source_Crops/VFX/Static_Elements/Gold_Arc_01.png"
+}

@@ -1,0 +1,39 @@
+{
+  "original_name": "Staff_Red",
+  "category": "Items/Weapons",
+  "source_crop_relative": "Source_Crops/Items/Weapons/Staff_Red.png",
+  "source_sha256": "b4091bc62ba95ebf7d98f8f89ad004fa3b68ac2950530623ef962a2016317cd2",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Items/Weapons/Staff_Red.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-956cef86-5e64-44f6-8878-2b5a447b1f07.png",
+  "generated_sha256": "8d6ef47896f2195a8b725773a16df7963dfb8dc53b5fe2a278dab0ceb694d9e3",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    194,
+    124,
+    1096,
+    1146
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Image1 is EDIT TARGET and shape/identity reference. Image2 is the STYLE/QUALITY reference only; no portal in output.\nONE slender warm-brown magic staff with gold bands and a small vivid red faceted gemstone seated in a restrained silvery/gold socket at its tip. Preserve its simpler narrow red-gem variant, diagonal orientation and complete shaft.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Items/Weapons/Staff_Red.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Visually inspected: complete slender wooden staff with small faceted red gem, restrained metal socket and gold rings; distinct red variant.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Items/Weapons/Staff_Red.png",
+  "package_native_source_path": "Source/Generated/Items/Weapons/Staff_Red.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Items/Weapons/Staff_Red.png",
+  "package_original_crop_path": "Source_Crops/Items/Weapons/Staff_Red.png"
+}

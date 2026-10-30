@@ -1,0 +1,39 @@
+{
+  "original_name": "Bar_Health",
+  "category": "UI/Panels_And_Buttons",
+  "source_crop_relative": "Source_Crops/UI/Panels_And_Buttons/Bar_Health.png",
+  "source_sha256": "d372145b318becfd302ce99818b60859cdfe6b718b2566ee3692461739a54a64",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/UI/Panels_And_Buttons/Bar_Health.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-1e1491f3-1d55-4fbd-b575-7dfdef9ec15f.png",
+  "generated_sha256": "c02c8ed3688864d999cece3b43ab01d816709592fd1d7a255719adf7d5eddf0e",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    70,
+    548,
+    1203,
+    751
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Image1 is EDIT TARGET and exact UI silhouette, aspect-ratio, pictogram and state reference. Image2 is STYLE/MATERIAL QUALITY only; do not depict its portal. Keep the UI element's original aspect ratio within a transparent square canvas; do not make a horizontal bar into a square panel.\nONE long thin horizontal fantasy health bar, warm golden/brass left and top bevels, dark gray angular frame with pointed/chamfered right end. Green health fill exactly about75% of inner length from left, dark empty remainder on right. Whole complete frame, no text or numbers.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/UI/Panels_And_Buttons/Bar_Health.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Reviewed thin horizontal green health bar, fill approximately three quarters with dark remainder, complete gold/gray frame and transparent surrounding.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/UI/Panels_And_Buttons/Bar_Health.png",
+  "package_native_source_path": "Source/Generated/UI/Panels_And_Buttons/Bar_Health.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/UI/Panels_And_Buttons/Bar_Health.png",
+  "package_original_crop_path": "Source_Crops/UI/Panels_And_Buttons/Bar_Health.png"
+}

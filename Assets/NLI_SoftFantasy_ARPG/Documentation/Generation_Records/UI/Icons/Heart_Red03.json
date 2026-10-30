@@ -1,0 +1,41 @@
+{
+  "original_name": "Heart_Red03",
+  "category": "UI/Icons",
+  "source_crop_relative": "Source_Crops/UI/Icons/Heart_Red03.png",
+  "source_sha256": "ee0e3d55f16204f13f5dfc11212aa1ddd94967de29a0a5f3e5665c23447c4e6a",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/UI/Icons/Heart_Red03.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-91e9d3da-e8ea-4379-8de0-d07f2ee1da18.png",
+  "generated_sha256": "e1d910231d197fb2eb8a8b3ce6efafe0809db256a1117018602e87ae022ee51d",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    126,
+    199,
+    1128,
+    1056
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Image1 is EDIT TARGET and identity/UI reference. Image2 is STYLE QUALITY only, not its subject. Native-quality repaint.\nRedraw the red heart in Image1 from scratch at high quality. ONE full vivid red health-heart, broad rounded lobes, deep notch, smooth pointed lower base. Soft painted ruby shading and two subtle upper-left ivory highlights. Nothing except the heart itself. Strictly empty fully transparent margin including all four canvas corners; no specks, no tiny marks, no text, no watermark or signature. Thin restrained red-dark contour.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/UI/Icons/Heart_Red03.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Fresh redraw reviewed: one complete red heart with polished painted shading, all canvas corners clear and no stray upper-left mark.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "superseded_generated_sha256": "546dbe9ea7c63ec04a576d440ef0ab5abda6161e7146fd1ddaf38ca3ce17d9a3",
+  "superseded_record_path": ".scratch/softfantasy-full-upgrade/rejected-items-ui/UI/Icons/Heart_Red03.record.json",
+  "package_sprite_path": "Sprites/UI/Icons/Heart_Red03.png",
+  "package_native_source_path": "Source/Generated/UI/Icons/Heart_Red03.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/UI/Icons/Heart_Red03.png",
+  "package_original_crop_path": "Source_Crops/UI/Icons/Heart_Red03.png"
+}

@@ -1,0 +1,60 @@
+{
+  "style_code": "NL-ARPG-SOFT-766DF2B7",
+  "style_uuid": "766df2b7-0dd7-40d1-8bb7-8cddc93d2de7",
+  "style_name_zh": "暖光软绘奇幻 ARPG",
+  "version": "2.0",
+  "meaning": "Human-readable style registry reference, not a model-native token, seed, LoRA, or guarantee.",
+  "approved_reference": "Source/Approved_Reference_1536x1024.png",
+  "reference_sha256": "e6bbd9483bf41182efee3a1208ad5660333f1c7d9291cda91c40c064572e8c2a",
+  "style_zh": "精细、平滑、可爱的中世纪奇幻动作RPG素材；2D手绘卡通、Q版约2至3头身、3/4轻俯视、清晰轮廓、细致深色描边、柔和赛璐璐明暗、温润手绘材质；奶油白与金色为角色主调，钴蓝披风，草绿、暖木、石灰色环境，红色点缀；卡通但不粗糙，不做低分辨率像素画。",
+  "positive_prompt_en": "Polished 2D hand-painted cartoon fantasy action-RPG game assets, charming chibi proportions, slightly elevated three-quarter view, readable silhouettes, smooth antialiased edges, restrained thin dark warm outlines, soft cel shading with subtle painterly materials, warm upper-left key lighting, cream armor and gold trims with cobalt-blue accents, warm wood and lush grass green environments, cohesive moderate saturation and restrained crimson accents. Preserve the approved reference visual language. Isolated clearly separated assets on genuine transparent backgrounds when individual sprites are requested; no captions or baked showcase background.",
+  "negative_prompt_en": "coarse pixel art, visible pixel grid, jagged low-resolution outlines, nearest-neighbor enlargement, photorealism, plastic 3D render, harsh thick black outlines, muddy noisy textures, inconsistent perspective, inconsistent character proportions, excessive micro-detail, fake checkerboard background, baked-in labels, contact-sheet layout unless requested",
+  "lighting": "Soft warm upper-left lighting with localized highlights and restrained contact shadows.",
+  "perspective": "Slightly elevated three-quarter view; match perspective and scale per asset family.",
+  "palette_intent": {
+    "cream": "#F3DEA8",
+    "gold": "#D99B38",
+    "cobalt_blue": "#326F9C",
+    "deep_outline": "#34313A",
+    "grass_green": "#88AA4F",
+    "warm_wood": "#A96A38",
+    "accent_crimson": "#AD3A36"
+  },
+  "palette_note": "Illustrative style targets, not a measured exact source palette.",
+  "future_asset_targets_not_current_file_dimensions": {
+    "hero_single_frame_px": [
+      256,
+      256
+    ],
+    "large_enemy_single_frame_px": [
+      512,
+      512
+    ],
+    "item_icon_px": [
+      128,
+      128
+    ],
+    "building_px": [
+      512,
+      512
+    ],
+    "terrain_tile_px": [
+      128,
+      128
+    ]
+  },
+  "continuity": "Use the same reference image, character identity sheets, camera, palette, scale and light for stricter continuity. The code alone is not portable to another account/model without this style file.",
+  "source_size_px": [
+    1536,
+    1024
+  ],
+  "current_pack_is_native_resolution_crops": false,
+  "current_pack_is_independent_native_redraws": true,
+  "approved_generation_references": [
+    "Source/Generated/Portal_Blue_Gold.png",
+    "Source/Generated/Castle_Small.png",
+    "Source/Generated/Castle_Medium.png",
+    "Source/Generated/Castle_Large.png"
+  ],
+  "actual_dimensions_source": "Documentation/Asset_Manifest.json"
+}

@@ -1,0 +1,39 @@
+{
+  "original_name": "Armor_Blue",
+  "category": "Items/Armor",
+  "source_crop_relative": "Source_Crops/Items/Armor/Armor_Blue.png",
+  "source_sha256": "92c39beafb47259d0edc52523d7dfcaae42fdb5234fb1c0ca1a71b7811d7140a",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Items/Armor/Armor_Blue.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-1c4a8ce9-4359-4601-ad2b-ed4dc0035e03.png",
+  "generated_sha256": "91e53c0e54a99aba5cd878bbb0f10d38fbbadceaefb22968a6064fbbb497e37a",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    109,
+    179,
+    1152,
+    1080
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Image1 is EDIT TARGET and identity/shape reference. Image2 is STYLE/MATERIAL QUALITY only; do not depict its portal.\nONE empty cobalt-blue torso breastplate with rounded shoulder pauldrons, warm gold rims and waist fastenings. No wearer or head. Preserve clearly blue armor face and compact broad shoulders.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Items/Armor/Armor_Blue.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Visually inspected: complete cobalt-blue breastplate and shoulder plates with gold border; blue variant remains distinct.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Items/Armor/Armor_Blue.png",
+  "package_native_source_path": "Source/Generated/Items/Armor/Armor_Blue.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Items/Armor/Armor_Blue.png",
+  "package_original_crop_path": "Source_Crops/Items/Armor/Armor_Blue.png"
+}

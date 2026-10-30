@@ -1,0 +1,39 @@
+{
+  "original_name": "Bench",
+  "category": "Environment/Buildings_And_Props",
+  "source_crop_relative": "Source_Crops/Environment/Buildings_And_Props/Bench.png",
+  "source_sha256": "c38e6b6d36cb3c2431b7756c99b2dcb8f032e5649c0b4eada16dd3faeae1db62",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Environment/Buildings_And_Props/Bench.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177e9-0137-7c12-ba77-ca62838fdbf6/exec-642336a2-2dbc-4910-9db1-ef42f0016975.png",
+  "generated_sha256": "22b1e58594191f6ea8d9650584374c0c11a211956b22730b97302b8629ac8626",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    132,
+    280,
+    1131,
+    1111
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer / production game asset redraw.\nInput image 1 is the legacy source crop and defines the subject identity, colors, topology and function. Ignore the dark demonstration background, partial neighboring assets and labels. Input image 2 is the latest APPROVED STYLE REFERENCE ONLY; use its rendering polish, depth, clean contours and painterly material presence. Do not copy the castle subject into unrelated assets.\nRedraw the requested asset from scratch at native high resolution, not as enlarged old pixels. Style NL-ARPG-SOFT-766DF2B7: polished 2D soft-painted chibi fantasy ARPG, smooth antialiased contours, thin warm dark outlines, gentle cel shading with rich but restrained tactile material detail, soft warm key light from upper left. Slightly elevated three-quarter game perspective matching the source. Preserve the source object's identity and original color family: grass green, warm wood, warm cream/gray stone, blue or terracotta roofs as applicable. Use the style reference quality without converting all materials to gold or blue.\nONE complete isolated asset on genuine transparent RGBA background, centered with generous 12% completely empty transparent margins on every side. Reconstruct parts missing at crop boundaries from the source context, include complete base/roof/limbs, remove neighboring fragments. No scene, no backdrop, no checkerboard, no labels, no lettering, no watermark. No sheet of variants. Keep recognizable chunky silhouette with intentional material highlights; no coarse pixel grid, no photorealism, no glossy plastic 3D. Square canvas target 1024x1024. Preserve semitransparency only where physically appropriate.\nSpecific asset: Bench. One sturdy rustic wooden bench with a straight plank seat, tall simple backrest of horizontal wood board and small pointed finials along its top, four square support legs, warm carved wood grain. Preserve source upright furniture identity, complete back and legs. Remove plants and neighboring fence.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Environment/Buildings_And_Props/Bench.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/castle-small-v1.png"
+  ],
+  "visual_review_note": "Complete warm wooden bench with straight seat, back board, pointed top finials and four support legs. Furniture identity retained and missing leg detail reconstructed; isolated full silhouette.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Environment/Buildings_And_Props/Bench.png",
+  "package_native_source_path": "Source/Generated/Environment/Buildings_And_Props/Bench.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Environment/Buildings_And_Props/Bench.png",
+  "package_original_crop_path": "Source_Crops/Environment/Buildings_And_Props/Bench.png"
+}

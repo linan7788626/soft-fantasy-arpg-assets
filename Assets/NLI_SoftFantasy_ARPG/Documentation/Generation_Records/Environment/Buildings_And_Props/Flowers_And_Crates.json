@@ -1,0 +1,39 @@
+{
+  "original_name": "Flowers_And_Crates",
+  "category": "Environment/Buildings_And_Props",
+  "source_crop_relative": "Source_Crops/Environment/Buildings_And_Props/Flowers_And_Crates.png",
+  "source_sha256": "370fbbc337c66133976d23d9255be56eb8a59ae0b53679a31fc3bba8ab4121da",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Environment/Buildings_And_Props/Flowers_And_Crates.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177e9-0137-7c12-ba77-ca62838fdbf6/exec-67b2b713-c48c-40af-bab7-0e08dec1d44f.png",
+  "generated_sha256": "1fef9b282cc5a07fe63fe86a82e6206f8d67446bc54fc075094895618fed0236",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    125,
+    222,
+    1139,
+    1065
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer / production game asset redraw.\nInput image 1 is the legacy source crop and defines the subject identity, colors, topology and function. Ignore the dark demonstration background, partial neighboring assets and labels. Input image 2 is the latest APPROVED STYLE REFERENCE ONLY; use its rendering polish, depth, clean contours and painterly material presence. Do not copy the castle subject into unrelated assets.\nRedraw the requested asset from scratch at native high resolution, not as enlarged old pixels. Style NL-ARPG-SOFT-766DF2B7: polished 2D soft-painted chibi fantasy ARPG, smooth antialiased contours, thin warm dark outlines, gentle cel shading with rich but restrained tactile material detail, soft warm key light from upper left. Slightly elevated three-quarter game perspective matching the source. Preserve the source object's identity and original color family: grass green, warm wood, warm cream/gray stone, blue or terracotta roofs as applicable. Use the style reference quality without converting all materials to gold or blue.\nONE complete isolated asset on genuine transparent RGBA background, centered with generous 12% completely empty transparent margins on every side. Reconstruct parts missing at crop boundaries from the source context, include complete base/roof/limbs, remove neighboring fragments. No scene, no backdrop, no checkerboard, no labels, no lettering, no watermark. No sheet of variants. Keep recognizable chunky silhouette with intentional material highlights; no coarse pixel grid, no photorealism, no glossy plastic 3D. Square canvas target 1024x1024. Preserve semitransparency only where physically appropriate.\nSpecific asset: Flowers_And_Crates. One compact combined prop group: a rustic wooden barrel/box stand holding a rounded arrangement of white and pale pink flowers with green leaves on the left, and a smaller warm wooden crate or box with one small amber bottle on the right. Preserve this specific floral-supplies grouping, full object edges, no surrounding scene.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Environment/Buildings_And_Props/Flowers_And_Crates.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/castle-small-v1.png"
+  ],
+  "visual_review_note": "Complete combined flower-filled wooden barrel and neighboring crate with amber bottle. White/pink flowers, green foliage and warm wood/material identity preserved as one grouped prop.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Environment/Buildings_And_Props/Flowers_And_Crates.png",
+  "package_native_source_path": "Source/Generated/Environment/Buildings_And_Props/Flowers_And_Crates.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Environment/Buildings_And_Props/Flowers_And_Crates.png",
+  "package_original_crop_path": "Source_Crops/Environment/Buildings_And_Props/Flowers_And_Crates.png"
+}

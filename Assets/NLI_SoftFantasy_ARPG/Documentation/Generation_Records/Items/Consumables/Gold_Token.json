@@ -1,0 +1,39 @@
+{
+  "original_name": "Gold_Token",
+  "category": "Items/Consumables",
+  "source_crop_relative": "Source_Crops/Items/Consumables/Gold_Token.png",
+  "source_sha256": "f875361d78652e35d93c61ef186fb1d84b67ce8287c0e3461f5e1924872b56fe",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Items/Consumables/Gold_Token.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-2b69012b-0887-4b98-bc2b-279a79465645.png",
+  "generated_sha256": "9bfc70c41a6434411e36f543b1e7bc02734237d9663a8d126933eaa0d95f153c",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    267,
+    219,
+    987,
+    1030
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Image1 is EDIT TARGET and identity/shape reference. Image2 is STYLE/MATERIAL QUALITY only; do not depict its portal.\nONE thick gold token/coin viewed at a steep side angle, with a beveled polygonal rim, warm metallic edge ridges and simple raised central mark without readable lettering. Preserve the chunky oblique gold-token silhouette.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Items/Consumables/Gold_Token.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Reviewed thick oblique gold token with bevel and simple raised center, full contained outline and transparent surround.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Items/Consumables/Gold_Token.png",
+  "package_native_source_path": "Source/Generated/Items/Consumables/Gold_Token.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Items/Consumables/Gold_Token.png",
+  "package_original_crop_path": "Source_Crops/Items/Consumables/Gold_Token.png"
+}

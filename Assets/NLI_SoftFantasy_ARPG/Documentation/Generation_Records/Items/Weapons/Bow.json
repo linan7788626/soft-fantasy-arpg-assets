@@ -1,0 +1,39 @@
+{
+  "original_name": "Bow",
+  "category": "Items/Weapons",
+  "source_crop_relative": "Source_Crops/Items/Weapons/Bow.png",
+  "source_sha256": "ca1563b4bfa1735edfc2d9fd5a4cd380da4e29118fa208d4f0188d21b9e13605",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Items/Weapons/Bow.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-036585d0-9a24-41c0-b1dd-c356f14ee371.png",
+  "generated_sha256": "c1539d12fa59916127e7d3c17d06054a10d91f1c170d78afe4a598de1b10a36a",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    234,
+    131,
+    1079,
+    1092
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Image1 is the EDIT TARGET (single existing item) and semantic/shape reference. Image2 is STYLE/MATERIAL QUALITY only; do not depict the portal.\nSubject Bow: One simple golden-brown wooden bow in the original curved D-shaped silhouette, thin taut bowstring and restrained gold fittings at tips. A single coherent bow in the same diagonal item view. Full ends and string visible, no extra arrow unless already integral to the target.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Items/Weapons/Bow.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Visually inspected: intact bent wooden bow, golden fittings and drawn string/arrow configuration matching the source; transparent negative space retained.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Items/Weapons/Bow.png",
+  "package_native_source_path": "Source/Generated/Items/Weapons/Bow.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Items/Weapons/Bow.png",
+  "package_original_crop_path": "Source_Crops/Items/Weapons/Bow.png"
+}

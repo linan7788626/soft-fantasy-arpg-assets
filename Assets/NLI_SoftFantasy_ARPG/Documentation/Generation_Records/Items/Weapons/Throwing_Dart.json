@@ -1,0 +1,39 @@
+{
+  "original_name": "Throwing_Dart",
+  "category": "Items/Weapons",
+  "source_crop_relative": "Source_Crops/Items/Weapons/Throwing_Dart.png",
+  "source_sha256": "bef1dd7a8c60f07551c423399f7874dd6f06f3b2da793d4afae39d6badc89710",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Items/Weapons/Throwing_Dart.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-e55ff926-5ff0-4fa0-adf2-4a6e5edc4e1f.png",
+  "generated_sha256": "c4d60da3c30368936604e97bb623689538c674af081547381650eb99265e8b37",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    187,
+    209,
+    1077,
+    1049
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Upgrade/repaint the single existing game asset in image 1 at native high resolution. Image 1 is the EDIT TARGET and identity/shape reference; image 2 is STYLE/MATERIAL QUALITY reference only, do not depict the portal.\nSubject Throwing_Dart: ONE compact silver throwing dart, preserving the small angular pointed metal head and short warm-brown central shaft of the original. Complete intact silhouette at a diagonal angle; only this tiny weapon, no second object.\nMatch NL-ARPG-SOFT-766DF2B7: polished 2D hand-painted cartoon fantasy ARPG, thin restrained warm dark outlines, clean smooth antialiased contours, soft upper-left warm light, subtle painterly material texture, rich yet controlled dimensional shading. Preserve the target's primary colors, proportions, direction and semantic function. Redraw details naturally at high resolution rather than interpolating the old pixels. Reconstruct damaged/clipped areas; omit any stray neighboring subject visible in the crop.\nONE complete individual asset on a genuine transparent RGBA background, square canvas around 1024px, centered and occupying no more than 74% of each canvas dimension so there is at least 13% empty transparent margin all around. Everything including tips/border visible. No background, no drop-shadow rectangle, no painted checkerboard, no backdrop from the original, no captions, lettering, watermark, contact sheet, extra item, UI badge or frame unless the subject itself is a UI button. No plastic 3D, photorealism, coarse pixelation or excessively thick outlines.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Items/Weapons/Throwing_Dart.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Visually inspected: complete compact pointed silver dart with short wooden shaft and metal fins; isolated silhouette and clear material separation.",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "visual_review_status": "reviewed",
+  "package_sprite_path": "Sprites/Items/Weapons/Throwing_Dart.png",
+  "package_native_source_path": "Source/Generated/Items/Weapons/Throwing_Dart.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Items/Weapons/Throwing_Dart.png",
+  "package_original_crop_path": "Source_Crops/Items/Weapons/Throwing_Dart.png"
+}

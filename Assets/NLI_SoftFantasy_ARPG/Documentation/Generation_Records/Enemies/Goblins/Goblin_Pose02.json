@@ -1,0 +1,40 @@
+{
+  "original_name": "Goblin_Pose02",
+  "category": "Enemies/Goblins",
+  "source_crop_relative": "Source_Crops/Enemies/Goblins/Goblin_Pose02.png",
+  "source_sha256": "fe1e9d4d2cdade31950c4d4f3c4cc562c25c3c5ad3108761cbf21e3b1e6d6a39",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Enemies/Goblins/Goblin_Pose02.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177e8-c49b-7073-81bb-9fc10b98408d/exec-fcbfa2b1-0657-44aa-9754-fba5e93be793.png",
+  "generated_sha256": "3992fa5a7020e4fb8fcd79e34abddb48107694220f0d82c50ef3fa75f6339965",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    187,
+    244,
+    1092,
+    1062
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Redraw ONLY the individual character/action in reference image 1 into a new full native-resolution transparent game sprite, reconstructing cropped limbs, cape and weapon tips. Image1 controls the EXACT pose, action, facing, camera, identity and silhouette. Discard its dark display background and any fragments of adjacent atlas subjects. Image2 (portal) controls rendering quality/material softness only; do not depict portal or architecture. If image3 is supplied, it is the regenerated SAME CHARACTER identity anchor: keep its helmet/face, armor, clothing, weapon design and proportions, but pose it EXACTLY like image1; do not simply copy the anchor's pose. Style NL-ARPG-SOFT-766DF2B7, polished 2D soft-painted chibi medieval fantasy ARPG, about 2.5 heads for humanoids, smooth antialiased edges, restrained thin dark warm outlines, refined yet soft material shading and warm upper-left lighting. One full individual static pose per image, no sheet or alternate views. Square 1024x1024 canvas; frame the whole figure AND weapons/effects within the central 76% with at least 12% clear transparent margins on every side; consistent family camera and overall body scale. Genuine transparent alpha outside the subject, no ground or backdrop, no labels or lettering, no watermark or drawn checkerboard. Avoid coarse pixel grids, photorealism and glossy plastic 3D.\nSpecific source preservation: Same green goblin and clothing as image3, match source crouched run facing right, spear shaft angled diagonally behind head with tip toward upper-left, forward bent arm and legs. Preserve angry face and exact gait.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Enemies/Goblins/Goblin_Pose02.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Enemies/Goblins/Goblin_Pose01.png"
+  ],
+  "visual_review_note": "Viewed generated output: Single green goblin in forward running crouch with spear angled behind head to upper-left, leather gear, rust-red cloth and full limbs visible. Consistent family identity. Static pose; exact animation registration unvalidated.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Enemies/Goblins/Goblin_Pose02.png",
+  "package_native_source_path": "Source/Generated/Enemies/Goblins/Goblin_Pose02.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Enemies/Goblins/Goblin_Pose02.png",
+  "package_original_crop_path": "Source_Crops/Enemies/Goblins/Goblin_Pose02.png"
+}

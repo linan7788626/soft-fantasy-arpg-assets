@@ -1,0 +1,4 @@
+NL-ARPG-SOFT-766DF2B7
+UUID: 766df2b7-0dd7-40d1-8bb7-8cddc93d2de7
+Name: 暖光软绘奇幻 ARPG
+See Style_Profile.json and STYLE_CARD_ZH.md.

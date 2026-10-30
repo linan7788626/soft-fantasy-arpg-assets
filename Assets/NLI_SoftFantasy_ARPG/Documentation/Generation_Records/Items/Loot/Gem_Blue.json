@@ -1,0 +1,39 @@
+{
+  "original_name": "Gem_Blue",
+  "category": "Items/Loot",
+  "source_crop_relative": "Source_Crops/Items/Loot/Gem_Blue.png",
+  "source_sha256": "711457101b564c98588b3a4b1279b48415c82ff0ba02991427167e847e9b9906",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Items/Loot/Gem_Blue.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-764579e5-c614-4bc0-9680-8f415ecf6b15.png",
+  "generated_sha256": "9cbe9f8c1051a261cc81aa475440a733f270dd2d59e21e2634d4255f80951082",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    285,
+    311,
+    1021,
+    1000
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Image1 is EDIT TARGET and identity/shape reference. Image2 is STYLE/MATERIAL QUALITY only; do not depict its portal.\nONE loose blue faceted gemstone, diamond-like angular asymmetrical hexagonal silhouette tilted slightly, cyan/blue facets and crisp soft-painted highlights. Preserve cobalt-blue dominant color and original cut.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Items/Loot/Gem_Blue.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Reviewed one blue faceted gemstone, clear angular silhouette and blue/cyan planes, transparent surround.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Items/Loot/Gem_Blue.png",
+  "package_native_source_path": "Source/Generated/Items/Loot/Gem_Blue.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Items/Loot/Gem_Blue.png",
+  "package_original_crop_path": "Source_Crops/Items/Loot/Gem_Blue.png"
+}

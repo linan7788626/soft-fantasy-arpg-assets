@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Unity
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+sysinfo.txt
+*.stackdump
+
+# Temporary
+*.swp
+*~
+
+# Byte-identical copies of Sprites/ (verified by MD5) — kept locally, not pushed
+Assets/NLI_SoftFantasy_ARPG/Source/Generated/
+
+# Internal copy marker
+.base-copy-complete

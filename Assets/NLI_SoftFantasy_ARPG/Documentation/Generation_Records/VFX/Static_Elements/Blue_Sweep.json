@@ -1,0 +1,75 @@
+{
+  "original_name": "Blue_Sweep",
+  "category": "VFX/Static_Elements",
+  "source_crop_relative": "Source_Crops/VFX/Static_Elements/Blue_Sweep.png",
+  "source_sha256": "9460b45a609e61205aaa3f5018baf41647cea267ae6a0250e6adac228f201857",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/VFX/Static_Elements/Blue_Sweep.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-17271fc2-41e3-4f5d-8cc1-72803fd8b30e.png",
+  "generated_sha256": "d8c33f3274a39248ce463d392625c6ff02f328881ded589ad22f6333937b52a0",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    254
+  ],
+  "solid_alpha_bbox": [
+    89,
+    345,
+    1176,
+    966
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: precise-object-edit. Edit the supplied PyQuest fantasy VFX Blue_Sweep only to improve framing. Preserve exactly this same isolated sweeping crescent silhouette, colors, pale luminous core, sparks, painterly shading and visual identity. Recompose it slightly smaller in the middle of a square transparent canvas. The ENTIRE effect including soft outer glow must fit with 12 percent completely clear transparent margin on ALL four sides; do not let any glow touch an edge. High quality soft painted fantasy game sprite. No background, text, border, checkerboard or new objects. Native high resolution RGBA, do not create an opaque canvas.",
+  "references": [
+    "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-c50cfd2f-5d36-4138-a5e0-ab53dbf9c356.png"
+  ],
+  "visual_review_note": "Visually reviewed native imagegen reframing: full sweep and outer glow with clear transparent margin on both sides, original silhouette and colors preserved; no pixel processing.",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "visual_review_status": "reviewed",
+  "repair_history": [
+    {
+      "original_name": "Blue_Sweep",
+      "category": "VFX/Static_Elements",
+      "source_crop_relative": "Source_Crops/VFX/Static_Elements/Blue_Sweep.png",
+      "source_sha256": "9460b45a609e61205aaa3f5018baf41647cea267ae6a0250e6adac228f201857",
+      "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/VFX/Static_Elements/Blue_Sweep.png",
+      "original_generation_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-c50cfd2f-5d36-4138-a5e0-ab53dbf9c356.png",
+      "generated_sha256": "9f55dec8689899c8177fde9886c4fda67e538da5e6fd8c2341dc98147f9c4cdc",
+      "actual_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "solid_alpha_bbox": [
+        34,
+        319,
+        1222,
+        969
+      ],
+      "tool": "builtin_image_gen",
+      "prompt": "Redraw the FIRST reference into ONE complete high-resolution standalone PyQuest game VFX sprite. First reference is an old low-resolution source crop showing this effect's shape and colors; reconstruct clipped extremities and remove any cropped neighboring effect. Second reference is the approved portal for clean soft-painted fantasy quality only; DO NOT depict portal, architecture or characters. Style NL-ARPG-SOFT-766DF2B7: polished 2D hand-painted fantasy, smooth antialiased contours, readable forms, softly shaded rich light and subtle semitransparent glow, no jagged background subtraction. Native high-resolution RGBA redraw, target1024x1024. Center ONE effect at about65% canvas size, 15% clear transparent margin on all sides, all glow within frame. Preserve genuine transparent alpha outside; no background color, checkerboard, captions, text, UI frames or collage. No pixel enlargement or source texture copying.\nSubject Blue_Sweep: ONE cool-blue and pale-ivory horizontal circular sword sweep, low tilted elliptical perspective, a thick pale ivory main arc with a cyan-blue inner trail, open section toward upper left with tapered ends. A small number of blue sparks, complete outer arc and tips. No gold side fragments copied from old crop.",
+      "references": [
+        "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/VFX/Static_Elements/Blue_Sweep.png",
+        "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+      ],
+      "visual_review_note": "Reviewed pale-ivory and blue elliptical sweep; open transparent center; side glow margins require bounds check. Native glow margins are tight; regenerate with more transparent breathing room.",
+      "status": "redrawn_static_asset",
+      "pixel_postprocessing": "none",
+      "animation_alignment_validated": false,
+      "seamless_tileability_validated": false,
+      "visual_review_status": "needs_repair"
+    }
+  ],
+  "package_sprite_path": "Sprites/VFX/Static_Elements/Blue_Sweep.png",
+  "package_native_source_path": "Source/Generated/VFX/Static_Elements/Blue_Sweep.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/VFX/Static_Elements/Blue_Sweep.png",
+  "package_original_crop_path": "Source_Crops/VFX/Static_Elements/Blue_Sweep.png"
+}

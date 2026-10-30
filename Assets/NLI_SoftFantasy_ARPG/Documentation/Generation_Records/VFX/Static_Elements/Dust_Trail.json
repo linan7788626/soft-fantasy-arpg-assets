@@ -1,0 +1,39 @@
+{
+  "original_name": "Dust_Trail",
+  "category": "VFX/Static_Elements",
+  "source_crop_relative": "Source_Crops/VFX/Static_Elements/Dust_Trail.png",
+  "source_sha256": "b74728dd671388043d0970cc70df3483810810cb62fe22bf8f61a1501bd68675",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/VFX/Static_Elements/Dust_Trail.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-cdcd36fa-bc55-4605-a120-2eb6e8f6ff1b.png",
+  "generated_sha256": "55c54bba1e0ef211c9a36876ac802d803726224cf60944a480fb7ec922384164",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    65,
+    436,
+    1225,
+    881
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Redraw the FIRST reference into ONE complete high-resolution standalone PyQuest game VFX sprite. First reference is an old low-resolution source crop showing this effect's shape and colors; reconstruct clipped extremities and remove any cropped neighboring effect. Second reference is the approved portal for clean soft-painted fantasy quality only; DO NOT depict portal, architecture or characters. Style NL-ARPG-SOFT-766DF2B7: polished 2D hand-painted fantasy, smooth antialiased contours, readable forms, softly shaded rich light and subtle semitransparent glow, no jagged background subtraction. Native high-resolution RGBA redraw, target1024x1024. Center ONE effect at about65% canvas size, 15% clear transparent margin on all sides, all glow within frame. Preserve genuine transparent alpha outside; no background color, checkerboard, captions, text, UI frames or collage. No pixel enlargement or source texture copying.\nSubject Dust_Trail: ONE elongated cream-gray dust trail swept diagonally from low left toward high right: tiny puffs taper along left end and larger soft rolling dust lobes gather at right, warm upper-left highlights and subtle lavender-gray shadows. Preserve the first reference's flowing horizontal motion silhouette. Complete rounded particles with clean soft alpha, no background or hard ground slab.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/VFX/Static_Elements/Dust_Trail.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Reviewed full tapered dust trail, warm cream and lavender shading, complete separate puffs and genuine alpha.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/VFX/Static_Elements/Dust_Trail.png",
+  "package_native_source_path": "Source/Generated/VFX/Static_Elements/Dust_Trail.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/VFX/Static_Elements/Dust_Trail.png",
+  "package_original_crop_path": "Source_Crops/VFX/Static_Elements/Dust_Trail.png"
+}

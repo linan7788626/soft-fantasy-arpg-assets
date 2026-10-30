@@ -1,0 +1,39 @@
+{
+  "original_name": "Hero_Row01_Pose01",
+  "category": "Characters/Hero_Poses",
+  "source_crop_relative": "Source_Crops/Characters/Hero_Poses/Hero_Row01_Pose01.png",
+  "source_sha256": "aff686bffb72058b69d3f84c2f06d1608921bfe3fb792f0f879461706ae3194d",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Characters/Hero_Poses/Hero_Row01_Pose01.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177e8-c49b-7073-81bb-9fc10b98408d/exec-3caf10da-045e-442b-ab46-b744763bf601.png",
+  "generated_sha256": "c0b6bf06d854673fb654075caaafdc36d057b2e2e498401031d3e0bfcbde0de1",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    93,
+    114,
+    1155,
+    1136
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Redraw the ONE small hero knight shown in reference image 1 as a high-quality native-resolution transparent game sprite. Image 1 is the pose and character identity source, not a background to keep. Image 2 is a MATERIAL/RENDERING STYLE reference only: match its refined 2D soft-painted warm-cream and gold materials, smooth thin dark warm outlines, polished soft shading and upper-left warm light; do not depict a portal or stone architecture.\nStyle NL-ARPG-SOFT-766DF2B7, charming medieval fantasy ARPG, 2D hand-painted chibi of about 2.5 heads tall. Preserve the source's slightly elevated three-quarter camera, facing screen-right, alert wide-legged standing pose, right hand extending a straight steel sword out toward screen-left with the point tilted upward, left arm carrying a small round cobalt shield with gold rim on screen-right. Cream steel enclosed rounded helmet, dark vertical slit visor, small curved golden crest, gold edging, cream and steel pauldrons, cobalt tunic and flowing blue cape, warm brown belt, gloves and boots. Keep helmet and body proportions and weapon placement faithful to image1. Reconstruct clipped parts cleanly, improve all small materials and silhouettes, no resampling look. Establish a repeatable hero identity for later poses.\nOne whole character ONLY, no alternate views. Square 1024x1024 canvas, character centered with feet on baseline at about 82% canvas height, overall figure and weapons fit inside the central 76% of the canvas. At least 12% genuinely transparent margin on every side. Keep the complete sword, cape, shield, crest and feet visible. Genuine alpha background, no scenery, no floor, no opaque backdrop, no lettering, no labels, no watermark, no fake checkerboard. Smooth antialiased edges, no coarse pixel grid, no plastic 3D render, no photorealism.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Characters/Hero_Poses/Hero_Row01_Pose01.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Viewed generated output: complete hero, sword, round shield, golden crest, cream armor and cobalt cape are visible; intended standing pose and three-quarter view preserved. Margins/foot baseline are approximate and animation registration is not validated.",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "visual_review_status": "reviewed",
+  "package_sprite_path": "Sprites/Characters/Hero_Poses/Hero_Row01_Pose01.png",
+  "package_native_source_path": "Source/Generated/Characters/Hero_Poses/Hero_Row01_Pose01.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Characters/Hero_Poses/Hero_Row01_Pose01.png",
+  "package_original_crop_path": "Source_Crops/Characters/Hero_Poses/Hero_Row01_Pose01.png"
+}

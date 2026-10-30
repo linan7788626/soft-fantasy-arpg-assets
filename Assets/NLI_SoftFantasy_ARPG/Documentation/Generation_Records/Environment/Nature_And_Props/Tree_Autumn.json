@@ -1,0 +1,39 @@
+{
+  "original_name": "Tree_Autumn",
+  "category": "Environment/Nature_And_Props",
+  "source_crop_relative": "Source_Crops/Environment/Nature_And_Props/Tree_Autumn.png",
+  "source_sha256": "b37763bb92deb148dd1383cec1d6a4723674ef201ac547dfd4e684a13a16f87f",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Environment/Nature_And_Props/Tree_Autumn.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177e9-0137-7c12-ba77-ca62838fdbf6/exec-0160e35e-371d-447d-8f3f-2c66dab8d040.png",
+  "generated_sha256": "384bb10a726097d01ba3dd01fa4cd180f22d0e2d29152b38843714e3a13fabd2",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    128,
+    56,
+    1157,
+    1195
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer / production game asset redraw.\nInput image 1 is the legacy source crop and defines the subject identity, colors, topology and function. Ignore the dark demonstration background, partial neighboring assets and labels. Input image 2 is the latest APPROVED STYLE REFERENCE ONLY; use its rendering polish, depth, clean contours and painterly material presence. Do not copy the castle subject into unrelated assets.\nRedraw the requested asset from scratch at native high resolution, not as enlarged old pixels. Style NL-ARPG-SOFT-766DF2B7: polished 2D soft-painted chibi fantasy ARPG, smooth antialiased contours, thin warm dark outlines, gentle cel shading with rich but restrained tactile material detail, soft warm key light from upper left. Slightly elevated three-quarter game perspective matching the source. Preserve the source object's identity and original color family: grass green, warm wood, warm cream/gray stone, blue or terracotta roofs as applicable. Use the style reference quality without converting all materials to gold or blue.\nONE complete isolated asset on genuine transparent RGBA background, centered with generous 12% completely empty transparent margins on every side. Reconstruct parts missing at crop boundaries from the source context, include complete base/roof/limbs, remove neighboring fragments. No scene, no backdrop, no checkerboard, no labels, no lettering, no watermark. No sheet of variants. Keep recognizable chunky silhouette with intentional material highlights; no coarse pixel grid, no photorealism, no glossy plastic 3D. Square canvas target 1024x1024. Preserve semitransparency only where physically appropriate.\nSpecific asset: Tree_Autumn. One autumn broadleaf tree, rounded multi-lobed canopy with bright golden yellow top foliage and rich burnt orange lower foliage, branching warm brown trunk and full roots. Preserve autumn palette and compact asymmetric crown. Remove unrelated green bush, gray rock and neighboring fragments; tree alone.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Environment/Nature_And_Props/Tree_Autumn.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/castle-small-v1.png"
+  ],
+  "visual_review_note": "Complete autumn tree with gold/orange crown, warm branching trunk and roots. Neighbor fragments removed. Original autumn identity preserved with richer smooth leaf and bark rendering.",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "visual_review_status": "reviewed",
+  "package_sprite_path": "Sprites/Environment/Nature_And_Props/Tree_Autumn.png",
+  "package_native_source_path": "Source/Generated/Environment/Nature_And_Props/Tree_Autumn.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Environment/Nature_And_Props/Tree_Autumn.png",
+  "package_original_crop_path": "Source_Crops/Environment/Nature_And_Props/Tree_Autumn.png"
+}

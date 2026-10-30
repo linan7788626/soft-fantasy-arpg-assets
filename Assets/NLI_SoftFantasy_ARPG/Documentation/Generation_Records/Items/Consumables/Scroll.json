@@ -1,0 +1,39 @@
+{
+  "original_name": "Scroll",
+  "category": "Items/Consumables",
+  "source_crop_relative": "Source_Crops/Items/Consumables/Scroll.png",
+  "source_sha256": "c107686b07d31e516f7db883d019548021797fc2c0df3786669b4786f4b2b226",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Items/Consumables/Scroll.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-9d0d0001-f8d7-4a40-8a37-10ffa20dc50e.png",
+  "generated_sha256": "75f30073e34030a224bef2fe2760998a0036280a4358451b95e489f93b0a59ac",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    105,
+    153,
+    1200,
+    1115
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Image1 is EDIT TARGET and identity/shape reference. Image2 is STYLE/MATERIAL QUALITY only; do not depict its portal.\nONE warm cream parchment scroll, unfurled rectangular middle and rolled ends, subtle old-paper shading, a small simple reddish wax seal/emblem matching the source but no readable letters. Preserve diagonal inventory view.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Items/Consumables/Scroll.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Reviewed complete parchment scroll with rolled ends and red wax seal, blank central paper, clean transparent surround.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Items/Consumables/Scroll.png",
+  "package_native_source_path": "Source/Generated/Items/Consumables/Scroll.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Items/Consumables/Scroll.png",
+  "package_original_crop_path": "Source_Crops/Items/Consumables/Scroll.png"
+}

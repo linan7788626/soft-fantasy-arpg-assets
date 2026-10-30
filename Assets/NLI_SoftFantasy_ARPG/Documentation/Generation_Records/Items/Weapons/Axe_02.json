@@ -1,0 +1,39 @@
+{
+  "original_name": "Axe_02",
+  "category": "Items/Weapons",
+  "source_crop_relative": "Source_Crops/Items/Weapons/Axe_02.png",
+  "source_sha256": "f4e47112b4d79d798d18784489652deccbea0bc2048377060604f7a925aecf72",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Items/Weapons/Axe_02.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-b57fe24d-1034-4bf8-9aa7-299efeff8790.png",
+  "generated_sha256": "1f370e17be81544e434dc43adc6051ea99fda0aa9095b77babee480ce2736c9f",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    256,
+    98,
+    1066,
+    1143
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Repaint and upgrade the single existing asset in image1 at native high resolution. Image1 is the EDIT TARGET and identity reference; image2 is only STYLE/MATERIAL QUALITY reference, do not depict the portal.\nONE compact single-bladed fantasy hand axe. Preserve the original warm bronze/golden-orange axe head, angled cutting edge and brown wooden shaft with dark wrapped grip. Diagonal upper-right head/lower-left handle. Distinct from the silver axe; keep this warm metal color variant. Restore the complete tool.\nNL-ARPG-SOFT-766DF2B7, polished soft-painted 2D cartoon fantasy ARPG, thin warm dark outlines, clean antialiased contour, subtle painterly metal and wood, upper-left soft warm light, rich readable material shading. Preserve the original subject's silhouette, proportions, primary colors and orientation. Restore clipped details and remove any unrelated neighbor visible in the old crop.\nONE complete centered individual game item on genuine transparent RGBA background, square canvas around1024px. Scale to at most74% of canvas dimensions, leave13% transparent margin allaround. Full blade and handle visible. No lettering, captions, watermark, background, flat backdrop, checkerboard, ground, badge, extra weapon, sprite sheet, coarse pixels, photorealism or plastic3D. This is a real repaint, never interpolation.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Items/Weapons/Axe_02.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Visually inspected: complete warm bronze-orange axe head, dark wrapped grip and brown wooden shaft; distinct color variant preserved.",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "visual_review_status": "reviewed",
+  "package_sprite_path": "Sprites/Items/Weapons/Axe_02.png",
+  "package_native_source_path": "Source/Generated/Items/Weapons/Axe_02.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Items/Weapons/Axe_02.png",
+  "package_original_crop_path": "Source_Crops/Items/Weapons/Axe_02.png"
+}

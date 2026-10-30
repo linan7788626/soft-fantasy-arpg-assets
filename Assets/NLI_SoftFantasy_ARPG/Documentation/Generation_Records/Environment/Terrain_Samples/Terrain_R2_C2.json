@@ -1,0 +1,39 @@
+{
+  "original_name": "Terrain_R2_C2",
+  "category": "Environment/Terrain_Samples",
+  "source_crop_relative": "Source_Crops/Environment/Terrain_Samples/Terrain_R2_C2.png",
+  "source_sha256": "4333f02913078de683e3eb7a9071003a3d9d41effb9028cf0ed12adaf843448b",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Environment/Terrain_Samples/Terrain_R2_C2.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a18187-874a-71a2-b399-72f18a2dc5e9/exec-bbcf3eb0-4eb0-41d6-bff2-7244caff62bf.png",
+  "generated_sha256": "f8ba6e47dbb9ff36f1d2baa41c8c8552c1fe2296eca347a8a01e3c4e5ebb1a12",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    202,
+    249
+  ],
+  "solid_alpha_bbox": [
+    0,
+    0,
+    1254,
+    1254
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer / production game asset redraw.\nInput image 1 is the legacy source crop and defines the subject identity, colors, topology and function. Ignore the dark demonstration background, partial neighboring assets and labels. Input image 2 is the latest APPROVED STYLE REFERENCE ONLY; use its rendering polish, depth, clean contours and painterly material presence. Do not copy the castle subject into unrelated assets.\nRedraw the requested asset from scratch at native high resolution, not as enlarged old pixels. Style NL-ARPG-SOFT-766DF2B7: polished 2D soft-painted chibi fantasy ARPG, smooth antialiased contours, thin warm dark outlines, gentle cel shading with rich but restrained tactile material detail, soft warm key light from upper left. Slightly elevated three-quarter game perspective matching the source. Preserve the source object's identity and original color family: grass green, warm wood, warm cream/gray stone, blue or terracotta roofs as applicable. Use the style reference quality without converting all materials to gold or blue.\nONE complete isolated asset on genuine transparent RGBA background, centered with generous 12% completely empty transparent margins on every side. Reconstruct parts missing at crop boundaries from the source context, include complete base/roof/limbs, remove neighboring fragments. No scene, no backdrop, no checkerboard, no labels, no lettering, no watermark. No sheet of variants. Keep recognizable chunky silhouette with intentional material highlights; no coarse pixel grid, no photorealism, no glossy plastic 3D. Square canvas target 1024x1024. Preserve semitransparency only where physically appropriate.\nSpecific asset: Terrain_R2_C2. Square top-down bright cyan-blue water surface, gentle blue depth variations and thin pale curved interconnected wave/caustic lines. Preserve clean cartoon water pattern; no land, shore, objects, border or floating tile slab.\nTerrain surface exception: output ONE complete square terrain sample filled to all four canvas edges; no margins or floating pedestal. Preserve the source camera and topology, including visible cliff-edge cross-sections when present, and preserve material layout. Opaque terrain surface is intentional. Seamless tileability is NOT claimed.\n",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Environment/Terrain_Samples/Terrain_R2_C2.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/castle-small-v1.png"
+  ],
+  "visual_review_note": "Visually reviewed native cyan-blue top-down water sample: connected pale wave/caustic lines, soft depth variations and clean full square surface. No land, objects, border or floating slab. Native alpha retained; seamless water tiling is unvalidated.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Environment/Terrain_Samples/Terrain_R2_C2.png",
+  "package_native_source_path": "Source/Generated/Environment/Terrain_Samples/Terrain_R2_C2.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Environment/Terrain_Samples/Terrain_R2_C2.png",
+  "package_original_crop_path": "Source_Crops/Environment/Terrain_Samples/Terrain_R2_C2.png"
+}

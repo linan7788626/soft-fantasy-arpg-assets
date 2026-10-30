@@ -1,0 +1,39 @@
+{
+  "original_name": "Button_Empty",
+  "category": "UI/Panels_And_Buttons",
+  "source_crop_relative": "Source_Crops/UI/Panels_And_Buttons/Button_Empty.png",
+  "source_sha256": "e7dfac4aec68ecf60e839a76153a1271c0af777e87dd5659f68770355723927b",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/UI/Panels_And_Buttons/Button_Empty.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-9e92e241-dfc3-4984-bd2c-22dad21d8f95.png",
+  "generated_sha256": "dda487c3c8a22920ca6392e39a47f0616e00b1a983c9fa4c27d76a127f91a1c2",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    163,
+    184,
+    1091,
+    1061
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Upgrade/repaint the single existing game asset in image 1 at native high resolution. Image 1 is the EDIT TARGET and identity/shape reference; image 2 is STYLE/MATERIAL QUALITY reference only, do not depict the portal.\nSubject Button_Empty: ONE empty square fantasy interface button viewed straight-on. Warm medium-brown leather/parchment face, rounded corners, golden bronze raised border and discreet corner rivets. Preserve the blank central area and subtle worn texture; no symbol, text or picture added.\nMatch NL-ARPG-SOFT-766DF2B7: polished 2D hand-painted cartoon fantasy ARPG, thin restrained warm dark outlines, clean smooth antialiased contours, soft upper-left warm light, subtle painterly material texture, rich yet controlled dimensional shading. Preserve the target's primary colors, proportions, direction and semantic function. Redraw details naturally at high resolution rather than interpolating the old pixels. Reconstruct damaged/clipped areas; omit any stray neighboring subject visible in the crop.\nONE complete individual asset on a genuine transparent RGBA background, square canvas around 1024px, centered and occupying no more than 74% of each canvas dimension so there is at least 13% empty transparent margin all around. Everything including tips/border visible. No background, no drop-shadow rectangle, no painted checkerboard, no backdrop from the original, no captions, lettering, watermark, contact sheet, extra item, UI badge or frame unless the subject itself is a UI button. No plastic 3D, photorealism, coarse pixelation or excessively thick outlines.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/UI/Panels_And_Buttons/Button_Empty.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Visually inspected: complete square warm-brown blank button with gold raised frame and four corner rivets; central area remains empty.",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "visual_review_status": "reviewed",
+  "package_sprite_path": "Sprites/UI/Panels_And_Buttons/Button_Empty.png",
+  "package_native_source_path": "Source/Generated/UI/Panels_And_Buttons/Button_Empty.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/UI/Panels_And_Buttons/Button_Empty.png",
+  "package_original_crop_path": "Source_Crops/UI/Panels_And_Buttons/Button_Empty.png"
+}

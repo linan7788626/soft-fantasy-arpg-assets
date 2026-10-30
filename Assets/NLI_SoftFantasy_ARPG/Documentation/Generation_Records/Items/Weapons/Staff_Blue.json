@@ -1,0 +1,39 @@
+{
+  "original_name": "Staff_Blue",
+  "category": "Items/Weapons",
+  "source_crop_relative": "Source_Crops/Items/Weapons/Staff_Blue.png",
+  "source_sha256": "66e897312eaab5bf03817649479c7eb54f198fdf46c9447dd7c517396f76aaa3",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Items/Weapons/Staff_Blue.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-0dd2ccc2-89bc-4968-9a05-e942896ad8c2.png",
+  "generated_sha256": "00e46416685503b328e9cdd76c5af8d149d2f800d727138b49740e045bdd1af9",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    167,
+    84,
+    1132,
+    1172
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Image1 is edit target and identity reference. Image2 supplies only painterly material style; no portal in output.\nONE blue-orb magic staff: long warm-brown wooden shaft with gold binding rings, large circular silver rim/crescent head cradling a luminous cobalt-blue round orb with a tiny warm center. Preserve the original diagonal lower-left handle / upper-right orb, original blue primary color and simple staff silhouette. Full tip and base visible.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Items/Weapons/Staff_Blue.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Visually inspected: full wooden staff, silver circular mount and luminous cobalt orb; distinct blue variant, intact tip and butt.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Items/Weapons/Staff_Blue.png",
+  "package_native_source_path": "Source/Generated/Items/Weapons/Staff_Blue.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Items/Weapons/Staff_Blue.png",
+  "package_original_crop_path": "Source_Crops/Items/Weapons/Staff_Blue.png"
+}

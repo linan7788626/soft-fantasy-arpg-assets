@@ -1,0 +1,39 @@
+{
+  "original_name": "Smoke_Small",
+  "category": "VFX/Static_Elements",
+  "source_crop_relative": "Source_Crops/VFX/Static_Elements/Smoke_Small.png",
+  "source_sha256": "9abdf2b198a8c8347c281b115f83938e887c5b7831c686ae605e864c11e85b0d",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/VFX/Static_Elements/Smoke_Small.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-1fae970e-0929-4b1f-b5aa-904be619967b.png",
+  "generated_sha256": "df71d03160582f10c9d21feb0d9758ceee0b9a13406e609c8ed57059c9a2e5be",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    91,
+    409,
+    1189,
+    953
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Redraw the FIRST reference into ONE complete high-resolution standalone PyQuest game VFX sprite. First reference is an old low-resolution source crop showing this effect's shape and colors; reconstruct clipped extremities and remove any cropped neighboring effect. Second reference is the approved portal for clean soft-painted fantasy quality only; DO NOT depict portal, architecture or characters. Style NL-ARPG-SOFT-766DF2B7: polished 2D hand-painted fantasy, smooth antialiased contours, readable forms, softly shaded rich light and subtle semitransparent glow, no jagged background subtraction. Native high-resolution RGBA redraw, target1024x1024. Center ONE effect at about65% canvas size, 15% clear transparent margin on all sides, all glow within frame. Preserve genuine transparent alpha outside; no background color, checkerboard, captions, text, UI frames or collage. No pixel enlargement or source texture copying.\nSubject Smoke_Small: ONE small magical smoke puff: several soft ivory/beige cloud lobes curling upward in a compact loose arc, a few separated tiny beige puffs on the right and two small pale gold four-point twinkles. Preserve first reference's delicate smoke-and-stars identity. Use softly shaded hand-painted smoke with translucent edge fading, no opaque rectangular backdrop or huge explosion.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/VFX/Static_Elements/Smoke_Small.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Reviewed small warm magical smoke puffs and gold sparkles; complete silhouette with native semitransparent glow.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/VFX/Static_Elements/Smoke_Small.png",
+  "package_native_source_path": "Source/Generated/VFX/Static_Elements/Smoke_Small.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/VFX/Static_Elements/Smoke_Small.png",
+  "package_original_crop_path": "Source_Crops/VFX/Static_Elements/Smoke_Small.png"
+}

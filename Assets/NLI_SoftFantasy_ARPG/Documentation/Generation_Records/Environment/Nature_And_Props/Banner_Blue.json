@@ -1,0 +1,39 @@
+{
+  "original_name": "Banner_Blue",
+  "category": "Environment/Nature_And_Props",
+  "source_crop_relative": "Source_Crops/Environment/Nature_And_Props/Banner_Blue.png",
+  "source_sha256": "8b55a484e5894dd2cf95c5c0eb9ef1abbf2d11e4756ac0fba742cdf7d2350646",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Environment/Nature_And_Props/Banner_Blue.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177e9-0137-7c12-ba77-ca62838fdbf6/exec-44e2da41-54c3-47f7-b014-baefaced45d1.png",
+  "generated_sha256": "c605b9b1461c696198d0dcc4d1c793c28b543f14e2548832d1459086eaac823f",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    212,
+    139,
+    1044,
+    1099
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer / production game asset redraw.\nInput image 1 is the legacy source crop and defines the subject identity, colors, topology and function. Ignore the dark demonstration background, partial neighboring assets and labels. Input image 2 is the latest APPROVED STYLE REFERENCE ONLY; use its rendering polish, depth, clean contours and painterly material presence. Do not copy the castle subject into unrelated assets.\nRedraw the requested asset from scratch at native high resolution, not as enlarged old pixels. Style NL-ARPG-SOFT-766DF2B7: polished 2D soft-painted chibi fantasy ARPG, smooth antialiased contours, thin warm dark outlines, gentle cel shading with rich but restrained tactile material detail, soft warm key light from upper left. Slightly elevated three-quarter game perspective matching the source. Preserve the source object's identity and original color family: grass green, warm wood, warm cream/gray stone, blue or terracotta roofs as applicable. Use the style reference quality without converting all materials to gold or blue.\nONE complete isolated asset on genuine transparent RGBA background, centered with generous 12% completely empty transparent margins on every side. Reconstruct parts missing at crop boundaries from the source context, include complete base/roof/limbs, remove neighboring fragments. No scene, no backdrop, no checkerboard, no labels, no lettering, no watermark. No sheet of variants. Keep recognizable chunky silhouette with intentional material highlights; no coarse pixel grid, no photorealism, no glossy plastic 3D. Square canvas target 1024x1024. Preserve semitransparency only where physically appropriate.\nSpecific asset: Banner_Blue. One blue hanging shield-shaped fabric pennant with a pointed lower tip, narrow gold border and a simple gold heraldic cross/star emblem, attached to a small warm wooden horizontal bar by short loops, with curved dark metal hanging loop above. Preserve cloth proportions and warm-blue-gold identity; no pole reaching down or unrelated props, no text.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Environment/Nature_And_Props/Banner_Blue.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/castle-small-v1.png"
+  ],
+  "visual_review_note": "Complete blue pointed cloth pennant on wood bar with metal hanging loop, gold edging and simple gold heraldic star/cross. Source geometry and palette preserved, no text or clipping.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Environment/Nature_And_Props/Banner_Blue.png",
+  "package_native_source_path": "Source/Generated/Environment/Nature_And_Props/Banner_Blue.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Environment/Nature_And_Props/Banner_Blue.png",
+  "package_original_crop_path": "Source_Crops/Environment/Nature_And_Props/Banner_Blue.png"
+}

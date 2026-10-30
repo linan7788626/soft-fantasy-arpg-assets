@@ -1,0 +1,149 @@
+{
+  "version": "0.2.1-npc-elder",
+  "sprite_count": 224,
+  "prefab_count": 224,
+  "independent_redraws": 219,
+  "approved_originals_retained_byte_identical": 4,
+  "independent_new_assets": 1,
+  "existing_223_assets_preserved_byte_identical": true,
+  "counts_by_group": {
+    "Characters": 32,
+    "Enemies": 28,
+    "Boss": 4,
+    "VFX": 22,
+    "Items": 39,
+    "UI": 27,
+    "Environment": 72
+  },
+  "native_dimensions": {
+    "1254x1254": 222,
+    "1774x887": 1,
+    "1536x1024": 1
+  },
+  "alpha_summary": {
+    "contains_transparent_pixels": 213,
+    "no_zero_alpha_pixels": 11
+  },
+  "visible_frame_contact_for_review": [
+    {
+      "name": "Terrain_R1_C1",
+      "note": "Visible alpha reaches frame; terrain/scene surfaces may intentionally fill canvas.",
+      "bbox": [
+        1,
+        1,
+        1254,
+        1253
+      ]
+    },
+    {
+      "name": "Terrain_R1_C3",
+      "note": "Visible alpha reaches frame; terrain/scene surfaces may intentionally fill canvas.",
+      "bbox": [
+        0,
+        0,
+        1254,
+        1254
+      ]
+    },
+    {
+      "name": "Terrain_R1_C4",
+      "note": "Visible alpha reaches frame; terrain/scene surfaces may intentionally fill canvas.",
+      "bbox": [
+        0,
+        0,
+        1254,
+        1254
+      ]
+    },
+    {
+      "name": "Terrain_R2_C1",
+      "note": "Visible alpha reaches frame; terrain/scene surfaces may intentionally fill canvas.",
+      "bbox": [
+        0,
+        0,
+        1254,
+        1254
+      ]
+    },
+    {
+      "name": "Terrain_R2_C2",
+      "note": "Visible alpha reaches frame; terrain/scene surfaces may intentionally fill canvas.",
+      "bbox": [
+        0,
+        0,
+        1254,
+        1254
+      ]
+    },
+    {
+      "name": "Terrain_R2_C4",
+      "note": "Visible alpha reaches frame; terrain/scene surfaces may intentionally fill canvas.",
+      "bbox": [
+        3,
+        0,
+        1251,
+        1252
+      ]
+    },
+    {
+      "name": "Terrain_R3_C1",
+      "note": "Visible alpha reaches frame; terrain/scene surfaces may intentionally fill canvas.",
+      "bbox": [
+        0,
+        0,
+        1254,
+        1254
+      ]
+    },
+    {
+      "name": "Terrain_R3_C3",
+      "note": "Visible alpha reaches frame; terrain/scene surfaces may intentionally fill canvas.",
+      "bbox": [
+        0,
+        0,
+        1254,
+        1254
+      ]
+    },
+    {
+      "name": "Terrain_R3_C4",
+      "note": "Visible alpha reaches frame; terrain/scene surfaces may intentionally fill canvas.",
+      "bbox": [
+        0,
+        0,
+        1254,
+        1254
+      ]
+    },
+    {
+      "name": "Terrain_R3_C5",
+      "note": "Visible alpha reaches frame; terrain/scene surfaces may intentionally fill canvas.",
+      "bbox": [
+        0,
+        0,
+        1254,
+        1254
+      ]
+    },
+    {
+      "name": "Terrain_R3_C6",
+      "note": "Visible alpha reaches frame; terrain/scene surfaces may intentionally fill canvas.",
+      "bbox": [
+        0,
+        0,
+        1254,
+        1254
+      ]
+    }
+  ],
+  "generated_bytes_preserved": true,
+  "legacy_designs_and_names_preserved": true,
+  "sprite_and_prefab_guids_preserved": true,
+  "unique_unity_metadata_records": 1538,
+  "portable_catalog_links_verified": 891,
+  "visual_reviews_recorded": 220,
+  "unity_editor_import_tested": false,
+  "animation_alignment_validated": false,
+  "terrain_seamless_tileability_validated": false,
+  "pyquest_runtime_modified": false
+}

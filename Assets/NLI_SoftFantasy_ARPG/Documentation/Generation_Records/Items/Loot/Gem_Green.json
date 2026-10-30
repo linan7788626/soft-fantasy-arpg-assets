@@ -1,0 +1,39 @@
+{
+  "original_name": "Gem_Green",
+  "category": "Items/Loot",
+  "source_crop_relative": "Source_Crops/Items/Loot/Gem_Green.png",
+  "source_sha256": "af1048c353667808e846b073c700ef72cf0b909ee0f92b5c738c4e43e52e35a6",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Items/Loot/Gem_Green.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-50e5b723-a16d-4fd0-9840-d0a7e859893d.png",
+  "generated_sha256": "80f7f62f5592e6ea01a31de8f0556e9c7b69e9627ac9e9fb8a5390d1569779c9",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    270,
+    287,
+    1026,
+    975
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Image1 is EDIT TARGET and identity/shape reference. Image2 is STYLE/MATERIAL QUALITY only; do not depict its portal.\nONE loose emerald-green faceted gemstone, angular polygonal jewel tilted slightly, varied light/dark green facets and bright upper-left highlight. Preserve green color and original broad cut.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Items/Loot/Gem_Green.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Reviewed one emerald-green faceted gemstone with intact polygonal outline and clear shaded facets, transparent surround.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Items/Loot/Gem_Green.png",
+  "package_native_source_path": "Source/Generated/Items/Loot/Gem_Green.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Items/Loot/Gem_Green.png",
+  "package_original_crop_path": "Source_Crops/Items/Loot/Gem_Green.png"
+}

@@ -1,0 +1,39 @@
+{
+  "original_name": "Shield_01",
+  "category": "Items/Armor",
+  "source_crop_relative": "Source_Crops/Items/Armor/Shield_01.png",
+  "source_sha256": "068b4b3e47e143d53bfabc037e555dc386e711b59aa9d675df3de68d3690af17",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Items/Armor/Shield_01.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-04be0def-8524-41d2-a71e-fd567132426b.png",
+  "generated_sha256": "f93b7bbef8eb149fbc70ac65123e0768cafb628deef514d154398e2369f7295f",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    239,
+    131,
+    1014,
+    1081
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Image1 is EDIT TARGET and identity/shape reference. Image2 is STYLE/MATERIAL QUALITY only; do not depict its portal.\nONE front-facing compact blue kite shield with gold raised rim and a single small gold four-point star emblem. Preserve simple smooth cobalt face, gold edge and slightly convex volume. Complete shield, no arms or weapon.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Items/Armor/Shield_01.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Visually inspected: complete cobalt kite shield, raised gold rim and four-point star emblem; smooth intact perimeter.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Items/Armor/Shield_01.png",
+  "package_native_source_path": "Source/Generated/Items/Armor/Shield_01.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Items/Armor/Shield_01.png",
+  "package_original_crop_path": "Source_Crops/Items/Armor/Shield_01.png"
+}

@@ -1,0 +1,39 @@
+{
+  "original_name": "Heart_Empty",
+  "category": "UI/Icons",
+  "source_crop_relative": "Source_Crops/UI/Icons/Heart_Empty.png",
+  "source_sha256": "7db8db4ca4a66bb39d4faa3f179d58134570da0ce274d45d1a8e05c6bd61b9f9",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/UI/Icons/Heart_Empty.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-90b50994-3119-4ae1-819f-16556d579856.png",
+  "generated_sha256": "c17186ae32eb22d3a0206f2176f71527adf849d47d6f0c27fd7909e8fc4b7a79",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    248,
+    307,
+    1015,
+    963
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Image1 is EDIT TARGET and identity/shape reference. Image2 is STYLE/MATERIAL QUALITY only; do not depict its portal.\nONE depleted/empty-state health heart UI icon, filled muted smoky mauve-gray with subtle upper-left lavender highlight. Preserve its dark desaturated empty-health state; not red, not a hollow ring. Complete heart shape without frame.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/UI/Icons/Heart_Empty.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Reviewed muted mauve-gray depleted heart state, filled desaturated surface, intact contour and transparent surround.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/UI/Icons/Heart_Empty.png",
+  "package_native_source_path": "Source/Generated/UI/Icons/Heart_Empty.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/UI/Icons/Heart_Empty.png",
+  "package_original_crop_path": "Source_Crops/UI/Icons/Heart_Empty.png"
+}

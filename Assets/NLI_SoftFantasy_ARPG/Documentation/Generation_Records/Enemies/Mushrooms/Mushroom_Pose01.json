@@ -1,0 +1,39 @@
+{
+  "original_name": "Mushroom_Pose01",
+  "category": "Enemies/Mushrooms",
+  "source_crop_relative": "Source_Crops/Enemies/Mushrooms/Mushroom_Pose01.png",
+  "source_sha256": "f2075634b96e99829258b69c2c60b8c4c79f6ad9c3b39aded38e9e6780856516",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Enemies/Mushrooms/Mushroom_Pose01.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177e8-c49b-7073-81bb-9fc10b98408d/exec-23fe9923-dc37-4cec-a1c4-251d8521d2dc.png",
+  "generated_sha256": "8d7597a7eb2c0e2a2dd24e385512315cf7e3e39b8935f502c5b7adc5a956efdd",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    212,
+    262,
+    1066,
+    1022
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Redraw ONLY the individual character/action in reference image 1 into a new full native-resolution transparent game sprite, reconstructing cropped limbs, cape and weapon tips. Image1 controls the EXACT pose, action, facing, camera, identity and silhouette. Discard its dark display background and any fragments of adjacent atlas subjects. Image2 (portal) controls rendering quality/material softness only; do not depict portal or architecture. If image3 is supplied, it is the regenerated SAME CHARACTER identity anchor: keep its helmet/face, armor, clothing, weapon design and proportions, but pose it EXACTLY like image1; do not simply copy the anchor's pose. Style NL-ARPG-SOFT-766DF2B7, polished 2D soft-painted chibi medieval fantasy ARPG, about 2.5 heads for humanoids, smooth antialiased edges, restrained thin dark warm outlines, refined yet soft material shading and warm upper-left lighting. One full individual static pose per image, no sheet or alternate views. Square 1024x1024 canvas; frame the whole figure AND weapons/effects within the central 76% with at least 12% clear transparent margins on every side; consistent family camera and overall body scale. Genuine transparent alpha outside the subject, no ground or backdrop, no labels or lettering, no watermark or drawn checkerboard. Avoid coarse pixel grids, photorealism and glossy plastic 3D.\nSpecific source preservation: Enemy family identity anchor: one angry cute mushroom creature, short rounded cream/beige stalk body with tiny stubby feet, small dark eyebrows/eyes and frowning mouth, rosy orange cheeks; large red-orange domed cap with cream spots and soft tan underside. Match source near-frontal three-quarter right pose and cap silhouette. No arms, clothing, weapons or added background.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Enemies/Mushrooms/Mushroom_Pose01.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Viewed output: complete cream-stalk mushroom with red-orange spotted cap, angry face and tiny feet. Original identity and simple broad silhouette preserved; static pose and animation registration unvalidated.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Enemies/Mushrooms/Mushroom_Pose01.png",
+  "package_native_source_path": "Source/Generated/Enemies/Mushrooms/Mushroom_Pose01.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Enemies/Mushrooms/Mushroom_Pose01.png",
+  "package_original_crop_path": "Source_Crops/Enemies/Mushrooms/Mushroom_Pose01.png"
+}

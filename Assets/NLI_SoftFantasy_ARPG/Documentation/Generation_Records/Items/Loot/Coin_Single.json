@@ -1,0 +1,39 @@
+{
+  "original_name": "Coin_Single",
+  "category": "Items/Loot",
+  "source_crop_relative": "Source_Crops/Items/Loot/Coin_Single.png",
+  "source_sha256": "71d2b29e6bfeaf416e6534eb4ed8fec8625e2608cfbaceba94e17b483cd5fc1c",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Items/Loot/Coin_Single.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-5a7a9b08-77b6-46f9-b2e9-c59e37cfa512.png",
+  "generated_sha256": "4d921b12693a31f6cedcd65839d0c1a7991f0ec180e0208c5860755966fd47b0",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    216,
+    221,
+    1039,
+    1027
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Image1 is EDIT TARGET and identity/shape reference. Image2 is STYLE/MATERIAL QUALITY only; do not depict its portal.\nONE single round bright golden coin viewed nearly face-on, raised gold rim and a simple small abstract central relief matching source, no readable text or numbers. Full circular silhouette, soft upper-left shine.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Items/Loot/Coin_Single.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Reviewed single gold coin with raised rim, abstract small relief and complete circle, transparent surround.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Items/Loot/Coin_Single.png",
+  "package_native_source_path": "Source/Generated/Items/Loot/Coin_Single.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Items/Loot/Coin_Single.png",
+  "package_original_crop_path": "Source_Crops/Items/Loot/Coin_Single.png"
+}

@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Browse all 224 sprites of the NLI Soft Fantasy ARPG pack — characters, enemies, bosses, items, environments, UI and VFX as transparent PNGs. Self-contained, works offline.">
+<title>NLI Soft Fantasy ARPG · Sprite Browser</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3 25 16 16 29 7 16Z' fill='%23e8b04b'/%3E%3Cpath d='M16 9 20.5 16 16 23 11.5 16Z' fill='%23120e0a'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#120e0a; --panel:#1b1510; --panel2:#231b13; --raise:#2b2218;
+  --line:rgba(238,214,170,.10); --line2:rgba(238,214,170,.22);
+  --text:#f1e9d8; --muted:#b1a089; --faint:#8a7b66;
+  --gold:#e8b04b; --gold2:#f6d387; --gold-dim:rgba(232,176,75,.14);
+  --serif:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,"URW Palladio L",Georgia,"Times New Roman",serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --radius:12px;
+  --tile:#221b14; --tile-shadow:inset 0 1px 0 rgba(255,255,255,.03);
+  --lbl-bg:linear-gradient(rgba(10,7,4,0),rgba(10,7,4,.9)); --lbl-fg:#f0e7d4; --lbl-sub:#c4b18c;
+}
+*{box-sizing:border-box}
+html{color-scheme:dark;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.5}
+body::after{content:"";position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+::selection{background:rgba(232,176,75,.32)}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-thumb{background:#2f261b;border-radius:8px;border:3px solid var(--bg)}
+::-webkit-scrollbar-track{background:transparent}
+:focus-visible{outline:2px solid rgba(232,176,75,.75);outline-offset:2px;border-radius:6px}
+button{font:inherit;color:inherit}
+
+/* ---------- stage background modes ---------- */
+body.bg-dark{--tile:#221b14;--tile-shadow:inset 0 1px 0 rgba(255,255,255,.03);
+  --lbl-bg:linear-gradient(rgba(10,7,4,0),rgba(10,7,4,.9));--lbl-fg:#f0e7d4;--lbl-sub:#c4b18c}
+body.bg-light{--tile:#f2e9d9;--tile-shadow:inset 0 0 0 1px rgba(122,92,44,.1);
+  --lbl-bg:linear-gradient(rgba(244,237,224,0),rgba(243,235,221,.95));--lbl-fg:#3c3021;--lbl-sub:#8a7452}
+body.bg-checker{--tile:repeating-conic-gradient(#c9c3b9 0% 25%,#f2eee6 0% 50%);--tile-shadow:inset 0 0 0 1px rgba(0,0,0,.16);
+  --lbl-bg:linear-gradient(rgba(10,7,4,0),rgba(10,7,4,.9));--lbl-fg:#f0e7d4;--lbl-sub:#c4b18c}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);
+  background:
+    radial-gradient(1100px 500px at 88% -12%,rgba(232,176,75,.16),transparent 62%),
+    radial-gradient(760px 420px at 4% -20%,rgba(130,180,216,.09),transparent 60%),
+    linear-gradient(180deg,#1b1510 0%,#151009 80%,var(--bg) 100%)}
+.hero-inner{max-width:1460px;margin:0 auto;position:relative;
+  padding:clamp(36px,6vw,74px) clamp(16px,3vw,40px) clamp(28px,4vw,46px)}
+.kicker{display:flex;align-items:center;gap:12px;margin:0;font-size:11px;font-weight:600;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.kicker::before{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(34px,5.2vw,64px);line-height:1.03;
+  letter-spacing:.005em;margin:.16em 0 .2em}
+h1 em{font-style:italic;color:var(--gold2)}
+.ver{display:inline-block;vertical-align:super;margin-left:14px;padding:4px 11px;border-radius:999px;
+  border:1px solid rgba(232,176,75,.45);color:var(--gold2);font-family:var(--mono);font-size:12px;
+  letter-spacing:.08em;background:var(--gold-dim)}
+.lede{max-width:660px;margin:0;color:var(--muted);font-size:clamp(14px,1.5vw,16.5px);line-height:1.68}
+.lede b{color:var(--text);font-weight:600}
+.stats{display:flex;flex-wrap:wrap;gap:12px 44px;list-style:none;margin:30px 0 0;padding:16px 0 0;
+  border-top:1px solid var(--line)}
+.stats strong{display:block;font-family:var(--serif);font-weight:600;font-size:clamp(22px,2.6vw,30px);
+  color:var(--gold2);line-height:1.1}
+.stats span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.emblem{position:absolute;right:3%;top:50%;transform:translateY(-52%);width:min(300px,24vw);
+  opacity:.55;filter:drop-shadow(0 0 34px rgba(232,176,75,.22));pointer-events:none}
+.emblem .ring{transform-origin:100px 100px;animation:spin 90s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (max-width:900px){.emblem{display:none}}
+
+/* ---------- toolbar ---------- */
+.toolbar{position:sticky;top:0;z-index:40;background:rgba(17,13,9,.88);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.tb{max-width:1460px;margin:0 auto;padding:12px clamp(16px,3vw,40px) 13px;display:flex;
+  flex-direction:column;gap:11px}
+.row1{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.search{flex:1 1 300px;position:relative}
+.search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--faint);pointer-events:none}
+.search input{width:100%;padding:11px 14px 11px 42px;border-radius:10px;border:1px solid var(--line2);
+  background:var(--panel2);color:var(--text);font:inherit;font-size:14.5px}
+.search input::placeholder{color:var(--faint)}
+.search input:focus{outline:none;border-color:rgba(232,176,75,.6);box-shadow:0 0 0 3px var(--gold-dim)}
+.seg{display:flex;border:1px solid var(--line2);border-radius:10px;overflow:hidden;background:var(--panel2)}
+.seg button{display:flex;align-items:center;gap:8px;padding:10px 13px;border:0;background:transparent;
+  color:var(--muted);font-size:13px;cursor:pointer;transition:background .18s,color .18s}
+.seg button + button{border-left:1px solid var(--line)}
+.seg button.on{background:linear-gradient(180deg,rgba(232,176,75,.26),rgba(232,176,75,.13));color:var(--gold2)}
+.seg .sw{width:14px;height:14px;border-radius:4px;border:1px solid rgba(0,0,0,.4);flex:none}
+.sw-dark{background:#241c15}
+.sw-light{background:#f2e9d8}
+.sw-check{background:repeating-conic-gradient(#c9c3b9 0 25%,#f2eee6 0 50%);background-size:8px 8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{display:flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;border:1px solid var(--line2);
+  background:transparent;color:var(--muted);font-size:13px;cursor:pointer;
+  transition:color .18s,border-color .18s,background .18s}
+.chip:hover{color:var(--text);border-color:rgba(238,214,170,.4)}
+.chip.on{background:linear-gradient(180deg,rgba(232,176,75,.24),rgba(232,176,75,.12));
+  border-color:rgba(232,176,75,.6);color:var(--gold2)}
+.chip .dot{width:7px;height:7px;border-radius:50%;flex:none;box-shadow:0 0 6px currentColor}
+.chip .n{font-size:11px;color:var(--faint);background:rgba(0,0,0,.28);padding:1px 7px;border-radius:999px}
+.chip.on .n{color:var(--gold2);background:rgba(0,0,0,.35)}
+.count{margin-left:auto;color:var(--faint);font-size:12.5px;letter-spacing:.05em;white-space:nowrap}
+.count b{color:var(--gold2);font-weight:600}
+
+/* ---------- grid ---------- */
+.wrap{max-width:1460px;margin:0 auto;padding:0 clamp(16px,3vw,40px)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(156px,1fr));gap:14px;padding:26px 0 64px}
+.tile{position:relative;display:block;padding:0;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--tile);background-size:22px 22px;box-shadow:var(--tile-shadow);overflow:hidden;
+  cursor:zoom-in;text-align:left;
+  opacity:0;translate:0 12px;
+  transition:opacity .5s ease,translate .55s cubic-bezier(.2,.7,.25,1),
+    transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+.tile.in{opacity:1;translate:0 0}
+.tile:hover{transform:translateY(-3px);border-color:rgba(232,176,75,.55);
+  box-shadow:var(--tile-shadow),0 14px 32px -14px rgba(0,0,0,.75),0 0 0 1px rgba(232,176,75,.14)}
+.tile:active{transform:translateY(-1px) scale(.995)}
+.ph{display:block;aspect-ratio:1;padding:7%}
+.ph img{width:100%;height:100%;object-fit:contain;display:block;opacity:0;transition:opacity .4s ease}
+.ph img.ok{opacity:1}
+.lbl{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:space-between;
+  gap:8px;padding:22px 10px 9px;background:var(--lbl-bg);color:var(--lbl-fg)}
+.nm{font-size:11.5px;font-weight:600;letter-spacing:.015em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tg{display:flex;align-items:center;gap:5px;font-size:9.5px;font-weight:600;text-transform:uppercase;
+  letter-spacing:.09em;color:var(--lbl-sub);white-space:nowrap;flex:none}
+.tg i{width:6px;height:6px;border-radius:50%;flex:none}
+.empty{display:none;padding:100px 20px 120px;text-align:center}
+.empty.show{display:block}
+.empty h3{font-family:var(--serif);font-style:italic;font-weight:500;font-size:26px;color:var(--muted);margin:0 0 18px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:9px;
+  border:1px solid var(--line2);background:var(--panel2);font-size:13px;cursor:pointer;
+  transition:border-color .18s,color .18s,background .18s}
+.btn:hover{border-color:rgba(232,176,75,.55);color:var(--gold2)}
+.btn.gold{background:linear-gradient(180deg,rgba(232,176,75,.26),rgba(232,176,75,.13));
+  border-color:rgba(232,176,75,.6);color:var(--gold2)}
+
+/* ---------- viewer ---------- */
+#viewer{inset:0;width:100vw;height:100dvh;max-width:none;max-height:none;margin:0;border:0;padding:0;
+  background:transparent;overflow:hidden;color:var(--text)}
+#viewer::backdrop{background:rgba(8,6,3,.82);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+#viewer[open]{animation:vfade .28s ease}
+@keyframes vfade{from{opacity:0}to{opacity:1}}
+.v-box{display:flex;flex-direction:column;width:100%;height:100%;
+  background:linear-gradient(180deg,#1c1610,#14100b 30%);border-top:1px solid rgba(232,176,75,.35)}
+.v-top{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:13px 20px;border-bottom:1px solid var(--line)}
+.v-title{min-width:0}
+.v-title h2{margin:0;font-family:var(--serif);font-weight:600;font-size:clamp(19px,2.3vw,26px);
+  letter-spacing:.005em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.v-title p{margin:3px 0 0;font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.v-title p b{color:var(--gold2);font-weight:600}
+.v-actions{margin-left:auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.v-actions .seg{background:var(--panel2)}
+.zoomer{display:flex;align-items:center;gap:6px}
+.zbtn{width:34px;height:34px;border-radius:8px;border:1px solid var(--line2);background:var(--panel2);
+  font-size:17px;line-height:1;cursor:pointer;transition:border-color .18s,color .18s}
+.zbtn:hover{border-color:rgba(232,176,75,.55);color:var(--gold2)}
+.zpct{min-width:52px;text-align:center;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.zfit{padding:8px 11px;border-radius:8px;border:1px solid var(--line2);background:var(--panel2);
+  font-size:12px;cursor:pointer;transition:border-color .18s,color .18s}
+.zfit:hover{border-color:rgba(232,176,75,.55);color:var(--gold2)}
+.v-close{width:38px;height:38px;border-radius:9px;border:1px solid var(--line2);background:var(--panel2);
+  font-size:17px;cursor:pointer;transition:border-color .18s,color .18s,background .18s}
+.v-close:hover{border-color:rgba(224,99,79,.7);color:#f0917c;background:rgba(224,99,79,.12)}
+.v-stage{position:relative;flex:1;min-height:0;overflow:hidden;background:var(--tile);
+  background-size:24px 24px;display:grid;place-items:center;cursor:zoom-in;touch-action:none}
+.v-stage.pan{cursor:grabbing}
+.v-stage img{max-width:100%;max-height:100%;object-fit:contain;transform-origin:center;
+  will-change:transform;animation:vpop .32s cubic-bezier(.2,.7,.25,1)}
+@keyframes vpop{from{opacity:0;scale:.965}to{opacity:1;scale:1}}
+.v-nav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--line2);background:rgba(16,12,8,.74);backdrop-filter:blur(4px);
+  font-size:22px;line-height:1;cursor:pointer;display:grid;place-items:center;transition:border-color .18s,color .18s}
+.v-nav:hover{border-color:var(--gold);color:var(--gold2)}
+.v-nav.prev{left:16px}.v-nav.next{right:16px}
+.v-hint{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);pointer-events:none;
+  font-size:11px;letter-spacing:.07em;color:var(--muted);background:rgba(14,10,7,.66);
+  border:1px solid var(--line);border-radius:999px;padding:6px 13px;backdrop-filter:blur(4px);white-space:nowrap}
+.v-foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:12px 20px;border-top:1px solid var(--line)}
+.v-path{font-family:var(--mono);font-size:12px;color:var(--gold2);background:rgba(0,0,0,.28);
+  border:1px solid var(--line);border-radius:8px;padding:8px 12px;cursor:pointer;max-width:100%;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:border-color .18s}
+.v-path:hover{border-color:rgba(232,176,75,.5)}
+.v-idx{margin-left:auto;font-size:12px;color:var(--faint);letter-spacing:.08em;white-space:nowrap}
+
+/* ---------- misc ---------- */
+#toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,16px);opacity:0;z-index:90;
+  background:#241c13;border:1px solid rgba(232,176,75,.5);color:var(--gold2);padding:10px 18px;
+  border-radius:999px;font-size:13px;pointer-events:none;box-shadow:0 12px 32px rgba(0,0,0,.5);
+  transition:opacity .3s,transform .3s}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+footer{border-top:1px solid var(--line)}
+.foot{display:flex;flex-wrap:wrap;gap:12px 34px;align-items:baseline;justify-content:space-between;
+  padding:32px 0 48px;color:var(--faint);font-size:12.5px}
+.foot a{color:var(--gold);text-decoration:none;border-bottom:1px dotted rgba(232,176,75,.45)}
+.foot a:hover{color:var(--gold2);border-bottom-style:solid}
+.noscript{max-width:640px;margin:60px auto;padding:20px;border:1px solid var(--line2);border-radius:12px;
+  text-align:center;color:var(--muted)}
+@media (max-width:640px){
+  .v-hint{display:none}
+  .v-actions{width:100%;margin-left:0}
+  .count{margin-left:0;width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;
+    transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body class="bg-dark">
+
+<header class="hero">
+  <svg class="emblem" viewBox="0 0 200 200" aria-hidden="true">
+    <defs>
+      <linearGradient id="au" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#f6d387"/><stop offset="1" stop-color="#c07b2e"/>
+      </linearGradient>
+    </defs>
+    <g fill="none" stroke="url(#au)">
+      <circle class="ring" cx="100" cy="100" r="92" stroke-width="1" stroke-dasharray="3 8" opacity=".55"/>
+      <circle cx="100" cy="100" r="76" stroke-width="1" opacity=".26"/>
+      <path d="M100 18 L128 100 L100 182 L72 100 Z" stroke-width="1.6" opacity=".85"/>
+      <path d="M100 46 L117 100 L100 154 L83 100 Z" stroke-width="1.2" opacity=".5"/>
+      <path d="M100 72 L107.5 100 L100 128 L92.5 100 Z" fill="url(#au)" stroke="none" opacity=".3"/>
+    </g>
+  </svg>
+  <div class="hero-inner">
+    <p class="kicker">Sprite Asset Pack · Unity-ready</p>
+    <h1>NLI Soft Fantasy <em>ARPG</em><span class="ver">v0.2.1</span></h1>
+    <p class="lede"><b>224 soft-glow, warm-lit fantasy sprites</b> for 2D action RPGs — characters, enemies,
+      bosses, items, environments, UI and VFX as transparent PNGs, plus a matching static prefab for each.
+      Browse every sprite at native resolution; this page is fully self-contained and works offline.</p>
+    <ul class="stats">
+      <li><strong>224</strong><span>sprites</span></li>
+      <li><strong>7</strong><span>categories</span></li>
+      <li><strong>1254²</strong><span>native PNG</span></li>
+      <li><strong>224</strong><span>Unity prefabs</span></li>
+    </ul>
+  </div>
+</header>
+
+<div class="toolbar" id="toolbar">
+  <div class="tb">
+    <div class="row1">
+      <label class="search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Search sprites — try “slime”, “potion”, “terrain”…" autocomplete="off" spellcheck="false">
+      </label>
+      <div class="seg" id="bgseg" role="group" aria-label="Thumbnail stage background">
+        <button type="button" data-bg="dark" class="on" title="Dark stage"><span class="sw sw-dark"></span>Dark</button>
+        <button type="button" data-bg="light" title="Light stage"><span class="sw sw-light"></span>Light</button>
+        <button type="button" data-bg="checker" title="Checkerboard — verify PNG alpha"><span class="sw sw-check"></span>Checker</button>
+      </div>
+    </div>
+    <div class="chips" id="chips">
+      <span class="count" id="count"></span>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <div id="grid" class="grid" aria-label="Sprite thumbnails"></div>
+  <div id="empty" class="empty">
+    <h3>No sprites match your filters.</h3>
+    <button type="button" class="btn gold" id="clear">Clear search &amp; filters</button>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>NLI Soft Fantasy ARPG v0.2.1 · style <code>NL-ARPG-SOFT-766DF2B7</code> · warm soft-glow fantasy</span>
+    <span>
+      <a href="Assets/NLI_SoftFantasy_ARPG/Documentation/Asset_Manifest.json">Manifest</a> ·
+      <a href="Assets/NLI_SoftFantasy_ARPG/Documentation/Asset_Index.csv">Index (CSV)</a> ·
+      <a href="Assets/NLI_SoftFantasy_ARPG/Previews/Asset_Catalog.html">In-pack catalog (中文)</a> ·
+      <a href="README_START_HERE.md">README</a>
+    </span>
+    <span>Self-contained page — no network requests, works from <code>file://</code></span>
+  </div>
+</footer>
+
+<dialog id="viewer" aria-label="Sprite viewer">
+  <div class="v-box">
+    <div class="v-top">
+      <div class="v-title">
+        <h2 id="v-name"></h2>
+        <p id="v-meta"></p>
+      </div>
+      <div class="v-actions">
+        <div class="seg" id="vbgseg" role="group" aria-label="Viewer stage background">
+          <button type="button" data-bg="dark" class="on" title="Dark stage"><span class="sw sw-dark"></span>Dark</button>
+          <button type="button" data-bg="light" title="Light stage"><span class="sw sw-light"></span>Light</button>
+          <button type="button" data-bg="checker" title="Checkerboard — verify PNG alpha"><span class="sw sw-check"></span>Checker</button>
+        </div>
+        <div class="zoomer">
+          <button type="button" class="zbtn" id="zoom-out" title="Zoom out (−)" aria-label="Zoom out">−</button>
+          <span class="zpct" id="zpct">100%</span>
+          <button type="button" class="zbtn" id="zoom-in" title="Zoom in (+)" aria-label="Zoom in">+</button>
+          <button type="button" class="zfit" id="z-fit" title="Fit to window (0)">Fit</button>
+          <button type="button" class="zfit" id="z-1x" title="Native 1:1 pixels">1:1</button>
+        </div>
+        <button type="button" class="btn" id="v-copy" title="Copy relative path">Copy path</button>
+        <button type="button" class="v-close" id="v-close" title="Close (Esc)" aria-label="Close">✕</button>
+      </div>
+    </div>
+    <div class="v-stage" id="v-stage">
+      <img id="v-img" alt="">
+      <button type="button" class="v-nav prev" id="v-prev" title="Previous (←)" aria-label="Previous sprite">‹</button>
+      <button type="button" class="v-nav next" id="v-next" title="Next (→)" aria-label="Next sprite">›</button>
+      <p class="v-hint">Scroll to zoom · drag to pan · double-click for 1:1</p>
+    </div>
+    <div class="v-foot">
+      <button type="button" class="v-path" id="v-path" title="Click to copy path"></button>
+      <span class="v-idx" id="v-idx"></span>
+    </div>
+  </div>
+</dialog>
+
+<div id="toast" role="status"></div>
+
+<noscript><p class="noscript">This sprite browser needs JavaScript to render the grid. The asset data lives in <code>Assets/NLI_SoftFantasy_ARPG/Documentation/Asset_Manifest.json</code>.</p></noscript>
+
+<script>
+'use strict';
+const ASSETS=[["Hero_Row01_Pose01","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row01_Pose01.png"],["Hero_Row01_Pose02","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row01_Pose02.png"],["Hero_Row01_Pose03","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row01_Pose03.png"],["Hero_Row01_Pose04","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row01_Pose04.png"],["Hero_Row01_Pose05","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row01_Pose05.png"],["Hero_Row01_Pose06","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row01_Pose06.png"],["Hero_Row01_Pose07","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row01_Pose07.png"],["Hero_Row01_Pose08","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row01_Pose08.png"],["Hero_Row01_Pose09","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row01_Pose09.png"],["Hero_Row02_Pose01","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row02_Pose01.png"],["Hero_Row02_Pose02","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row02_Pose02.png"],["Hero_Row02_Pose03","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row02_Pose03.png"],["Hero_Row02_Pose04","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row02_Pose04.png"],["Hero_Row02_Pose05","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row02_Pose05.png"],["Hero_Row02_Pose06","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row02_Pose06.png"],["Hero_Row02_Pose07","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row02_Pose07.png"],["Hero_Row03_Pose01","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row03_Pose01.png"],["Hero_Row03_Pose02","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row03_Pose02.png"],["Hero_Row03_Pose03","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row03_Pose03.png"],["Hero_Row03_Pose04","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row03_Pose04.png"],["Hero_Row03_Pose05","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row03_Pose05.png"],["Hero_Row03_Pose06","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row03_Pose06.png"],["Hero_Row04_Pose01","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row04_Pose01.png"],["Hero_Row04_Pose02","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row04_Pose02.png"],["Hero_Row04_Pose03","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row04_Pose03.png"],["Hero_Row04_Pose04","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row04_Pose04.png"],["Hero_Row04_Pose05","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row04_Pose05.png"],["Hero_Row04_Pose06","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row04_Pose06.png"],["Hero_Row04_Pose07","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row04_Pose07.png"],["Hero_Row04_Pose08","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row04_Pose08.png"],["Hero_BossScale_Reference","Characters","Hero_Poses",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_BossScale_Reference.png"],["NPC_Elder","Characters","NPCs",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/NPCs/NPC_Elder.png"],["Crimson_Knight_Large_Pose","Boss","",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Boss/Crimson_Knight_Large_Pose.png"],["Crimson_Knight_Slash_Pose","Boss","",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Boss/Crimson_Knight_Slash_Pose.png"],["Crimson_Knight_Guard_Pose","Boss","",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Boss/Crimson_Knight_Guard_Pose.png"],["Crimson_Knight_Small_Pose","Boss","",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Boss/Crimson_Knight_Small_Pose.png"],["Slime_Pose01","Enemies","Slimes",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Slimes/Slime_Pose01.png"],["Slime_Pose02","Enemies","Slimes",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Slimes/Slime_Pose02.png"],["Slime_Pose03","Enemies","Slimes",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Slimes/Slime_Pose03.png"],["Slime_Pose04","Enemies","Slimes",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Slimes/Slime_Pose04.png"],["Slime_Pose05","Enemies","Slimes",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Slimes/Slime_Pose05.png"],["Slime_Pose06","Enemies","Slimes",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Slimes/Slime_Pose06.png"],["Mushroom_Pose01","Enemies","Mushrooms",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Mushrooms/Mushroom_Pose01.png"],["Mushroom_Pose02","Enemies","Mushrooms",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Mushrooms/Mushroom_Pose02.png"],["Mushroom_Pose03","Enemies","Mushrooms",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Mushrooms/Mushroom_Pose03.png"],["Mushroom_Pose04","Enemies","Mushrooms",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Mushrooms/Mushroom_Pose04.png"],["Mushroom_Pose05","Enemies","Mushrooms",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Mushrooms/Mushroom_Pose05.png"],["Bat_Pose01","Enemies","Bats",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Bats/Bat_Pose01.png"],["Bat_Pose02","Enemies","Bats",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Bats/Bat_Pose02.png"],["Bat_Pose03","Enemies","Bats",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Bats/Bat_Pose03.png"],["Bat_Pose04","Enemies","Bats",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Bats/Bat_Pose04.png"],["Skeleton_Pose01","Enemies","Skeletons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Skeletons/Skeleton_Pose01.png"],["Skeleton_Pose02","Enemies","Skeletons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Skeletons/Skeleton_Pose02.png"],["Skeleton_Pose03","Enemies","Skeletons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Skeletons/Skeleton_Pose03.png"],["Skeleton_Pose04","Enemies","Skeletons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Skeletons/Skeleton_Pose04.png"],["Skeleton_Pose05","Enemies","Skeletons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Skeletons/Skeleton_Pose05.png"],["Goblin_Pose01","Enemies","Goblins",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Goblins/Goblin_Pose01.png"],["Goblin_Pose02","Enemies","Goblins",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Goblins/Goblin_Pose02.png"],["Goblin_Pose03","Enemies","Goblins",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Goblins/Goblin_Pose03.png"],["Goblin_Pose04","Enemies","Goblins",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Goblins/Goblin_Pose04.png"],["Boar_Pose01","Enemies","Boars",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Boars/Boar_Pose01.png"],["Boar_Pose02","Enemies","Boars",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Boars/Boar_Pose02.png"],["Boar_Pose03","Enemies","Boars",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Boars/Boar_Pose03.png"],["Boar_Pose04","Enemies","Boars",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Boars/Boar_Pose04.png"],["Throwing_Dart","Items","Weapons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Weapons/Throwing_Dart.png"],["Sword_01","Items","Weapons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Weapons/Sword_01.png"],["Sword_02","Items","Weapons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Weapons/Sword_02.png"],["Sword_03","Items","Weapons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Weapons/Sword_03.png"],["Axe_01","Items","Weapons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Weapons/Axe_01.png"],["Axe_02","Items","Weapons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Weapons/Axe_02.png"],["Spear","Items","Weapons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Weapons/Spear.png"],["Crossbow","Items","Weapons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Weapons/Crossbow.png"],["Bow","Items","Weapons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Weapons/Bow.png"],["Arrow","Items","Weapons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Weapons/Arrow.png"],["Staff_Blue","Items","Weapons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Weapons/Staff_Blue.png"],["Staff_Gold","Items","Weapons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Weapons/Staff_Gold.png"],["Staff_Red","Items","Weapons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Weapons/Staff_Red.png"],["Shield_01","Items","Armor",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Armor/Shield_01.png"],["Shield_02","Items","Armor",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Armor/Shield_02.png"],["Shield_03","Items","Armor",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Armor/Shield_03.png"],["Armor_White","Items","Armor",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Armor/Armor_White.png"],["Armor_Blue","Items","Armor",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Armor/Armor_Blue.png"],["Armor_Dark","Items","Armor",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Armor/Armor_Dark.png"],["Helmet","Items","Armor",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Armor/Helmet.png"],["Amulet_01","Items","Armor",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Armor/Amulet_01.png"],["Amulet_02","Items","Armor",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Armor/Amulet_02.png"],["Potion_Red","Items","Consumables",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Consumables/Potion_Red.png"],["Potion_Blue","Items","Consumables",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Consumables/Potion_Blue.png"],["Potion_Green","Items","Consumables",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Consumables/Potion_Green.png"],["Bomb","Items","Consumables",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Consumables/Bomb.png"],["Key","Items","Consumables",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Consumables/Key.png"],["Scroll","Items","Consumables",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Consumables/Scroll.png"],["Gold_Token","Items","Consumables",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Consumables/Gold_Token.png"],["Chest_Red","Items","Consumables",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Consumables/Chest_Red.png"],["Chest_Blue","Items","Consumables",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Consumables/Chest_Blue.png"],["Heart","Items","Loot",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Loot/Heart.png"],["Gem_Blue","Items","Loot",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Loot/Gem_Blue.png"],["Gem_Red","Items","Loot",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Loot/Gem_Red.png"],["Gem_Green","Items","Loot",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Loot/Gem_Green.png"],["Gem_Gold","Items","Loot",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Loot/Gem_Gold.png"],["Coin_Single","Items","Loot",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Loot/Coin_Single.png"],["Coins_Stack01","Items","Loot",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Loot/Coins_Stack01.png"],["Coins_Stack02","Items","Loot",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Loot/Coins_Stack02.png"],["Gold_Arc_01","VFX","Static_Elements",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/VFX/Static_Elements/Gold_Arc_01.png"],["Gold_Arc_02","VFX","Static_Elements",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/VFX/Static_Elements/Gold_Arc_02.png"],["Blue_Arc_01","VFX","Static_Elements",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/VFX/Static_Elements/Blue_Arc_01.png"],["Blue_Arc_02","VFX","Static_Elements",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/VFX/Static_Elements/Blue_Arc_02.png"],["Gold_Sweep","VFX","Static_Elements",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/VFX/Static_Elements/Gold_Sweep.png"],["Blue_Sweep","VFX","Static_Elements",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/VFX/Static_Elements/Blue_Sweep.png"],["Gold_Ring","VFX","Static_Elements",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/VFX/Static_Elements/Gold_Ring.png"],["Ice_Burst_01","VFX","Static_Elements",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/VFX/Static_Elements/Ice_Burst_01.png"],["Ice_Splash","VFX","Static_Elements",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/VFX/Static_Elements/Ice_Splash.png"],["Star_Sparks_01","VFX","Static_Elements",1774,887,"Assets/NLI_SoftFantasy_ARPG/Sprites/VFX/Static_Elements/Star_Sparks_01.png"],["Star_Sparks_02","VFX","Static_Elements",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/VFX/Static_Elements/Star_Sparks_02.png"],["Ice_Crystal_01","VFX","Static_Elements",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/VFX/Static_Elements/Ice_Crystal_01.png"],["Fire_Burst_01","VFX","Static_Elements",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/VFX/Static_Elements/Fire_Burst_01.png"],["Fire_Burst_02","VFX","Static_Elements",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/VFX/Static_Elements/Fire_Burst_02.png"],["Rock_Impact_01","VFX","Static_Elements",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/VFX/Static_Elements/Rock_Impact_01.png"],["Dust_Trail","VFX","Static_Elements",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/VFX/Static_Elements/Dust_Trail.png"],["Ground_Impact","VFX","Static_Elements",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/VFX/Static_Elements/Ground_Impact.png"],["Fire_Explosion","VFX","Static_Elements",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/VFX/Static_Elements/Fire_Explosion.png"],["Ice_Crystal_02","VFX","Static_Elements",1536,1024,"Assets/NLI_SoftFantasy_ARPG/Sprites/VFX/Static_Elements/Ice_Crystal_02.png"],["Dust_Cloud","VFX","Static_Elements",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/VFX/Static_Elements/Dust_Cloud.png"],["Rock_Impact_02","VFX","Static_Elements",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/VFX/Static_Elements/Rock_Impact_02.png"],["Smoke_Small","VFX","Static_Elements",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/VFX/Static_Elements/Smoke_Small.png"],["Terrain_R1_C1","Environment","Terrain_Samples",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Terrain_Samples/Terrain_R1_C1.png"],["Terrain_R1_C2","Environment","Terrain_Samples",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Terrain_Samples/Terrain_R1_C2.png"],["Terrain_R1_C3","Environment","Terrain_Samples",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Terrain_Samples/Terrain_R1_C3.png"],["Terrain_R1_C4","Environment","Terrain_Samples",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Terrain_Samples/Terrain_R1_C4.png"],["Terrain_R1_C5","Environment","Terrain_Samples",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Terrain_Samples/Terrain_R1_C5.png"],["Terrain_R1_C6","Environment","Terrain_Samples",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Terrain_Samples/Terrain_R1_C6.png"],["Terrain_R2_C1","Environment","Terrain_Samples",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Terrain_Samples/Terrain_R2_C1.png"],["Terrain_R2_C2","Environment","Terrain_Samples",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Terrain_Samples/Terrain_R2_C2.png"],["Terrain_R2_C3","Environment","Terrain_Samples",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Terrain_Samples/Terrain_R2_C3.png"],["Terrain_R2_C4","Environment","Terrain_Samples",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Terrain_Samples/Terrain_R2_C4.png"],["Terrain_R2_C5","Environment","Terrain_Samples",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Terrain_Samples/Terrain_R2_C5.png"],["Terrain_R2_C6","Environment","Terrain_Samples",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Terrain_Samples/Terrain_R2_C6.png"],["Terrain_R3_C1","Environment","Terrain_Samples",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Terrain_Samples/Terrain_R3_C1.png"],["Terrain_R3_C2","Environment","Terrain_Samples",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Terrain_Samples/Terrain_R3_C2.png"],["Terrain_R3_C3","Environment","Terrain_Samples",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Terrain_Samples/Terrain_R3_C3.png"],["Terrain_R3_C4","Environment","Terrain_Samples",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Terrain_Samples/Terrain_R3_C4.png"],["Terrain_R3_C5","Environment","Terrain_Samples",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Terrain_Samples/Terrain_R3_C5.png"],["Terrain_R3_C6","Environment","Terrain_Samples",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Terrain_Samples/Terrain_R3_C6.png"],["Tree_Small","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Tree_Small.png"],["Tree_Large","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Tree_Large.png"],["Tree_Autumn","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Tree_Autumn.png"],["Tree_Snow","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Tree_Snow.png"],["Bush_01","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Bush_01.png"],["Rock_01","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Rock_01.png"],["Bush_02","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Bush_02.png"],["Flowers_Yellow","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Flowers_Yellow.png"],["Stump","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Stump.png"],["Rocks_02","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Rocks_02.png"],["Rocks_03","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Rocks_03.png"],["White_Flowers","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/White_Flowers.png"],["Daisy","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Daisy.png"],["Sign_Small","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Sign_Small.png"],["Torch","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Torch.png"],["Wall_Ruins01","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Wall_Ruins01.png"],["Wall_Ruins02","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Wall_Ruins02.png"],["Bush_03","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Bush_03.png"],["Flowers_Pink","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Flowers_Pink.png"],["Plant_Small","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Plant_Small.png"],["Banner_Blue","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Banner_Blue.png"],["Lantern_Small","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Lantern_Small.png"],["Sign_Wood","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Sign_Wood.png"],["Plants_Field","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Plants_Field.png"],["Standing_Rock","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Standing_Rock.png"],["Stone_Gate","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Stone_Gate.png"],["Barrel_01","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Barrel_01.png"],["Barrel_02","Environment","Nature_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Nature_And_Props/Barrel_02.png"],["House_Blue","Environment","Buildings_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/House_Blue.png"],["House_Orange","Environment","Buildings_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/House_Orange.png"],["Tower_Small","Environment","Buildings_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Tower_Small.png"],["Market_Stall","Environment","Buildings_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Market_Stall.png"],["Banner_Tower","Environment","Buildings_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Banner_Tower.png"],["Castle_Tower","Environment","Buildings_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Castle_Tower.png"],["Cottage","Environment","Buildings_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Cottage.png"],["Banner_Red","Environment","Buildings_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Banner_Red.png"],["Lantern_Pillar","Environment","Buildings_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Lantern_Pillar.png"],["Lamp_Wall","Environment","Buildings_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Lamp_Wall.png"],["Well","Environment","Buildings_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Well.png"],["Supply_Crates","Environment","Buildings_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Supply_Crates.png"],["Flowers_And_Crates","Environment","Buildings_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Flowers_And_Crates.png"],["Pennant","Environment","Buildings_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Pennant.png"],["Wooden_Fence","Environment","Buildings_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Wooden_Fence.png"],["Bench","Environment","Buildings_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Bench.png"],["Stone_Pillars","Environment","Buildings_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Stone_Pillars.png"],["Portal_Blue_Gold","Environment","Buildings_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Portal_Blue_Gold.png"],["Castle_Small","Environment","Buildings_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Castle_Small.png"],["Castle_Medium","Environment","Buildings_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Castle_Medium.png"],["Castle_Large","Environment","Buildings_And_Props",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Castle_Large.png"],["Waterfall_Cliff_Composition","Environment","Terrain_Compositions",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Terrain_Compositions/Waterfall_Cliff_Composition.png"],["Island_Cliff_Composition","Environment","Terrain_Compositions",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Terrain_Compositions/Island_Cliff_Composition.png"],["Stone_Bridge_Composition","Environment","Terrain_Compositions",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Terrain_Compositions/Stone_Bridge_Composition.png"],["Wood_Bridge","Environment","Terrain_Compositions",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Terrain_Compositions/Wood_Bridge.png"],["Flowered_Ground_Composition","Environment","Terrain_Compositions",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Terrain_Compositions/Flowered_Ground_Composition.png"],["Heart_Red01","UI","Icons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Icons/Heart_Red01.png"],["Heart_Red02","UI","Icons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Icons/Heart_Red02.png"],["Heart_Red03","UI","Icons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Icons/Heart_Red03.png"],["Heart_Empty","UI","Icons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Icons/Heart_Empty.png"],["Coin_01","UI","Icons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Icons/Coin_01.png"],["Coin_02","UI","Icons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Icons/Coin_02.png"],["Gem_01","UI","Icons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Icons/Gem_01.png"],["Gem_02","UI","Icons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Icons/Gem_02.png"],["Gem_03","UI","Icons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Icons/Gem_03.png"],["Slot_Swords","UI","Panels_And_Buttons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Panels_And_Buttons/Slot_Swords.png"],["Bar_Health","UI","Panels_And_Buttons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Panels_And_Buttons/Bar_Health.png"],["Bar_Mana","UI","Panels_And_Buttons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Panels_And_Buttons/Bar_Mana.png"],["Slot_Bow","UI","Panels_And_Buttons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Panels_And_Buttons/Slot_Bow.png"],["Panel_Parchment01","UI","Panels_And_Buttons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Panels_And_Buttons/Panel_Parchment01.png"],["Panel_Parchment02","UI","Panels_And_Buttons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Panels_And_Buttons/Panel_Parchment02.png"],["Button_Sword01","UI","Panels_And_Buttons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Panels_And_Buttons/Button_Sword01.png"],["Button_Sword02","UI","Panels_And_Buttons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Panels_And_Buttons/Button_Sword02.png"],["Button_Sword03","UI","Panels_And_Buttons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Panels_And_Buttons/Button_Sword03.png"],["Button_Empty","UI","Panels_And_Buttons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Panels_And_Buttons/Button_Empty.png"],["Button_Settings","UI","Panels_And_Buttons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Panels_And_Buttons/Button_Settings.png"],["Button_Bag","UI","Panels_And_Buttons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Panels_And_Buttons/Button_Bag.png"],["Button_Wall","UI","Panels_And_Buttons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Panels_And_Buttons/Button_Wall.png"],["Panel_Map01","UI","Panels_And_Buttons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Panels_And_Buttons/Panel_Map01.png"],["Panel_Map02","UI","Panels_And_Buttons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Panels_And_Buttons/Panel_Map02.png"],["Panel_Stone","UI","Panels_And_Buttons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Panels_And_Buttons/Panel_Stone.png"],["Panel_Parchment03","UI","Panels_And_Buttons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Panels_And_Buttons/Panel_Parchment03.png"],["Panel_StonePurple","UI","Panels_And_Buttons",1254,1254,"Assets/NLI_SoftFantasy_ARPG/Sprites/UI/Panels_And_Buttons/Panel_StonePurple.png"]];
+const GROUPS=[["Characters","Characters"],["Boss","Boss"],["Enemies","Enemies"],["Items","Items"],["VFX","VFX"],["Environment","Environment"],["UI","UI"]];
+const GCOLOR={Characters:"#eec06a",Boss:"#e2634e",Enemies:"#cf7f3f",Items:"#9fc86a",VFX:"#82b4d8",Environment:"#7fae8a",UI:"#b493e0"};
+
+const $=s=>document.getElementById(s);
+const grid=$("grid"),qInput=$("q"),chipsEl=$("chips"),countEl=$("count"),emptyEl=$("empty");
+const dlg=$("viewer"),vImg=$("v-img"),vName=$("v-name"),vMeta=$("v-meta"),vPath=$("v-path"),vIdx=$("v-idx");
+const vStage=$("v-stage"),zpct=$("zpct");
+
+const state={group:"",q:"",bg:"dark"};
+let view=[],cur=0;
+
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const norm=s=>String(s).toLowerCase().replace(/[_]+/g," ").trim();
+const pretty=s=>String(s).replace(/_/g," ");
+
+/* ---------- filter + render ---------- */
+function applyFilter(){
+  const q=norm(state.q);
+  view=[];
+  for(let i=0;i<ASSETS.length;i++){
+    const a=ASSETS[i];
+    if(state.group&&a[1]!==state.group)continue;
+    if(q&&!(" "+norm(a[0])+" "+norm(a[2])+" "+norm(a[1])+" ").includes(" "+q+" ")&&!norm(a[0]+" "+a[2]+" "+a[1]).includes(q))continue;
+    view.push(i);
+  }
+}
+
+const io=("IntersectionObserver"in window)?new IntersectionObserver(es=>{
+  for(const e of es)if(e.isIntersecting){reveal(e.target);io.unobserve(e.target);}
+},{rootMargin:"600px 0px"}):null;
+
+function reveal(t){
+  const d=(+t.dataset.n%12)*35;
+  if(d){t.style.transitionDelay=d+"ms";setTimeout(()=>{t.style.transitionDelay="";},d+560);}
+  t.classList.add("in");
+}
+
+function makeTile(idx,n){
+  const a=ASSETS[idx],sub=a[2]?pretty(a[2]):pretty(a[1]);
+  const b=document.createElement("button");
+  b.type="button";b.className="tile";b.dataset.i=idx;b.dataset.n=n;
+  b.setAttribute("aria-label","View "+a[0]+" ("+pretty(a[2]||a[1])+")");
+  b.innerHTML='<span class="ph"><img loading="lazy" decoding="async" alt="" width="'+a[3]+'" height="'+a[4]+'" src="'+esc(a[5])+'"></span>'
+    +'<span class="lbl"><span class="nm">'+esc(pretty(a[0]))+'</span><span class="tg"><i style="background:'+GCOLOR[a[1]]+'"></i>'+esc(sub)+'</span></span>';
+  const img=b.querySelector("img");
+  if(img.complete&&img.naturalWidth)img.classList.add("ok");
+  else{img.addEventListener("load",()=>img.classList.add("ok"));img.addEventListener("error",()=>img.classList.add("ok"));}
+  if(io)io.observe(b);else b.classList.add("in");
+  return b;
+}
+
+function render(){
+  applyFilter();
+  const frag=document.createDocumentFragment();
+  view.forEach((idx,n)=>frag.appendChild(makeTile(idx,n)));
+  grid.replaceChildren(frag);
+  countEl.innerHTML="Showing <b>"+view.length+"</b> of "+ASSETS.length+" sprites";
+  emptyEl.classList.toggle("show",view.length===0);
+  if(cur>=view.length)cur=0;
+}
+
+/* ---------- toolbar ---------- */
+function buildChips(){
+  const counts={};for(const a of ASSETS)counts[a[1]]=(counts[a[1]]||0)+1;
+  const mk=(val,label,n,dot)=>{
+    const b=document.createElement("button");
+    b.type="button";b.className="chip";b.dataset.g=val;
+    b.innerHTML=(dot?'<span class="dot" style="background:'+dot+';color:'+dot+'"></span>':"")+esc(label)+' <span class="n">'+n+"</span>";
+    b.addEventListener("click",()=>{state.group=(state.group===val&&val)?"":val;syncChips();render();save();});
+    return b;
+  };
+  chipsEl.replaceChildren(mk("","All",ASSETS.length));
+  for(const[id,label]of GROUPS)chipsEl.appendChild(mk(id,label,counts[id]||0,GCOLOR[id]));
+  chipsEl.appendChild(countEl);
+}
+function syncChips(){for(const c of chipsEl.querySelectorAll(".chip"))c.classList.toggle("on",c.dataset.g===state.group);}
+
+let debounce;
+qInput.addEventListener("input",()=>{clearTimeout(debounce);debounce=setTimeout(()=>{state.q=qInput.value;render();save();},130);});
+$("clear").addEventListener("click",()=>{state.q="";state.group="";qInput.value="";syncChips();render();save();qInput.focus();});
+
+function setBg(mode){
+  state.bg=mode;
+  document.body.className="bg-"+mode;
+  for(const seg of[$("bgseg"),$("vbgseg")])
+    for(const b of seg.querySelectorAll("button"))b.classList.toggle("on",b.dataset.bg===mode);
+  save();
+}
+for(const seg of[$("bgseg"),$("vbgseg")])
+  seg.addEventListener("click",e=>{const b=e.target.closest("button");if(b)setBg(b.dataset.bg);});
+
+/* ---------- state in hash ---------- */
+function save(){
+  const p=new URLSearchParams();
+  if(state.group)p.set("g",state.group);
+  if(state.q)p.set("q",state.q);
+  if(state.bg!=="dark")p.set("bg",state.bg);
+  const h="#"+p.toString();
+  try{history.replaceState(null,"",h);}catch(e){location.hash=h;}
+}
+function load(){
+  try{
+    const p=new URLSearchParams(location.hash.slice(1));
+    if(p.get("g")&&GROUPS.some(g=>g[0]===p.get("g")))state.group=p.get("g");
+    if(p.get("q")){state.q=p.get("q");qInput.value=state.q;}
+    if(["dark","light","checker"].includes(p.get("bg")))state.bg=p.get("bg");
+  }catch(e){}
+}
+
+/* ---------- viewer ---------- */
+const zoom={s:1,x:0,y:0};
+function applyZoom(){
+  vImg.style.transform="translate("+zoom.x+"px,"+zoom.y+"px) scale("+zoom.s+")";
+  vStage.classList.toggle("pan",zoom.s>1);
+  zpct.textContent=Math.round(zoom.s*vImg.naturalWidth/Math.max(1,vImg.clientWidth)*100)+"%";
+}
+function resetZoom(){zoom.s=1;zoom.x=0;zoom.y=0;requestAnimationFrame(applyZoom);}
+function zoomAt(px,py,k){
+  const ns=Math.min(12,Math.max(.15,zoom.s*k)),ke=ns/zoom.s;
+  if(ke===1)return;
+  const r=vStage.getBoundingClientRect();
+  const dx=px-(r.left+r.width/2),dy=py-(r.top+r.height/2);
+  zoom.x=ke*zoom.x+dx*(1-ke);zoom.y=ke*zoom.y+dy*(1-ke);zoom.s=ns;applyZoom();
+}
+vStage.addEventListener("wheel",e=>{e.preventDefault();zoomAt(e.clientX,e.clientY,e.deltaY<0?1.18:1/1.18);},{passive:false});
+$("zoom-in").addEventListener("click",()=>{const r=vStage.getBoundingClientRect();zoomAt(r.left+r.width/2,r.top+r.height/2,1.35);});
+$("zoom-out").addEventListener("click",()=>{const r=vStage.getBoundingClientRect();zoomAt(r.left+r.width/2,r.top+r.height/2,1/1.35);});
+$("z-fit").addEventListener("click",resetZoom);
+$("z-1x").addEventListener("click",()=>{zoom.s=Math.max(.01,vImg.naturalWidth/Math.max(1,vImg.clientWidth));zoom.x=0;zoom.y=0;applyZoom();});
+vStage.addEventListener("dblclick",e=>{
+  if(zoom.s===1){zoomAt(e.clientX,e.clientY,vImg.naturalWidth/Math.max(1,vImg.clientWidth));}
+  else resetZoom();
+});
+let pan=null;
+vStage.addEventListener("pointerdown",e=>{
+  if(e.button!==0||e.target.closest(".v-nav"))return;
+  pan={x:e.clientX,y:e.clientY};vStage.setPointerCapture(e.pointerId);
+});
+vStage.addEventListener("pointermove",e=>{
+  if(!pan)return;
+  zoom.x+=e.clientX-pan.x;zoom.y+=e.clientY-pan.y;pan={x:e.clientX,y:e.clientY};applyZoom();
+});
+const endPan=()=>{pan=null;};
+vStage.addEventListener("pointerup",endPan);vStage.addEventListener("pointercancel",endPan);
+vImg.addEventListener("load",()=>{if(dlg.open)applyZoom();});
+
+function syncViewer(){
+  const a=ASSETS[view[cur]];
+  vImg.src=a[5];vImg.alt=a[0];
+  vName.textContent=pretty(a[0]);
+  vMeta.innerHTML="<b>"+esc(a[1])+"</b> · "+esc(pretty(a[2]||a[1]))+" · "+a[3]+"×"+a[4]+" px · transparent PNG";
+  vPath.textContent=a[5];
+  vIdx.textContent=(cur+1)+" / "+view.length+" in current view";
+  resetZoom();
+  const len=view.length;
+  if(len>1){
+    for(const o of[1,-1]){const im=new Image();im.src=ASSETS[view[(cur+o+len)%len]][5];}
+  }
+}
+function openViewer(i){
+  cur=view.indexOf(i);if(cur<0){applyFilter();cur=view.indexOf(i);}
+  if(cur<0)return;
+  syncViewer();
+  if(!dlg.open)dlg.showModal();
+}
+function step(d){if(!view.length)return;cur=(cur+d+view.length)%view.length;syncViewer();}
+$("v-prev").addEventListener("click",()=>step(-1));
+$("v-next").addEventListener("click",()=>step(1));
+$("v-close").addEventListener("click",()=>dlg.close());
+dlg.addEventListener("cancel",e=>{e.preventDefault();dlg.close();});
+dlg.addEventListener("keydown",e=>{
+  if(e.key==="ArrowRight"){e.preventDefault();step(1);}
+  else if(e.key==="ArrowLeft"){e.preventDefault();step(-1);}
+  else if(e.key==="+"||e.key==="="){e.preventDefault();$("zoom-in").click();}
+  else if(e.key==="-"){e.preventDefault();$("zoom-out").click();}
+  else if(e.key==="0"){e.preventDefault();resetZoom();}
+});
+window.addEventListener("resize",()=>{if(dlg.open)applyZoom();});
+
+/* ---------- toast + copy ---------- */
+let toastT;
+function toast(msg){
+  const t=$("toast");t.textContent=msg;t.classList.add("show");
+  clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove("show"),1700);
+}
+function copyPath(){
+  const p=vPath.textContent;
+  const fb=()=>{
+    const ta=document.createElement("textarea");
+    ta.value=p;ta.style.cssText="position:fixed;opacity:0";document.body.appendChild(ta);
+    ta.select();let ok=false;try{ok=document.execCommand("copy");}catch(e){}
+    ta.remove();toast(ok?"Path copied to clipboard":"Copy failed — select the path manually");
+  };
+  if(navigator.clipboard&&navigator.clipboard.writeText)
+    navigator.clipboard.writeText(p).then(()=>toast("Path copied to clipboard"),fb);
+  else fb();
+}
+$("v-copy").addEventListener("click",copyPath);
+vPath.addEventListener("click",copyPath);
+
+/* ---------- grid delegation + init ---------- */
+grid.addEventListener("click",e=>{const t=e.target.closest(".tile");if(t)openViewer(+t.dataset.i);});
+
+load();
+buildChips();
+syncChips();
+setBg(state.bg);
+render();
+</script>
+</body>
+</html>

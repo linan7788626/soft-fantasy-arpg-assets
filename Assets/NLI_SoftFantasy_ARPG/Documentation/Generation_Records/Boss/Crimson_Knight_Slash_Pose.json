@@ -1,0 +1,58 @@
+{
+  "original_name": "Crimson_Knight_Slash_Pose",
+  "category": "Boss",
+  "source_crop_relative": "Source_Crops/Boss/Crimson_Knight_Slash_Pose.png",
+  "source_sha256": "70bd65ec246280ab11f2db8951b1b01b547e45ef7f897af89ece2c70d5299b25",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Boss/Crimson_Knight_Slash_Pose.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177e8-c49b-7073-81bb-9fc10b98408d/exec-e1268324-1e80-4b28-9d58-51ffdbfc4c5c.png",
+  "generated_sha256": "07e12527bf8c3c6628e4309809fcb957857a009327b6567bf8b15a3741e591f2",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    141,
+    300,
+    1141,
+    952
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Reframe this exact single charcoal/gold crimson knight performing a crouching sword slash with its red cape and large red crescent effect. Preserve the character identity, pose, armor, sword design, crimson palette and polished 2D soft-painted style. The current image is too large and the red effect approaches the right edge. Repaint the SAME WHOLE composition smaller, centered, so that ALL content including cape, sword, red crescent, bright glow, sparks and antialias fringes fits within the central 68% of the square canvas. Leave at least 16% completely transparent empty margin on EVERY side; this margin is essential. Restore any clipped faint red edge by fully completing and softly terminating the red slash within that central area. One knight only, no second pose, no additional objects, no text, no background or floor, true transparent RGBA. Do not crop or expand parts beyond the safe center.",
+  "references": [
+    "/Users/uranus/.codex/generated_images/01a177e8-c49b-7073-81bb-9fc10b98408d/exec-4a8371ec-dd0e-4c49-89c2-4eadb4140ed8.png"
+  ],
+  "visual_review_note": "Viewed corrected output: single dominant boss slash retained and whole cape, sword and red crescent reframed smaller with clear transparent border. No clipped major effect or body. Original two-pose crop was interpreted as the dominant right-hand action only. Static pose; animation scale and registration unvalidated.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "generation_history": [
+    {
+      "original_generation_output": "/Users/uranus/.codex/generated_images/01a177e8-c49b-7073-81bb-9fc10b98408d/exec-4a8371ec-dd0e-4c49-89c2-4eadb4140ed8.png",
+      "generated_sha256": "40330004473b92883a4a5d7558443e75c059a55366f9a5f213772e03ab985df7",
+      "prompt": "Redraw ONLY the individual character/action in reference image 1 into a new full native-resolution transparent game sprite, reconstructing cropped limbs, cape and weapon tips. Image1 controls the EXACT pose, action, facing, camera, identity and silhouette. Discard its dark display background and any fragments of adjacent atlas subjects. Image2 (portal) controls rendering quality/material softness only; do not depict portal or architecture. If image3 is supplied, it is the regenerated SAME CHARACTER identity anchor: keep its helmet/face, armor, clothing, weapon design and proportions, but pose it EXACTLY like image1; do not simply copy the anchor's pose. Style NL-ARPG-SOFT-766DF2B7, polished 2D soft-painted chibi medieval fantasy ARPG, about 2.5 heads for humanoids, smooth antialiased edges, restrained thin dark warm outlines, refined yet soft material shading and warm upper-left lighting. One full individual static pose per image, no sheet or alternate views. Square 1024x1024 canvas; frame the whole figure AND weapons/effects within the central 76% with at least 12% clear transparent margins on every side; consistent family camera and overall body scale. Genuine transparent alpha outside the subject, no ground or backdrop, no labels or lettering, no watermark or drawn checkerboard. Avoid coarse pixel grids, photorealism and glossy plastic 3D.\nSpecific source preservation: Source crop contains two adjacent poses of same boss. Redraw ONLY the right-hand knight performing the dominant sweeping attack: dark charcoal/gold armor, crown helmet, crimson cape, forward crouching slash to screen-right, long steel sword almost horizontal and LARGE RED luminous crescent sweeping around upper-right. Do not include the separate left-hand windup knight. Reconstruct full red arc and cape with generous clear margin.",
+      "references": [
+        "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Boss/Crimson_Knight_Slash_Pose.png",
+        "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png",
+        "/Users/uranus/.codex/generated_images/01a177e8-c49b-7073-81bb-9fc10b98408d/exec-df1a7ea1-c1e5-4714-b1b1-8eb4d1a5c242.png"
+      ],
+      "visual_review_note": "Viewed generated output: only the dominant right-hand slash from two-pose source was redrawn as one charcoal-gold knight with crimson cape and large red crescent; source disambiguation is interpretive. Main knight complete. Red effect is too close to right edge and needs boundary check/correction before acceptance. Static pose; animation registration unvalidated.",
+      "status": "needs_visual_correction"
+    }
+  ],
+  "identity_anchor_at_generation": {
+    "original_path": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Boss/Crimson_Knight_Large_Pose.png",
+    "preserved_native_output": "/Users/uranus/.codex/generated_images/01a177e8-c49b-7073-81bb-9fc10b98408d/exec-df1a7ea1-c1e5-4714-b1b1-8eb4d1a5c242.png",
+    "sha256": "5d7b15dca1d60720cc08fe492d0982dfb4578b80c457fc84f323d8a04570df1e",
+    "note": "Canonical Large pose was later replaced by a native imagegen reframe; dependent output used this exact earlier anchor."
+  },
+  "package_sprite_path": "Sprites/Boss/Crimson_Knight_Slash_Pose.png",
+  "package_native_source_path": "Source/Generated/Boss/Crimson_Knight_Slash_Pose.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Boss/Crimson_Knight_Slash_Pose.png",
+  "package_original_crop_path": "Source_Crops/Boss/Crimson_Knight_Slash_Pose.png"
+}

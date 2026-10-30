@@ -1,0 +1,75 @@
+{
+  "original_name": "Crimson_Knight_Large_Pose",
+  "category": "Boss",
+  "source_crop_relative": "Source_Crops/Boss/Crimson_Knight_Large_Pose.png",
+  "source_sha256": "349cddbc10dfcee7383385afbfc4f1defcfa6498c66385cecd4026ff5ecb4743",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Boss/Crimson_Knight_Large_Pose.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177e8-c49b-7073-81bb-9fc10b98408d/exec-077197a7-05af-4982-b1f1-a917a6d1fb12.png",
+  "generated_sha256": "f6a45cc4a4d9977270fcd38019d093ef768c22257c81fcb8bd4a763cd8d2e705",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    110,
+    292,
+    1156,
+    1000
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Reframe this EXACT single charcoal-gray and gold armored crimson knight in its commanding ready stance, crown helmet, sword angled down-left, gold-star kite shield right, wide crimson cape. Preserve character identity, pose, sword/shield design, armor and polished 2D soft-painted rendering. Current cape/effect margins are too tight. Repaint the SAME WHOLE composition smaller and centered; ALL art including cape tips, sword, shield, and any glow must occupy only the central 65% of the square canvas, leaving generous entirely transparent empty margin of at least 17% on every side. Reconstruct the entire cape tips cleanly within this safe centered area. Do not invent another pose, character, floor or props. One full intact static sprite. Native high-quality transparent RGBA output; no border, text, checkerboard or backdrop.",
+  "references": [
+    "/Users/uranus/.codex/generated_images/01a177e8-c49b-7073-81bb-9fc10b98408d/exec-df1a7ea1-c1e5-4714-b1b1-8eb4d1a5c242.png"
+  ],
+  "visual_review_note": "Recovered and visually reviewed native imagegen reframe: entire crown, cape tips, sword and shield fit with clear transparent margins. Same identity and ready stance retained. No pixel processing; exact uniform requested margin was not enforced.",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "visual_review_status": "reviewed",
+  "generation_history": [
+    {
+      "original_name": "Crimson_Knight_Large_Pose",
+      "category": "Boss",
+      "source_crop_relative": "Source_Crops/Boss/Crimson_Knight_Large_Pose.png",
+      "source_sha256": "349cddbc10dfcee7383385afbfc4f1defcfa6498c66385cecd4026ff5ecb4743",
+      "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Boss/Crimson_Knight_Large_Pose.png",
+      "original_generation_output": "/Users/uranus/.codex/generated_images/01a177e8-c49b-7073-81bb-9fc10b98408d/exec-df1a7ea1-c1e5-4714-b1b1-8eb4d1a5c242.png",
+      "generated_sha256": "5d7b15dca1d60720cc08fe492d0982dfb4578b80c457fc84f323d8a04570df1e",
+      "actual_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "solid_alpha_bbox": [
+        17,
+        212,
+        1245,
+        1067
+      ],
+      "tool": "builtin_image_gen",
+      "prompt": "Redraw ONLY the individual character/action in reference image 1 into a new full native-resolution transparent game sprite, reconstructing cropped limbs, cape and weapon tips. Image1 controls the EXACT pose, action, facing, camera, identity and silhouette. Discard its dark display background and any fragments of adjacent atlas subjects. Image2 (portal) controls rendering quality/material softness only; do not depict portal or architecture. If image3 is supplied, it is the regenerated SAME CHARACTER identity anchor: keep its helmet/face, armor, clothing, weapon design and proportions, but pose it EXACTLY like image1; do not simply copy the anchor's pose. Style NL-ARPG-SOFT-766DF2B7, polished 2D soft-painted chibi medieval fantasy ARPG, about 2.5 heads for humanoids, smooth antialiased edges, restrained thin dark warm outlines, refined yet soft material shading and warm upper-left lighting. One full individual static pose per image, no sheet or alternate views. Square 1024x1024 canvas; frame the whole figure AND weapons/effects within the central 76% with at least 12% clear transparent margins on every side; consistent family camera and overall body scale. Genuine transparent alpha outside the subject, no ground or backdrop, no labels or lettering, no watermark or drawn checkerboard. Avoid coarse pixel grids, photorealism and glossy plastic 3D.\nSpecific source preservation: BOSS identity anchor: a massive chibi crimson knight, broad dark charcoal steel armor with warm gold trim, crown-like gold helmet crest and glowing red visor, deep crimson cape stretched behind him, sword in right hand extending diagonally down to screen-left and a large kite shield with gold star on screen-right. Match original broad ready stance and three-quarter frontal orientation. Reconstruct the full sword tip, cape and helmet crest clipped by original crop; exclude unrelated slivers at lower edge. Keep armor gray and gold and cape crimson, not hero cream/blue. Whole character and weapon silhouette only.",
+      "references": [
+        "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Boss/Crimson_Knight_Large_Pose.png",
+        "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+      ],
+      "visual_review_note": "Viewed original and reframed candidate: original cape has very narrow side margins. Reframed candidate has full cape tips and sword with clear margins and is approved, awaiting canonical replacement after dependent boss generation completes.",
+      "status": "needs_visual_correction",
+      "pixel_postprocessing": "none",
+      "animation_alignment_validated": false,
+      "seamless_tileability_validated": false,
+      "visual_review_status": "reviewed_needs_correction"
+    }
+  ],
+  "package_sprite_path": "Sprites/Boss/Crimson_Knight_Large_Pose.png",
+  "package_native_source_path": "Source/Generated/Boss/Crimson_Knight_Large_Pose.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Boss/Crimson_Knight_Large_Pose.png",
+  "package_original_crop_path": "Source_Crops/Boss/Crimson_Knight_Large_Pose.png"
+}

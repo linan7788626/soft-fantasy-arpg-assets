@@ -1,0 +1,40 @@
+{
+  "original_name": "Hero_Row03_Pose01",
+  "category": "Characters/Hero_Poses",
+  "source_crop_relative": "Source_Crops/Characters/Hero_Poses/Hero_Row03_Pose01.png",
+  "source_sha256": "1f169a5e94735ac87b20b0d7465cf37ed763ecc270466a87cd6e993195ce2d97",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Characters/Hero_Poses/Hero_Row03_Pose01.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177e8-c49b-7073-81bb-9fc10b98408d/exec-fbe87f38-7a9d-4332-8c1b-214d5dbef0ca.png",
+  "generated_sha256": "485dbdd9a7afa7980aae2a4723ee8ff7bbf7331e9839286990297092ebe05341",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    157,
+    151,
+    1138,
+    1105
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Redraw ONLY the individual character/action in reference image 1 into a new full native-resolution transparent game sprite, reconstructing cropped limbs, cape and weapon tips. Image1 controls the EXACT pose, action, facing, camera, identity and silhouette. Discard its dark display background and any fragments of adjacent atlas subjects. Image2 (portal) controls rendering quality/material softness only; do not depict portal or architecture. If image3 is supplied, it is the regenerated SAME CHARACTER identity anchor: keep its helmet/face, armor, clothing, weapon design and proportions, but pose it EXACTLY like image1; do not simply copy the anchor's pose. Style NL-ARPG-SOFT-766DF2B7, polished 2D soft-painted chibi medieval fantasy ARPG, about 2.5 heads for humanoids, smooth antialiased edges, restrained thin dark warm outlines, refined yet soft material shading and warm upper-left lighting. One full individual static pose per image, no sheet or alternate views. Square 1024x1024 canvas; frame the whole figure AND weapons/effects within the central 76% with at least 12% clear transparent margins on every side; consistent family camera and overall body scale. Genuine transparent alpha outside the subject, no ground or backdrop, no labels or lettering, no watermark or drawn checkerboard. Avoid coarse pixel grids, photorealism and glossy plastic 3D.\nSpecific source preservation: Hero advancing right with straight sword held horizontally across lower chest/waist toward screen-right; retain compact stance, source arm angle, blue cape left and exact boots.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Characters/Hero_Poses/Hero_Row03_Pose01.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Characters/Hero_Poses/Hero_Row01_Pose01.png"
+  ],
+  "visual_review_note": "Viewed generated output: Full cream-blue-gold hero running with sword thrust horizontally right; silhouette complete. Family style is coherent. Individually generated static pose; exact animation scale, baseline and registration remain unvalidated.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Characters/Hero_Poses/Hero_Row03_Pose01.png",
+  "package_native_source_path": "Source/Generated/Characters/Hero_Poses/Hero_Row03_Pose01.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Characters/Hero_Poses/Hero_Row03_Pose01.png",
+  "package_original_crop_path": "Source_Crops/Characters/Hero_Poses/Hero_Row03_Pose01.png"
+}

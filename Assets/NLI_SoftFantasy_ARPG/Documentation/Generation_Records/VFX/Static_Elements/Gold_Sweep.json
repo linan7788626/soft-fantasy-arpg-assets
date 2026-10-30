@@ -1,0 +1,75 @@
+{
+  "original_name": "Gold_Sweep",
+  "category": "VFX/Static_Elements",
+  "source_crop_relative": "Source_Crops/VFX/Static_Elements/Gold_Sweep.png",
+  "source_sha256": "7d6fd5b06516f2de98ef0fdbc4419aaab47d7b8c00db6aa90d8e061dd92be723",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/VFX/Static_Elements/Gold_Sweep.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-7a963fd3-7b2f-4f7e-852a-8b366b5027cf.png",
+  "generated_sha256": "cb59b9f2b781fe8c58a55c9c564cfd79b9dd57eb0a89c24fcab9aae91add24e2",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    254
+  ],
+  "solid_alpha_bbox": [
+    113,
+    325,
+    1176,
+    938
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: precise-object-edit. Edit the supplied PyQuest fantasy VFX Gold_Sweep only to improve framing. Preserve exactly this same isolated sweeping crescent silhouette, colors, pale luminous core, sparks, painterly shading and visual identity. Recompose it slightly smaller in the middle of a square transparent canvas. The ENTIRE effect including soft outer glow must fit with 12 percent completely clear transparent margin on ALL four sides; do not let any glow touch an edge. High quality soft painted fantasy game sprite. No background, text, border, checkerboard or new objects. Native high resolution RGBA, do not create an opaque canvas.",
+  "references": [
+    "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-c84066fa-086f-4f24-904a-8939c655533f.png"
+  ],
+  "visual_review_note": "Visually reviewed native imagegen reframing: full sweep and outer glow with clear transparent margin on both sides, original silhouette and colors preserved; no pixel processing.",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "visual_review_status": "reviewed",
+  "repair_history": [
+    {
+      "original_name": "Gold_Sweep",
+      "category": "VFX/Static_Elements",
+      "source_crop_relative": "Source_Crops/VFX/Static_Elements/Gold_Sweep.png",
+      "source_sha256": "7d6fd5b06516f2de98ef0fdbc4419aaab47d7b8c00db6aa90d8e061dd92be723",
+      "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/VFX/Static_Elements/Gold_Sweep.png",
+      "original_generation_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-c84066fa-086f-4f24-904a-8939c655533f.png",
+      "generated_sha256": "6a0ab980a4096f93bc7e7ccd0be49aa16510b15f9511d082343e55fab365894c",
+      "actual_dimensions": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "solid_alpha_bbox": [
+        47,
+        290,
+        1226,
+        940
+      ],
+      "tool": "builtin_image_gen",
+      "prompt": "Redraw the FIRST reference into ONE complete high-resolution standalone PyQuest game VFX sprite. First reference is an old low-resolution source crop showing this effect's shape and colors; reconstruct clipped extremities and remove any cropped neighboring effect. Second reference is the approved portal for clean soft-painted fantasy quality only; DO NOT depict portal, architecture or characters. Style NL-ARPG-SOFT-766DF2B7: polished 2D hand-painted fantasy, smooth antialiased contours, readable forms, softly shaded rich light and subtle semitransparent glow, no jagged background subtraction. Native high-resolution RGBA redraw, target1024x1024. Center ONE effect at about65% canvas size, 15% clear transparent margin on all sides, all glow within frame. Preserve genuine transparent alpha outside; no background color, checkerboard, captions, text, UI frames or collage. No pixel enlargement or source texture copying.\nSubject Gold_Sweep: ONE golden horizontal sword-sweep trail in slightly elevated view, an elongated elliptical open arc swooping upward to the right and back toward the left, a bright ivory/gold main ribbon and two fine trailing golden strands. Strong tapered leading end, dynamic warm-gold spark accents. Preserve the original elongated diagonal ellipse rather than a vertical crescent.",
+      "references": [
+        "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/VFX/Static_Elements/Gold_Sweep.png",
+        "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+      ],
+      "visual_review_note": "Reviewed dynamic golden sweep with preserved pointed leading tip; broad outer glow near right border requires bounds check. Native glow margins are tight; regenerate with more transparent breathing room.",
+      "status": "redrawn_static_asset",
+      "pixel_postprocessing": "none",
+      "animation_alignment_validated": false,
+      "seamless_tileability_validated": false,
+      "visual_review_status": "needs_repair"
+    }
+  ],
+  "package_sprite_path": "Sprites/VFX/Static_Elements/Gold_Sweep.png",
+  "package_native_source_path": "Source/Generated/VFX/Static_Elements/Gold_Sweep.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/VFX/Static_Elements/Gold_Sweep.png",
+  "package_original_crop_path": "Source_Crops/VFX/Static_Elements/Gold_Sweep.png"
+}

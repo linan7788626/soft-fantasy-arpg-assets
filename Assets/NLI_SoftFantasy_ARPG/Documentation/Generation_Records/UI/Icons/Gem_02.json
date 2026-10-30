@@ -1,0 +1,39 @@
+{
+  "original_name": "Gem_02",
+  "category": "UI/Icons",
+  "source_crop_relative": "Source_Crops/UI/Icons/Gem_02.png",
+  "source_sha256": "a189300712f3d0a2b71915df9ed4a1af51d30fe030586ce4730fcadc59964fac",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/UI/Icons/Gem_02.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-ec4b4820-ee94-410c-bd5c-dc49768d63df.png",
+  "generated_sha256": "af9c545bcb17928a5c3b6a1cda694125254643d11abd493518a6b2a077dcf2a0",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    232,
+    230,
+    1030,
+    1028
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Image1 is EDIT TARGET and identity/shape reference. Image2 is STYLE/MATERIAL QUALITY only; do not depict its portal.\nONE bright blue UI gem variant, roundish asymmetrical faceted polygon, blue/cyan planes and upper-left pale highlight. Preserve this source's individual shape and faceting.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/UI/Icons/Gem_02.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Reviewed second blue UI gem with distinct rounded cut and facet arrangement, clean contained outline.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/UI/Icons/Gem_02.png",
+  "package_native_source_path": "Source/Generated/UI/Icons/Gem_02.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/UI/Icons/Gem_02.png",
+  "package_original_crop_path": "Source_Crops/UI/Icons/Gem_02.png"
+}

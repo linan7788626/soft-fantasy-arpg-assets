@@ -1,0 +1,39 @@
+{
+  "original_name": "Sword_01",
+  "category": "Items/Weapons",
+  "source_crop_relative": "Source_Crops/Items/Weapons/Sword_01.png",
+  "source_sha256": "353121e8131a63662fa4be1c5d1d3a7040ff51d89aad644503494290c5a2d76b",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Items/Weapons/Sword_01.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-8f35d6f0-9fca-42ac-a330-afc84f50bd05.png",
+  "generated_sha256": "a342748866682efff398793066c8717723a770cefe52df53ce52e3e700e4509c",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    201,
+    135,
+    1131,
+    1137
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Upgrade/repaint the single existing game asset in image 1 at native high resolution. Image 1 is the EDIT TARGET and identity/shape reference; image 2 is STYLE/MATERIAL QUALITY reference only, do not depict the portal.\nSubject Sword_01: A single straight medieval one-handed sword, diagonal from lower-left hilt to upper-right blade tip. Silver steel blade with a restrained central bevel, small gold crossguard, warm wrapped brown grip and rounded gold pommel. Preserve the simple proportions and orientation of the original; reconstruct the complete blade tip missing at the crop edge.\nMatch NL-ARPG-SOFT-766DF2B7: polished 2D hand-painted cartoon fantasy ARPG, thin restrained warm dark outlines, clean smooth antialiased contours, soft upper-left warm light, subtle painterly material texture, rich yet controlled dimensional shading. Preserve the target's primary colors, proportions, direction and semantic function. Redraw details naturally at high resolution rather than interpolating the old pixels. Reconstruct damaged/clipped areas; omit any stray neighboring subject visible in the crop.\nONE complete individual asset on a genuine transparent RGBA background, square canvas around 1024px, centered and occupying no more than 74% of each canvas dimension so there is at least 13% empty transparent margin all around. Everything including tips/border visible. No background, no drop-shadow rectangle, no painted checkerboard, no backdrop from the original, no captions, lettering, watermark, contact sheet, extra item, UI badge or frame unless the subject itself is a UI button. No plastic 3D, photorealism, coarse pixelation or excessively thick outlines.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Items/Weapons/Sword_01.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Visually inspected: complete silver straight blade, golden crossguard and brown wrapped hilt; isolated clean silhouette and smooth painterly material shading.",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "visual_review_status": "reviewed",
+  "package_sprite_path": "Sprites/Items/Weapons/Sword_01.png",
+  "package_native_source_path": "Source/Generated/Items/Weapons/Sword_01.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Items/Weapons/Sword_01.png",
+  "package_original_crop_path": "Source_Crops/Items/Weapons/Sword_01.png"
+}

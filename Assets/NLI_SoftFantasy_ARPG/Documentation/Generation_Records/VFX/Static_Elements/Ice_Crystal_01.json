@@ -1,0 +1,39 @@
+{
+  "original_name": "Ice_Crystal_01",
+  "category": "VFX/Static_Elements",
+  "source_crop_relative": "Source_Crops/VFX/Static_Elements/Ice_Crystal_01.png",
+  "source_sha256": "95c946677b3597fcc5a1f5f040f8ddcb34a33cadd4d7dfd487a46ed0961b7713",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/VFX/Static_Elements/Ice_Crystal_01.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-1da6486c-dac8-4b33-8adf-5af51df77022.png",
+  "generated_sha256": "75de18c5bb70c2f13c1f1a253215b77ec66a7e72206f81c3424d0f70d0e5b0ed",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    66,
+    287,
+    1200,
+    990
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Redraw the FIRST reference into ONE complete high-resolution standalone PyQuest game VFX sprite. First reference is an old low-resolution source crop showing this effect's shape and colors; reconstruct clipped extremities and remove any cropped neighboring effect. Second reference is the approved portal for clean soft-painted fantasy quality only; DO NOT depict portal, architecture or characters. Style NL-ARPG-SOFT-766DF2B7: polished 2D hand-painted fantasy, smooth antialiased contours, readable forms, softly shaded rich light and subtle semitransparent glow, no jagged background subtraction. Native high-resolution RGBA redraw, target1024x1024. Center ONE effect at about65% canvas size, 15% clear transparent margin on all sides, all glow within frame. Preserve genuine transparent alpha outside; no background color, checkerboard, captions, text, UI frames or collage. No pixel enlargement or source texture copying.\nSubject Ice_Crystal_01: ONE complete cluster of bright icy-blue crystals: one tall faceted central crystal, several medium crystals leaning outward on both sides, small low shards and pale cyan magical base glow. Hand-painted clean geometric facets, translucent inner blue shading, white glints, centered compact arrangement with every shard tip intact. No ground tile or dark shadow rectangle.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/VFX/Static_Elements/Ice_Crystal_01.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Visually reviewed native redraw: complete ice shard cluster and spell silhouette, clear faceted blue/white materials and original distinct composition, transparent surroundings and semitransparent glow.",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "visual_review_status": "reviewed",
+  "package_sprite_path": "Sprites/VFX/Static_Elements/Ice_Crystal_01.png",
+  "package_native_source_path": "Source/Generated/VFX/Static_Elements/Ice_Crystal_01.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/VFX/Static_Elements/Ice_Crystal_01.png",
+  "package_original_crop_path": "Source_Crops/VFX/Static_Elements/Ice_Crystal_01.png"
+}

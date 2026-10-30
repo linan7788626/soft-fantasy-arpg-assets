@@ -1,0 +1,39 @@
+{
+  "original_name": "Panel_Stone",
+  "category": "UI/Panels_And_Buttons",
+  "source_crop_relative": "Source_Crops/UI/Panels_And_Buttons/Panel_Stone.png",
+  "source_sha256": "e992d3bdabea57955e00f9d26f319b14e650d5ffb2aa2a65e8c1c1241957cd05",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/UI/Panels_And_Buttons/Panel_Stone.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-97a2a247-a0bb-4130-b67d-deb56ce4ea27.png",
+  "generated_sha256": "fa88e7bc2ccb5c60134e98a324a3b1b7112dac8b6c8f1d2d63b6c7e2f5f29856",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    265,
+    180,
+    985,
+    1068
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Image1 is EDIT TARGET and exact UI silhouette, aspect-ratio, pictogram and state reference. Image2 is STYLE/MATERIAL QUALITY only; do not depict its portal. Keep original panel aspect ratio on transparent square canvas. The panel face itself is opaque; only surrounding canvas transparent. No exterior drop shadow, glow, fringe, halo or texture outside the panel outline. No text, symbols, glyphs or extra pictograms beyond those already present in source.\nONE portrait-oriented rounded rectangular muted mauve-gray stone UI panel, subtle raised rim, small round corner rivets, soft irregular cracked stone pattern across face. Preserve empty stone surface; no symbols or text.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/UI/Panels_And_Buttons/Panel_Stone.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Reviewed muted mauve-gray portrait stone panel, empty cracked stone face and four corner rivets, transparent exterior.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/UI/Panels_And_Buttons/Panel_Stone.png",
+  "package_native_source_path": "Source/Generated/UI/Panels_And_Buttons/Panel_Stone.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/UI/Panels_And_Buttons/Panel_Stone.png",
+  "package_original_crop_path": "Source_Crops/UI/Panels_And_Buttons/Panel_Stone.png"
+}

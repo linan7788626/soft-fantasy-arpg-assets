@@ -1,0 +1,39 @@
+{
+  "original_name": "Heart_Red01",
+  "category": "UI/Icons",
+  "source_crop_relative": "Source_Crops/UI/Icons/Heart_Red01.png",
+  "source_sha256": "b8605d27f00020e9ac0211dbe82554ab7f087fabe57ebf96424b8bd476df9c38",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/UI/Icons/Heart_Red01.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-b62fef89-8024-4163-8dda-6475c4b5d81e.png",
+  "generated_sha256": "2bba1b3750dc3ceea7ee3e43515dd69e267f354ece8fcd52c75d35eb9dba77be",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    181,
+    246,
+    1073,
+    1012
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Upgrade/repaint the single existing game asset in image 1 at native high resolution. Image 1 is the EDIT TARGET and identity/shape reference; image 2 is STYLE/MATERIAL QUALITY reference only, do not depict the portal.\nSubject Heart_Red01: ONE full red health heart icon. Preserve its rounded classic heart silhouette, rich red body and soft bright upper-left highlight. A softly shaded dimensional 2D painted icon, not a realistic anatomical heart. No frame or extra decoration.\nMatch NL-ARPG-SOFT-766DF2B7: polished 2D hand-painted cartoon fantasy ARPG, thin restrained warm dark outlines, clean smooth antialiased contours, soft upper-left warm light, subtle painterly material texture, rich yet controlled dimensional shading. Preserve the target's primary colors, proportions, direction and semantic function. Redraw details naturally at high resolution rather than interpolating the old pixels. Reconstruct damaged/clipped areas; omit any stray neighboring subject visible in the crop.\nONE complete individual asset on a genuine transparent RGBA background, square canvas around 1024px, centered and occupying no more than 74% of each canvas dimension so there is at least 13% empty transparent margin all around. Everything including tips/border visible. No background, no drop-shadow rectangle, no painted checkerboard, no backdrop from the original, no captions, lettering, watermark, contact sheet, extra item, UI badge or frame unless the subject itself is a UI button. No plastic 3D, photorealism, coarse pixelation or excessively thick outlines.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/UI/Icons/Heart_Red01.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Visually inspected: complete full red health heart, smooth warm highlight and intact rounded silhouette; no background or frame.",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "visual_review_status": "reviewed",
+  "package_sprite_path": "Sprites/UI/Icons/Heart_Red01.png",
+  "package_native_source_path": "Source/Generated/UI/Icons/Heart_Red01.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/UI/Icons/Heart_Red01.png",
+  "package_original_crop_path": "Source_Crops/UI/Icons/Heart_Red01.png"
+}

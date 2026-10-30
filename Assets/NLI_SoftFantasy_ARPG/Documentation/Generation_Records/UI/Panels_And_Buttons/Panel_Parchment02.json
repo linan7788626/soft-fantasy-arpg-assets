@@ -1,0 +1,39 @@
+{
+  "original_name": "Panel_Parchment02",
+  "category": "UI/Panels_And_Buttons",
+  "source_crop_relative": "Source_Crops/UI/Panels_And_Buttons/Panel_Parchment02.png",
+  "source_sha256": "21e10b95516d011254903b2ec7c2e436449234f4fcaf8e44f101c45e349119dc",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/UI/Panels_And_Buttons/Panel_Parchment02.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-5aeb0949-991b-47d1-ad61-a1d9ae6d9d57.png",
+  "generated_sha256": "41d55136a3e4c5af777e9aa271aaf032b6657b8fadb43281ec8910553b1a9170",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    161,
+    211,
+    1092,
+    1014
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Image1 is EDIT TARGET and exact UI silhouette, aspect-ratio, pictogram and state reference. Image2 is STYLE/MATERIAL QUALITY only; do not depict its portal. Keep the UI element's original aspect ratio within a transparent square canvas. The panel surface itself is opaque; only surrounding canvas/corners transparent.\nONE wide rectangular dark charcoal UI panel with thin warm gold beveled border and clipped corners, centered pinned cream parchment sheet with brown crossed bow-and-arrow pictogram and subtle curled lower corners. Preserve emblem, paper and dark surrounding area.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/UI/Panels_And_Buttons/Panel_Parchment02.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Reviewed cream pinned paper on gold-rimmed dark panel, centered bow-and-arrow emblem and complete contained outline.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/UI/Panels_And_Buttons/Panel_Parchment02.png",
+  "package_native_source_path": "Source/Generated/UI/Panels_And_Buttons/Panel_Parchment02.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/UI/Panels_And_Buttons/Panel_Parchment02.png",
+  "package_original_crop_path": "Source_Crops/UI/Panels_And_Buttons/Panel_Parchment02.png"
+}

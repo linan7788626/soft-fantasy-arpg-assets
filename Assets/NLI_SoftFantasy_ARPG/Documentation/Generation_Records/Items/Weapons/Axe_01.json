@@ -1,0 +1,39 @@
+{
+  "original_name": "Axe_01",
+  "category": "Items/Weapons",
+  "source_crop_relative": "Source_Crops/Items/Weapons/Axe_01.png",
+  "source_sha256": "ddee9a87396f90b6c9d05e3542420af11c40b05818bdb7ad0ecae1c204f38f31",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Items/Weapons/Axe_01.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-a32f3fb6-453c-400b-a0e8-f7baa49d587a.png",
+  "generated_sha256": "013611f3d031a6ec58259c87821afde0b0d04d36c71f9fddff0ea1d11b4190eb",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    162,
+    102,
+    1145,
+    1142
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Repaint and upgrade the single existing asset in image1 at native high resolution. Image1 is the EDIT TARGET and identity reference; image2 is only STYLE/MATERIAL QUALITY reference, do not depict the portal.\nONE single-bladed medieval hand axe. Preserve the original silver steel crescent blade with a darker metal socket, simple warm brown wooden handle, and modest gold fastening detail. Diagonal with blade at upper-right and grip at lower-left. Restore the complete blade arc and handle. Only this axe.\nNL-ARPG-SOFT-766DF2B7, polished soft-painted 2D cartoon fantasy ARPG, thin warm dark outlines, clean antialiased contour, subtle painterly metal and wood, upper-left soft warm light, rich readable material shading. Preserve the original subject's silhouette, proportions, primary colors and orientation. Restore clipped details and remove any unrelated neighbor visible in the old crop.\nONE complete centered individual game item on genuine transparent RGBA background, square canvas around1024px. Scale to at most74% of canvas dimensions, leave13% transparent margin allaround. Full blade and handle visible. No lettering, captions, watermark, background, flat backdrop, checkerboard, ground, badge, extra weapon, sprite sheet, coarse pixels, photorealism or plastic3D. This is a real repaint, never interpolation.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Items/Weapons/Axe_01.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Visually inspected: complete silver double-sided crescent axe head, brown shaft and restrained gold fittings; no neighboring weapon remains.",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "visual_review_status": "reviewed",
+  "package_sprite_path": "Sprites/Items/Weapons/Axe_01.png",
+  "package_native_source_path": "Source/Generated/Items/Weapons/Axe_01.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Items/Weapons/Axe_01.png",
+  "package_original_crop_path": "Source_Crops/Items/Weapons/Axe_01.png"
+}

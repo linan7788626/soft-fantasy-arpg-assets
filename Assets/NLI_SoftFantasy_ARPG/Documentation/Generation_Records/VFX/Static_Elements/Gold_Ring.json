@@ -1,0 +1,39 @@
+{
+  "original_name": "Gold_Ring",
+  "category": "VFX/Static_Elements",
+  "source_crop_relative": "Source_Crops/VFX/Static_Elements/Gold_Ring.png",
+  "source_sha256": "632660ea77889363aa6c1449e9f8498ab3c8c25d852fb3a0e008e0c10d806c7a",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/VFX/Static_Elements/Gold_Ring.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-2ea1709f-5b1a-4d51-ad86-fb832e9ccca7.png",
+  "generated_sha256": "7ae98c8975f8b668ff4cdcbfe61f6ba571bd787f8e645be7a5cc642c506af218",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    254
+  ],
+  "solid_alpha_bbox": [
+    86,
+    356,
+    1189,
+    886
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Redraw the FIRST reference into ONE complete high-resolution standalone PyQuest game VFX sprite. First reference is an old low-resolution source crop showing this effect's shape and colors; reconstruct clipped extremities and remove any cropped neighboring effect. Second reference is the approved portal for clean soft-painted fantasy quality only; DO NOT depict portal, architecture or characters. Style NL-ARPG-SOFT-766DF2B7: polished 2D hand-painted fantasy, smooth antialiased contours, readable forms, softly shaded rich light and subtle semitransparent glow, no jagged background subtraction. Native high-resolution RGBA redraw, target1024x1024. Center ONE effect at about65% canvas size, 15% clear transparent margin on all sides, all glow within frame. Preserve genuine transparent alpha outside; no background color, checkerboard, captions, text, UI frames or collage. No pixel enlargement or source texture copying.\nSubject Gold_Ring: ONE flat elliptical golden magic ring floating in slightly elevated three-quarter view: complete closed thin ivory-gold ring with two gently orbiting tapered gold streaks and only a few tiny sparks, center genuinely transparent and empty. Strong clean central hole, no opaque dark oval. Elegant halo-like spell effect.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/VFX/Static_Elements/Gold_Ring.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Reviewed closed elliptical golden ring with transparent center and clean distinct ribbons; complete ring shape.",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "visual_review_status": "reviewed",
+  "package_sprite_path": "Sprites/VFX/Static_Elements/Gold_Ring.png",
+  "package_native_source_path": "Source/Generated/VFX/Static_Elements/Gold_Ring.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/VFX/Static_Elements/Gold_Ring.png",
+  "package_original_crop_path": "Source_Crops/VFX/Static_Elements/Gold_Ring.png"
+}

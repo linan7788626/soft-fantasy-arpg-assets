@@ -1,0 +1,41 @@
+{
+  "original_name": "Panel_Parchment01",
+  "category": "UI/Panels_And_Buttons",
+  "source_crop_relative": "Source_Crops/UI/Panels_And_Buttons/Panel_Parchment01.png",
+  "source_sha256": "15eef7480ba696e99b10dfd29e88ff5cf4eff1163579f6ba61d980a790d9a916",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/UI/Panels_And_Buttons/Panel_Parchment01.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-50509e29-7c26-4afb-b8b7-4b1f2724c6da.png",
+  "generated_sha256": "6f04012d8c458833f229c46eaa035175af9c7e7de3d81e128b48382adfd91ea5",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    86,
+    287,
+    1168,
+    945
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Image1 is EDIT TARGET and identity/UI reference. Image2 is STYLE QUALITY only, not its subject. Native-quality repaint.\nRedraw the UI panel in Image1. Landscape rectangle width1.25 times height, dark charcoal face with thin gold beveled clipped-corner rim. Center a smaller portrait cream parchment sheet fastened with four small round pins. Paper center MUST BE COMPLETELY BLANK: no glyph, ornament, drawing, emblem, strokes, letters, symbols, lines or icon. Only subtle natural paper grain. Keep edges clean, no outside shadow.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/UI/Panels_And_Buttons/Panel_Parchment01.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Fresh redraw reviewed: blank cream parchment on gold-rimmed charcoal panel, no invented glyph; complete frame and transparent exterior.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "superseded_generated_sha256": "a2ea6d577e600f49c8e184b6cb80c0f251dad99abe38a2fb5283b50b24f557f0",
+  "superseded_record_path": ".scratch/softfantasy-full-upgrade/rejected-items-ui/UI/Panels_And_Buttons/Panel_Parchment01.record.json",
+  "package_sprite_path": "Sprites/UI/Panels_And_Buttons/Panel_Parchment01.png",
+  "package_native_source_path": "Source/Generated/UI/Panels_And_Buttons/Panel_Parchment01.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/UI/Panels_And_Buttons/Panel_Parchment01.png",
+  "package_original_crop_path": "Source_Crops/UI/Panels_And_Buttons/Panel_Parchment01.png"
+}

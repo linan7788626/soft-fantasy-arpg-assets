@@ -1,0 +1,39 @@
+{
+  "original_name": "Arrow",
+  "category": "Items/Weapons",
+  "source_crop_relative": "Source_Crops/Items/Weapons/Arrow.png",
+  "source_sha256": "723a7d1f267e9201e88d18a8f74ff9859f7b2bb7f8c9d3a7980b78289ea7ab17",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Items/Weapons/Arrow.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-8345619d-2ec2-4804-bf60-28b3a92a417a.png",
+  "generated_sha256": "f8b11b09ff1081c2ad9de6040444264050e36da4db2e6eac279e3ba4d7ce6af4",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    206,
+    173,
+    1112,
+    1101
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Repaint the single arrow in image1, which is the edit target; image2 supplies only the approved painterly style/material quality, not its subject.\nONE complete slender golden-brown arrow with a pointed silver/bronze arrowhead and tidy small fletching, preserving original diagonal orientation and lightweight proportions. Reconstruct the full shaft and pointed tip, exclude the neighboring bow.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Items/Weapons/Arrow.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Visually inspected: complete slender arrow with pointed steel head, warm wood shaft and full feather fletching; clean diagonal silhouette.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Items/Weapons/Arrow.png",
+  "package_native_source_path": "Source/Generated/Items/Weapons/Arrow.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Items/Weapons/Arrow.png",
+  "package_original_crop_path": "Source_Crops/Items/Weapons/Arrow.png"
+}

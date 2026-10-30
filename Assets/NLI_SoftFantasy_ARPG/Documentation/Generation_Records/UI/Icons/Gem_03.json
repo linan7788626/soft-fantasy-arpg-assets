@@ -1,0 +1,39 @@
+{
+  "original_name": "Gem_03",
+  "category": "UI/Icons",
+  "source_crop_relative": "Source_Crops/UI/Icons/Gem_03.png",
+  "source_sha256": "2414b13f38112037f0646e25c26ff5bd44d036bee8da797dc1f03cd69663a00e",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/UI/Icons/Gem_03.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-337619cd-158e-42ff-90e0-d920b6056ad8.png",
+  "generated_sha256": "93e1f5633324864780d981f9be48ab9c10745297bb7d7a86770e4025ff2e2c72",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    312,
+    148,
+    941,
+    1072
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Image1 is EDIT TARGET and identity/shape reference. Image2 is STYLE/MATERIAL QUALITY only; do not depict its portal.\nONE upright elongated amber-gold diamond-shaped UI gem, pointed top and bottom, clear broad horizontal center facet, orange lower facets and pale golden top. Preserve exact gold color and rhombus silhouette.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/UI/Icons/Gem_03.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Reviewed upright gold diamond UI gem with distinct elongated rhombus silhouette, fully contained points and transparent surround.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/UI/Icons/Gem_03.png",
+  "package_native_source_path": "Source/Generated/UI/Icons/Gem_03.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/UI/Icons/Gem_03.png",
+  "package_original_crop_path": "Source_Crops/UI/Icons/Gem_03.png"
+}

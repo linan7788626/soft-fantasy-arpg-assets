@@ -1,0 +1,39 @@
+{
+  "original_name": "Gold_Arc_02",
+  "category": "VFX/Static_Elements",
+  "source_crop_relative": "Source_Crops/VFX/Static_Elements/Gold_Arc_02.png",
+  "source_sha256": "c534b897c246efdf029569027f1d168a78313dbc60ce8064ba8322ec2bc43919",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/VFX/Static_Elements/Gold_Arc_02.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-71a12053-5184-4f01-8934-2f803cde875d.png",
+  "generated_sha256": "4ead5a10e2784e1477f1fa355bfcf3597ce8873e7265173fa117892c5f808965",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    254
+  ],
+  "solid_alpha_bbox": [
+    146,
+    78,
+    1139,
+    1139
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Redraw the FIRST reference into ONE complete high-resolution standalone PyQuest game VFX sprite. First reference is an old low-resolution source crop showing this effect's shape and colors; reconstruct clipped extremities and remove any cropped neighboring effect. Second reference is the approved portal for clean soft-painted fantasy quality only; DO NOT depict portal, architecture or characters. Style NL-ARPG-SOFT-766DF2B7: polished 2D hand-painted fantasy, smooth antialiased contours, readable forms, softly shaded rich light and subtle semitransparent glow, no jagged background subtraction. Native high-resolution RGBA redraw, target1024x1024. Center ONE effect at about65% canvas size, 15% clear transparent margin on all sides, all glow within frame. Preserve genuine transparent alpha outside; no background color, checkerboard, captions, text, UI frames or collage. No pixel enlargement or source texture copying.\nSubject Gold_Arc_02: ONE tall broad golden crescent sword slash, open on the left, curved right edge, long tapered tips reaching upper-left and lower-left. A thicker luminous ivory-gold blade-shaped core and one fine amber trailing ribbon distinguish it from the narrower Gold_Arc_01. Keep warm gold/ivory rather than blue.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/VFX/Static_Elements/Gold_Arc_02.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Visually inspected full broad ivory/gold crescent; clean reconstructed tips and no neighbors. Soft glow preserved.",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "visual_review_status": "reviewed",
+  "package_sprite_path": "Sprites/VFX/Static_Elements/Gold_Arc_02.png",
+  "package_native_source_path": "Source/Generated/VFX/Static_Elements/Gold_Arc_02.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/VFX/Static_Elements/Gold_Arc_02.png",
+  "package_original_crop_path": "Source_Crops/VFX/Static_Elements/Gold_Arc_02.png"
+}

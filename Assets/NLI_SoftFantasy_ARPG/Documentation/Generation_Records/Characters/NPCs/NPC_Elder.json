@@ -1,0 +1,45 @@
+{
+  "name": "NPC_Elder",
+  "category": "Characters/NPCs",
+  "display_name_zh": "NPC 长老",
+  "generation_tool": "built-in image_gen",
+  "generated_on": "2026-10-28",
+  "style_code": "NL-ARPG-SOFT-766DF2B7",
+  "prompt": "Use case: stylized-concept.\nAsset type: a single production game sprite for PyQuest, NPC_Elder, matching the existing NLI Soft Fantasy ARPG asset family (NL-ARPG-SOFT-766DF2B7).\nInput images: Image 1 is a style/proportion/rendering reference (the existing chibi knight); image 2 is a style/material/palette reference (the approved small castle). They are references only. Create a new elder character, not a knight variant or a building.\nPrimary request: One friendly, wise elderly village mentor NPC, full body in a calm idle standing pose, slightly turned three-quarter toward the viewer. Gentle smiling face with expressive kind eyes, thick white eyebrows, a flowing white beard and softly swept-back white hair with a balding crown. Chibi fantasy proportions, about 2.5 heads tall. Cream robe, a cobalt-blue short shoulder mantle with restrained warm-gold trim, brown leather belt and simple boots. One hand naturally holds a gnarled wooden walking staff with a small gold-capped blue gemstone; the other rests open at waist height in a welcoming conversational gesture. Clear hands, readable face, coherent anatomy, staff tip and both feet fully visible. No helmet, sword, shield, or battle pose.\nStyle/medium: polished 2D soft hand-painted cartoon fantasy game art, the same fine warm dark contour lines, smooth painterly volumes, crisp attractive silhouette and carefully rendered cloth/wood/metal as the references. Warm upper-left light with soft cel shadows; moderate rich color, cream/gold/cobalt balanced with natural brown. Match the reference character's slightly elevated three-quarter camera and illustration polish. A warm approachable elder rather than an intimidating sorcerer.\nComposition/framing: one character only, centered on a square canvas, full isolated sprite, large readable silhouette with comfortable clear transparent margins on every side. Beard, robe, staff and boots must remain entirely inside the canvas. No ground platform or scenic setting.\nScene/backdrop: genuinely transparent RGBA background, including the empty gaps between the staff and body and between the feet. Preserve soft antialiased edge pixels.\nAvoid: text, lettering, UI frame, watermark, badges, duplicate characters, inset views, sprite sheet, checkerboard pattern, solid colored background, floor, scenery, strong ground shadow, pixel art, coarse pixelated edges, photorealism, glossy plastic 3D render, cropped limbs or staff.\n",
+  "reference_paths": [
+    "assets/generated/softfantasy-upgrade/Characters/Hero_Poses/Hero_Row01_Pose01.png",
+    "assets/generated/softfantasy/castle-small-v1.png"
+  ],
+  "reference_roles": [
+    "character proportions, rendering, warm lighting",
+    "approved materials, palette and rendering"
+  ],
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-6a4c396b-8690-42ef-b22b-56a8881a9ac1.png",
+  "workspace_output": "assets/generated/softfantasy/npc-elder-v1.png",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "visible_bbox_alpha_128": [
+    161,
+    138,
+    1162,
+    1161
+  ],
+  "generated_sha256": "b3ac4838c5315110e217ef62d43e9bda33b870948924743840a3755e22d3741a",
+  "pixel_postprocessing": "none",
+  "visual_review_status": "reviewed",
+  "visual_review_note": "Friendly white-bearded elder with cream robe, blue-gold mantle and wood staff. Soft painted contour and warm shading match character and castle references. Full hair, staff, hands, robe and both boots visible, with native transparent margins. Single static idle pose.",
+  "animation_alignment_validated": false,
+  "package_sprite_path": "Sprites/Characters/NPCs/NPC_Elder.png",
+  "package_native_source_path": "Source/Generated/Characters/NPCs/NPC_Elder.png",
+  "package_style_reference_paths": [
+    "Sprites/Characters/Hero_Poses/Hero_Row01_Pose01.png",
+    "Sprites/Environment/Buildings_And_Props/Castle_Small.png"
+  ]
+}

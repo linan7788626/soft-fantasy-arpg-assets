@@ -1,0 +1,39 @@
+{
+  "original_name": "Armor_Dark",
+  "category": "Items/Armor",
+  "source_crop_relative": "Source_Crops/Items/Armor/Armor_Dark.png",
+  "source_sha256": "6852321c13452ae18fe922acd83bb8fc97fcce1f04a97b41c355ef103e467822",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Items/Armor/Armor_Dark.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-5711e9de-f1c1-45ea-99e4-172f6c7c1c5a.png",
+  "generated_sha256": "c79dec7ba5bf9dc1f0744d88d32d28173df90c510423b28fb6dd5b2fc7a28542",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    161,
+    170,
+    1095,
+    1109
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Image1 is EDIT TARGET and identity/shape reference. Image2 is STYLE/MATERIAL QUALITY only; do not depict its portal.\nONE empty charcoal/dark-gray torso breastplate, warm gold trim, shoulder rims and waist belt; no wearer or head. Preserve dark plate face distinct from white and blue variants.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Items/Armor/Armor_Dark.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Visually inspected: complete charcoal steel breastplate with gold trim, shoulder openings and waist plates; dark variant remains distinct.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Items/Armor/Armor_Dark.png",
+  "package_native_source_path": "Source/Generated/Items/Armor/Armor_Dark.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Items/Armor/Armor_Dark.png",
+  "package_original_crop_path": "Source_Crops/Items/Armor/Armor_Dark.png"
+}

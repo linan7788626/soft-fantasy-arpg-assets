@@ -1,0 +1,39 @@
+{
+  "original_name": "Gem_Red",
+  "category": "Items/Loot",
+  "source_crop_relative": "Source_Crops/Items/Loot/Gem_Red.png",
+  "source_sha256": "8ecb5f67035eac7b611787ecf8277af1f908510e69f673cc7c29eb2ce1bc9a31",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Items/Loot/Gem_Red.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-208e8791-148f-4443-82ac-24cf184dc849.png",
+  "generated_sha256": "d0b30212de544e7839b49d22e130915448c10ee2a8a7153f50bf07db1669d267",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    308,
+    296,
+    1025,
+    947
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Image1 is EDIT TARGET and identity/shape reference. Image2 is STYLE/MATERIAL QUALITY only; do not depict its portal.\nONE loose red faceted gemstone, angled diamond-like polygon with crimson and warm ruby facets and a small bright upper-left highlight. Preserve the red gem cut and complete silhouette.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Items/Loot/Gem_Red.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Reviewed one ruby-red faceted gemstone, distinct red palette and angular planes, transparent surround.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Items/Loot/Gem_Red.png",
+  "package_native_source_path": "Source/Generated/Items/Loot/Gem_Red.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Items/Loot/Gem_Red.png",
+  "package_original_crop_path": "Source_Crops/Items/Loot/Gem_Red.png"
+}

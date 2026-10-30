@@ -1,0 +1,39 @@
+{
+  "original_name": "Ice_Splash",
+  "category": "VFX/Static_Elements",
+  "source_crop_relative": "Source_Crops/VFX/Static_Elements/Ice_Splash.png",
+  "source_sha256": "a4fed3028f69e08b603f29f4d474c69bfd32c97931fa323d08606415aed48364",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/VFX/Static_Elements/Ice_Splash.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-3fe07c1f-d513-4684-b561-63c773da7c3a.png",
+  "generated_sha256": "9c2bb8c4cde8d8fd67af562e61b6d78a0702603b5ae717f2386025075a875b0d",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    80,
+    394,
+    1204,
+    963
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Redraw the FIRST reference into ONE complete high-resolution standalone PyQuest game VFX sprite. First reference is an old low-resolution source crop showing this effect's shape and colors; reconstruct clipped extremities and remove any cropped neighboring effect. Second reference is the approved portal for clean soft-painted fantasy quality only; DO NOT depict portal, architecture or characters. Style NL-ARPG-SOFT-766DF2B7: polished 2D hand-painted fantasy, smooth antialiased contours, readable forms, softly shaded rich light and subtle semitransparent glow, no jagged background subtraction. Native high-resolution RGBA redraw, target1024x1024. Center ONE effect at about65% canvas size, 15% clear transparent margin on all sides, all glow within frame. Preserve genuine transparent alpha outside; no background color, checkerboard, captions, text, UI frames or collage. No pixel enlargement or source texture copying.\nSubject Ice_Splash: ONE low ice splash crystal effect: a small central upright diamond ice shard, several lower angular shards spreading left and right, frosty cyan-white splashes and a very shallow translucent blue ripple at the base. Preserve the short wide triangular silhouette of the first reference, no tall eruption or neighboring arc.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/VFX/Static_Elements/Ice_Splash.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Visually reviewed native redraw: complete ice shard cluster and spell silhouette, clear faceted blue/white materials and original distinct composition, transparent surroundings and semitransparent glow.",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "visual_review_status": "reviewed",
+  "package_sprite_path": "Sprites/VFX/Static_Elements/Ice_Splash.png",
+  "package_native_source_path": "Source/Generated/VFX/Static_Elements/Ice_Splash.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/VFX/Static_Elements/Ice_Splash.png",
+  "package_original_crop_path": "Source_Crops/VFX/Static_Elements/Ice_Splash.png"
+}

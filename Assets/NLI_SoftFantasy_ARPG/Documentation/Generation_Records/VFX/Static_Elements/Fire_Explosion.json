@@ -1,0 +1,39 @@
+{
+  "original_name": "Fire_Explosion",
+  "category": "VFX/Static_Elements",
+  "source_crop_relative": "Source_Crops/VFX/Static_Elements/Fire_Explosion.png",
+  "source_sha256": "e13f36b30fd83ff44f5537af00a6bd4f92579728c45170f98d2b22f6a9eb862b",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/VFX/Static_Elements/Fire_Explosion.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-056564c8-3b00-4ec3-ba5e-abf1ee113d5d.png",
+  "generated_sha256": "0bcceae73e805b5fd0316678952b2a5bc652d607d41bf716b22c3dfcfba5959b",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    95,
+    117,
+    1190,
+    1162
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Redraw the FIRST reference into ONE complete high-resolution standalone PyQuest game VFX sprite. First reference is an old low-resolution source crop showing this effect's shape and colors; reconstruct clipped extremities and remove any cropped neighboring effect. Second reference is the approved portal for clean soft-painted fantasy quality only; DO NOT depict portal, architecture or characters. Style NL-ARPG-SOFT-766DF2B7: polished 2D hand-painted fantasy, smooth antialiased contours, readable forms, softly shaded rich light and subtle semitransparent glow, no jagged background subtraction. Native high-resolution RGBA redraw, target1024x1024. Center ONE effect at about65% canvas size, 15% clear transparent margin on all sides, all glow within frame. Preserve genuine transparent alpha outside; no background color, checkerboard, captions, text, UI frames or collage. No pixel enlargement or source texture copying.\nSubject Fire_Explosion: ONE dramatic warm-gold and orange fire explosion: a compact rounded fire-cloud core near the ground, with a curved rising arc of flame wrapping overhead to form an almost circular fiery halo. Preserve this distinctive overhead fire-loop composition, not a generic flame plume. Bright ivory-gold hotspots and controlled orange glow, complete top arc and low impact base.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/VFX/Static_Elements/Fire_Explosion.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Reviewed complete overhead fire loop and rounded explosion core; warm orange-gold palette, intact base.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/VFX/Static_Elements/Fire_Explosion.png",
+  "package_native_source_path": "Source/Generated/VFX/Static_Elements/Fire_Explosion.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/VFX/Static_Elements/Fire_Explosion.png",
+  "package_original_crop_path": "Source_Crops/VFX/Static_Elements/Fire_Explosion.png"
+}

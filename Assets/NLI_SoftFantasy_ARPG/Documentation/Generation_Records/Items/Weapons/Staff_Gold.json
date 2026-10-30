@@ -1,0 +1,39 @@
+{
+  "original_name": "Staff_Gold",
+  "category": "Items/Weapons",
+  "source_crop_relative": "Source_Crops/Items/Weapons/Staff_Gold.png",
+  "source_sha256": "05390a7c107284b133d205f12b1d7f6658e20f18d6c4b51be19687d1e578d138",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Items/Weapons/Staff_Gold.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-5b4d507e-f033-4f1c-9a74-b040c54f834f.png",
+  "generated_sha256": "d65da9896471b366d16e2063700e7072f9a04f5fb7d96d1d4501d98e469a7743",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    185,
+    88,
+    1143,
+    1152
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Image1 is EDIT TARGET and shape/identity reference. Image2 is the STYLE/QUALITY reference only; no portal in output.\nONE magic staff with warm brown wooden shaft and gold fittings, elaborate warm-gold flower/sun-shaped head holding an orange-red glowing round gem. Preserve the original ornate golden head, warm color and diagonal lower-left grip / upper-right head. Entire staff and socket visible.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Items/Weapons/Staff_Gold.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Visually inspected: full wooden staff with gold sun-shaped mount and warm orange-red orb; intact outline and same family material shading.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Items/Weapons/Staff_Gold.png",
+  "package_native_source_path": "Source/Generated/Items/Weapons/Staff_Gold.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Items/Weapons/Staff_Gold.png",
+  "package_original_crop_path": "Source_Crops/Items/Weapons/Staff_Gold.png"
+}

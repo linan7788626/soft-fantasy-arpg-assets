@@ -1,0 +1,39 @@
+{
+  "original_name": "Wood_Bridge",
+  "category": "Environment/Terrain_Compositions",
+  "source_crop_relative": "Source_Crops/Environment/Terrain_Compositions/Wood_Bridge.png",
+  "source_sha256": "6b38fb038fea579df220ca0d873b4b9e04fe445fbfe56e580916e9b98ef61829",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Environment/Terrain_Compositions/Wood_Bridge.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-5924f27d-126a-4035-adf0-a483c901e853.png",
+  "generated_sha256": "83a343c39c0034d2eff8ee49b4b934e2246ff85b4f8e1f81706298366cb437de",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    68,
+    369,
+    1202,
+    952
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer / production game asset redraw.\nInput image 1 is the legacy source crop and defines the subject identity, colors, topology and function. Ignore the dark demonstration background, partial neighboring assets and labels. Input image 2 is the latest APPROVED STYLE REFERENCE ONLY; use its rendering polish, depth, clean contours and painterly material presence. Do not copy the castle subject into unrelated assets.\nRedraw the requested asset from scratch at native high resolution, not as enlarged old pixels. Style NL-ARPG-SOFT-766DF2B7: polished 2D soft-painted chibi fantasy ARPG, smooth antialiased contours, thin warm dark outlines, gentle cel shading with rich but restrained tactile material detail, soft warm key light from upper left. Slightly elevated three-quarter game perspective matching the source. Preserve the source object's identity and original color family: grass green, warm wood, warm cream/gray stone, blue or terracotta roofs as applicable. Use the style reference quality without converting all materials to gold or blue.\nONE complete isolated asset on genuine transparent RGBA background, centered with generous 12% completely empty transparent margins on every side. Reconstruct parts missing at crop boundaries from the source context, include complete base/roof/limbs, remove neighboring fragments. No scene, no backdrop, no checkerboard, no labels, no lettering, no watermark. No sheet of variants. Keep recognizable chunky silhouette with intentional material highlights; no coarse pixel grid, no photorealism, no glossy plastic 3D. Square canvas target 1024x1024. Preserve semitransparency only where physically appropriate.\nSpecific subject Wood_Bridge: One short plain wooden plank bridge without rails: several broad warm honey-brown planks across its width, dark nailheads, two lengthwise support beams beneath with short support feet at ends. Preserve slightly elevated three-quarter view of top surface and low side. Remove any neighboring water/grass; bridge alone.\nKeep every outer edge of this single terrain piece visible with ample clear transparent space. Reconstruct missing edges. No labels, no grid, no background scene outside the single piece.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Environment/Terrain_Compositions/Wood_Bridge.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/castle-small-v1.png"
+  ],
+  "visual_review_note": "Visually reviewed complete standalone low wooden plank bridge: full planks, nailheads, two supports and bracing, warm hand-painted wood, all bounds visible on native transparency.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Environment/Terrain_Compositions/Wood_Bridge.png",
+  "package_native_source_path": "Source/Generated/Environment/Terrain_Compositions/Wood_Bridge.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Environment/Terrain_Compositions/Wood_Bridge.png",
+  "package_original_crop_path": "Source_Crops/Environment/Terrain_Compositions/Wood_Bridge.png"
+}

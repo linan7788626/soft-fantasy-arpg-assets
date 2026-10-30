@@ -1,0 +1,39 @@
+{
+  "original_name": "Helmet",
+  "category": "Items/Armor",
+  "source_crop_relative": "Source_Crops/Items/Armor/Helmet.png",
+  "source_sha256": "5e03fb315c7e96baa833b953e1245cbb3773988bcdc614127e2c7f06d50028b3",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Items/Armor/Helmet.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-4bbbc632-ede2-4ad9-9aef-3486dce4db76.png",
+  "generated_sha256": "2e1283f3c8156875986ada732a57e0fe1b1011fce39500efce544434458af72e",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    234,
+    180,
+    1048,
+    1050
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Image1 is EDIT TARGET and identity/shape reference. Image2 is STYLE/MATERIAL QUALITY only; do not depict its portal.\nONE closed gray steel medieval knight helmet with rounded dome, black visor slit, gold trim and cheek/neck guard, a small gold crest nub on top. No wearer or full armor. Complete helmet at slight three-quarter angle.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Items/Armor/Helmet.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Reviewed complete gray domed knight helmet, gold trim and crest, black visor, clean three-quarter silhouette and transparent surround.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Items/Armor/Helmet.png",
+  "package_native_source_path": "Source/Generated/Items/Armor/Helmet.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Items/Armor/Helmet.png",
+  "package_original_crop_path": "Source_Crops/Items/Armor/Helmet.png"
+}

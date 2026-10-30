@@ -1,0 +1,40 @@
+{
+  "original_name": "Boar_Pose03",
+  "category": "Enemies/Boars",
+  "source_crop_relative": "Source_Crops/Enemies/Boars/Boar_Pose03.png",
+  "source_sha256": "b2ac47dc69dd8025dceca2c5c63ddf9994af70a93b790b5a6d5cd9d15e67f798",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Enemies/Boars/Boar_Pose03.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177e8-c49b-7073-81bb-9fc10b98408d/exec-b2a37039-302e-4e4a-94d2-283126cad1d4.png",
+  "generated_sha256": "1dee627a72205b79c52a8dc95cf9043df0d6fbbabdebe2cbce860087857c14fe",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    110,
+    288,
+    1208,
+    986
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Redraw ONLY the individual character/action in reference image 1 into a new full native-resolution transparent game sprite, reconstructing cropped limbs, cape and weapon tips. Image1 controls the EXACT pose, action, facing, camera, identity and silhouette. Discard its dark display background and any fragments of adjacent atlas subjects. Image2 (portal) controls rendering quality/material softness only; do not depict portal or architecture. If image3 is supplied, it is the regenerated SAME CHARACTER identity anchor: keep its helmet/face, armor, clothing, weapon design and proportions, but pose it EXACTLY like image1; do not simply copy the anchor's pose. Style NL-ARPG-SOFT-766DF2B7, polished 2D soft-painted chibi medieval fantasy ARPG, about 2.5 heads for humanoids, smooth antialiased edges, restrained thin dark warm outlines, refined yet soft material shading and warm upper-left lighting. One full individual static pose per image, no sheet or alternate views. Square 1024x1024 canvas; frame the whole figure AND weapons/effects within the central 76% with at least 12% clear transparent margins on every side; consistent family camera and overall body scale. Genuine transparent alpha outside the subject, no ground or backdrop, no labels or lettering, no watermark or drawn checkerboard. Avoid coarse pixel grids, photorealism and glossy plastic 3D.\nSpecific source preservation: Same armored reddish boar in stretched forward charge to screen-right, body elongated and lowered, legs in exact running phase, pink snout and gray armor. Reconstruct snout clipped by right crop; no adjacent dust from neighbor.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Enemies/Boars/Boar_Pose03.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Enemies/Boars/Boar_Pose01.png"
+  ],
+  "visual_review_note": "Viewed generated output: Single brown armored boar galloping right with extended legs, one curled tail and red mane; complete body and snout, narrow side margin. Consistent family identity. Individually generated static pose; animation registration unvalidated.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Enemies/Boars/Boar_Pose03.png",
+  "package_native_source_path": "Source/Generated/Enemies/Boars/Boar_Pose03.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Enemies/Boars/Boar_Pose03.png",
+  "package_original_crop_path": "Source_Crops/Enemies/Boars/Boar_Pose03.png"
+}

@@ -1,0 +1,39 @@
+{
+  "original_name": "Slime_Pose01",
+  "category": "Enemies/Slimes",
+  "source_crop_relative": "Source_Crops/Enemies/Slimes/Slime_Pose01.png",
+  "source_sha256": "a637779b74576edaa7e44abb39f03a4750c9a02bdb1b4f9fa947517ba9b69a8e",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Enemies/Slimes/Slime_Pose01.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177e8-c49b-7073-81bb-9fc10b98408d/exec-42a841c3-d5d3-4a23-bdfa-ee3828d3e664.png",
+  "generated_sha256": "4a6472dfeac3a24a5be6984731ef3ccdfa94ce37aae9e5dce2407b76503a4570",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    159,
+    311,
+    1123,
+    1034
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Redraw reference image1's ONE small lime-green slime enemy into a complete high-resolution transparent native game sprite. Image1 is pose and identity; image2 is rendering quality only, do not include the portal or copy its architecture/colors onto the slime. Preserve the squat triangular-domed jelly silhouette, smooth slime body with small puddled lobes at its base, two tiny dark brown shiny eyes, small smiling mouth and rosy-orange cheek spots, pale yellow-green highlights at upper left, one tiny detached slime droplet just above the head as in the source. Keep the same front/three-quarter orientation and relaxed idle posture. Character is lime/grass green, softly translucent gelatin but solid readable shape. Remove the source's dark background completely and reconstruct any clipped outline.\nStyle NL-ARPG-SOFT-766DF2B7: polished 2D soft-painted chibi fantasy ARPG, smooth antialiased edges, thin restrained warm dark outlines, rich yet soft material shading and upper-left warm key light. Friendly rounded cartoon proportions and clean broad forms, no coarse pixel grid, no plastic 3D render, no photorealism.\nONE individual slime pose only. Square 1024x1024 transparent canvas. Keep slime body centered and full, occupying about 60% canvas width with ample 12% or more transparent margins including its small detached top droplet; baseline near 78% canvas height. Genuine alpha background; no scene, no ground plane, no extra enemies, no alternate views, no labels, no text, no watermark, no fake checkerboard. Preserve pose and proportions rather than inventing a new action.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Enemies/Slimes/Slime_Pose01.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Viewed generated output: full lime-green slime and detached top droplet preserved on transparent background; face, lobed silhouette and gelatin highlights are clean. Output is an individual static pose; exact cross-frame scale and baseline alignment remain unvalidated.",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "visual_review_status": "reviewed",
+  "package_sprite_path": "Sprites/Enemies/Slimes/Slime_Pose01.png",
+  "package_native_source_path": "Source/Generated/Enemies/Slimes/Slime_Pose01.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Enemies/Slimes/Slime_Pose01.png",
+  "package_original_crop_path": "Source_Crops/Enemies/Slimes/Slime_Pose01.png"
+}

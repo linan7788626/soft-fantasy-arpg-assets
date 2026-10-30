@@ -1,0 +1,18 @@
+{
+  "target": "Previews/Asset_Catalog.html",
+  "browser": "153.0.8010.12",
+  "checks": "224 cards; review status; search; group counts; comparison; background; modal; Escape; empty state; 390px responsive width; every image decoded; NPC/Elder/长老 search; elder modal without old image",
+  "assetCount": 224,
+  "readyCount": 224,
+  "total": 443,
+  "broken": [],
+  "complete": true,
+  "done": 219,
+  "legacyCount": 219,
+  "retainedCount": 4,
+  "additionCount": 1,
+  "errors": [],
+  "visual_screenshots_reviewed": [
+    "NPC elder modal on transparent checkerboard"
+  ]
+}

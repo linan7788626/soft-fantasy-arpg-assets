@@ -1,0 +1,52 @@
+{
+  "original_name": "Hero_Row04_Pose07",
+  "category": "Characters/Hero_Poses",
+  "source_crop_relative": "Source_Crops/Characters/Hero_Poses/Hero_Row04_Pose07.png",
+  "source_sha256": "56bb5e89acfbf3ae0c582bba96e4427161faa01d3abdadd6b3837c77e720872e",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Characters/Hero_Poses/Hero_Row04_Pose07.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177e8-c49b-7073-81bb-9fc10b98408d/exec-3a770197-70ac-4567-a99c-675520b0b6f7.png",
+  "generated_sha256": "652e19088e1c3ace949fdd8bc756032e8cf1d00dbc7b862817ca6b0bc173f5ce",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    78,
+    158,
+    1186,
+    1166
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Precisely edit this transparent chibi hero sprite. Keep the collapsed hero, helmet, blue cape, armor, boots, star-stun arc, and the ONE large circular blue shield with gold rim and central four-point gold star in the foreground. ERROR TO FIX: there is an accidental SECOND narrow blue/gold shield peeking on the far RIGHT behind the large foreground shield. Completely remove that small duplicate shield and its round gold boss at the far right. That removed area should be genuine transparent alpha, or only the naturally exposed arm/body if needed. There must be exactly ONE shield in the entire image, the large main foreground shield. Preserve all other pose details, colors, soft painterly shading and native resolution. Single full collapsed knight, no added objects or background, square transparent canvas with clear margins.",
+  "references": [
+    "/Users/uranus/.codex/generated_images/01a177e8-c49b-7073-81bb-9fc10b98408d/exec-e086763e-0779-476d-9e7f-dde28314e679.png"
+  ],
+  "visual_review_note": "Viewed corrected output: duplicate narrow shield at right removed; one large blue-and-gold shield remains in front of collapsed hero. Stun stars, helmet, cape and armor preserved. Complete transparent sprite, narrow but uncut side margins. Static pose; animation registration unvalidated.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "generation_history": [
+    {
+      "original_generation_output": "/Users/uranus/.codex/generated_images/01a177e8-c49b-7073-81bb-9fc10b98408d/exec-e086763e-0779-476d-9e7f-dde28314e679.png",
+      "generated_sha256": "6f40a46d57a5409f8fb96a291730bcdebd03c4003cd9f2d484978584f2aa338a",
+      "prompt": "Redraw ONLY the individual character/action in reference image 1 into a new full native-resolution transparent game sprite, reconstructing cropped limbs, cape and weapon tips. Image1 controls the EXACT pose, action, facing, camera, identity and silhouette. Discard its dark display background and any fragments of adjacent atlas subjects. Image2 (portal) controls rendering quality/material softness only; do not depict portal or architecture. If image3 is supplied, it is the regenerated SAME CHARACTER identity anchor: keep its helmet/face, armor, clothing, weapon design and proportions, but pose it EXACTLY like image1; do not simply copy the anchor's pose. Style NL-ARPG-SOFT-766DF2B7, polished 2D soft-painted chibi medieval fantasy ARPG, about 2.5 heads for humanoids, smooth antialiased edges, restrained thin dark warm outlines, refined yet soft material shading and warm upper-left lighting. One full individual static pose per image, no sheet or alternate views. Square 1024x1024 canvas; frame the whole figure AND weapons/effects within the central 76% with at least 12% clear transparent margins on every side; consistent family camera and overall body scale. Genuine transparent alpha outside the subject, no ground or backdrop, no labels or lettering, no watermark or drawn checkerboard. Avoid coarse pixel grids, photorealism and glossy plastic 3D.\nSpecific source preservation: Hero collapsed behind a large blue-and-gold round shield facing viewer at lower-right, sideways helmet behind it and golden dizzy streaks/stars above. Preserve the prone defensive collapse rather than standing guard.",
+      "references": [
+        "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Characters/Hero_Poses/Hero_Row04_Pose07.png",
+        "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png",
+        "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Characters/Hero_Poses/Hero_Row01_Pose01.png"
+      ],
+      "visual_review_note": "Generated output saved with original pixels. Awaiting visual review of returned image; animation registration not validated.",
+      "status": "redrawn_static_asset"
+    }
+  ],
+  "package_sprite_path": "Sprites/Characters/Hero_Poses/Hero_Row04_Pose07.png",
+  "package_native_source_path": "Source/Generated/Characters/Hero_Poses/Hero_Row04_Pose07.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Characters/Hero_Poses/Hero_Row04_Pose07.png",
+  "package_original_crop_path": "Source_Crops/Characters/Hero_Poses/Hero_Row04_Pose07.png"
+}

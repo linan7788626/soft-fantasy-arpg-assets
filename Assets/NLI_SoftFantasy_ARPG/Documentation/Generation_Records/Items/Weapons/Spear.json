@@ -1,0 +1,39 @@
+{
+  "original_name": "Spear",
+  "category": "Items/Weapons",
+  "source_crop_relative": "Source_Crops/Items/Weapons/Spear.png",
+  "source_sha256": "a66896e87397aba6ffbc816997f8dc862d27c96d6f4d2b5bed482d335eae555c",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Items/Weapons/Spear.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-6420f291-ac7c-45bd-a237-ec7fc06321a4.png",
+  "generated_sha256": "3748377a70b209a6ab4f9f561e19fb22f5d37e45634d9d0762401cd2c6727f4d",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    149,
+    67,
+    1169,
+    1188
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Image1 is the EDIT TARGET (single existing item) and semantic/shape reference. Image2 is STYLE/MATERIAL QUALITY only; do not depict the portal.\nSubject Spear: One long slender wooden spear with a bright steel leaf-shaped spearhead, narrow golden socket and a simple wrapped grip. Preserve the original diagonal lower-left shaft / upper-right point orientation. Complete tip, shaft and butt, no neighboring weapon.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Items/Weapons/Spear.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Visually inspected: complete silver leaf-shaped spear tip, wooden shaft, grip and butt; coherent painterly materials and full silhouette.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Items/Weapons/Spear.png",
+  "package_native_source_path": "Source/Generated/Items/Weapons/Spear.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Items/Weapons/Spear.png",
+  "package_original_crop_path": "Source_Crops/Items/Weapons/Spear.png"
+}

@@ -1,0 +1,39 @@
+{
+  "original_name": "Flowers_Yellow",
+  "category": "Environment/Nature_And_Props",
+  "source_crop_relative": "Source_Crops/Environment/Nature_And_Props/Flowers_Yellow.png",
+  "source_sha256": "eb88788694866c40995a1d934ac657516df22a9723da8f9a2ecf904aa4e74858",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Environment/Nature_And_Props/Flowers_Yellow.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177e9-0137-7c12-ba77-ca62838fdbf6/exec-91b4ec1f-e87b-4215-bcc2-fa220c4f4070.png",
+  "generated_sha256": "32187d57702e4fe6f2dc173aca2a5d0d3ad1b51d3106d6242a8ac2a043e32253",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    158,
+    270,
+    1095,
+    1041
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer / production game asset redraw.\nInput image 1 is the legacy source crop and defines the subject identity, colors, topology and function. Ignore the dark demonstration background, partial neighboring assets and labels. Input image 2 is the latest APPROVED STYLE REFERENCE ONLY; use its rendering polish, depth, clean contours and painterly material presence. Do not copy the castle subject into unrelated assets.\nRedraw the requested asset from scratch at native high resolution, not as enlarged old pixels. Style NL-ARPG-SOFT-766DF2B7: polished 2D soft-painted chibi fantasy ARPG, smooth antialiased contours, thin warm dark outlines, gentle cel shading with rich but restrained tactile material detail, soft warm key light from upper left. Slightly elevated three-quarter game perspective matching the source. Preserve the source object's identity and original color family: grass green, warm wood, warm cream/gray stone, blue or terracotta roofs as applicable. Use the style reference quality without converting all materials to gold or blue.\nONE complete isolated asset on genuine transparent RGBA background, centered with generous 12% completely empty transparent margins on every side. Reconstruct parts missing at crop boundaries from the source context, include complete base/roof/limbs, remove neighboring fragments. No scene, no backdrop, no checkerboard, no labels, no lettering, no watermark. No sheet of variants. Keep recognizable chunky silhouette with intentional material highlights; no coarse pixel grid, no photorealism, no glossy plastic 3D. Square canvas target 1024x1024. Preserve semitransparency only where physically appropriate.\nSpecific asset: Flowers_Yellow. A small connected clump of yellow wildflowers with orange-gold centers, green stems and broad basal leaves. Preserve several blossoms at different heights and the lush compact low garden plant identity. Delicate petal definition with rich soft lighting; no flower pot, no unrelated neighboring bush, no ground tile.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Environment/Nature_And_Props/Flowers_Yellow.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/castle-small-v1.png"
+  ],
+  "visual_review_note": "Connected clump of yellow flowers and green leaves, complete petal silhouettes and stems, no pot or backdrop. More developed floral forms than tiny source; original yellow-flower identity retained.",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "visual_review_status": "reviewed",
+  "package_sprite_path": "Sprites/Environment/Nature_And_Props/Flowers_Yellow.png",
+  "package_native_source_path": "Source/Generated/Environment/Nature_And_Props/Flowers_Yellow.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Environment/Nature_And_Props/Flowers_Yellow.png",
+  "package_original_crop_path": "Source_Crops/Environment/Nature_And_Props/Flowers_Yellow.png"
+}

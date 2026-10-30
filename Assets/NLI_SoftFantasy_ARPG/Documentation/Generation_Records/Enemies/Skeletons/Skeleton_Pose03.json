@@ -1,0 +1,40 @@
+{
+  "original_name": "Skeleton_Pose03",
+  "category": "Enemies/Skeletons",
+  "source_crop_relative": "Source_Crops/Enemies/Skeletons/Skeleton_Pose03.png",
+  "source_sha256": "33726ca7ac627fe897c2a600b3ac51f4a8c530e2d9f76f9730ad7e702a296238",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Enemies/Skeletons/Skeleton_Pose03.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177e8-c49b-7073-81bb-9fc10b98408d/exec-040af991-8f03-4159-be1e-d41b4afaaa8a.png",
+  "generated_sha256": "ba06dcc27914a54e33f1872bd7925cfd6041d68b78f0da15203585968ff76d70",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    78,
+    266,
+    1197,
+    1029
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Redraw ONLY the individual character/action in reference image 1 into a new full native-resolution transparent game sprite, reconstructing cropped limbs, cape and weapon tips. Image1 controls the EXACT pose, action, facing, camera, identity and silhouette. Discard its dark display background and any fragments of adjacent atlas subjects. Image2 (portal) controls rendering quality/material softness only; do not depict portal or architecture. If image3 is supplied, it is the regenerated SAME CHARACTER identity anchor: keep its helmet/face, armor, clothing, weapon design and proportions, but pose it EXACTLY like image1; do not simply copy the anchor's pose. Style NL-ARPG-SOFT-766DF2B7, polished 2D soft-painted chibi medieval fantasy ARPG, about 2.5 heads for humanoids, smooth antialiased edges, restrained thin dark warm outlines, refined yet soft material shading and warm upper-left lighting. One full individual static pose per image, no sheet or alternate views. Square 1024x1024 canvas; frame the whole figure AND weapons/effects within the central 76% with at least 12% clear transparent margins on every side; consistent family camera and overall body scale. Genuine transparent alpha outside the subject, no ground or backdrop, no labels or lettering, no watermark or drawn checkerboard. Avoid coarse pixel grids, photorealism and glossy plastic 3D.\nSpecific source preservation: Same skeleton warrior, preserve source lunging slash toward right: skull tilted right, body stretched, sword arm and blade extended down-left/back, shield forward-right. Complete any clipped sword and exclude adjacent subject fragments.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Enemies/Skeletons/Skeleton_Pose03.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Enemies/Skeletons/Skeleton_Pose01.png"
+  ],
+  "visual_review_note": "Viewed generated output: Full skeleton running right with sword trailing left and round star shield leading; ivory bones, warm rust cloth and gold trim consistent. Static pose; animation registration unvalidated.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Enemies/Skeletons/Skeleton_Pose03.png",
+  "package_native_source_path": "Source/Generated/Enemies/Skeletons/Skeleton_Pose03.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Enemies/Skeletons/Skeleton_Pose03.png",
+  "package_original_crop_path": "Source_Crops/Enemies/Skeletons/Skeleton_Pose03.png"
+}

@@ -1,0 +1,39 @@
+{
+  "original_name": "Stone_Pillars",
+  "category": "Environment/Buildings_And_Props",
+  "source_crop_relative": "Source_Crops/Environment/Buildings_And_Props/Stone_Pillars.png",
+  "source_sha256": "a5fb63438ab59d0a038d149d2fa82c1d25f2c30b212243c074b6c2d1893559c7",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Environment/Buildings_And_Props/Stone_Pillars.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177e9-0137-7c12-ba77-ca62838fdbf6/exec-220c3ebd-1741-4edb-8c42-f5837785f77e.png",
+  "generated_sha256": "bcc0362a59d6cb40d6ea686aa80477eeab9ad7a6eb21d17cb0871e526948596d",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    167,
+    94,
+    1071,
+    1151
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer / production game asset redraw.\nInput image 1 is the legacy source crop and defines the subject identity, colors, topology and function. Ignore the dark demonstration background, partial neighboring assets and labels. Input image 2 is the latest APPROVED STYLE REFERENCE ONLY; use its rendering polish, depth, clean contours and painterly material presence. Do not copy the castle subject into unrelated assets.\nRedraw the requested asset from scratch at native high resolution, not as enlarged old pixels. Style NL-ARPG-SOFT-766DF2B7: polished 2D soft-painted chibi fantasy ARPG, smooth antialiased contours, thin warm dark outlines, gentle cel shading with rich but restrained tactile material detail, soft warm key light from upper left. Slightly elevated three-quarter game perspective matching the source. Preserve the source object's identity and original color family: grass green, warm wood, warm cream/gray stone, blue or terracotta roofs as applicable. Use the style reference quality without converting all materials to gold or blue.\nONE complete isolated asset on genuine transparent RGBA background, centered with generous 12% completely empty transparent margins on every side. Reconstruct parts missing at crop boundaries from the source context, include complete base/roof/limbs, remove neighboring fragments. No scene, no backdrop, no checkerboard, no labels, no lettering, no watermark. No sheet of variants. Keep recognizable chunky silhouette with intentional material highlights; no coarse pixel grid, no photorealism, no glossy plastic 3D. Square canvas target 1024x1024. Preserve semitransparency only where physically appropriate.\nSpecific asset: Stone_Pillars. One grouped ruin asset of two upright stone pillars at unequal heights: left narrow short pier with stacked warm-gray blocks and vines; right taller broader pillar with rounded weathered top and lush green moss cap, plants climbing crevices. Preserve the two separate but adjacent pillar arrangement as one asset, full bases. No neighboring wood bench.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Environment/Buildings_And_Props/Stone_Pillars.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/castle-small-v1.png"
+  ],
+  "visual_review_note": "Two adjacent weathered stone pillars of unequal heights with vines and moss, taller right pillar containing an inset arch detail. Original paired ruin asset and full bases preserved.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Environment/Buildings_And_Props/Stone_Pillars.png",
+  "package_native_source_path": "Source/Generated/Environment/Buildings_And_Props/Stone_Pillars.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Environment/Buildings_And_Props/Stone_Pillars.png",
+  "package_original_crop_path": "Source_Crops/Environment/Buildings_And_Props/Stone_Pillars.png"
+}

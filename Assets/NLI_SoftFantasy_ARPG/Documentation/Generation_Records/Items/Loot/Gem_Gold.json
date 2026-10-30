@@ -1,0 +1,39 @@
+{
+  "original_name": "Gem_Gold",
+  "category": "Items/Loot",
+  "source_crop_relative": "Source_Crops/Items/Loot/Gem_Gold.png",
+  "source_sha256": "cc1cb3192910d6c4d1f3db75cda942f3e5cc77b9d9b7b94a97c231e2dff60a2d",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Items/Loot/Gem_Gold.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-e185805c-fd71-40f5-98fa-75c8f236f999.png",
+  "generated_sha256": "8f37d1c541258cee6310faa6dac7b49bd399fa1b9e820b53ba5a6249f4a51379",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    203,
+    231,
+    1051,
+    1012
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Image1 is EDIT TARGET and identity/shape reference. Image2 is STYLE/MATERIAL QUALITY only; do not depict its portal.\nONE warm amber-gold square/rhombus gemstone or polished token, diamond orientation, broad raised center facet and beveled golden rim. Preserve the original flat lozenge shape, no text.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Items/Loot/Gem_Gold.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Reviewed warm gold rhombus token with raised central facet and bevel, full isolated outline.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/Items/Loot/Gem_Gold.png",
+  "package_native_source_path": "Source/Generated/Items/Loot/Gem_Gold.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Items/Loot/Gem_Gold.png",
+  "package_original_crop_path": "Source_Crops/Items/Loot/Gem_Gold.png"
+}

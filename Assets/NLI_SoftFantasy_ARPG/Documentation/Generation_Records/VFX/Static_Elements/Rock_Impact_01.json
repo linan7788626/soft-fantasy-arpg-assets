@@ -1,0 +1,39 @@
+{
+  "original_name": "Rock_Impact_01",
+  "category": "VFX/Static_Elements",
+  "source_crop_relative": "Source_Crops/VFX/Static_Elements/Rock_Impact_01.png",
+  "source_sha256": "1f36b3aa65e544ac4b163142e9080a7d5304d211370f3cfb4697c6cfa877ed75",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/VFX/Static_Elements/Rock_Impact_01.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-5c9a8c47-23aa-4c23-8be4-d858109ebe93.png",
+  "generated_sha256": "4effe46124c41659821def39bdd011d50b70979ae93243beaee9528ae82fcb94",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    73,
+    300,
+    1173,
+    997
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Redraw the FIRST reference into ONE complete high-resolution standalone PyQuest game VFX sprite. First reference is an old low-resolution source crop showing this effect's shape and colors; reconstruct clipped extremities and remove any cropped neighboring effect. Second reference is the approved portal for clean soft-painted fantasy quality only; DO NOT depict portal, architecture or characters. Style NL-ARPG-SOFT-766DF2B7: polished 2D hand-painted fantasy, smooth antialiased contours, readable forms, softly shaded rich light and subtle semitransparent glow, no jagged background subtraction. Native high-resolution RGBA redraw, target1024x1024. Center ONE effect at about65% canvas size, 15% clear transparent margin on all sides, all glow within frame. Preserve genuine transparent alpha outside; no background color, checkerboard, captions, text, UI frames or collage. No pixel enlargement or source texture copying.\nSubject Rock_Impact_01: ONE complete magical stone-impact burst: angular gray and warm beige rocks erupt outward in a low roughly semicircular cluster, several sharp gray stone shards point upward and outward, dark warm-gray inner crevices and a small puff of pale stone dust along base. Preserve cool gray dominant stone palette and explosive radial composition. No flat background, no fire, no glow forced onto stones.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/VFX/Static_Elements/Rock_Impact_01.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Reviewed gray/beige angular eruption and debris; complete outward shards and clean isolated silhouette.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/VFX/Static_Elements/Rock_Impact_01.png",
+  "package_native_source_path": "Source/Generated/VFX/Static_Elements/Rock_Impact_01.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/VFX/Static_Elements/Rock_Impact_01.png",
+  "package_original_crop_path": "Source_Crops/VFX/Static_Elements/Rock_Impact_01.png"
+}

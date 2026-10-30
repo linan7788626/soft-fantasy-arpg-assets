@@ -1,0 +1,39 @@
+{
+  "original_name": "Rock_01",
+  "category": "Environment/Nature_And_Props",
+  "source_crop_relative": "Source_Crops/Environment/Nature_And_Props/Rock_01.png",
+  "source_sha256": "39c4178087c95a7fbd6546241f83990701a59d45e234ab3d81502d63ed472204",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Environment/Nature_And_Props/Rock_01.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177e9-0137-7c12-ba77-ca62838fdbf6/exec-82484580-0fbd-4531-881f-34e11d309bf4.png",
+  "generated_sha256": "02867fa52f8a5e2ef8015c93b899b9167f2a4c89cd6a0652ca16b2fb80ed8c94",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    97,
+    191,
+    1158,
+    1085
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer / production game asset redraw.\nInput image 1 is the legacy source crop and defines the subject identity, colors, topology and function. Ignore the dark demonstration background, partial neighboring assets and labels. Input image 2 is the latest APPROVED STYLE REFERENCE ONLY; use its rendering polish, depth, clean contours and painterly material presence. Do not copy the castle subject into unrelated assets.\nRedraw the requested asset from scratch at native high resolution, not as enlarged old pixels. Style NL-ARPG-SOFT-766DF2B7: polished 2D soft-painted chibi fantasy ARPG, smooth antialiased contours, thin warm dark outlines, gentle cel shading with rich but restrained tactile material detail, soft warm key light from upper left. Slightly elevated three-quarter game perspective matching the source. Preserve the source object's identity and original color family: grass green, warm wood, warm cream/gray stone, blue or terracotta roofs as applicable. Use the style reference quality without converting all materials to gold or blue.\nONE complete isolated asset on genuine transparent RGBA background, centered with generous 12% completely empty transparent margins on every side. Reconstruct parts missing at crop boundaries from the source context, include complete base/roof/limbs, remove neighboring fragments. No scene, no backdrop, no checkerboard, no labels, no lettering, no watermark. No sheet of variants. Keep recognizable chunky silhouette with intentional material highlights; no coarse pixel grid, no photorealism, no glossy plastic 3D. Square canvas target 1024x1024. Preserve semitransparency only where physically appropriate.\nSpecific asset: Rock_01. A single cluster of three angular warm-gray rocks: a tall slanted central boulder with a smaller chunky stone on each side, broad light stone faces and dark crevices. Preserve original faceted arrangement, one group asset. Remove neighboring green foliage. Complete bases and top edges.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Environment/Nature_And_Props/Rock_01.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/castle-small-v1.png"
+  ],
+  "visual_review_note": "Complete warm-gray faceted boulder cluster with tall central stone, smaller attached stones, subtle material texture and isolated silhouette; source rock-group identity retained, adjacent foliage removed.",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "visual_review_status": "reviewed",
+  "package_sprite_path": "Sprites/Environment/Nature_And_Props/Rock_01.png",
+  "package_native_source_path": "Source/Generated/Environment/Nature_And_Props/Rock_01.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Environment/Nature_And_Props/Rock_01.png",
+  "package_original_crop_path": "Source_Crops/Environment/Nature_And_Props/Rock_01.png"
+}

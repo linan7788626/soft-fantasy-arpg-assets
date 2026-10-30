@@ -1,0 +1,39 @@
+{
+  "original_name": "Fire_Burst_02",
+  "category": "VFX/Static_Elements",
+  "source_crop_relative": "Source_Crops/VFX/Static_Elements/Fire_Burst_02.png",
+  "source_sha256": "f03cafd6b89d278f58e5d77f207289066f69fb2834a2677c468c1194a674377e",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/VFX/Static_Elements/Fire_Burst_02.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-0f566779-a803-4c7d-a0cd-7c4e3871aa85.png",
+  "generated_sha256": "aec4a8a6ba8e1660b7776c7287a76a61f34c27082d611650f30ab0f47abb7c4a",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    254
+  ],
+  "solid_alpha_bbox": [
+    30,
+    211,
+    1221,
+    1058
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Redraw the FIRST reference into ONE complete high-resolution standalone PyQuest game VFX sprite. First reference is an old low-resolution source crop showing this effect's shape and colors; reconstruct clipped extremities and remove any cropped neighboring effect. Second reference is the approved portal for clean soft-painted fantasy quality only; DO NOT depict portal, architecture or characters. Style NL-ARPG-SOFT-766DF2B7: polished 2D hand-painted fantasy, smooth antialiased contours, readable forms, softly shaded rich light and subtle semitransparent glow, no jagged background subtraction. Native high-resolution RGBA redraw, target1024x1024. Center ONE effect at about65% canvas size, 15% clear transparent margin on all sides, all glow within frame. Preserve genuine transparent alpha outside; no background color, checkerboard, captions, text, UI frames or collage. No pixel enlargement or source texture copying.\nSubject Fire_Burst_02: ONE wide forceful fiery ground burst: brilliant yellow-white star-like core close to ground, orange rolling flame lobes on both sides, one short upward central flame plume and a few arcing gold sparks. Wider and more energetic than the small round Fire_Burst_01. Preserve the low broad eruption silhouette. Exclude neighboring blue ice at the source edge.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/VFX/Static_Elements/Fire_Burst_02.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Reviewed displayed native result: complete golden/orange effect silhouette with intact base and pointed extremities, genuine transparent negative space and preserved semitransparent glow.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/VFX/Static_Elements/Fire_Burst_02.png",
+  "package_native_source_path": "Source/Generated/VFX/Static_Elements/Fire_Burst_02.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/VFX/Static_Elements/Fire_Burst_02.png",
+  "package_original_crop_path": "Source_Crops/VFX/Static_Elements/Fire_Burst_02.png"
+}

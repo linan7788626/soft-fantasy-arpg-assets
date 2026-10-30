@@ -1,0 +1,39 @@
+{
+  "original_name": "Panel_Map02",
+  "category": "UI/Panels_And_Buttons",
+  "source_crop_relative": "Source_Crops/UI/Panels_And_Buttons/Panel_Map02.png",
+  "source_sha256": "ca0e21c3a1c2f9e84416fb9df6fb0113e9abcc7fde507f2eedbd0d2e3f441dd5",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/UI/Panels_And_Buttons/Panel_Map02.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-ed0118e0-31e1-4cac-a6f1-75488a90b690.png",
+  "generated_sha256": "fecc5ecc366a0c8dfbea99114e2a132bdd69c1c1dd198e54c432132dbfdabeeb",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    134,
+    327,
+    1121,
+    906
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Image1 is EDIT TARGET and exact UI silhouette, aspect-ratio, pictogram and state reference. Image2 is STYLE/MATERIAL QUALITY only; do not depict its portal. Keep original panel aspect ratio on transparent square canvas. The panel face itself is opaque; only surrounding canvas transparent. No exterior drop shadow, glow, fringe, halo or texture outside the panel outline. No text, symbols, glyphs or extra pictograms beyond those already present in source.\nONE compact wide rectangular map panel with muted gray-green stone beveled frame and clipped corners. Interior is a green moss-colored map with winding pale paths/river lines and simple scattered terrain shapes. No labels, lettering or new icons.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG, clean smooth antialiased contours, restrained thin warm dark outlines, soft warm upper-left lighting, tactile subtly painterly materials and clear dimensional shading. Preserve the target identity, primary palette, shape and UI state. Repaint at native high resolution, reconstruct clipped parts, remove stray neighbors. ONE complete isolated asset on genuine transparent RGBA background, square canvas around1024px, centered with at least13% transparent margin on all sides. No original gray background, checkerboard, lettering, watermark, contact sheet, unrelated decoration, coarse pixels, photorealism, plastic3D, black thick outline or resampled original pixels.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/UI/Panels_And_Buttons/Panel_Map02.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Reviewed wide gray-rimmed green map with pale paths and terrain, no labels or text, clean contained frame.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/UI/Panels_And_Buttons/Panel_Map02.png",
+  "package_native_source_path": "Source/Generated/UI/Panels_And_Buttons/Panel_Map02.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/UI/Panels_And_Buttons/Panel_Map02.png",
+  "package_original_crop_path": "Source_Crops/UI/Panels_And_Buttons/Panel_Map02.png"
+}

@@ -1,0 +1,39 @@
+{
+  "original_name": "Sword_03",
+  "category": "Items/Weapons",
+  "source_crop_relative": "Source_Crops/Items/Weapons/Sword_03.png",
+  "source_sha256": "f3e74618029d6d4d35834d0c6067c250a63b1f55a0cadff68f7ee1cb000fe7ff",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/Items/Weapons/Sword_03.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a17bb0-7fb3-7e43-b864-1a73e1f51885/exec-0f1895be-2249-4bfb-a3cf-4d805b77c91f.png",
+  "generated_sha256": "363d0515e634f8da2d1232f55eba4c7633d4280a5dcf28f7f7801f134dd0f048",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    290,
+    115,
+    1129,
+    1144
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Use case: style-transfer. Repaint and upgrade image1's existing asset at native high resolution; image1 is the EDIT TARGET and shape/identity reference. Image2 is only the approved material and art-quality STYLE reference; do not depict the portal.\nONE long silver straight sword with a narrower blade than the preceding basic sword, warm gold crossguard and brown grip. Diagonal rising lower-left to upper-right. Preserve the original's elongated bright blade and clear angular tip; no nearby weapon.\nNL-ARPG-SOFT-766DF2B7: polished soft-painted 2D cartoon fantasy ARPG art, thin restrained warm dark outline, smooth antialiased contour, soft warm upper-left light, rich but controlled painterly material shading. Preserve the target's identity, primary colors, proportions and orientation. Reconstruct incomplete/cropped parts and remove stray adjacent objects.\nONE complete isolated game item on genuinely transparent RGBA background. Square canvas around1024px. Subject occupies at most74% of canvas in each axis; at least13% empty margin all around. Full tip/hilt visible. No background, ground, text, letters, watermark, checkerboard, border, badge, montage or duplicate. No rescaled old pixels, coarse pixel art, photorealism, plastic3D, thick black outline, excessive ornament.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/Items/Weapons/Sword_03.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Visually inspected: long silver sword with upper-right hilt and lower-left tip as in source; complete blade and distinct angular pommel.",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "visual_review_status": "reviewed",
+  "package_sprite_path": "Sprites/Items/Weapons/Sword_03.png",
+  "package_native_source_path": "Source/Generated/Items/Weapons/Sword_03.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/Items/Weapons/Sword_03.png",
+  "package_original_crop_path": "Source_Crops/Items/Weapons/Sword_03.png"
+}

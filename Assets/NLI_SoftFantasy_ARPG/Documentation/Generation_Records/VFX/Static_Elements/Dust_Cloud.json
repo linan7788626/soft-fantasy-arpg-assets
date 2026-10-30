@@ -1,0 +1,39 @@
+{
+  "original_name": "Dust_Cloud",
+  "category": "VFX/Static_Elements",
+  "source_crop_relative": "Source_Crops/VFX/Static_Elements/Dust_Cloud.png",
+  "source_sha256": "d0a93a9f99c6c6020cb45acc2b83ad2ef7ef5a6845976bb4e064c2bb22b9415f",
+  "generated_path_absolute": "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy-upgrade/VFX/Static_Elements/Dust_Cloud.png",
+  "original_generation_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-5cd3d586-e28a-4a4b-83e9-e7b407e8c85b.png",
+  "generated_sha256": "15008a10f99390e74df2d656b5ae32a537a03ee4cf38a64221fdc00fc39cb26f",
+  "actual_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "solid_alpha_bbox": [
+    48,
+    412,
+    1213,
+    940
+  ],
+  "tool": "builtin_image_gen",
+  "prompt": "Redraw the FIRST reference into ONE complete high-resolution standalone PyQuest game VFX sprite. First reference is an old low-resolution source crop showing this effect's shape and colors; reconstruct clipped extremities and remove any cropped neighboring effect. Second reference is the approved portal for clean soft-painted fantasy quality only; DO NOT depict portal, architecture or characters. Style NL-ARPG-SOFT-766DF2B7: polished 2D hand-painted fantasy, smooth antialiased contours, readable forms, softly shaded rich light and subtle semitransparent glow, no jagged background subtraction. Native high-resolution RGBA redraw, target1024x1024. Center ONE effect at about65% canvas size, 15% clear transparent margin on all sides, all glow within frame. Preserve genuine transparent alpha outside; no background color, checkerboard, captions, text, UI frames or collage. No pixel enlargement or source texture copying.\nSubject Dust_Cloud: ONE compact rounded impact dust cloud, warm light brown/beige billows with a darker central hollow and several small dust puffs spreading low on both sides, a few tiny stone chips. Distinct squat dome silhouette, soft painted volume and thin restrained warm outlines where appropriate, no fire or oversized rock pillars.",
+  "references": [
+    "/Users/uranus/Developer/GitHub/pyquest/assets/NLI_SoftFantasy_ARPG_v0.1/Assets/NLI_SoftFantasy_ARPG/Source_Crops/VFX/Static_Elements/Dust_Cloud.png",
+    "/Users/uranus/Developer/GitHub/pyquest/assets/generated/softfantasy/portal-icon-v1.png"
+  ],
+  "visual_review_note": "Reviewed billowing ochre dust burst with pebbles and complete base, clean distinct silhouette and native alpha.",
+  "visual_review_status": "reviewed",
+  "status": "redrawn_static_asset",
+  "pixel_postprocessing": "none",
+  "animation_alignment_validated": false,
+  "seamless_tileability_validated": false,
+  "package_sprite_path": "Sprites/VFX/Static_Elements/Dust_Cloud.png",
+  "package_native_source_path": "Source/Generated/VFX/Static_Elements/Dust_Cloud.png",
+  "package_legacy_sprite_path": "Source/Legacy_Sprites/VFX/Static_Elements/Dust_Cloud.png",
+  "package_original_crop_path": "Source_Crops/VFX/Static_Elements/Dust_Cloud.png"
+}
