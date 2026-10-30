@@ -2,6 +2,8 @@
 
 **NLI Soft Fantasy ARPG** — a warm, soft-glow fantasy ARPG sprite pack for Unity. 224 static sprites with transparency, each paired with a ready-to-use static Prefab.
 
+![Pack style overview — hero, portal, castle, NPC Elder, enemies and items composed from the pack's final sprites](overview.png)
+
 - **Version:** 0.2.1
 - **Sprites:** 224 PNG (219 individually redrawn, 4 approved originals preserved byte-for-byte, 1 new NPC — the Elder)
 - **Style:** `NL-ARPG-SOFT-766DF2B7` — warm, soft-painted fantasy
