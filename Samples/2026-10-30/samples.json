@@ -1,0 +1,86 @@
+{
+  "style_code": "NL-ARPG-SOFT-766DF2B7",
+  "generation_tool": "built-in image_gen",
+  "pixel_postprocessing": "none",
+  "samples": [
+    {
+      "name": "01-village-riverside",
+      "title": "村庄河岸场景",
+      "prompt": "Use case: stylized-concept. Create an art-direction approval sample for the existing NLI Soft Fantasy ARPG pack, style NL-ARPG-SOFT-766DF2B7. Follow the supplied references for style only: finely finished 2D hand-painted fantasy game art, thin warm dark outlines, soft painterly volumes, warm upper-left light, cream limestone and restrained gold with cobalt-blue accents, lush natural greens, readable rounded shapes. Clearly painted illustration, not glossy plastic 3D, not pixel art, not photorealistic. No captions, letters, logos, watermark or user interface. Keep the entire subject inside the frame.\nAsset type: one cohesive landscape gameplay-environment concept illustration, wide landscape composition. Elevated top-down three-quarter view, consistent across the entire scene, designed for a 2D top-down adventure. Show a compact friendly village beside a turquoise river: two cream-stone cottages with cobalt tile roofs and wooden doors; connected pale dirt paths with a clear T-junction, a wooden bridge visibly joining both riverbanks, one small grassy raised terrace reached by stone steps, rounded broadleaf trees, low bushes, flowers, a wooden fence and a sign with no writing. Make traversable paths wide and uncluttered and clearly distinguish walkable ground from water and cliff edges. Water flows across the scene with continuous natural banks, near and far banks visible. Arrange all elements as a believable explorable area rather than an isolated floating island or an inventory board. Terrain and buildings share the same illustrative material quality as the reference castle, without gold covering every surface. No characters. Fill the image with the environment; no sky or horizon. This is a scene-composition approval sample, not a claimed seamless tile sheet.",
+      "original_generation_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-8de0c92b-a923-4d78-8dac-49695172612f.png",
+      "reference_images": [
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Castle_Small.png"
+      ],
+      "status": "art_direction_sample",
+      "limitations": "场景构图样图；尚未拆为拼接模块或验证游戏碰撞。",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "6a9daeaa269ac3996c9f1dbcc33f6cf0d40cbc3dbeb2bbd67f4e37c5ae25e808",
+      "alpha_extrema": null
+    },
+    {
+      "name": "02-dungeon-puzzle-room",
+      "title": "地牢机关房",
+      "prompt": "Use case: stylized-concept. Create an art-direction approval sample for the existing NLI Soft Fantasy ARPG pack, style NL-ARPG-SOFT-766DF2B7. Follow the supplied references for style only: finely finished 2D hand-painted fantasy game art, thin warm dark outlines, soft painterly volumes, warm upper-left light, cream limestone and restrained gold with cobalt-blue accents, lush natural greens, readable rounded shapes. Clearly painted illustration, not glossy plastic 3D, not pixel art, not photorealistic. No captions, letters, logos, watermark or user interface. Keep the entire subject inside the frame.\nAsset type: one cohesive gameplay environment concept, wide landscape view. An entire small rectangular puzzle room viewed from an elevated top-down three-quarter camera. Roof removed; low cutaway foreground walls so floor layout remains completely visible. Warm cream weathered stone floor and blue-gray stone walls, soft torchlight, cobalt banners and restrained gold hardware, matching the references. Make a simple visually comprehensible push-block puzzle: entrance centered in foreground, one square wooden push crate in a clear corridor, a slightly recessed square pressure plate nearby, a thin gold inlay along the floor connecting that plate to a barred doorway on the rear wall. On a separate safely reachable alcove place a closed blue-and-gold treasure chest matching reference 2. Add a small side pit with a short stone bridge and a pair of retracted spike traps visibly recessed in floor sockets. Enough open floor for movement. Only a few props; player readability is paramount. Render a usable architectural room with continuous floor, clear wall corners and clean doorway alignments, no characters, no exploded view, no floating pedestal, no labels. This image is an environment and puzzle-art approval concept, not a validated engine-level map.",
+      "original_generation_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-b36cf732-78cc-46ff-89b7-97c335c63b5c.png",
+      "reference_images": [
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Castle_Small.png",
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Consumables/Chest_Blue.png"
+      ],
+      "status": "art_direction_sample",
+      "limitations": "场景构图样图；尚未拆为拼接模块或验证游戏碰撞。",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "9072b70cf4147549c9a60b673a569b90b3026fdd9400f8697de7c59bcba03957",
+      "alpha_extrema": null
+    },
+    {
+      "name": "03-hero-four-directions",
+      "title": "主角四方向设定",
+      "prompt": "Use case: stylized-concept. Create an art-direction approval sample for the existing NLI Soft Fantasy ARPG pack, style NL-ARPG-SOFT-766DF2B7. Follow the supplied references for style only: finely finished 2D hand-painted fantasy game art, thin warm dark outlines, soft painterly volumes, warm upper-left light, cream limestone and restrained gold with cobalt-blue accents, lush natural greens, readable rounded shapes. Clearly painted illustration, not glossy plastic 3D, not pixel art, not photorealistic. No captions, letters, logos, watermark or user interface. Keep the entire subject inside the frame.\nAsset type: transparent character direction model sheet, exactly four full-body views arranged evenly in one horizontal row on one transparent canvas. Keep the precise same chibi cream-and-gold armored knight identity from reference 1: sealed helmet, golden flame-shaped crest, cobalt scarf and short cape, brown gloves and boots, cream armor, sword held in anatomical right hand and blue-gold shield in anatomical left hand. Four views in reading order: directly facing the viewer (south), directly facing away showing back of helmet and cape (north), full left-facing profile (west), full right-facing profile (east). All four are calm neutral standing idle poses, identical character proportions, same helmet and crest shape, same scale, feet precisely on a common baseline, generous empty separation and margins. Slightly elevated adventure-game viewing angle consistently maintained, not dramatic perspective. Back view must show the back, not a duplicate front. Side views must preserve correct equipment ownership rather than mechanically swapping hands: show appropriate occlusion. No extra views or action poses. Real transparent alpha background and gaps, no floor, no cast ground shadow, no checkerboard pattern, no drawn grid or borders. This is a four-direction design consistency sample, not a finished walk animation.",
+      "original_generation_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-c1a9e40b-3994-4806-ae5d-6038f38fc2e6.png",
+      "reference_images": [
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row01_Pose01.png"
+      ],
+      "status": "art_direction_sample",
+      "limitations": "四方向造型设定；未校准为动画帧，装备遮挡与脚底对齐仍需制作验证。",
+      "dimensions": [
+        1983,
+        793
+      ],
+      "mode": "RGBA",
+      "sha256": "78a07fba59cc40f19d26dc572d6c90b4d195bcb39f8ebc216f4490264831b667",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "name": "04-chest-three-states-clean",
+      "title": "宝箱三状态",
+      "prompt": "Use case: stylized-concept. Generate a NEW clean three-state sprite reference sheet of the blue and gold chest in the supplied STYLE reference. Exactly THREE separate chests across a wide horizontal canvas: CLOSED, OPEN WITH COINS, OPEN EMPTY. Do not write those labels. Equal base size, same three-quarter camera, same ground baseline, completely matching chest architecture, generous margins and separation. Hand-painted 2D warm fantasy game sprite style, crisp fine warm dark contours, blue enamel wood and gold hardware, soft material shading on the objects themselves. Left chest lid shut and locked. Middle lid opened backward showing ordinary opaque gold coins and one blue gem. Right lid opened backward at the same angle but completely empty with plain dark brown wooden interior. The treasure does NOT emit any light. All illumination comes from a normal upper-left diffuse light source. CRITICAL: objects only. Absolutely NO glow, NO halo, NO mist, NO atmosphere, NO backdrop, NO shadow beneath or behind the chests, NO light rays, NO vignette, NO floor, NO checkerboard, NO text. Everything outside the three clean silhouettes is zero-alpha transparent. Solid chest surfaces are fully opaque. Keep all lid tips and all bases entirely inside the canvas.",
+      "original_generation_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-db938374-7f0d-43a6-8c42-3f5fe1ee62c0.png",
+      "reference_images": [
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Consumables/Chest_Blue.png"
+      ],
+      "status": "art_direction_sample",
+      "limitations": "三状态造型对照；尚未拆图或校准相同脚底锚点。",
+      "dimensions": [
+        1993,
+        789
+      ],
+      "mode": "RGBA",
+      "sha256": "32c2ebd05182851a4ab5b6fd9c1e88e0fba03eba65502782313023b08c0880ef",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    }
+  ]
+}
