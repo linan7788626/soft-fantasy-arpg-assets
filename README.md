@@ -87,3 +87,7 @@ This repository contains **art assets only** — no PyQuest game runtime code wa
 
 - **0.2.1** (2026-10-28) — Added NPC Elder (`Sprites/Characters/NPCs/NPC_Elder.png`, 1254×1254, single static standing pose: cream robe, blue-gold shoulder cape, white beard, wooden staff).
 - **0.2.0** — Full redraw of 219 legacy assets; 4 approved originals retained.
+
+## Dungeon module kit + walking-cycle test
+
+[Open the interactive prototype](Prototypes/DungeonWalk/index.html): three layouts assembled from 8 independent dungeon modules, plus a calibrated east-facing six-frame walk cycle. Includes collision-grid inspection, crate/plate gate test, pause/step/FPS and light/dark/checker backgrounds. [Kit guide and limitations](Assets/NLI_Prototype_Kit/README.md). The 224-sprite base pack remains unchanged.

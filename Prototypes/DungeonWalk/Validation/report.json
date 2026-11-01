@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "checks": [
+    "9 native images loaded offline",
+    "three room layouts",
+    "pause and single frame step",
+    "6 frame timed loop",
+    "crate pushes and plate opens door",
+    "perimeter collision and opened gate passage",
+    "dark/light/checker backgrounds"
+  ],
+  "errors": []
+}

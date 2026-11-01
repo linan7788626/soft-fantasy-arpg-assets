@@ -1,0 +1,96 @@
+{
+  "tool": "built-in image_gen",
+  "pixel_postprocessing": "none",
+  "records": [
+    {
+      "id": "floor",
+      "prompt": "Use case: stylized-concept. Production modular 2D top-down fantasy adventure game sprite. Match the supplied approved NLI dungeon reference: finely painted cream limestone, desaturated blue-gray stone, restrained gold details, thin warm dark outlines, soft upper-left lighting. Smooth hand-painted raster game art, not pixels, not plastic 3D. Orthographic adventure-game perspective, horizontal screen X and vertical screen Y, no diamond-isometric skew. No text, no labels, no watermark. No surrounding scenery. One square seamless repeating floor texture filling the entire canvas edge to edge, viewed DIRECTLY from above. Uniform gently weathered creamy limestone paving stones in an orderly grid. Continuous flat surface with subtle joints. All four edges must repeat seamlessly. No outside border, no bevel around the whole image, no vignette, no dramatic shading, no moss, no objects or shadows. Entirely opaque.",
+      "references": [
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Samples/2026-10-30/02-dungeon-puzzle-room.png"
+      ],
+      "original_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-0e7f8b0e-b446-4e61-944e-a7f9b376f76b.png",
+      "delivered_file": "Sprites/Floor_Limestone.png",
+      "sha256": "c766a497efc04a025e7b60ff3d38156a107fa804ce00315947d2dd76523106ec"
+    },
+    {
+      "id": "wall",
+      "prompt": "Use case: stylized-concept. Production modular 2D top-down fantasy adventure game sprite. Match the supplied approved NLI dungeon reference: finely painted cream limestone, desaturated blue-gray stone, restrained gold details, thin warm dark outlines, soft upper-left lighting. Smooth hand-painted raster game art, not pixels, not plastic 3D. Orthographic adventure-game perspective, horizontal screen X and vertical screen Y, no diamond-isometric skew. No text, no labels, no watermark. No surrounding scenery. One straight horizontal repeating wall segment, isolated on true transparent background. A low rectangular stone wall with a blue-gray top cap and a cream front face, seen from slightly above. It runs exactly screen left to right, front face parallel to image edge. Roughly four times wider than high. Both left and right ends are flat vertical cuts at same height and same stone material for extension. No protruding corners, no pillar, no gold finials, no decorative end caps. Short consistent rows of stone bricks. Full silhouette centered with margin, no ground or cast shadow.",
+      "references": [
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Samples/2026-10-30/02-dungeon-puzzle-room.png"
+      ],
+      "original_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-6e1951f2-f15b-4519-8e7c-1503870f15da.png",
+      "delivered_file": "Sprites/Wall_Horizontal.png",
+      "sha256": "45f670871219b6f580dbeaa40050e755779760ef59766801e7ff3a01d9321f8e"
+    },
+    {
+      "id": "sidewall",
+      "prompt": "Use case: stylized-concept. Production modular 2D top-down fantasy adventure game sprite. Match the supplied approved NLI dungeon reference: finely painted cream limestone, desaturated blue-gray stone, restrained gold details, thin warm dark outlines, soft upper-left lighting. Smooth hand-painted raster game art, not pixels, not plastic 3D. Orthographic adventure-game perspective, horizontal screen X and vertical screen Y, no diamond-isometric skew. No text, no labels, no watermark. No surrounding scenery. One straight vertical repeating side-wall segment, isolated on true transparent background. It runs exactly screen top to bottom in a top-down adventure game, with blue-gray stone top surface on the left and a narrow cream inner wall face on the RIGHT. Rectangular silhouette, about four times taller than wide. Flat matching ends so segments can extend. No diagonal isometric orientation, no pillar, no ornate endcaps, no floor and no external shadow. Center with complete transparent margins.\nTechnical cutout rule overrides atmospheric rendering: clean object-only sprite with genuinely zero-alpha background. Uniform diffuse illumination ON the object. NO atmosphere, ambient glow, golden aura, background colors, ground shadow, fog, dark backdrop or gradient. Solid stone and metal are 100% opaque, only contour antialiasing partially transparent. The reference image is a clean cutout: use its same clean silhouette treatment. Transparent empty arch opening if applicable.",
+      "references": [
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Castle_Small.png"
+      ],
+      "original_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-0f253abb-757d-43c1-8518-b0a0fda763a7.png",
+      "delivered_file": "Sprites/Wall_Vertical_v2.png",
+      "sha256": "6c43adadfd2b9758b4159ef293fe26c4fdf48c7d79e1077c01d00469ce7a46da"
+    },
+    {
+      "id": "pillar",
+      "prompt": "Use case: stylized-concept. Production modular 2D top-down fantasy adventure game sprite. Match the supplied approved NLI dungeon reference: finely painted cream limestone, desaturated blue-gray stone, restrained gold details, thin warm dark outlines, soft upper-left lighting. Smooth hand-painted raster game art, not pixels, not plastic 3D. Orthographic adventure-game perspective, horizontal screen X and vertical screen Y, no diamond-isometric skew. No text, no labels, no watermark. No surrounding scenery. One small square limestone wall connection pillar, isolated on true transparent background. Simple squat stone pier with blue-gray square top cap and cream front and right faces, a very thin gold band just under cap. Used to cover joins of low modular dungeon walls. Compact silhouette, not a tall tower, no spike or flame, no floor and no exterior shadow. Slightly elevated top-down game view. Full object with clear margins.\nTechnical cutout rule overrides atmospheric rendering: clean object-only sprite with genuinely zero-alpha background. Uniform diffuse illumination ON the object. NO atmosphere, ambient glow, golden aura, background colors, ground shadow, fog, dark backdrop or gradient. Solid stone and metal are 100% opaque, only contour antialiasing partially transparent. The reference image is a clean cutout: use its same clean silhouette treatment. Transparent empty arch opening if applicable.",
+      "references": [
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Castle_Small.png"
+      ],
+      "original_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-89a381cd-e7b6-4d9c-a532-956a51cdc6a7.png",
+      "delivered_file": "Sprites/Pillar_Connector_v2.png",
+      "sha256": "eba3b547c70c839cdf1a2c0c165fdafeae633b6ef86664a24166aaa3574d4549"
+    },
+    {
+      "id": "door_closed",
+      "prompt": "Use case: stylized-concept. Production modular 2D top-down fantasy adventure game sprite. Match the supplied approved NLI dungeon reference: finely painted cream limestone, desaturated blue-gray stone, restrained gold details, thin warm dark outlines, soft upper-left lighting. Smooth hand-painted raster game art, not pixels, not plastic 3D. Orthographic adventure-game perspective, horizontal screen X and vertical screen Y, no diamond-isometric skew. No text, no labels, no watermark. No surrounding scenery. One front-facing arched doorway as a complete isolated sprite on true transparency. Cream limestone arch with cobalt and gold iron barred door CLOSED inside. A rectangular threshold at bottom. Straight frontal wall alignment, lightly elevated view, no diagonal perspective. Single entrance, completely visible frame and top. No side walls, floor, torches, banners or shadow beyond silhouette.\nTechnical cutout rule overrides atmospheric rendering: clean object-only sprite with genuinely zero-alpha background. Uniform diffuse illumination ON the object. NO atmosphere, ambient glow, golden aura, background colors, ground shadow, fog, dark backdrop or gradient. Solid stone and metal are 100% opaque, only contour antialiasing partially transparent. The reference image is a clean cutout: use its same clean silhouette treatment. Transparent empty arch opening if applicable.",
+      "references": [
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Castle_Small.png"
+      ],
+      "original_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-be16cf11-e6f8-4147-a4f4-af152ef62ed1.png",
+      "delivered_file": "Sprites/Door_Closed_v2.png",
+      "sha256": "5641d978016a076fe522c6c0f836521d4764c94c6132a47b442177040b351959"
+    },
+    {
+      "id": "door_open",
+      "prompt": "Edit this clean transparent gate sprite into its OPEN state. Preserve the stone arch, pillars, blue banner, gold finial, frame silhouette, threshold, camera, exact proportions and position. Remove only the two blue door leaves and all bars inside the arch. Inside the doorway must be truly transparent zero alpha, showing nothing. No interior scene, glow, dark color, fog or shadow in the doorway. The outside background stays fully transparent. All stone and gold surfaces stay opaque. Do not redesign any frame or ornaments. One complete isolated open gate, no text.",
+      "references": [
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Assets/NLI_Prototype_Kit/Sprites/Door_Closed_v2.png"
+      ],
+      "original_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-2dfe0e2e-2140-4fc1-9ba3-e4670053dd46.png",
+      "delivered_file": "Sprites/Door_Open_v2.png",
+      "sha256": "c05470840cbc7a488b73726fd7a949548b39cc86f854a2189cbff52fd8f4defa"
+    },
+    {
+      "id": "crate",
+      "prompt": "Use case: stylized-concept. Production modular 2D top-down fantasy adventure game sprite. Match the supplied approved NLI dungeon reference: finely painted cream limestone, desaturated blue-gray stone, restrained gold details, thin warm dark outlines, soft upper-left lighting. Smooth hand-painted raster game art, not pixels, not plastic 3D. Orthographic adventure-game perspective, horizontal screen X and vertical screen Y, no diamond-isometric skew. No text, no labels, no watermark. No surrounding scenery. One isolated square wooden push crate with iron corner rivets and diagonal reinforcement planks. Top-down slightly elevated adventure-game camera, front face parallel to screen horizontal. Warm brown wood, thick readable silhouette, slight visible top. True transparent background with generous clear margins. No floor, no background shadow, no light halo. Complete crate.\nObject ONLY, clean zero-alpha outside contour, no environmental effects, no gradient or shadow anywhere outside the object, neutral diffuse surface lighting. Ref is material style only.",
+      "references": [
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Castle_Small.png"
+      ],
+      "original_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-86486d4c-8e36-4331-a986-91a83029edcc.png",
+      "delivered_file": "Sprites/Crate_Push.png",
+      "sha256": "f9b9adb34c42f11e8a8d95c47014ec6e7a6c7b11fa7a9ff707e26b995c2074e0"
+    },
+    {
+      "id": "plate",
+      "prompt": "Use case: stylized-concept. Production modular 2D top-down fantasy adventure game sprite. Match the supplied approved NLI dungeon reference: finely painted cream limestone, desaturated blue-gray stone, restrained gold details, thin warm dark outlines, soft upper-left lighting. Smooth hand-painted raster game art, not pixels, not plastic 3D. Orthographic adventure-game perspective, horizontal screen X and vertical screen Y, no diamond-isometric skew. No text, no labels, no watermark. No surrounding scenery. Exactly one inactive square pressure plate for a dungeon puzzle. A flat blue-gray stone square tile inside a thin cream stone rim with a small restrained gold trim. Top-down view with a small visible front bevel. Axis aligned square, no diamond perspective. True transparent background, no floor beyond tile, no words, runes or connecting wires. Complete plate centered.\nObject ONLY, clean zero-alpha outside contour, no environmental effects, no gradient or shadow anywhere outside the object, neutral diffuse surface lighting. Ref is material style only.",
+      "references": [
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Castle_Small.png"
+      ],
+      "original_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-e45ddd95-8e5a-4cfa-9507-c1abe3ccffc6.png",
+      "delivered_file": "Sprites/Pressure_Plate.png",
+      "sha256": "f3e6856e3399328c11f3d30a5e01677327313bab5b6c8d2db868cbe45d6f6ea8"
+    },
+    {
+      "id": "walk",
+      "prompt": "Use case: stylized-concept. NEW production walking cycle. Reference supplies knight design only. SIX frames in a SINGLE HORIZONTAL ROW on a WIDE transparent sprite sheet. Exactly six identical chibi cream-gold helmeted knights with gold crest and blue cape, all viewed in RIGHT-FACING PROFILE, walking RIGHT. Never turn or mirror. Same equipment placement in all six: blue shield on the visible left arm, sword sheathed at belt, hands stay at waist or gently swing. No raised sword. The ONLY differences between frames are six successive cyclic leg poses and small arm/cape follow-through. Frame1 left foot forward/right backward;2 weight passing;3 right foot swinging forward;4 right foot forward/left backward;5 weight passing;6 left foot swinging forward. Visible feet, equal scale and fixed torso/head identity. Every figure completely inside its own equal-width cell, ample empty padding all sides and 8% extra at top/bottom. Shared foot ground baseline. No cell lines, numbers or words. Polished 2D softly painted NLI style. CRITICAL pure transparent zero-alpha background everywhere outside the silhouettes: absolutely no fog, no amber glow, no halo, no backdrop, no floor or shadow. Surfaces fully opaque. Art-direct for actual small game sprite motion, subtle restrained poses not six running leaps.",
+      "references": [
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row01_Pose01.png"
+      ],
+      "original_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-318353ad-2502-4ff4-868e-2b6afe55beaf.png",
+      "delivered_file": "Sprites/Hero_Walk_East_6.png",
+      "sha256": "4f04b5989a4843ec609a3193403d2d0477e9cdfb801da17a4efe9ae68260a827"
+    }
+  ]
+}

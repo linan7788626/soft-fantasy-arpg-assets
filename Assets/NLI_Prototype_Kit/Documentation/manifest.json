@@ -1,0 +1,287 @@
+{
+  "version": "0.1.0-prototype",
+  "style_code": "NL-ARPG-SOFT-766DF2B7",
+  "pixel_postprocessing": "none",
+  "assets": [
+    {
+      "id": "floor",
+      "file": "Sprites/Floor_Limestone.png",
+      "rect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "c766a497efc04a025e7b60ff3d38156a107fa804ce00315947d2dd76523106ec",
+      "logical_cell": 64,
+      "alpha": false
+    },
+    {
+      "id": "wall",
+      "file": "Sprites/Wall_Horizontal.png",
+      "rect": [
+        37,
+        209,
+        525,
+        293
+      ],
+      "native_size": [
+        2172,
+        724
+      ],
+      "sha256": "45f670871219b6f580dbeaa40050e755779760ef59766801e7ff3a01d9321f8e",
+      "logical_cell": 64,
+      "alpha": true
+    },
+    {
+      "id": "sidewall",
+      "file": "Sprites/Wall_Vertical_v2.png",
+      "rect": [
+        337,
+        57,
+        214,
+        412
+      ],
+      "native_size": [
+        887,
+        1774
+      ],
+      "sha256": "6c43adadfd2b9758b4159ef293fe26c4fdf48c7d79e1077c01d00469ce7a46da",
+      "logical_cell": 64,
+      "alpha": true
+    },
+    {
+      "id": "pillar",
+      "file": "Sprites/Pillar_Connector_v2.png",
+      "rect": [
+        398,
+        315,
+        485,
+        704
+      ],
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "eba3b547c70c839cdf1a2c0c165fdafeae633b6ef86664a24166aaa3574d4549",
+      "logical_cell": 64,
+      "alpha": true
+    },
+    {
+      "id": "door_closed",
+      "file": "Sprites/Door_Closed_v2.png",
+      "rect": [
+        117,
+        41,
+        1079,
+        1073
+      ],
+      "native_size": [
+        1312,
+        1199
+      ],
+      "sha256": "5641d978016a076fe522c6c0f836521d4764c94c6132a47b442177040b351959",
+      "logical_cell": 64,
+      "alpha": true
+    },
+    {
+      "id": "door_open",
+      "file": "Sprites/Door_Open_v2.png",
+      "rect": [
+        117,
+        40,
+        1079,
+        1076
+      ],
+      "native_size": [
+        1312,
+        1199
+      ],
+      "sha256": "c05470840cbc7a488b73726fd7a949548b39cc86f854a2189cbff52fd8f4defa",
+      "logical_cell": 64,
+      "alpha": true
+    },
+    {
+      "id": "crate",
+      "file": "Sprites/Crate_Push.png",
+      "rect": [
+        275,
+        259,
+        706,
+        794
+      ],
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "f9b9adb34c42f11e8a8d95c47014ec6e7a6c7b11fa7a9ff707e26b995c2074e0",
+      "logical_cell": 64,
+      "alpha": true
+    },
+    {
+      "id": "plate",
+      "file": "Sprites/Pressure_Plate.png",
+      "rect": [
+        306,
+        330,
+        642,
+        597
+      ],
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "f3e6856e3399328c11f3d30a5e01677327313bab5b6c8d2db868cbe45d6f6ea8",
+      "logical_cell": 64,
+      "alpha": true
+    }
+  ],
+  "walk": {
+    "file": "Sprites/Hero_Walk_East_6.png",
+    "direction": "east",
+    "fps": 8,
+    "frames": [
+      {
+        "index": 0,
+        "rect": [
+          7,
+          114,
+          380,
+          516
+        ],
+        "pivot": [
+          0.5921052631578947,
+          0.9922480620155039
+        ],
+        "foot_y": 626,
+        "core_bbox": [
+          11,
+          118,
+          383,
+          626
+        ]
+      },
+      {
+        "index": 1,
+        "rect": [
+          390,
+          115,
+          350,
+          516
+        ],
+        "pivot": [
+          0.5714285714285714,
+          0.9922480620155039
+        ],
+        "foot_y": 627,
+        "core_bbox": [
+          394,
+          119,
+          736,
+          627
+        ]
+      },
+      {
+        "index": 2,
+        "rect": [
+          746,
+          114,
+          345,
+          517
+        ],
+        "pivot": [
+          0.5869565217391305,
+          0.9922630560928434
+        ],
+        "foot_y": 627,
+        "core_bbox": [
+          750,
+          118,
+          1087,
+          627
+        ]
+      },
+      {
+        "index": 3,
+        "rect": [
+          1102,
+          114,
+          348,
+          517
+        ],
+        "pivot": [
+          0.5876436781609196,
+          0.9922630560928434
+        ],
+        "foot_y": 627,
+        "core_bbox": [
+          1106,
+          118,
+          1446,
+          627
+        ]
+      },
+      {
+        "index": 4,
+        "rect": [
+          1464,
+          114,
+          350,
+          517
+        ],
+        "pivot": [
+          0.5814285714285714,
+          0.9922630560928434
+        ],
+        "foot_y": 627,
+        "core_bbox": [
+          1468,
+          118,
+          1810,
+          627
+        ]
+      },
+      {
+        "index": 5,
+        "rect": [
+          1823,
+          112,
+          342,
+          518
+        ],
+        "pivot": [
+          0.5891812865497076,
+          0.9922779922779923
+        ],
+        "foot_y": 626,
+        "core_bbox": [
+          1827,
+          116,
+          2161,
+          626
+        ]
+      }
+    ],
+    "native_size": [
+      2172,
+      724
+    ],
+    "sha256": "4f04b5989a4843ec609a3193403d2d0477e9cdfb801da17a4efe9ae68260a827",
+    "note": "向右六帧循环测试；逐帧区域与脚底锚点已记录。当前不是四方向完整动画包。"
+  },
+  "assembly": "Floor repeat; independent perimeter segments; connector pillars at corners. Render rectangles do not rewrite source PNGs.",
+  "limits": [
+    "Floor is a repeating prototype texture, not a mathematically edge-identical autotile set.",
+    "Sidewall mirror is a preview assembly transform; lighting is not recomputed.",
+    "Unity import and production animation quality require engine-specific acceptance."
+  ],
+  "validation": {
+    "browser_report": "../../../Prototypes/DungeonWalk/Validation/report.json",
+    "visual_review": "Three room screenshots and six-frame strips inspected; module scale corrected before final validation.",
+    "animation_scope": "One east-facing six-frame prototype loop; no four-direction production animation claim."
+  }
+}
