@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "checks": [
+    "idle frame frozen",
+    "real movement advances frames",
+    "stopping returns to idle",
+    "blocked movement stays idle",
+    "repeat push cannot teleport",
+    "crate has intermediate positions",
+    "hero follows crate",
+    "plate activates after movement",
+    "door uses a wall gap",
+    "three layouts open/closed screenshots"
+  ]
+}

@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test:kit": "npm run build:preview && node Tools/kit-tests/browser.mjs && node Tools/kit-tests/isolated-preview.mjs",
+    "test:kit": "npm run build:preview && node Tools/kit-tests/browser.mjs && node Tools/kit-tests/isolated-preview.mjs && node Tools/kit-tests/preview-feedback.mjs",
     "build:preview": "node Tools/build-preview.mjs"
   },
   "devDependencies": {
