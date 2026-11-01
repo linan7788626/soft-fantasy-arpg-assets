@@ -1,1 +1,12 @@
-{"name":"nli-soft-fantasy-assets","private":true,"type":"module","scripts":{"test:kit":"node Tools/kit-tests/browser.mjs"},"devDependencies":{"playwright":"1.63.0"}}
+{
+  "name": "nli-soft-fantasy-assets",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:kit": "npm run build:preview && node Tools/kit-tests/browser.mjs && node Tools/kit-tests/isolated-preview.mjs",
+    "build:preview": "node Tools/build-preview.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}

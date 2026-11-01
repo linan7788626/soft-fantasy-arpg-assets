@@ -4,7 +4,7 @@
 
 ## 预览
 
-离线打开仓库根目录 `Prototypes/DungeonWalk/index.html`：战斗大厅、L形回廊、机关房；方向键/WASD移动，E推动木箱；暂停、逐帧、2–14FPS、深浅/棋盘背景与脚底线。机关房将木箱从(5,4)推到(7,4)会开启门；该页是素材测试场，不是完整战斗游戏。
+预览HTML已内嵌全部9张PNG，可单独复制出去打开，不依赖上级 Assets 路径。离线打开仓库根目录 `Prototypes/DungeonWalk/index.html`：战斗大厅、L形回廊、机关房；方向键/WASD移动，E推动木箱；暂停、逐帧、2–14FPS、深浅/棋盘背景与脚底线。机关房将木箱从(5,4)推到(7,4)会开启门；该页是素材测试场，不是完整战斗游戏。
 
 ## 坐标与使用
 
@@ -16,7 +16,7 @@
 
 ## 测试
 
-安装开发依赖后运行 `npm run test:kit`；首次需要 `npx playwright install chromium`。重新生成坐标清单需 Python 的 Pillow、NumPy、SciPy，运行 `python3 Tools/build_prototype_kit.py`。截图及浏览器报告位于 `Prototypes/DungeonWalk/Validation/`。
+安装开发依赖后运行 `npm run test:kit`；首次需要 `npx playwright install chromium`。重新生成坐标清单需 Python 的 Pillow、NumPy、SciPy，运行 `python3 Tools/build_prototype_kit.py`，再运行 `npm run build:preview` 更新单文件预览。截图及浏览器报告位于 `Prototypes/DungeonWalk/Validation/`。
 
 ## 当前边界
 
