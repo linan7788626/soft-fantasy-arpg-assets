@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "direction": "east",
+      "idle": 1,
+      "stripDigest": "e6494d720c4395c2c31b151ddbec4d1cc16f2b61acf2bd586953c8d40b6b78cf"
+    },
+    {
+      "direction": "south",
+      "idle": 1,
+      "stripDigest": "c4f4a1366a4e062982284c121681b50f9c0267cb99234c2d9953a80bc3feeb07"
+    },
+    {
+      "direction": "west",
+      "idle": 1,
+      "stripDigest": "c934c1d6a81138d10417d20d3acd0f5581002a7b5950f1339d832a32370363ab"
+    },
+    {
+      "direction": "north",
+      "idle": 1,
+      "stripDigest": "5b73736bf17bf8080a386e11ffbef338638fabb1ad0e1a8b5f7b02c901165246"
+    }
+  ],
+  "dynamicChecks": [
+    "actual input selects four directions",
+    "walking advances then freezes on idle",
+    "light/dark/checker composites",
+    "settled crate presses plate and opens gate",
+    "leaving plate releases state and closes gate"
+  ]
+}

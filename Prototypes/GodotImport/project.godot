@@ -1,0 +1,15 @@
+; Rebuild Art/ with npm run build:godot before importing.
+config_version=5
+
+[application]
+config/name="NLI — Native Import Trial"
+run/main_scene="res://main.tscn"
+
+[display]
+window/size/viewport_width=1120
+window/size/viewport_height=780
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=false
+environment/defaults/default_clear_color=Color(0.09,0.17,0.21,1)

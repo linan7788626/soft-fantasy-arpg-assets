@@ -90,6 +90,8 @@ This repository contains **art assets only** — no PyQuest game runtime code wa
 
 ## Dungeon module kit + walking-cycle test
 
-[Open the interactive prototype](Prototypes/DungeonWalk/index.html): three layouts assembled from 8 independent dungeon modules, plus a calibrated east-facing six-frame walk cycle. Includes collision-grid inspection, crate/plate gate test, pause/step/FPS and light/dark/checker backgrounds. [Kit guide and limitations](Assets/NLI_Prototype_Kit/README.md). The 224-sprite base pack remains unchanged.
+[Open the interactive prototype](Prototypes/DungeonWalk/index.html): three layouts assembled from 9 dungeon/state modules, plus four independent six-frame directional walk strips. Includes movement-driven animation, paused idle frames, smooth crate pushes, plate press/release, gate transitions, direction/step/FPS controls and light/dark/checker backgrounds. This is a small animation trial with remaining gait/detail refinements. [Kit guide and limitations](Assets/NLI_Prototype_Kit/README.md). The 224-sprite base pack remains unchanged.
 
 The dungeon prototype HTML now embeds all required images, so it can be copied and opened on its own. Run `npm run build:preview` after changing its source/manifest; `npm run test:kit` verifies both a full checkout and preview-only hosting.
+
+[Godot import trial](Prototypes/GodotImport/README.md): `npm run build:godot` stages byte-identical native images for the included Godot 4 project; `npm run test:godot` checks real engine resource import, directional animation and mechanism state transitions. This does not establish Unity Editor acceptance or complete game integration.

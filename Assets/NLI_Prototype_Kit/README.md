@@ -1,26 +1,29 @@
-# NLI 地牢基础套件与行走循环测试 v0.1
+# NLI 地牢基础套件与四方向动作试验 v0.2
 
-本批包含8个模块PNG（地板、横墙、侧墙、连接柱、关门、开门、木箱组、压力板）和1张向右6帧行走原生图集。画风参照已认可的2号地牢、3号主角。原有224项素材保持独立，不覆盖原包。
+本套件包含9个模块PNG（地板、横墙、侧墙、连接柱、关门、开门、木箱组、压力板松开/按下）和4张四方向6帧行走原生图集，共13张原图、24帧行走。2026-11-02新增向上、向下、向左和按下压力板4张原图，沿用已认可的向右图。画风参照2号地牢、3号主角。原有224项素材保持独立，不覆盖原包。
 
 ## 预览
 
-预览HTML已内嵌全部9张PNG，可单独复制出去打开，不依赖上级 Assets 路径。离线打开仓库根目录 `Prototypes/DungeonWalk/index.html`：战斗大厅、L形回廊、机关房；方向键/WASD移动，E推动木箱；暂停、逐帧、2–14FPS、深浅/棋盘背景与脚底线。机关房将木箱从(5,4)推到(7,4)会开启门；该页是素材测试场，不是完整战斗游戏。
+预览HTML已内嵌全部13张PNG，可单独复制出去打开，不依赖上级 Assets 路径。离线打开仓库根目录 `Prototypes/DungeonWalk/index.html`：战斗大厅、L形回廊、机关房；方向键/WASD移动，E推动木箱；朝向选择、暂停、逐帧、2–14FPS、深浅/棋盘背景与脚底线。机关房将木箱从(5,4)推到(7,4)会开启门，继续推离会复位。页面下方可直接比较压力板两状态；该页是素材测试场，不是完整战斗游戏。
 
 ## 坐标与使用
 
 - `Documentation/manifest.json` 是游戏导入依据。`rect=[x,y,width,height]` 用原图左上角坐标，PNG没有裁切、去底、缩放或二次绘制。
 - 横墙/侧墙分别取长条原图的1/4作为重复段，避免把整根长墙压缩到一格；连接柱用于转角接合。地板重复使用原生纹理。所有拼装只发生在预览渲染中。
 - 网格预览64逻辑像素/格。运行时碰撞使用网格，与图片透明留白分离；木箱组占一格。墙体画面采用模块接合，不等同于完整自动铺砖系统。
-- 行走原图的六个轮廓并非均匀格子，清单逐帧记录实际区域与归一化Pivot，避免按等宽切片截断披风。Pivot以头盔水平参考与脚底线校准。默认8FPS；当前只有向右循环，其他方向动画未制作。
-- 只读分析识别轮廓以生成metadata，不改原PNG；工具路径、实际提示词、参考图与哈希见 `generation-records.json`。
+- 行走原图的六个轮廓并非均匀格子，清单逐帧记录实际区域与归一化Pivot，避免按等宽切片截断披风。Pivot以头盔水平参考与脚底线校准。默认8FPS；四方向分别使用独立原图，不做左右镜像。静止时固定为对应方向第2帧，只有实际位移或主动“动作演示”才播放。
+- `walks` 为四方向数据；保留 `walk` 作为向右数据的兼容入口。`mechanisms.plate` 记录两状态对应素材。图片透明边界不作为碰撞边界。
+- 只读分析识别轮廓以生成metadata，不改原PNG；首批工具记录见 `generation-records.json`，本批实际提示词、参考图、原始输出与哈希见 `round2-generation.json`。
 
 ## 测试
 
-安装开发依赖后运行 `npm run test:kit`；首次需要 `npx playwright install chromium`。重新生成坐标清单需 Python 的 Pillow、NumPy、SciPy，运行 `python3 Tools/build_prototype_kit.py`，再运行 `npm run build:preview` 更新单文件预览。截图及浏览器报告位于 `Prototypes/DungeonWalk/Validation/`。
+安装开发依赖后运行 `npm run test:kit`；首次需要 `npx playwright install chromium`。重新生成坐标清单需 Python 的 Pillow、NumPy、SciPy，运行 `python3 Tools/build_prototype_kit.py`，再运行 `npm run build:preview` 更新单文件预览。原图/透明边界/坐标检查运行 `python3 Tools/kit-tests/native_art.py`。截图及浏览器报告位于 `Prototypes/DungeonWalk/Validation/`。
+
+实际引擎试验入口为 `Prototypes/GodotImport/project.godot`。先运行 `npm run build:godot` 复制原生图像与清单，再使用 Godot 4.x 打开；`npm run test:godot` 执行真实引擎导入与状态检查，`GODOT_RENDER=1 npm run test:godot` 另保存渲染截图。引擎报告独立保存在 `Prototypes/GodotImport/Validation/`。这不等同于 Unity Editor 验收，具体范围见该工程 README。
 
 ## 当前边界
 
-这是第一批可交互模块与动画测试。通过浏览器加载、布局、循环播放、逐帧、网格碰撞和推箱开门检查。地板尚非逐像素对边完全相同的自动拼接集，侧墙镜像不重新计算光照，行走尚需后续扩为完整四方向及更多动作。Unity纹理metadata用于基础导入；帧切分和Pivot以清单为准，未进行实际Unity Editor导入或动画控制器验收。
+这是可交互模块与四方向动作的小批量试验。地板尚非逐像素对边完全相同的自动拼接集，侧墙镜像不重新计算光照。待机复用行走静帧，没有独立呼吸循环；行走存在近似重复姿态及局部装饰/披风变化，仍需生产级步态精修。攻击、受击、推箱专用动作、其他机关与更多地牢尚未扩充。Unity纹理metadata仅用于基础单精灵导入；实际Unity Editor切帧与动画控制器未验收。Godot结果以独立引擎报告为准。
 
 ## 交互与拼装修订（2026-11-01）
 

@@ -10,7 +10,7 @@ const browser=await chromium.launch({headless:true});const page=await browser.ne
 const out=resolve('Prototypes/DungeonWalk/Validation');await mkdir(out,{recursive:true});
 try{
  await page.goto(pathToFileURL(resolve('Prototypes/DungeonWalk/index.html')).href);await page.waitForFunction(()=>window.KIT_TEST);
- assert.equal(await page.evaluate(()=>Object.keys(KIT_TEST.images).length),9);
+ assert.equal(await page.evaluate(()=>Object.keys(KIT_TEST.images).length),13);
  await page.locator('#play').click();const f=await page.evaluate(()=>KIT_TEST.state.frame);await page.locator('#step').click();assert.equal(await page.evaluate(()=>KIT_TEST.state.frame),(f+1)%6);
  for(const layout of ['hall','elbow','puzzle']){await page.locator('#layout').selectOption(layout);await page.waitForTimeout(60);assert.equal(await page.evaluate(()=>KIT_TEST.state.layout),layout);await page.locator('#stage').screenshot({path:out+'/'+layout+'.png'});}
  await page.locator('#layout').selectOption('hall');await page.evaluate(()=>{KIT_TEST.setPlayer(4.5,4.5);});await page.keyboard.press('e');await page.waitForFunction(()=>!KIT_TEST.state.pushing);assert.equal(await page.evaluate(()=>KIT_TEST.state.crate.x),6);await page.evaluate(()=>{KIT_TEST.setPlayer(5.5,4.5);});await page.keyboard.press('e');await page.waitForFunction(()=>!KIT_TEST.state.pushing);assert.equal(await page.evaluate(()=>KIT_TEST.state.door),true);
@@ -19,5 +19,5 @@ try{
  for(const background of ['light','checker','dark']){await page.locator('#background').selectOption(background);await page.waitForTimeout(30);await page.locator('#frames').screenshot({path:out+'/frames-'+background+'.png'});}
  await page.locator('#play').click();const before=await page.evaluate(()=>KIT_TEST.state.frame);await page.waitForTimeout(160);assert.notEqual(await page.evaluate(()=>KIT_TEST.state.frame),before);
  assert.deepEqual(errors,[]);
- const report={status:'passed',checks:['9 native images loaded offline','three room layouts','pause and single frame step','6 frame timed loop','crate pushes and plate opens door','perimeter collision and opened gate passage','dark/light/checker backgrounds'],errors};await writeFile(out+'/report.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
+ const report={status:'passed',checks:['13 native images loaded offline','three room layouts','pause and single frame step','6 frame timed loop','crate pushes and plate opens door','perimeter collision and opened gate passage','dark/light/checker backgrounds'],errors};await writeFile(out+'/report.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
 }finally{await browser.close();}

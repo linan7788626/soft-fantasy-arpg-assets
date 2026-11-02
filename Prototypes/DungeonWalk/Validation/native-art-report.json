@@ -1,0 +1,173 @@
+{
+  "status": "passed",
+  "pixel_postprocessing": "none",
+  "assets": [
+    {
+      "file": "Sprites/Floor_Limestone.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "c766a497efc04a025e7b60ff3d38156a107fa804ce00315947d2dd76523106ec"
+    },
+    {
+      "file": "Sprites/Wall_Horizontal.png",
+      "native_size": [
+        2172,
+        724
+      ],
+      "sha256": "45f670871219b6f580dbeaa40050e755779760ef59766801e7ff3a01d9321f8e",
+      "canvas_edge_max_alpha": 1,
+      "near_opaque_fraction_of_nonzero_alpha": 0.9693823750736589,
+      "core_median_alpha": 253.0
+    },
+    {
+      "file": "Sprites/Wall_Vertical_v2.png",
+      "native_size": [
+        887,
+        1774
+      ],
+      "sha256": "6c43adadfd2b9758b4159ef293fe26c4fdf48c7d79e1077c01d00469ce7a46da",
+      "canvas_edge_max_alpha": 0,
+      "near_opaque_fraction_of_nonzero_alpha": 0.9471730439748715,
+      "core_median_alpha": 253.0
+    },
+    {
+      "file": "Sprites/Pillar_Connector_v2.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "eba3b547c70c839cdf1a2c0c165fdafeae633b6ef86664a24166aaa3574d4549",
+      "canvas_edge_max_alpha": 0,
+      "near_opaque_fraction_of_nonzero_alpha": 0.965732171808457,
+      "core_median_alpha": 253.0
+    },
+    {
+      "file": "Sprites/Door_Closed_v2.png",
+      "native_size": [
+        1312,
+        1199
+      ],
+      "sha256": "5641d978016a076fe522c6c0f836521d4764c94c6132a47b442177040b351959",
+      "canvas_edge_max_alpha": 1,
+      "near_opaque_fraction_of_nonzero_alpha": 0.9597704179981416,
+      "core_median_alpha": 253.0
+    },
+    {
+      "file": "Sprites/Door_Open_v2.png",
+      "native_size": [
+        1312,
+        1199
+      ],
+      "sha256": "c05470840cbc7a488b73726fd7a949548b39cc86f854a2189cbff52fd8f4defa",
+      "canvas_edge_max_alpha": 1,
+      "near_opaque_fraction_of_nonzero_alpha": 0.9401394255244642,
+      "core_median_alpha": 253.0
+    },
+    {
+      "file": "Sprites/Crate_Push.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "f9b9adb34c42f11e8a8d95c47014ec6e7a6c7b11fa7a9ff707e26b995c2074e0",
+      "canvas_edge_max_alpha": 1,
+      "near_opaque_fraction_of_nonzero_alpha": 0.959979512576183,
+      "core_median_alpha": 253.0
+    },
+    {
+      "file": "Sprites/Pressure_Plate.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "f3e6856e3399328c11f3d30a5e01677327313bab5b6c8d2db868cbe45d6f6ea8",
+      "canvas_edge_max_alpha": 0,
+      "near_opaque_fraction_of_nonzero_alpha": 0.9584781197105993,
+      "core_median_alpha": 253.0
+    },
+    {
+      "file": "Sprites/Pressure_Plate_Pressed.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "f6de72c048f4aabcf9c6610d7a8a16e2e393f34d6ba3b715bd119685a86bd00d",
+      "canvas_edge_max_alpha": 0,
+      "near_opaque_fraction_of_nonzero_alpha": 0.9647985329104961,
+      "core_median_alpha": 253.0
+    },
+    {
+      "file": "Sprites/Hero_Walk_East_6.png",
+      "native_size": [
+        2172,
+        724
+      ],
+      "sha256": "4f04b5989a4843ec609a3193403d2d0477e9cdfb801da17a4efe9ae68260a827",
+      "canvas_edge_max_alpha": 1,
+      "near_opaque_fraction_of_nonzero_alpha": 0.8772560416029367,
+      "core_median_alpha": 253.0,
+      "frames": 6,
+      "raw_foot_y_range": [
+        626,
+        627
+      ],
+      "foot_anchor_error_px": 0
+    },
+    {
+      "file": "Sprites/Hero_Walk_South_6.png",
+      "native_size": [
+        2172,
+        724
+      ],
+      "sha256": "dcbed5487920281706901513147b3d690269e10bb2192a89fc4c2e495d495c65",
+      "canvas_edge_max_alpha": 0,
+      "near_opaque_fraction_of_nonzero_alpha": 0.8900862251545665,
+      "core_median_alpha": 253.0,
+      "frames": 6,
+      "raw_foot_y_range": [
+        617,
+        623
+      ],
+      "foot_anchor_error_px": 0
+    },
+    {
+      "file": "Sprites/Hero_Walk_West_6.png",
+      "native_size": [
+        2172,
+        724
+      ],
+      "sha256": "a5bed0e71a31635e89f85b5db792f524b662ebd9938e015c2f623a53ed2d4b97",
+      "canvas_edge_max_alpha": 2,
+      "near_opaque_fraction_of_nonzero_alpha": 0.905840136744022,
+      "core_median_alpha": 253.0,
+      "frames": 6,
+      "raw_foot_y_range": [
+        622,
+        628
+      ],
+      "foot_anchor_error_px": 0
+    },
+    {
+      "file": "Sprites/Hero_Walk_North_6.png",
+      "native_size": [
+        2172,
+        724
+      ],
+      "sha256": "65df2f6db944e8dd47d19d95de4ee59b425d37937558daa8f5002d7cf6bd907c",
+      "canvas_edge_max_alpha": 0,
+      "near_opaque_fraction_of_nonzero_alpha": 0.8895514804160283,
+      "core_median_alpha": 253.0,
+      "frames": 6,
+      "raw_foot_y_range": [
+        629,
+        631
+      ],
+      "foot_anchor_error_px": 0
+    }
+  ],
+  "limits": [
+    "Alpha bounds and metadata checks do not establish hand ownership or natural gait. See visual acceptance notes."
+  ]
+}

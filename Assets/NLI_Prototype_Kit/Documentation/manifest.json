@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0-prototype",
+  "version": "0.2.0-direction-trial",
   "style_code": "NL-ARPG-SOFT-766DF2B7",
   "pixel_postprocessing": "none",
   "assets": [
@@ -138,12 +138,30 @@
       "sha256": "f3e6856e3399328c11f3d30a5e01677327313bab5b6c8d2db868cbe45d6f6ea8",
       "logical_cell": 64,
       "alpha": true
+    },
+    {
+      "id": "plate_pressed",
+      "file": "Sprites/Pressure_Plate_Pressed.png",
+      "rect": [
+        306,
+        329,
+        643,
+        600
+      ],
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "f6de72c048f4aabcf9c6610d7a8a16e2e393f34d6ba3b715bd119685a86bd00d",
+      "logical_cell": 64,
+      "alpha": true
     }
   ],
   "walk": {
     "file": "Sprites/Hero_Walk_East_6.png",
     "direction": "east",
     "fps": 8,
+    "idle_frame": 1,
     "frames": [
       {
         "index": 0,
@@ -271,17 +289,564 @@
       724
     ],
     "sha256": "4f04b5989a4843ec609a3193403d2d0477e9cdfb801da17a4efe9ae68260a827",
-    "note": "向右六帧循环测试；逐帧区域与脚底锚点已记录。当前不是四方向完整动画包。"
+    "note": "六帧方向试验；待机固定为第2帧。逐帧区域和脚底锚点来自原图。"
+  },
+  "walks": {
+    "east": {
+      "file": "Sprites/Hero_Walk_East_6.png",
+      "direction": "east",
+      "fps": 8,
+      "idle_frame": 1,
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            7,
+            114,
+            380,
+            516
+          ],
+          "pivot": [
+            0.5921052631578947,
+            0.9922480620155039
+          ],
+          "foot_y": 626,
+          "core_bbox": [
+            11,
+            118,
+            383,
+            626
+          ]
+        },
+        {
+          "index": 1,
+          "rect": [
+            390,
+            115,
+            350,
+            516
+          ],
+          "pivot": [
+            0.5714285714285714,
+            0.9922480620155039
+          ],
+          "foot_y": 627,
+          "core_bbox": [
+            394,
+            119,
+            736,
+            627
+          ]
+        },
+        {
+          "index": 2,
+          "rect": [
+            746,
+            114,
+            345,
+            517
+          ],
+          "pivot": [
+            0.5869565217391305,
+            0.9922630560928434
+          ],
+          "foot_y": 627,
+          "core_bbox": [
+            750,
+            118,
+            1087,
+            627
+          ]
+        },
+        {
+          "index": 3,
+          "rect": [
+            1102,
+            114,
+            348,
+            517
+          ],
+          "pivot": [
+            0.5876436781609196,
+            0.9922630560928434
+          ],
+          "foot_y": 627,
+          "core_bbox": [
+            1106,
+            118,
+            1446,
+            627
+          ]
+        },
+        {
+          "index": 4,
+          "rect": [
+            1464,
+            114,
+            350,
+            517
+          ],
+          "pivot": [
+            0.5814285714285714,
+            0.9922630560928434
+          ],
+          "foot_y": 627,
+          "core_bbox": [
+            1468,
+            118,
+            1810,
+            627
+          ]
+        },
+        {
+          "index": 5,
+          "rect": [
+            1823,
+            112,
+            342,
+            518
+          ],
+          "pivot": [
+            0.5891812865497076,
+            0.9922779922779923
+          ],
+          "foot_y": 626,
+          "core_bbox": [
+            1827,
+            116,
+            2161,
+            626
+          ]
+        }
+      ],
+      "native_size": [
+        2172,
+        724
+      ],
+      "sha256": "4f04b5989a4843ec609a3193403d2d0477e9cdfb801da17a4efe9ae68260a827",
+      "note": "六帧方向试验；待机固定为第2帧。逐帧区域和脚底锚点来自原图。"
+    },
+    "south": {
+      "file": "Sprites/Hero_Walk_South_6.png",
+      "direction": "south",
+      "fps": 8,
+      "idle_frame": 1,
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            25,
+            114,
+            349,
+            513
+          ],
+          "pivot": [
+            0.5358166189111748,
+            0.9922027290448343
+          ],
+          "foot_y": 623,
+          "core_bbox": [
+            29,
+            118,
+            370,
+            623
+          ]
+        },
+        {
+          "index": 1,
+          "rect": [
+            379,
+            116,
+            346,
+            505
+          ],
+          "pivot": [
+            0.5187861271676301,
+            0.9920792079207921
+          ],
+          "foot_y": 617,
+          "core_bbox": [
+            383,
+            120,
+            721,
+            617
+          ]
+        },
+        {
+          "index": 2,
+          "rect": [
+            733,
+            115,
+            335,
+            509
+          ],
+          "pivot": [
+            0.5417910447761194,
+            0.9921414538310412
+          ],
+          "foot_y": 620,
+          "core_bbox": [
+            737,
+            119,
+            1064,
+            620
+          ]
+        },
+        {
+          "index": 3,
+          "rect": [
+            1076,
+            112,
+            348,
+            512
+          ],
+          "pivot": [
+            0.5244252873563219,
+            0.9921875
+          ],
+          "foot_y": 620,
+          "core_bbox": [
+            1080,
+            116,
+            1420,
+            620
+          ]
+        },
+        {
+          "index": 4,
+          "rect": [
+            1431,
+            116,
+            353,
+            505
+          ],
+          "pivot": [
+            0.5354107648725213,
+            0.9920792079207921
+          ],
+          "foot_y": 617,
+          "core_bbox": [
+            1435,
+            120,
+            1780,
+            617
+          ]
+        },
+        {
+          "index": 5,
+          "rect": [
+            1793,
+            113,
+            335,
+            511
+          ],
+          "pivot": [
+            0.5328358208955224,
+            0.9921722113502935
+          ],
+          "foot_y": 620,
+          "core_bbox": [
+            1797,
+            117,
+            2124,
+            620
+          ]
+        }
+      ],
+      "native_size": [
+        2172,
+        724
+      ],
+      "sha256": "dcbed5487920281706901513147b3d690269e10bb2192a89fc4c2e495d495c65",
+      "note": "六帧方向试验；待机固定为第2帧。逐帧区域和脚底锚点来自原图。"
+    },
+    "west": {
+      "file": "Sprites/Hero_Walk_West_6.png",
+      "direction": "west",
+      "fps": 8,
+      "idle_frame": 1,
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            29,
+            108,
+            353,
+            518
+          ],
+          "pivot": [
+            0.4121813031161473,
+            0.9922779922779923
+          ],
+          "foot_y": 622,
+          "core_bbox": [
+            33,
+            112,
+            378,
+            622
+          ]
+        },
+        {
+          "index": 1,
+          "rect": [
+            386,
+            108,
+            349,
+            524
+          ],
+          "pivot": [
+            0.3624641833810888,
+            0.9923664122137404
+          ],
+          "foot_y": 628,
+          "core_bbox": [
+            390,
+            112,
+            731,
+            628
+          ]
+        },
+        {
+          "index": 2,
+          "rect": [
+            749,
+            110,
+            340,
+            520
+          ],
+          "pivot": [
+            0.36617647058823527,
+            0.9923076923076923
+          ],
+          "foot_y": 626,
+          "core_bbox": [
+            753,
+            114,
+            1085,
+            626
+          ]
+        },
+        {
+          "index": 3,
+          "rect": [
+            1101,
+            110,
+            349,
+            522
+          ],
+          "pivot": [
+            0.3452722063037249,
+            0.9923371647509579
+          ],
+          "foot_y": 628,
+          "core_bbox": [
+            1105,
+            114,
+            1446,
+            628
+          ]
+        },
+        {
+          "index": 4,
+          "rect": [
+            1466,
+            109,
+            364,
+            523
+          ],
+          "pivot": [
+            0.36126373626373626,
+            0.9923518164435946
+          ],
+          "foot_y": 628,
+          "core_bbox": [
+            1470,
+            113,
+            1826,
+            628
+          ]
+        },
+        {
+          "index": 5,
+          "rect": [
+            1847,
+            113,
+            325,
+            518
+          ],
+          "pivot": [
+            0.41846153846153844,
+            0.9922779922779923
+          ],
+          "foot_y": 627,
+          "core_bbox": [
+            1851,
+            117,
+            2168,
+            627
+          ]
+        }
+      ],
+      "native_size": [
+        2172,
+        724
+      ],
+      "sha256": "a5bed0e71a31635e89f85b5db792f524b662ebd9938e015c2f623a53ed2d4b97",
+      "note": "六帧方向试验；待机固定为第2帧。逐帧区域和脚底锚点来自原图。"
+    },
+    "north": {
+      "file": "Sprites/Hero_Walk_North_6.png",
+      "direction": "north",
+      "fps": 8,
+      "idle_frame": 1,
+      "frames": [
+        {
+          "index": 0,
+          "rect": [
+            26,
+            93,
+            354,
+            541
+          ],
+          "pivot": [
+            0.4689265536723164,
+            0.9926062846580407
+          ],
+          "foot_y": 630,
+          "core_bbox": [
+            30,
+            97,
+            376,
+            630
+          ]
+        },
+        {
+          "index": 1,
+          "rect": [
+            383,
+            92,
+            332,
+            541
+          ],
+          "pivot": [
+            0.4879518072289157,
+            0.9926062846580407
+          ],
+          "foot_y": 629,
+          "core_bbox": [
+            387,
+            96,
+            711,
+            629
+          ]
+        },
+        {
+          "index": 2,
+          "rect": [
+            737,
+            95,
+            324,
+            539
+          ],
+          "pivot": [
+            0.5077160493827161,
+            0.9925788497217068
+          ],
+          "foot_y": 630,
+          "core_bbox": [
+            741,
+            99,
+            1057,
+            630
+          ]
+        },
+        {
+          "index": 3,
+          "rect": [
+            1091,
+            98,
+            343,
+            537
+          ],
+          "pivot": [
+            0.46647230320699706,
+            0.9925512104283054
+          ],
+          "foot_y": 631,
+          "core_bbox": [
+            1095,
+            102,
+            1430,
+            631
+          ]
+        },
+        {
+          "index": 4,
+          "rect": [
+            1452,
+            92,
+            346,
+            542
+          ],
+          "pivot": [
+            0.45809248554913296,
+            0.992619926199262
+          ],
+          "foot_y": 630,
+          "core_bbox": [
+            1456,
+            96,
+            1794,
+            630
+          ]
+        },
+        {
+          "index": 5,
+          "rect": [
+            1818,
+            98,
+            339,
+            536
+          ],
+          "pivot": [
+            0.46755162241887904,
+            0.9925373134328358
+          ],
+          "foot_y": 630,
+          "core_bbox": [
+            1822,
+            102,
+            2153,
+            630
+          ]
+        }
+      ],
+      "native_size": [
+        2172,
+        724
+      ],
+      "sha256": "65df2f6db944e8dd47d19d95de4ee59b425d37937558daa8f5002d7cf6bd907c",
+      "note": "六帧方向试验；待机固定为第2帧。逐帧区域和脚底锚点来自原图。"
+    }
+  },
+  "mechanisms": {
+    "plate": {
+      "released": "plate",
+      "pressed": "plate_pressed",
+      "trigger": "crate settled on plate; release after crate leaves",
+      "transition_ms": 120
+    }
   },
   "assembly": "Floor repeat; independent perimeter segments; connector pillars at corners. Render rectangles do not rewrite source PNGs.",
   "limits": [
     "Floor is a repeating prototype texture, not a mathematically edge-identical autotile set.",
     "Sidewall mirror is a preview assembly transform; lighting is not recomputed.",
-    "Unity import and production animation quality require engine-specific acceptance."
+    "Four-direction walking is a small-batch trial; idle reuses a still walk frame, not a separate breathing cycle.",
+    "Unity Editor import is not validated; Godot validation is reported separately."
   ],
   "validation": {
     "browser_report": "../../../Prototypes/DungeonWalk/Validation/report.json",
-    "visual_review": "Three room screenshots and six-frame strips inspected; module scale corrected before final validation.",
-    "animation_scope": "One east-facing six-frame prototype loop; no four-direction production animation claim."
+    "engine_report": "../../../Prototypes/GodotImport/Validation/report.json",
+    "visual_report": "Acceptance_2026-11-02.md"
   }
 }

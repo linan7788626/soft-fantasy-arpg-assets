@@ -1,0 +1,53 @@
+{
+  "tool": "built-in image_gen",
+  "pixel_postprocessing": "none",
+  "records": [
+    {
+      "id": "walk_north",
+      "prompt": "Generate a native transparent sprite strip: exactly SIX separate frames of the SAME knight walking NORTH, away from viewer. First image is the approved animation design and finish reference, second is identity reference only. Match cream ivory armor, gold flame helmet crest, blue cape, brown boots and gold-edged blue diamond shield. Sword stays SHEATHED at anatomical LEFT hip for ALL SIX frames (never drawn); shield stays attached to anatomical LEFT forearm, visible at SCREEN LEFT in rear view. Helmet rear completely closed, NO front visor on rear. All six figures face straight away from viewer, same elevated 3/4 orthographic camera. Frame sequence left contact, passing, right contact, right contact recovery, passing, left recovery. Subtle boot alternation below cape, no repeated identical poses. ONE single wide horizontal row, six well-separated complete silhouettes, constant size and shared ground baseline, at least 14 transparent pixels between figures and outer edges. Match first image hand-painted polished 2D warm outlines, no plastic 3D. Fully opaque body, genuinely transparent empty background. No background, shadow, fog, glow, labels, lines, boxes, text. No mirroring equipment between frames.",
+      "references": [
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Assets/NLI_Prototype_Kit/Sprites/Hero_Walk_East_6.png",
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Samples/2026-10-30/03-hero-four-directions.png"
+      ],
+      "original_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-8e89e375-cf49-49fb-8511-fdcf0ebf934d.png",
+      "delivered_file": "Sprites/Hero_Walk_North_6.png",
+      "batch": "2026-11-02-direction-trial",
+      "sha256": "65df2f6db944e8dd47d19d95de4ee59b425d37937558daa8f5002d7cf6bd907c"
+    },
+    {
+      "id": "walk_south",
+      "prompt": "Generate a native transparent sprite strip: exactly SIX separate frames of the SAME knight walking SOUTH toward viewer. First image is approved animation design/style reference, second is identity reference only. Same cream ivory armor, gold flame helmet, vertical dark visor slots, blue cape and scarf, brown boots, gold-edged blue diamond shield. Sword stays SHEATHED at anatomical LEFT hip throughout; never drawn. Shield stays on anatomical LEFT forearm = SCREEN RIGHT in front view, never switches hands. Six full-front elevated 3/4 orthographic views. Six distinct walking phases: left contact, down/passing, right passing, right contact, down/passing, left passing, forming seamless gait. Small motion, constant armor and proportions, natural opposite leg/arm motion. ONE wide horizontal row with six complete separated characters at same scale/foot baseline and at least 14px transparent gutters, margins all sides. Precise polished handpainted 2D soft fantasy from first reference, no plastic 3D. Opaque solid body, transparent empty background, NO shadows/glow/fog/floor/labels/boxes/text. Equipment ownership remains identical each frame.",
+      "references": [
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Assets/NLI_Prototype_Kit/Sprites/Hero_Walk_East_6.png",
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Samples/2026-10-30/03-hero-four-directions.png"
+      ],
+      "original_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-769f89d7-7f89-4c8d-b17c-f0b82c7319ba.png",
+      "delivered_file": "Sprites/Hero_Walk_South_6.png",
+      "batch": "2026-11-02-direction-trial",
+      "sha256": "dcbed5487920281706901513147b3d690269e10bb2192a89fc4c2e495d495c65"
+    },
+    {
+      "id": "walk_west",
+      "prompt": "Generate exactly SIX-frame native transparent WALK WEST sprite strip matching approved first reference. It is a new LEFT-facing view of same cream/gold chibi knight, gold flame crest, dark vertical visor, cobalt cape and scarf, brown gloves/boots. Same sheathed sword on anatomical LEFT hip (no drawn weapon), shield anatomical LEFT forearm: in WEST-facing view this near arm and blue shield face with gold diamond are clearly visible. Do not simply mirror lighting or change armor. Upper-left lighting as reference. All six walk toward SCREEN LEFT at consistent elevated 3/4 orthographic side view, same size, same ground baseline. Alternating leg cycle contact/passing/contact/passing with natural opposite arm movement, subtle cape motion. Exactly ONE horizontal row, six complete non-touching silhouettes with generous transparent gutters and margins; nothing cropped. High quality handpainted 2D warm outlines and matte surfaces matching reference. Fully opaque characters, genuinely transparent empty background. No glow/fog/shadow/ground/frames/text. Never swap equipment sides between frames.",
+      "references": [
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Assets/NLI_Prototype_Kit/Sprites/Hero_Walk_East_6.png",
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Samples/2026-10-30/03-hero-four-directions.png"
+      ],
+      "original_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-52b552a6-68f9-4a24-88a0-e40f55f8d2a1.png",
+      "delivered_file": "Sprites/Hero_Walk_West_6.png",
+      "batch": "2026-11-02-direction-trial",
+      "sha256": "a5bed0e71a31635e89f85b5db792f524b662ebd9938e015c2f623a53ed2d4b97"
+    },
+    {
+      "id": "plate_pressed",
+      "prompt": "Precise object edit of the reference game pressure plate. Produce its PRESSED / ACTIVATED state only. Preserve exact square cream limestone and gold corner-rivet frame, same perspective, outer size, center position, golden small middle edge rivets and cracks. Recess the blue slate center slightly into frame; make narrow inset blue edge seams a brighter turquoise to signal activation. Solid opaque stone surfaces, no glow outside the seams. Keep all outer border and transparent margins at same locations as reference so switching state does not jump. Same polished handpainted 2D soft fantasy. Single object only on real transparent background. NO text, extra decorations, cast shadows, halo, fog, floor. Keep source dimensions/composition.",
+      "references": [
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Assets/NLI_Prototype_Kit/Sprites/Pressure_Plate.png"
+      ],
+      "original_output": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-86a43c36-bd9f-436c-a729-f843ae9a1054.png",
+      "delivered_file": "Sprites/Pressure_Plate_Pressed.png",
+      "batch": "2026-11-02-direction-trial",
+      "sha256": "f6de72c048f4aabcf9c6610d7a8a16e2e393f34d6ba3b715bd119685a86bd00d"
+    }
+  ]
+}

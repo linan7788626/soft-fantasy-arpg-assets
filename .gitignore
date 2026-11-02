@@ -25,3 +25,5 @@ Assets/NLI_SoftFantasy_ARPG/Source/Generated.meta
 # Local rejected generation drafts and test dependency cache
 .local/
 node_modules/
+Prototypes/GodotImport/.godot/
+Prototypes/GodotImport/Art/
