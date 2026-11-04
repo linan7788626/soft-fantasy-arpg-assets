@@ -7,11 +7,11 @@ import hashlib, json
 root = Path(__file__).resolve().parents[2]
 kit = root / 'Assets/NLI_Prototype_Kit'
 manifest = json.loads((kit / 'Documentation/manifest.json').read_text())
-for record_file in ['generation-records.json', 'round2-generation.json']:
+for record_file in ['generation-records.json', 'round2-generation.json', 'round3-generation.json']:
     for record in json.loads((kit / 'Documentation' / record_file).read_text())['records']:
         assert hashlib.sha256((kit / record['delivered_file']).read_bytes()).hexdigest() == record['sha256'], record['delivered_file']
 records = []
-for entry in manifest['assets'] + list(manifest['walks'].values()):
+for entry in manifest['assets'] + list(manifest['walks'].values()) + list(manifest['idles'].values()) + list(manifest['pushes'].values()):
     path = kit / entry['file']
     assert hashlib.sha256(path.read_bytes()).hexdigest() == entry['sha256'], path
     im = Image.open(path)
@@ -42,5 +42,6 @@ for entry in manifest['assets'] + list(manifest['walks'].values()):
     records.append(record)
 out = root / 'Prototypes/DungeonWalk/Validation/native-art-report.json'
 out.write_text(json.dumps({'status': 'passed', 'pixel_postprocessing': 'none', 'assets': records,
+    'unique_active_images': len({r['file'] for r in records}),
     'limits': ['Alpha bounds and metadata checks do not establish hand ownership or natural gait. See visual acceptance notes.']}, indent=2) + '\n')
-print(f'{len(records)} native images verified without changing PNG bytes')
+print(f'{len({r["file"] for r in records})} active native images and {len(records)} module/clip entries verified without changing PNG bytes')

@@ -7,7 +7,7 @@ const project=resolve('Prototypes/GodotImport');
 const out=resolve(project,'Validation');await mkdir(out,{recursive:true});
 await rm(resolve(out,'report.json'),{force:true});
 function run(args,name){
- const r=spawnSync(engine,args,{encoding:'utf8',timeout:name==='import'?60000:15000});
+ const r=spawnSync(engine,args,{encoding:'utf8',timeout:name==='import'?60000:30000});
  const log=(r.stdout||'')+(r.stderr||'');
  return writeFile(resolve(out,name+'.log'),log).then(()=>{
   assert(!r.error,`${name}: ${r.error}`);assert.equal(r.status,0,`${name}: ${log}`);

@@ -2,21 +2,32 @@ extends Node2D
 
 const CELL = 64.0
 const ORIGIN = Vector2(100, 196)
+const DIRECTIONS = ["east", "south", "west", "north"]
 var manifest: Dictionary
 var textures: Dictionary = {}
 var modules: Dictionary = {}
 var hero: AnimatedSprite2D
+var idle_blend: Sprite2D
 var crate_sprite: Sprite2D
 var plate_sprite: Sprite2D
 var gate_sprite: Sprite2D
+var foreground: Node2D
 var caption: Label
 var player = Vector2(2.5, 5.5)
 var crate = Vector2i(5, 4)
 var plate = Vector2i(7, 4)
 var direction = "east"
-var pushing = false
+var layout = "hall"
+var push_data: Dictionary = {}
 var door = false
 var pressed = false
+var verifying = false
+
+func rect(r):
+	return Rect2(r[0], r[1], r[2], r[3])
+
+func clip(state: String, d: String) -> Dictionary:
+	return manifest[{"walk":"walks", "idle":"idles", "push":"pushes"}[state]][d]
 
 func _ready():
 	manifest = JSON.parse_string(FileAccess.get_file_as_string("res://Art/manifest.json"))
@@ -27,36 +38,42 @@ func _ready():
 	hero.sprite_frames = SpriteFrames.new()
 	hero.sprite_frames.remove_animation("default")
 	hero.centered = false
-	for d in manifest.walks:
-		var walk: Dictionary = manifest.walks[d]
-		textures["walk_" + d] = load("res://Art/" + walk.file)
-		for state in ["walk", "idle"]:
+	for d in DIRECTIONS:
+		for state in ["walk", "idle", "push"]:
+			var data = clip(state, d)
 			var name = state + "_" + d
+			textures[name] = load("res://Art/" + data.file)
 			hero.sprite_frames.add_animation(name)
-			hero.sprite_frames.set_animation_speed(name, walk.fps)
-			hero.sprite_frames.set_animation_loop(name, true)
-			var indices = range(walk.frames.size()) if state == "walk" else [int(walk.idle_frame)]
-			for i in indices:
+			hero.sprite_frames.set_animation_speed(name, data.fps)
+			for f in data.frames:
 				var atlas = AtlasTexture.new()
-				atlas.atlas = textures["walk_" + d]
-				atlas.region = rect(walk.frames[i].rect)
+				atlas.atlas = textures[name]
+				atlas.region = rect(f.rect)
 				hero.sprite_frames.add_frame(name, atlas)
 	gate_sprite = module_sprite("door_closed", ORIGIN + Vector2(5 * CELL, -180), Vector2(192, 192))
 	plate_sprite = module_sprite("plate", ORIGIN + Vector2(plate) * CELL, Vector2(64, 44.8))
 	crate_sprite = module_sprite("crate", ORIGIN + Vector2(crate) * CELL + Vector2(0, -8), Vector2(64, 72))
 	crate_sprite.z_index = 1
 	add_child(hero)
+	idle_blend = Sprite2D.new()
+	idle_blend.centered = false
+	idle_blend.visible = false
+	add_child(idle_blend)
 	hero.frame_changed.connect(align_hero)
 	hero.animation_changed.connect(align_hero)
-	var order = ["east", "south", "west", "north"]
-	for i in range(order.size()):
-		var d = order[i]
-		var f = manifest.walks[d].frames[1]
+	foreground = Node2D.new()
+	foreground.z_index = 4
+	foreground.draw.connect(func(): draw_walls(true))
+	add_child(foreground)
+	for i in range(4):
+		var d = DIRECTIONS[i]
+		var data = clip("idle", d)
+		var f = data.frames[0]
 		var preview = Sprite2D.new()
 		preview.texture = hero.sprite_frames.get_frame_texture("idle_" + d, 0)
 		preview.centered = false
 		preview.offset = -Vector2(f.rect[2] * f.pivot[0], f.rect[3] * f.pivot[1])
-		preview.scale = Vector2.ONE * (88.0 / f.rect[3])
+		preview.scale = Vector2.ONE * data.pixel_scale * 0.85
 		preview.position = Vector2(1010, 280 + i * 120)
 		add_child(preview)
 		var label = Label.new()
@@ -67,13 +84,9 @@ func _ready():
 	caption.position = Vector2(26, 726)
 	add_child(caption)
 	set_motion(Vector2.ZERO)
-	align_hero()
-	if "--verify" in OS.get_cmdline_user_args():
-		set_process(false)
+	verifying = "--verify" in OS.get_cmdline_user_args()
+	if verifying:
 		run_validation.call_deferred()
-
-func rect(r):
-	return Rect2(r[0], r[1], r[2], r[3])
 
 func module_sprite(id: String, pos: Vector2, size: Vector2) -> Sprite2D:
 	var sprite = Sprite2D.new()
@@ -95,17 +108,47 @@ func set_module(sprite: Sprite2D, id: String):
 	sprite.texture = atlas
 	sprite.scale = size / atlas.region.size
 
+func push_state() -> Dictionary:
+	if push_data.is_empty():
+		return {}
+	var elapsed = Time.get_ticks_msec() - push_data.started
+	var move_time = elapsed - push_data.approach
+	return {"phase":"approach" if elapsed < push_data.approach else "push" if move_time < 320 else "release", "approach":minf(1, elapsed / push_data.approach), "u":clampf(move_time / 320.0, 0, 1), "release":clampf((move_time - 320) / 100.0, 0, 1)}
+
+func box_contact(box: Vector2) -> Vector2:
+	var pos = ORIGIN + box * CELL + Vector2(0, -8)
+	return pos + {"east":Vector2(2, 32),"west":Vector2(62, 32),"north":Vector2(32, 58),"south":Vector2(32, 10)}[direction]
+
 func align_hero():
 	if hero.animation.is_empty():
 		return
-	var frames: Array = manifest.walks[direction].frames
-	var i = hero.frame if String(hero.animation).begins_with("walk_") else int(manifest.walks[direction].idle_frame)
-	var f: Dictionary = frames[i]
+	var state = String(hero.animation).get_slice("_", 0)
+	var data = clip(state, direction)
+	var f = data.frames[hero.frame]
 	hero.offset = -Vector2(f.rect[2] * f.pivot[0], f.rect[3] * f.pivot[1])
-	hero.scale = Vector2.ONE * (104.0 / f.rect[3])
+	hero.scale = Vector2.ONE * data.pixel_scale
 	hero.position = ORIGIN + player * CELL
+	hero.modulate.a = 1
+	if is_instance_valid(idle_blend):
+		idle_blend.visible = false
+	var pushing = push_state()
+	if state == "push" and not pushing.is_empty():
+		var delta_contact = Vector2((f.contact[0] - f.pivot[0]) * f.rect[2], (f.contact[1] - f.pivot[1]) * f.rect[3]) * data.pixel_scale
+		hero.position = box_contact((crate_sprite.position - ORIGIN - Vector2(0, -8)) / CELL) - delta_contact
+		hero.modulate.a = 1 - pushing.release
+		if pushing.release > 0:
+			var idle = clip("idle", direction)
+			var idle_f = idle.frames[0]
+			idle_blend.texture = hero.sprite_frames.get_frame_texture("idle_" + direction, 0)
+			idle_blend.offset = -Vector2(idle_f.rect[2] * idle_f.pivot[0], idle_f.rect[3] * idle_f.pivot[1])
+			idle_blend.scale = Vector2.ONE * idle.pixel_scale
+			idle_blend.position = ORIGIN + player * CELL
+			idle_blend.modulate.a = pushing.release
+			idle_blend.visible = true
 	if is_instance_valid(crate_sprite):
 		hero.z_index = 0 if hero.position.y < crate_sprite.position.y + 72 else 2
+		if is_instance_valid(idle_blend):
+			idle_blend.z_index = hero.z_index
 		gate_sprite.z_index = 3 if player.y < 0 else 0
 
 func set_motion(v: Vector2):
@@ -120,11 +163,16 @@ func set_motion(v: Vector2):
 		hero.play()
 	align_hero()
 
-func blocked(p: Vector2) -> bool:
-	var cell = Vector2i(floor(p.x), floor(p.y))
+func room(x: int, y: int) -> bool:
+	return x >= 0 and x < 12 and y >= 0 and y < 8 and (layout != "elbow" or x < 6 or y < 4)
+
+func obstacle(cell: Vector2i) -> bool:
 	if door and cell == Vector2i(6, -1):
 		return false
-	return cell.x < 0 or cell.x >= 12 or cell.y < 0 or cell.y >= 8 or cell == crate or (cell.y == 0 and cell.x in [5, 7])
+	return not room(cell.x, cell.y) or (cell.y == 0 and cell.x in [5, 7]) or (layout == "puzzle" and cell.x == 8 and cell.y != 4)
+
+func blocked(p: Vector2) -> bool:
+	return obstacle(Vector2i(floor(p.x), floor(p.y))) or (p.x > crate.x + .08 and p.x < crate.x + .92 and p.y > crate.y + .84 and p.y < crate.y + 1)
 
 func move_by(v: Vector2):
 	var before = player
@@ -132,42 +180,80 @@ func move_by(v: Vector2):
 		player.x += v.x
 	if not blocked(player + Vector2(0, v.y)):
 		player.y += v.y
-	# Face the input while keeping the animation paused at an obstruction.
 	if not v.is_zero_approx():
 		set_motion(v)
 	set_motion(player - before)
 
+func update_push():
+	var state = push_state()
+	var k = state.u * state.u * (3 - 2 * state.u)
+	if state.phase == "approach":
+		player = push_data.player_from.lerp(push_data.contact_root, state.approach)
+		set_motion(Vector2(push_data.step))
+	else:
+		player = push_data.contact_root + Vector2(push_data.step) * k
+		if hero.animation != "push_" + direction:
+			hero.play("push_" + direction)
+		# Stop the independent clock: effort phases follow the crate movement.
+		hero.pause()
+		hero.frame = mini(3, int(state.u * 4))
+	crate_sprite.position = ORIGIN + (Vector2(push_data.from) + Vector2(push_data.step) * k) * CELL + Vector2(0, -8)
+	align_hero()
+	if state.release == 1:
+		push_data = {}
+		update_mechanism()
+		set_motion(Vector2.ZERO)
+
 func _process(delta):
-	if not pushing:
+	if not push_data.is_empty():
+		update_push()
+	elif not verifying:
 		var v = Vector2(float(Input.is_physical_key_pressed(KEY_RIGHT) or Input.is_physical_key_pressed(KEY_D)) - float(Input.is_physical_key_pressed(KEY_LEFT) or Input.is_physical_key_pressed(KEY_A)), float(Input.is_physical_key_pressed(KEY_DOWN) or Input.is_physical_key_pressed(KEY_S)) - float(Input.is_physical_key_pressed(KEY_UP) or Input.is_physical_key_pressed(KEY_W)))
 		move_by(v.normalized() * delta * 2.2)
 	align_hero()
-	caption.text = "WASD / arrows: move | E: push | %s | plate: %s | gate: %s" % [direction, pressed, door]
+	caption.text = "WASD/arrows move | E push | 1/2/3 room | %s / %s / %s" % [layout, hero.animation, push_state().get("phase", "rest")]
 
 func _unhandled_key_input(event):
-	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_E:
-		push_crate()
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.physical_keycode == KEY_E:
+			push_crate()
+		if event.physical_keycode in [KEY_1, KEY_2, KEY_3] and push_data.is_empty():
+			set_layout(["hall", "elbow", "puzzle"][event.physical_keycode - KEY_1])
+
+func set_layout(value: String):
+	layout = value
+	player = Vector2(2.5, 5.5)
+	crate = Vector2i(3, 4) if value == "elbow" else Vector2i(5, 4)
+	plate = Vector2i(4, 4) if value == "elbow" else Vector2i(7, 4)
+	crate_sprite.position = ORIGIN + Vector2(crate) * CELL + Vector2(0, -8)
+	plate_sprite.position = ORIGIN + Vector2(plate) * CELL
+	update_mechanism()
+	set_motion(Vector2.ZERO)
+	queue_redraw()
+	foreground.queue_redraw()
 
 func push_crate() -> bool:
-	if pushing or player.distance_to(Vector2(crate) + Vector2.ONE * 0.5) > 1.8:
-		return false
-	var v = Vector2(crate) + Vector2.ONE * 0.5 - player
-	if v.length() < 0.2:
+	var v = Vector2(crate) + Vector2(.5, .96) - player
+	if not push_data.is_empty() or v.length() > 1.8 or v.length() < .2:
 		return false
 	var step = Vector2i(sign(v.x), 0) if abs(v.x) >= abs(v.y) else Vector2i(0, sign(v.y))
-	var target = crate + step
-	if target.x < 0 or target.x >= 12 or target.y < 0 or target.y >= 8 or (target.y == 0 and target.x in [5, 7]):
+	if obstacle(crate + step):
 		return false
-	pushing = true
 	set_motion(Vector2(step))
-	var from = player
-	crate = target
+	var data = clip("push", direction)
+	var f = data.frames[0]
+	var contact_delta = Vector2((f.contact[0] - f.pivot[0]) * f.rect[2], (f.contact[1] - f.pivot[1]) * f.rect[3]) * data.pixel_scale
+	var root = (box_contact(Vector2(crate)) - contact_delta - ORIGIN) / CELL
+	var steps = maxi(1, int(ceil(player.distance_to(root) * 16)))
+	for i in range(1, steps + 1):
+		if blocked(player.lerp(root, float(i) / steps)):
+			return false
+	if obstacle(Vector2i(floor(root.x + step.x), floor(root.y + step.y))):
+		return false
+	push_data = {"from":crate,"step":step,"started":Time.get_ticks_msec(),"approach":maxf(60, player.distance_to(root) / 2.2 * 1000),"player_from":player,"contact_root":root}
+	crate += step
 	pressed = false
 	set_module(plate_sprite, "plate")
-	var tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT).set_parallel(true)
-	tween.tween_property(crate_sprite, "position", ORIGIN + Vector2(crate) * CELL + Vector2(0, -8), 0.26)
-	tween.tween_method(func(k): player = from + Vector2(step) * k; align_hero(), 0.0, 1.0, 0.26)
-	tween.finished.connect(func(): pushing = false; update_mechanism(); set_motion(Vector2.ZERO))
 	return true
 
 func update_mechanism():
@@ -176,6 +262,18 @@ func update_mechanism():
 	set_module(plate_sprite, "plate_pressed" if pressed else "plate")
 	set_module(gate_sprite, "door_open" if door else "door_closed")
 
+func draw_walls(front: bool):
+	var geometry = manifest.walls.layouts[layout]
+	for layer in [geometry.faces, geometry.caps]:
+		for q in layer:
+			if q.foreground == front:
+				var target = rect(q.dest)
+				target.position += ORIGIN
+				if front:
+					foreground.draw_texture_rect_region(textures.wall, target, rect(q.src))
+				else:
+					draw_texture_rect_region(textures.wall, target, rect(q.src))
+
 func _draw():
 	if manifest.is_empty():
 		return
@@ -183,66 +281,85 @@ func _draw():
 	var tile = texture.get_size() / 6.0
 	for y in range(8):
 		for x in range(12):
-			draw_texture_rect_region(texture, Rect2(ORIGIN + Vector2(x, y) * CELL, Vector2.ONE * CELL), Rect2(Vector2(x % 6, y % 6) * tile, tile))
-	for x in range(12):
-		for y in [0, 8]:
-			if y == 0 and x in [5, 6, 7]:
-				continue
-			draw_texture_rect_region(textures.wall, Rect2(ORIGIN + Vector2(x * CELL, y * CELL - 30), Vector2(CELL, 42)), rect(modules.wall.rect))
-	for y in range(8):
-		for x in [0, 12]:
-			draw_texture_rect_region(textures.sidewall, Rect2(ORIGIN + Vector2(x * CELL - 16, y * CELL - 30), Vector2(32, CELL)), rect(modules.sidewall.rect))
-	for p in [Vector2(0, 0), Vector2(12, 0), Vector2(0, 8), Vector2(12, 8)]:
-		draw_texture_rect_region(textures.pillar, Rect2(ORIGIN + p * CELL - Vector2(20, 42), Vector2(40, 54)), rect(modules.pillar.rect))
+			if room(x, y):
+				draw_texture_rect_region(texture, Rect2(ORIGIN + Vector2(x, y) * CELL, Vector2.ONE * CELL), Rect2(Vector2(x % 6, y % 6) * tile, tile))
+	draw_walls(false)
+
+func wait_push():
+	while not push_data.is_empty():
+		await get_tree().process_frame
+
+func capture(name: String):
+	if DisplayServer.get_name() != "headless":
+		await RenderingServer.frame_post_draw
+		get_viewport().get_texture().get_image().save_png("res://Validation/" + name + ".png")
 
 func run_validation():
 	var checks: Array = []
 	for entry in manifest.assets:
 		assert(textures[entry.id].get_size() == Vector2(entry.native_size[0], entry.native_size[1]))
-	checks.append("Godot imported all native module textures at original dimensions")
-	for d in manifest.walks:
-		assert(hero.sprite_frames.get_frame_count("walk_" + d) == 6)
-		for i in range(6):
-			var f = manifest.walks[d].frames[i]
-			var atlas: AtlasTexture = hero.sprite_frames.get_frame_texture("walk_" + d, i)
-			assert(atlas.region == rect(f.rect))
-			assert(atlas.region.end.x <= atlas.atlas.get_width() and atlas.region.end.y <= atlas.atlas.get_height())
+	for d in DIRECTIONS:
+		for state in ["walk", "idle", "push"]:
+			var data = clip(state, d)
+			assert(hero.sprite_frames.get_frame_count(state + "_" + d) == data.frames.size())
+			for i in range(data.frames.size()):
+				var atlas: AtlasTexture = hero.sprite_frames.get_frame_texture(state + "_" + d, i)
+				assert(atlas.region == rect(data.frames[i].rect))
+				assert(atlas.atlas.get_size() == Vector2(data.native_size[0], data.native_size[1]))
 		set_motion({"east":Vector2.RIGHT,"west":Vector2.LEFT,"north":Vector2.UP,"south":Vector2.DOWN}[d])
 		var before = hero.frame
-		await get_tree().create_timer(0.16).timeout
+		await get_tree().create_timer(.16).timeout
 		assert(hero.frame != before and hero.is_playing())
 		set_motion(Vector2.ZERO)
 		assert(hero.animation == "idle_" + d and not hero.is_playing())
-		var foot = hero.position + (hero.offset + Vector2(manifest.walks[d].frames[1].rect[2] * manifest.walks[d].frames[1].pivot[0], manifest.walks[d].frames[1].rect[3] * manifest.walks[d].frames[1].pivot[1])) * hero.scale
-		assert(foot.distance_to(ORIGIN + player * CELL) < 0.01)
-	checks.append("24 AtlasTexture frames, four timed walk animations, four paused idle states and foot anchors")
-	player = Vector2(0.01, 2.5)
-	move_by(Vector2(-0.1, 0))
-	assert(is_equal_approx(player.x, 0.01) and not hero.is_playing())
-	checks.append("Blocked movement stays idle")
-	player = Vector2(4.5, 4.5)
+	checks.append("18 native textures, 44 AtlasTexture action frames; fixed per-clip scale; four walking clocks and dedicated idle states")
+	player = Vector2(.01, 2.5)
+	move_by(Vector2(-.1, 0))
+	assert(is_equal_approx(player.x, .01) and not hero.is_playing())
+	for row in [["east",Vector2(4.5,4.5),Vector2i(6,4)],["west",Vector2(6.5,4.5),Vector2i(4,4)],["north",Vector2(5.5,5.8),Vector2i(5,3)],["south",Vector2(5.5,3.5),Vector2i(5,5)]]:
+		set_layout("hall")
+		player = row[1]
+		assert(push_crate())
+		assert(not push_crate())
+		while push_state().get("phase", "") != "push":
+			await get_tree().process_frame
+		await get_tree().create_timer(.1).timeout
+		assert(hero.animation == "push_" + row[0])
+		await capture("contact-" + row[0])
+		await wait_push()
+		assert(crate == row[2] and hero.animation == "idle_" + row[0])
+		assert(push_crate())
+		await wait_push()
+		assert(direction == row[0])
+	checks.append("Four-direction approach/contact/effort/release; repeat push rejection; continued south pushing without tile trapping")
+	set_layout("hall")
+	player = Vector2(5.5,3.5)
+	for i in range(3):
+		assert(push_crate())
+		await wait_push()
+	player = Vector2(4.5,7.5)
+	assert(not push_crate() and crate == Vector2i(5,7))
+	checks.append("Auto-approach cannot carry the character outside the south wall")
+	set_layout("hall")
+	player = Vector2(4.5,4.5)
 	assert(push_crate())
-	assert(not push_crate())
-	await get_tree().create_timer(0.10).timeout
-	assert(crate_sprite.position.x > ORIGIN.x + 5 * CELL and crate_sprite.position.x < ORIGIN.x + 6 * CELL)
-	await get_tree().create_timer(0.23).timeout
-	assert(not pushing and not pressed)
+	await wait_push()
 	assert(push_crate())
-	await get_tree().create_timer(0.33).timeout
-	assert(pressed and door and crate == plate)
-	assert(gate_sprite.texture.atlas == textures.door_open)
-	assert(plate_sprite.texture.atlas == textures.plate_pressed)
+	await wait_push()
+	assert(pressed and door and plate_sprite.texture.atlas == textures.plate_pressed)
 	assert(push_crate())
-	await get_tree().create_timer(0.33).timeout
+	await wait_push()
 	assert(not pressed and not door and plate_sprite.texture.atlas == textures.plate)
-	checks.append("Tweened push, repeat rejection, plate activation/release and gate texture transitions")
-	caption.text = "Godot native import trial — four directions / paused idle / plate reset verified"
-	await get_tree().process_frame
-	var renderer = DisplayServer.get_name()
-	if renderer != "headless":
-		await RenderingServer.frame_post_draw
-		get_viewport().get_texture().get_image().save_png("res://Validation/engine.png")
-	var report = {"status":"passed", "engine":Engine.get_version_info().string, "display_server":renderer, "checks":checks, "limits":["Small import harness; not a complete game integration", "Unity Editor not installed or validated", "Hand ownership and motion aesthetics require visual review"]}
-	FileAccess.open("res://Validation/report.json", FileAccess.WRITE).store_string(JSON.stringify(report, "\t") + "\n")
+	checks.append("Pressure plate press/release and gate transitions")
+	for value in ["hall", "elbow", "puzzle"]:
+		set_layout(value)
+		assert(manifest.walls.layouts[value].caps.size() > 0)
+		await get_tree().process_frame
+		await capture("walls-" + value)
+	checks.append("Three layouts use the same unioned wall-cap geometry as Canvas")
+	set_layout("hall")
+	await capture("engine")
+	var report = {"status":"passed","engine":Engine.get_version_info().string,"display_server":DisplayServer.get_name(),"checks":checks,"limits":["Art still requires user visual acceptance","Unity Editor not validated","Floor is not a complete autotile set"]}
+	FileAccess.open("res://Validation/report.json", FileAccess.WRITE).store_string(JSON.stringify(report,"\t") + "\n")
 	print(JSON.stringify(report))
 	get_tree().quit()

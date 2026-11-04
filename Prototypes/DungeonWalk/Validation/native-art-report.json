@@ -116,19 +116,19 @@
       "foot_anchor_error_px": 0
     },
     {
-      "file": "Sprites/Hero_Walk_South_6.png",
+      "file": "Sprites/Hero_Walk_South_v2_6.png",
       "native_size": [
         2172,
         724
       ],
-      "sha256": "dcbed5487920281706901513147b3d690269e10bb2192a89fc4c2e495d495c65",
+      "sha256": "021bdb094b3b660b80234746267f78a5eb7d046cf46124f14386dc8b8f41b47c",
       "canvas_edge_max_alpha": 0,
-      "near_opaque_fraction_of_nonzero_alpha": 0.8900862251545665,
+      "near_opaque_fraction_of_nonzero_alpha": 0.9007800530750711,
       "core_median_alpha": 253.0,
       "frames": 6,
       "raw_foot_y_range": [
         617,
-        623
+        625
       ],
       "foot_anchor_error_px": 0
     },
@@ -150,23 +150,160 @@
       "foot_anchor_error_px": 0
     },
     {
-      "file": "Sprites/Hero_Walk_North_6.png",
+      "file": "Sprites/Hero_Walk_North_v2_6.png",
       "native_size": [
         2172,
         724
       ],
-      "sha256": "65df2f6db944e8dd47d19d95de4ee59b425d37937558daa8f5002d7cf6bd907c",
+      "sha256": "045c8a1d2db5a47b8db1267cbd3f1e79026864876693e805077d6347bf1817af",
       "canvas_edge_max_alpha": 0,
-      "near_opaque_fraction_of_nonzero_alpha": 0.8895514804160283,
+      "near_opaque_fraction_of_nonzero_alpha": 0.9048786335324712,
       "core_median_alpha": 253.0,
       "frames": 6,
       "raw_foot_y_range": [
-        629,
-        631
+        628,
+        632
+      ],
+      "foot_anchor_error_px": 0
+    },
+    {
+      "file": "Sprites/Hero_Idle_Four.png",
+      "native_size": [
+        2172,
+        724
+      ],
+      "sha256": "e5d30bdb495d8b1d77603ff4f4589069c6578a05658f286835551c390e6bd1e8",
+      "canvas_edge_max_alpha": 0,
+      "near_opaque_fraction_of_nonzero_alpha": 0.9147720620946405,
+      "core_median_alpha": 253.0,
+      "frames": 1,
+      "raw_foot_y_range": [
+        628,
+        628
+      ],
+      "foot_anchor_error_px": 0
+    },
+    {
+      "file": "Sprites/Hero_Idle_Four.png",
+      "native_size": [
+        2172,
+        724
+      ],
+      "sha256": "e5d30bdb495d8b1d77603ff4f4589069c6578a05658f286835551c390e6bd1e8",
+      "canvas_edge_max_alpha": 0,
+      "near_opaque_fraction_of_nonzero_alpha": 0.9147720620946405,
+      "core_median_alpha": 253.0,
+      "frames": 1,
+      "raw_foot_y_range": [
+        626,
+        626
+      ],
+      "foot_anchor_error_px": 0
+    },
+    {
+      "file": "Sprites/Hero_Idle_Four.png",
+      "native_size": [
+        2172,
+        724
+      ],
+      "sha256": "e5d30bdb495d8b1d77603ff4f4589069c6578a05658f286835551c390e6bd1e8",
+      "canvas_edge_max_alpha": 0,
+      "near_opaque_fraction_of_nonzero_alpha": 0.9147720620946405,
+      "core_median_alpha": 253.0,
+      "frames": 1,
+      "raw_foot_y_range": [
+        628,
+        628
+      ],
+      "foot_anchor_error_px": 0
+    },
+    {
+      "file": "Sprites/Hero_Idle_Four.png",
+      "native_size": [
+        2172,
+        724
+      ],
+      "sha256": "e5d30bdb495d8b1d77603ff4f4589069c6578a05658f286835551c390e6bd1e8",
+      "canvas_edge_max_alpha": 0,
+      "near_opaque_fraction_of_nonzero_alpha": 0.9147720620946405,
+      "core_median_alpha": 253.0,
+      "frames": 1,
+      "raw_foot_y_range": [
+        627,
+        627
+      ],
+      "foot_anchor_error_px": 0
+    },
+    {
+      "file": "Sprites/Hero_Push_East_4.png",
+      "native_size": [
+        2172,
+        724
+      ],
+      "sha256": "97ebd20589273e3e4df81180385bf37f59fba3ba385f53daacdfa3c4d91577a8",
+      "canvas_edge_max_alpha": 0,
+      "near_opaque_fraction_of_nonzero_alpha": 0.8783953497549754,
+      "core_median_alpha": 253.0,
+      "frames": 4,
+      "raw_foot_y_range": [
+        622,
+        622
+      ],
+      "foot_anchor_error_px": 0
+    },
+    {
+      "file": "Sprites/Hero_Push_South_4.png",
+      "native_size": [
+        2172,
+        724
+      ],
+      "sha256": "201b2c89d966ec87d81ab7d9fc4c556ffdb375fe0989d5268939f4660d337238",
+      "canvas_edge_max_alpha": 0,
+      "near_opaque_fraction_of_nonzero_alpha": 0.915978226735057,
+      "core_median_alpha": 253.0,
+      "frames": 4,
+      "raw_foot_y_range": [
+        633,
+        635
+      ],
+      "foot_anchor_error_px": 0
+    },
+    {
+      "file": "Sprites/Hero_Push_West_4.png",
+      "native_size": [
+        2172,
+        724
+      ],
+      "sha256": "4be63f62c5a11e5b4bfa39db3d07053d9ff65b7f10fef151e0b1a9709ee276b6",
+      "canvas_edge_max_alpha": 1,
+      "near_opaque_fraction_of_nonzero_alpha": 0.8763625724150038,
+      "core_median_alpha": 253.0,
+      "frames": 4,
+      "raw_foot_y_range": [
+        620,
+        620
+      ],
+      "foot_anchor_error_px": 0
+    },
+    {
+      "file": "Sprites/Hero_Push_North_4.png",
+      "native_size": [
+        2172,
+        724
+      ],
+      "sha256": "b2e72d53600255505b32dd582f360d70fd64500f6775359c30e769d729b7b92c",
+      "canvas_edge_max_alpha": 1,
+      "near_opaque_fraction_of_nonzero_alpha": 0.8316198763985654,
+      "core_median_alpha": 253.0,
+      "frames": 4,
+      "raw_foot_y_range": [
+        635,
+        639
       ],
       "foot_anchor_error_px": 0
     }
   ],
+  "unique_active_images": 18,
   "limits": [
     "Alpha bounds and metadata checks do not establish hand ownership or natural gait. See visual acceptance notes."
   ]

@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "checks": [
+    "dedicated idle/walk/push strips",
+    "four direction contacts and continuous crate motion",
+    "same-direction repeated pushes including south",
+    "idle restoration after release",
+    "auto-approach cannot cross the south wall"
+  ],
+  "directions": [
+    {
+      "direction": "east",
+      "passed": true
+    },
+    {
+      "direction": "west",
+      "passed": true
+    },
+    {
+      "direction": "north",
+      "passed": true
+    },
+    {
+      "direction": "south",
+      "passed": true
+    }
+  ]
+}

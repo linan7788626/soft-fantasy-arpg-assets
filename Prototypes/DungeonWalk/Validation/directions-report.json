@@ -4,22 +4,22 @@
     {
       "direction": "east",
       "idle": 1,
-      "stripDigest": "e6494d720c4395c2c31b151ddbec4d1cc16f2b61acf2bd586953c8d40b6b78cf"
+      "stripDigest": "309d5405bf88922baf9b392371f4070415aac0813c316b6035bd5ea24f1ef4f8"
     },
     {
       "direction": "south",
       "idle": 1,
-      "stripDigest": "c4f4a1366a4e062982284c121681b50f9c0267cb99234c2d9953a80bc3feeb07"
+      "stripDigest": "3922aaf509937fa906e93158a5c326d84dc61e0c80979f890d23534f4944d167"
     },
     {
       "direction": "west",
       "idle": 1,
-      "stripDigest": "c934c1d6a81138d10417d20d3acd0f5581002a7b5950f1339d832a32370363ab"
+      "stripDigest": "d648336cf08823909183c7625523c99f1a4821a7ce97abead419b0ac06072bf2"
     },
     {
       "direction": "north",
       "idle": 1,
-      "stripDigest": "5b73736bf17bf8080a386e11ffbef338638fabb1ad0e1a8b5f7b02c901165246"
+      "stripDigest": "79b4a7fe34a23421e1380e70ab470c0e5e28e12e5f3e8e0349c58e3e1565dd4a"
     }
   ],
   "dynamicChecks": [

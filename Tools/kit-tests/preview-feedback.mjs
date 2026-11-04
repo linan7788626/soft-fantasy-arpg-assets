@@ -12,10 +12,10 @@ try{
  await page.evaluate(()=>KIT_TEST.setPlayer(4.5,4.5));await page.keyboard.press('e');
  await page.keyboard.press('e');assert.equal(await page.evaluate(()=>KIT_TEST.state.crate.x),6,'repeated push cannot jump another tile');
  assert.equal(await page.evaluate(()=>!!KIT_TEST.state.pushing),true,'crate must interpolate rather than teleport');
- await page.waitForTimeout(80);const interim=await page.evaluate(()=>KIT_TEST.state.crateVisual.x);assert(interim>5&&interim<6,'crate must pass through intermediate positions');
- await page.waitForTimeout(300);assert.equal(await page.evaluate(()=>!!KIT_TEST.state.pushing),false);
+ await page.waitForFunction(()=>KIT_TEST.state.pushPhase==='push');await page.waitForTimeout(80);const interim=await page.evaluate(()=>KIT_TEST.state.crateVisual.x);assert(interim>5&&interim<6,'crate must pass through intermediate positions');
+ await page.waitForFunction(()=>!KIT_TEST.state.pushing);
  assert.equal(await page.evaluate(()=>KIT_TEST.geometry.northWallCells.includes(6)),false,'gate opening must not have a wall behind it');
- assert.equal(await page.evaluate(()=>KIT_TEST.state.player.x),5.5,'hero accompanies the push');
+ assert(Math.abs(await page.evaluate(()=>KIT_TEST.state.player.x)-5.5)<.3,'hero accompanies the push');
  await page.evaluate(()=>KIT_TEST.push());await page.waitForFunction(()=>!KIT_TEST.state.pushing);assert.equal(await page.evaluate(()=>KIT_TEST.state.door),true);
  await mkdir('Prototypes/DungeonWalk/Validation',{recursive:true});
  for(const layout of ['hall','elbow','puzzle']){

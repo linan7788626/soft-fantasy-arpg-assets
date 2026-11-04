@@ -27,3 +27,5 @@ Assets/NLI_SoftFantasy_ARPG/Source/Generated.meta
 node_modules/
 Prototypes/GodotImport/.godot/
 Prototypes/GodotImport/Art/
+__pycache__/
+Prototypes/GodotImport/Validation/*.import

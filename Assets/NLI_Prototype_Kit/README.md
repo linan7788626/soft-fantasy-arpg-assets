@@ -1,30 +1,36 @@
-# NLI 地牢基础套件与四方向动作试验 v0.2
+# NLI 地牢与主角动作套件 v0.3
 
-本套件包含9个模块PNG（地板、横墙、侧墙、连接柱、关门、开门、木箱组、压力板松开/按下）和4张四方向6帧行走原生图集，共13张原图、24帧行走。2026-11-02新增向上、向下、向左和按下压力板4张原图，沿用已认可的向右图。画风参照2号地牢、3号主角。原有224项素材保持独立，不覆盖原包。
+本批新增7张原生PNG：四方向独立待机共用1张、四方向推箱各1张、向上/向下行走精修各1张。累计保留20张套件原图，预览内嵌其中18张。当前动作覆盖24帧行走、16帧推箱、4个独立待机姿态。原有224项基础素材和此前套件原图均保留。
 
-## 预览
+## 预览与操作
 
-预览HTML已内嵌全部13张PNG，可单独复制出去打开，不依赖上级 Assets 路径。离线打开仓库根目录 `Prototypes/DungeonWalk/index.html`：战斗大厅、L形回廊、机关房；方向键/WASD移动，E推动木箱；朝向选择、暂停、逐帧、2–14FPS、深浅/棋盘背景与脚底线。机关房将木箱从(5,4)推到(7,4)会开启门，继续推离会复位。页面下方可直接比较压力板两状态；该页是素材测试场，不是完整战斗游戏。
+打开仓库根目录 `Prototypes/DungeonWalk/index.html`，可单独复制离线打开。方向键/WASD移动，E推箱；支持三种房间、朝向/动作选择、动作演示、逐帧、帧率、深浅/棋盘背景及碰撞格。停止移动使用独立站姿。动作选择器用于逐帧检查，场景中的真实移动/推箱会选择相应动作。
 
-## 坐标与使用
+推箱先按正常行走速度接近箱面，再用320ms推动箱子，最后100ms松手过渡至待机。手部接触点随箱面移动，箱子落定后判定压力板。自动靠近会检查路径和终点碰撞。箱子地面碰撞与高于地面的绘制轮廓分离，允许从箱后接近，不会把向下推箱者困在整格碰撞中。
 
-- `Documentation/manifest.json` 是游戏导入依据。`rect=[x,y,width,height]` 用原图左上角坐标，PNG没有裁切、去底、缩放或二次绘制。
-- 横墙/侧墙分别取长条原图的1/4作为重复段，避免把整根长墙压缩到一格；连接柱用于转角接合。地板重复使用原生纹理。所有拼装只发生在预览渲染中。
-- 网格预览64逻辑像素/格。运行时碰撞使用网格，与图片透明留白分离；木箱组占一格。墙体画面采用模块接合，不等同于完整自动铺砖系统。
-- 行走原图的六个轮廓并非均匀格子，清单逐帧记录实际区域与归一化Pivot，避免按等宽切片截断披风。Pivot以头盔水平参考与脚底线校准。默认8FPS；四方向分别使用独立原图，不做左右镜像。静止时固定为对应方向第2帧，只有实际位移或主动“动作演示”才播放。
-- `walks` 为四方向数据；保留 `walk` 作为向右数据的兼容入口。`mechanisms.plate` 记录两状态对应素材。图片透明边界不作为碰撞边界。
-- 只读分析识别轮廓以生成metadata，不改原PNG；首批工具记录见 `generation-records.json`，本批实际提示词、参考图、原始输出与哈希见 `round2-generation.json`。
+## 四面墙与坐标
 
-## 测试
+横墙、原侧墙、角柱的透视和纹理本来不一致，旧版依赖高角柱覆盖端点。新版先合并墙体占地，再统一向屏幕上方投影高度：厚24逻辑像素、高24逻辑像素，内外直角和墙段共享墙帽平面。四面墙均从原生 `Wall_Horizontal.png` 的墙帽/墙面区域取材，不再以有窗侧墙或高角柱遮接缝。候选原图继续保留。
 
-安装开发依赖后运行 `npm run test:kit`；首次需要 `npx playwright install chromium`。重新生成坐标清单需 Python 的 Pillow、NumPy、SciPy，运行 `python3 Tools/build_prototype_kit.py`，再运行 `npm run build:preview` 更新单文件预览。原图/透明边界/坐标检查运行 `python3 Tools/kit-tests/native_art.py`。截图及浏览器报告位于 `Prototypes/DungeonWalk/Validation/`。
+`Documentation/manifest.json` 中 `walls.layouts` 为两端共用的渲染区域清单，生成逻辑见 `Tools/wall_geometry.py`。大厅、L形回廊、机关房均使用此方案；门框替换北墙三格，保持开门通路。所有拼装和取样发生在渲染时，没有修改源PNG。
 
-实际引擎试验入口为 `Prototypes/GodotImport/project.godot`。先运行 `npm run build:godot` 复制原生图像与清单，再使用 Godot 4.x 打开；`npm run test:godot` 执行真实引擎导入与状态检查，`GODOT_RENDER=1 npm run test:godot` 另保存渲染截图。引擎报告独立保存在 `Prototypes/GodotImport/Validation/`。这不等同于 Unity Editor 验收，具体范围见该工程 README。
+`walks`、`idles`、`pushes` 记录方向动作。每帧含原图左上角坐标 `rect`、脚底 `pivot`，推箱另有 `contact`。`pixel_scale` 在一套图内固定，以头盔尺度校准；屈膝时不会将整帧重新拉到同一高度。`walk` 保留为向右行走的兼容入口。Unity基础metadata仍是单精灵导入，动作切帧以清单为准。
 
-## 当前边界
+## 工具与证据
 
-这是可交互模块与四方向动作的小批量试验。地板尚非逐像素对边完全相同的自动拼接集，侧墙镜像不重新计算光照。待机复用行走静帧，没有独立呼吸循环；行走存在近似重复姿态及局部装饰/披风变化，仍需生产级步态精修。攻击、受击、推箱专用动作、其他机关与更多地牢尚未扩充。Unity纹理metadata仅用于基础单精灵导入；实际Unity Editor切帧与动画控制器未验收。Godot结果以独立引擎报告为准。
+- `python3 Tools/build_prototype_kit.py`：只读分析PNG并重建清单、Unity metadata、kit-data.js。依赖 `Tools/kit-tests/requirements.txt`。
+- `python3 Tools/kit-tests/native_art.py`：核对三批生成记录哈希、透明边界、帧范围与脚底坐标，不改图。
+- `npm run build:preview`：将原图字节、清单和脚本内嵌为独立HTML。
+- `npm run test:kit`：离线/独立托管、动作、推箱、机关、三布局墙帽连续性回归。
+- `npm run build:godot`：复制原图与清单到独立Godot工程的可重建Art目录。
+- `GODOT_RENDER=1 npm run test:godot`：真实Godot导入、运行与截图；普通 `npm run test:godot` 是无界面引擎测试。
 
-## 交互与拼装修订（2026-11-01）
+网页报告/截图位于 `Prototypes/DungeonWalk/Validation/`，引擎报告/截图位于 `Prototypes/GodotImport/Validation/`。最新验收为 `Documentation/Acceptance_2026-11-04.md`。
 
-角色只在实际移动时播放行走，停止或被墙阻挡时回到静止帧；“动作演示”才会独立播放循环。推箱使用260ms平滑过渡，角色随之前移，移动期间占用起终格并拒绝重复推箱，落定后再判定压力板。门框替换北墙三段，通行走中间一格；门柱碰撞与出入时的遮挡同步。所有布局按真实边界生成转角，L形布局的箱子和压力板均置于地板内。
+提示词、参考图、原始生成输出与哈希分别见 `generation-records.json`、`round2-generation.json`、`round3-generation.json`。本批不合格白雾背景曾通过内置image_gen重新生成透明版本；交付文件均逐字节复制最后选用输出，没有本地抠图、缩放或裁切。
+
+## 边界
+
+这是一批可交互美术修订，仍待用户对步态、推箱姿态与新墙体外观作视觉验收。待机是单张静姿，没有呼吸循环；行走/披风仍可能有细节变化，不据此宣称完整角色动画生产定稿。攻击、受击与更多机关不在本批。
+
+地板尚非完整自动铺砖集。墙体采用正交连续几何，旧侧墙/柱的独立美术不因此成为可无缝拼接件。Godot实机报告仅覆盖此试验工程；Unity Editor与完整PyQuest运行时集成尚未验收。

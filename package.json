@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test:kit": "npm run build:preview && node Tools/kit-tests/browser.mjs && node Tools/kit-tests/isolated-preview.mjs && node Tools/kit-tests/preview-feedback.mjs && node Tools/kit-tests/directions.mjs",
+    "test:kit": "npm run build:preview && node Tools/kit-tests/browser.mjs && node Tools/kit-tests/isolated-preview.mjs && node Tools/kit-tests/preview-feedback.mjs && node Tools/kit-tests/directions.mjs && node Tools/kit-tests/walls.mjs && node Tools/kit-tests/actions.mjs",
     "build:preview": "node Tools/build-preview.mjs",
     "build:godot": "node Tools/build-godot-import.mjs",
     "test:godot": "npm run build:godot && node Tools/kit-tests/godot.mjs"

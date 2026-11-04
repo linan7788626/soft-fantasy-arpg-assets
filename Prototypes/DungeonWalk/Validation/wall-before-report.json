@@ -1,0 +1,117 @@
+{
+  "status": "failed",
+  "revision": "1553f93",
+  "failed_probe_count": 667,
+  "by_layout": {
+    "hall": 224,
+    "elbow": 219,
+    "puzzle": 224
+  },
+  "examples": [
+    {
+      "layout": "hall",
+      "name": "west",
+      "x": 104,
+      "y": 280,
+      "rgba": [
+        246,
+        217,
+        172,
+        253
+      ],
+      "passed": false
+    },
+    {
+      "layout": "hall",
+      "name": "east",
+      "x": 864,
+      "y": 280,
+      "rgba": [
+        241,
+        210,
+        163,
+        253
+      ],
+      "passed": false
+    },
+    {
+      "layout": "hall",
+      "name": "rim",
+      "x": 120,
+      "y": 164,
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": false
+    },
+    {
+      "layout": "hall",
+      "name": "rim",
+      "x": 136,
+      "y": 164,
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": false
+    },
+    {
+      "layout": "hall",
+      "name": "rim",
+      "x": 152,
+      "y": 164,
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": false
+    },
+    {
+      "layout": "hall",
+      "name": "rim",
+      "x": 160,
+      "y": 164,
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": false
+    },
+    {
+      "layout": "hall",
+      "name": "rim",
+      "x": 104,
+      "y": 180,
+      "rgba": [
+        131,
+        80,
+        17,
+        255
+      ],
+      "passed": false
+    },
+    {
+      "layout": "hall",
+      "name": "rim",
+      "x": 92,
+      "y": 176,
+      "rgba": [
+        235,
+        177,
+        63,
+        255
+      ],
+      "passed": false
+    }
+  ],
+  "scenario": "Same wall-cap sampler executed against the previous self-contained preview, before the geometry repair."
+}
