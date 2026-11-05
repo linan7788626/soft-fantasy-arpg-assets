@@ -12,16 +12,16 @@ const sceneClip=()=>({walk:KIT.walks,idle:KIT.idles,push:KIT.pushes})[action()][
 const plateDown=()=>!pushing&&crate.x===plate.x&&crate.y===plate.y;
 function face(dx,dy){if(dx||dy){const next=Math.abs(dx)>=Math.abs(dy)?(dx>0?'east':'west'):(dy>0?'south':'north');if(direction!==next){direction=next;frame=IDLE_FRAME;acc=0;document.querySelector('#direction').value=direction;}}}
 const GATE=KIT.walls.gate;
-const northWallCells=Array.from({length:12},(_,x)=>x).filter(x=>x<GATE.start||x>=GATE.end);
+const northWallCells=Array.from({length:12},(_,x)=>x);
 
 const asset=id=>KIT.assets.find(a=>a.id===id);
 function sprite(c,id,x,y,w,h,flip=false){const a=asset(id),r=a.rect;c.save();if(flip){c.translate(x+w,y);c.scale(-1,1);x=0;y=0;}c.drawImage(images[id],...r,x,y,w,h);c.restore();}
 // Room shape is independent of gate state; the wall gap and collision passage differ.
 function room(x,y){return x>=0&&y>=0&&x<12&&y<8&&(layout!=='elbow'||x<6||y<4);}
 function floor(x,y){return room(x,y)||(door&&y===-1&&x===GATE.passage);}
-function obstacle(x,y){return !floor(x,y)||(y===0&&(x===GATE.start||x===GATE.end-1))||(layout==='puzzle'&&x===8&&y!==4);}
+function obstacle(x,y){return !floor(x,y)||(layout==='puzzle'&&x===8&&(y<KIT.walls.puzzle_open_rows[0]||y>=KIT.walls.puzzle_open_rows[1]));}
 function solid(x,y){const ix=Math.floor(x),iy=Math.floor(y);return obstacle(ix,iy)||(x>crate.x+.08&&x<crate.x+.92&&y>crate.y+.84&&y<crate.y+1)||(pushing&&ix===pushing.from.x&&iy===pushing.from.y);}
-function reset(){player={x:2.5,y:5.5};crate={x:5,y:4};plate=layout==='elbow'?{x:4,y:4}:{x:7,y:4};if(layout==='elbow')crate={x:3,y:4};door=false;pushing=null;frame=IDLE_FRAME;playing=false;stepping=false;acc=0;direction='east';plateBlend=0;actualMoving=false;document.querySelector('#direction').value=direction;keys.clear();document.querySelector('#play').textContent='动作演示';}
+function reset(){player={x:2.5,y:5.5};crate={x:5,y:4};plate=layout==='elbow'?{x:4,y:4}:{x:7,y:4};if(layout==='elbow')crate={x:3,y:4};if(layout==='puzzle'){crate={x:5,y:3};plate={x:7,y:3};}door=false;pushing=null;frame=IDLE_FRAME;playing=false;stepping=false;acc=0;direction='east';plateBlend=0;actualMoving=false;document.querySelector('#direction').value=direction;keys.clear();document.querySelector('#play').textContent='动作演示';}
 function move(dx,dy){face(dx,dy);const old={...player};if(!solid(player.x+dx,player.y))player.x+=dx;if(!solid(player.x,player.y+dy))player.y+=dy;return Math.hypot(player.x-old.x,player.y-old.y)>0.00001;}
 function cratePosition(t=performance.now()){
  if(!pushing)return {...crate};
@@ -72,20 +72,29 @@ function hero(c,index,x,y,h=104,clip=sceneClip(),lock=true){
 }
 function drawWalls(foreground){
  const g=KIT.walls.layouts[layout];ctx.save();ctx.translate(OX,OY);
+ const faceMask=new Path2D();faceMask.rect(...g.bounds);const opening=portalPath(2);faceMask.addPath(opening);ctx.save();ctx.clip(faceMask,'evenodd');
  for(const q of g.faces)if(q.foreground===foreground){ctx.save();ctx.transform(...q.transform);ctx.drawImage(images[q.asset],...q.src,0,0,1,1);ctx.restore();}
+ ctx.restore();
  const cap=new Path2D();for(const p of g.cap_contours){cap.moveTo(...p[0]);for(const v of p.slice(1))cap.lineTo(...v);cap.closePath();}
  ctx.save();ctx.clip(cap,'evenodd');if(foreground){const region=new Path2D();for(const r of g.foreground_rects)region.rect(...r);ctx.clip(region);}
  const texture=images.wall_cap,pattern=ctx.createPattern(texture,'repeat');pattern.setTransform(new DOMMatrix().scale(KIT.walls.texture_period/texture.width,KIT.walls.texture_period/texture.height));ctx.fillStyle=pattern;ctx.fill(cap,'evenodd');ctx.restore();
  ctx.lineJoin='round';ctx.lineCap='round';for(const line of g.outlines)if(line.foreground===foreground){ctx.beginPath();ctx.moveTo(...line.points[0]);for(const p of line.points.slice(1))ctx.lineTo(...p);ctx.strokeStyle='rgba(73,68,63,.30)';ctx.lineWidth=2;ctx.stroke();ctx.save();ctx.translate(-.5,-.5);ctx.strokeStyle='rgba(246,239,216,.40)';ctx.lineWidth=1;ctx.stroke();ctx.restore();}ctx.restore();
 }
+function portalPath(extend=0){const path=new Path2D(),p=GATE.opening.contour;path.moveTo(p[0][0],p[0][1]+extend);for(let i=1;i<p.length;i++)path.lineTo(p[i][0],p[i][1]+(i===p.length-1?extend:0));path.closePath();return path;}
+function drawPortal(shadow=true){
+ ctx.save();ctx.translate(OX,OY);const path=portalPath(),[x,y,w,h]=GATE.opening.rect;
+ if(shadow){ctx.save();ctx.clip(path);const shade=ctx.createLinearGradient(0,y,0,y+h);shade.addColorStop(0,'rgba(44,36,28,.48)');shade.addColorStop(1,'rgba(44,36,28,0)');ctx.fillStyle=shade;ctx.fill(path);ctx.restore();}
+ if(!door){ctx.save();ctx.clip(path);sprite(ctx,'door_closed',...GATE.opening.leaf_rect);ctx.restore();}
+ const p=GATE.opening.contour;ctx.beginPath();ctx.moveTo(...p[0]);for(const q of p.slice(1))ctx.lineTo(...q);ctx.lineJoin='round';ctx.lineWidth=3;ctx.strokeStyle='rgba(65,49,31,.30)';ctx.stroke();ctx.translate(-.5,-.5);ctx.lineWidth=1;ctx.strokeStyle='rgba(255,239,199,.45)';ctx.stroke();ctx.restore();
+}
+function drawNorthOcclusion(){ctx.save();ctx.beginPath();ctx.rect(OX+GATE.occlusion_rect[0],OY+GATE.occlusion_rect[1],GATE.occlusion_rect[2],GATE.occlusion_rect[3]);ctx.clip();drawWalls(false);drawPortal(false);ctx.restore();}
 function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);const bg=document.querySelector('#background').value;ctx.fillStyle=bg==='light'?'#e8e2d7':'#25343d';ctx.fillRect(0,0,1120,780);if(bg==='checker')for(let y=0;y<780;y+=24)for(let x=0;x<1120;x+=24){ctx.fillStyle=((x+y)/24)%2?'#ddd':'#aab7be';ctx.fillRect(x,y,24,24);}
 ctx.save();ctx.beginPath();for(let y=-1;y<8;y++)for(let x=0;x<12;x++)if(floor(x,y))ctx.rect(OX+x*T,OY+y*T,T,T);ctx.clip();for(let y=-6;y<8;y+=6)for(let x=0;x<12;x+=6)sprite(ctx,'floor',OX+x*T,OY+y*T,6*T,6*T);ctx.restore();
 // A single projected wall volume supplies the cap, facade and orthogonal corners.
 drawWalls(false);
 if(debug)for(let y=0;y<8;y++)for(let x=0;x<12;x++)if(room(x,y)){ctx.strokeStyle='#de7373';ctx.strokeRect(OX+x*T,OY+y*T,T,T);}
-// The arch replaces three wall segments, and its threshold aligns with the wall base.
-const drawGate=()=>sprite(ctx,door?'door_open':'door_closed',OX+GATE.x,OY+GATE.y,GATE.width,GATE.height);
-if(player.y>=0)drawGate();
+// The doorway is a void in this wall face, under its continuous lintel and cap.
+drawPortal();
 sprite(ctx,'plate',OX+plate.x*T,OY+plate.y*T,T,T*.7);
 if(plateBlend>0){ctx.save();ctx.globalAlpha=plateBlend;sprite(ctx,'plate_pressed',OX+plate.x*T,OY+plate.y*T,T,T*.7);ctx.restore();}
 const box=cratePosition();
@@ -93,7 +102,7 @@ const box=cratePosition();
 const drawCrate=()=>sprite(ctx,'crate',OX+box.x*T,OY+(box.y+1)*T-72,T,72);
 if(player.y<box.y+1){hero(ctx,frame,OX+player.x*T,OY+player.y*T,104);drawCrate();}else{drawCrate();}
 if(player.y>=box.y+1)hero(ctx,frame,OX+player.x*T,OY+player.y*T,104);
-if(player.y<0)drawGate();
+if(player.y<0)drawNorthOcclusion();
 // South-facing boundaries occlude objects behind the wall.
 drawWalls(true);
 if(debug){ctx.strokeStyle='#58e8d8';ctx.beginPath();ctx.moveTo(OX+player.x*T-12,OY+player.y*T);ctx.lineTo(OX+player.x*T+12,OY+player.y*T);ctx.stroke();}

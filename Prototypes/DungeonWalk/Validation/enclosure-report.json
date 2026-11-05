@@ -9,48 +9,48 @@
     {
       "layout": "hall",
       "open": false,
-      "wall": 128,
-      "gate": 129,
+      "wall": 48,
+      "gate": 48,
       "roundedOutsideAlpha": 0,
       "roundedInsideAlpha": 255
     },
     {
       "layout": "hall",
       "open": true,
-      "wall": 128,
-      "gate": 128,
+      "wall": 48,
+      "gate": 48,
       "roundedOutsideAlpha": 0,
       "roundedInsideAlpha": 255
     },
     {
       "layout": "elbow",
       "open": false,
-      "wall": 128,
-      "gate": 129,
+      "wall": 48,
+      "gate": 48,
       "roundedOutsideAlpha": 0,
       "roundedInsideAlpha": 255
     },
     {
       "layout": "elbow",
       "open": true,
-      "wall": 128,
-      "gate": 128,
+      "wall": 48,
+      "gate": 48,
       "roundedOutsideAlpha": 0,
       "roundedInsideAlpha": 255
     },
     {
       "layout": "puzzle",
       "open": false,
-      "wall": 128,
-      "gate": 129,
+      "wall": 48,
+      "gate": 48,
       "roundedOutsideAlpha": 0,
       "roundedInsideAlpha": 255
     },
     {
       "layout": "puzzle",
       "open": true,
-      "wall": 128,
-      "gate": 128,
+      "wall": 48,
+      "gate": 48,
       "roundedOutsideAlpha": 0,
       "roundedInsideAlpha": 255
     }

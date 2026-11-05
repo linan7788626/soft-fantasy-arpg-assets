@@ -28,7 +28,7 @@ try{
    const points=[['north',200,196-h],['north-west',104,196-h],['west',104,280],['east',864,280],['south-west',104,708-h],['south-east',testLayout==='elbow'?480:864,708-h]];
    const floor=(x,y)=>x>=0&&x<12&&y>=0&&y<8&&(testLayout!=='elbow'||x<6||y<4);
    for(let y=0;y<8;y++)for(let x=0;x<12;x++)if(floor(x,y)){
-    for(const [dx,dy] of [[0,-1],[0,1],[-1,0],[1,0]])if(!floor(x+dx,y+dy)&&!(dy===-1&&y===0&&x>=5&&x<8)){
+    for(const [dx,dy] of [[0,-1],[0,1],[-1,0],[1,0]])if(!floor(x+dx,y+dy)){
      for(const offset of [-8,0,8])for(const along of [4,20,36,52,60]){
       const px=100+(dy?x*64+along:(x+(dx===1))*64+offset);
       const py=196-h+(dy?(y+(dy===1))*64+offset:y*64+along);

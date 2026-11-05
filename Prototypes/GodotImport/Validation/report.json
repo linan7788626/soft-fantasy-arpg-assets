@@ -1,7 +1,8 @@
 {
 	"checks": [
-		"Equal wall/gate top line, 88px projected height and rounded enclosure contours",
-		"20 native textures, 44 AtlasTexture action frames; fixed per-clip scale; four walking clocks and dedicated idle states",
+		"Tall 168px closed enclosure; carved doorway, continuous cap and shared masonry",
+		"Former detached jamb cells are free floor; the continuous north wall still blocks exits",
+		"19 native textures, 44 AtlasTexture action frames; fixed per-clip scale; four walking clocks and dedicated idle states",
 		"Four-direction approach/contact/effort/release; repeat push rejection; continued south pushing without tile trapping",
 		"Auto-approach cannot carry the character outside the south wall",
 		"Pressure plate press/release and gate transitions",

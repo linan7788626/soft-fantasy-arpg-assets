@@ -1,7 +1,7 @@
 {
   "status": "passed",
   "checks": [
-    "20 native images loaded offline",
+    "19 native images loaded offline",
     "three room layouts",
     "pause and single frame step",
     "6 frame timed loop",

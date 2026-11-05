@@ -14,6 +14,8 @@ var gate_sprite: Sprite2D
 var foreground: Node2D
 var cap_background: Node2D
 var cap_front: Node2D
+var north_occluder: Node2D
+var portal_detail: Node2D
 var caption: Label
 var player = Vector2(2.5, 5.5)
 var crate = Vector2i(5, 4)
@@ -53,7 +55,8 @@ func _ready():
 				atlas.region = rect(f.rect)
 				hero.sprite_frames.add_frame(name, atlas)
 	var gate = manifest.walls.gate
-	gate_sprite = module_sprite("door_closed", ORIGIN + Vector2(gate.x, gate.y), Vector2(gate.width, gate.height))
+	var leaf = gate.opening.leaf_rect
+	gate_sprite = module_sprite("door_closed", ORIGIN + Vector2(leaf[0], leaf[1]), Vector2(leaf[2], leaf[3]))
 	gate_sprite.z_index = 1
 	plate_sprite = module_sprite("plate", ORIGIN + Vector2(plate) * CELL, Vector2(64, 44.8))
 	crate_sprite = module_sprite("crate", ORIGIN + Vector2(crate) * CELL + Vector2(0, -8), Vector2(64, 72))
@@ -67,9 +70,12 @@ func _ready():
 	hero.animation_changed.connect(align_hero)
 	foreground = Node2D.new()
 	foreground.z_index = 4
-	foreground.draw.connect(func(): draw_walls(true))
 	add_child(foreground)
-	rebuild_wall_caps()
+	rebuild_wall_layers()
+	portal_detail = Node2D.new()
+	portal_detail.z_index = 2
+	portal_detail.draw.connect(func(): draw_portal_rim(portal_detail))
+	add_child(portal_detail)
 	for i in range(4):
 		var d = DIRECTIONS[i]
 		var data = clip("idle", d)
@@ -154,7 +160,9 @@ func align_hero():
 		hero.z_index = 1 if hero.position.y < crate_sprite.position.y + 72 else 3
 		if is_instance_valid(idle_blend):
 			idle_blend.z_index = hero.z_index
-		gate_sprite.z_index = 5 if player.y < 0 else 1
+		gate_sprite.z_index = 7 if player.y < 0 else 1
+		if is_instance_valid(north_occluder):
+			north_occluder.visible = player.y < 0
 
 func set_motion(v: Vector2):
 	if not v.is_zero_approx():
@@ -174,7 +182,7 @@ func room(x: int, y: int) -> bool:
 func obstacle(cell: Vector2i) -> bool:
 	if door and cell == Vector2i(6, -1):
 		return false
-	return not room(cell.x, cell.y) or (cell.y == 0 and cell.x in [5, 7]) or (layout == "puzzle" and cell.x == 8 and cell.y != 4)
+	return not room(cell.x, cell.y) or (layout == "puzzle" and cell.x == 8 and (cell.y < manifest.walls.puzzle_open_rows[0] or cell.y >= manifest.walls.puzzle_open_rows[1]))
 
 func blocked(p: Vector2) -> bool:
 	return obstacle(Vector2i(floor(p.x), floor(p.y))) or (p.x > crate.x + .08 and p.x < crate.x + .92 and p.y > crate.y + .84 and p.y < crate.y + 1)
@@ -230,13 +238,16 @@ func set_layout(value: String):
 	player = Vector2(2.5, 5.5)
 	crate = Vector2i(3, 4) if value == "elbow" else Vector2i(5, 4)
 	plate = Vector2i(4, 4) if value == "elbow" else Vector2i(7, 4)
+	if value == "puzzle":
+		crate = Vector2i(5,3)
+		plate = Vector2i(7,3)
 	crate_sprite.position = ORIGIN + Vector2(crate) * CELL + Vector2(0, -8)
 	plate_sprite.position = ORIGIN + Vector2(plate) * CELL
 	update_mechanism()
 	set_motion(Vector2.ZERO)
 	queue_redraw()
 	foreground.queue_redraw()
-	rebuild_wall_caps()
+	rebuild_wall_layers()
 
 func push_crate() -> bool:
 	var v = Vector2(crate) + Vector2(.5, .96) - player
@@ -266,7 +277,7 @@ func update_mechanism():
 	pressed = crate == plate
 	door = pressed
 	set_module(plate_sprite, "plate_pressed" if pressed else "plate")
-	set_module(gate_sprite, "door_open" if door else "door_closed")
+	gate_sprite.visible = not door
 	queue_redraw()
 
 func points(values) -> PackedVector2Array:
@@ -291,29 +302,109 @@ func cap_polygon(polygon: PackedVector2Array, parent: Node2D):
 	shape.uv = uv
 	parent.add_child(shape)
 
-func rebuild_wall_caps():
-	if is_instance_valid(cap_background):
-		cap_background.queue_free()
-	if is_instance_valid(cap_front):
-		cap_front.queue_free()
+func rect_polygon(r: Array, padding: float = 0) -> PackedVector2Array:
+	return PackedVector2Array([Vector2(r[0]-padding,r[1]-padding),Vector2(r[0]+r[2]+padding,r[1]-padding),Vector2(r[0]+r[2]+padding,r[1]+r[3]+padding),Vector2(r[0]-padding,r[1]+r[3]+padding)])
+
+func cap_parts(region: PackedVector2Array) -> Array:
+	var geometry = manifest.walls.layouts[layout]
+	var result: Array = []
+	for outer in geometry.cap_outer_contours:
+		var parts: Array = Geometry2D.intersect_polygons(points(outer), region)
+		for hole in geometry.cap_hole_contours:
+			var next: Array = []
+			for part in parts:
+				next.append_array(Geometry2D.clip_polygons(part, points(hole)))
+			parts = next
+		result.append_array(parts)
+	return result
+
+func add_face(q: Dictionary, parent: Node2D, clip_region = null):
+	var m = q.transform
+	var mapping = Transform2D(Vector2(m[0],m[1]),Vector2(m[2],m[3]),Vector2(m[4],m[5]))
+	var polygon = PackedVector2Array([mapping*Vector2.ZERO,mapping*Vector2.RIGHT,mapping*Vector2.ONE,mapping*Vector2.DOWN])
+	var opening = points(manifest.walls.gate.opening.contour)
+	opening[0].y += 2
+	opening[opening.size()-1].y += 2
+	var pieces: Array = Geometry2D.clip_polygons(polygon, opening)
+	if clip_region != null:
+		var clipped: Array = []
+		for part in pieces:
+			clipped.append_array(Geometry2D.intersect_polygons(part, clip_region))
+		pieces = clipped
+	var inverse = mapping.affine_inverse()
+	for part in pieces:
+		if part.size() < 3:
+			continue
+		var shape = Polygon2D.new()
+		shape.position = ORIGIN
+		shape.polygon = part
+		shape.texture = textures[q.asset]
+		# Adjacent material bands share exact edges; avoid internal AA seam lines.
+		shape.antialiased = false
+		var uv = PackedVector2Array()
+		for v in part:
+			uv.append(Vector2(q.src[0],q.src[1]) + (inverse*v)*Vector2(q.src[2],q.src[3]))
+		shape.uv = uv
+		parent.add_child(shape)
+
+func add_portal_shadow(parent: Node2D):
+	var shape = Polygon2D.new()
+	shape.position = ORIGIN
+	shape.polygon = points(manifest.walls.gate.opening.contour)
+	var colors = PackedColorArray()
+	var r = manifest.walls.gate.opening.rect
+	for p in shape.polygon:
+		colors.append(Color(44/255.0,36/255.0,28/255.0,.48*(1-(p.y-r[1])/r[3])))
+	shape.vertex_colors = colors
+	shape.antialiased = true
+	parent.add_child(shape)
+
+func rebuild_wall_layers():
+	for layer in [cap_background,cap_front,north_occluder]:
+		if is_instance_valid(layer):
+			layer.queue_free()
 	cap_background = Node2D.new()
 	add_child(cap_background)
 	cap_front = Node2D.new()
 	foreground.add_child(cap_front)
+	north_occluder = Node2D.new()
+	north_occluder.z_index = 6
+	north_occluder.visible = player.y < 0
+	add_child(north_occluder)
 	var geometry = manifest.walls.layouts[layout]
-	for values in geometry.cap_contours:
-		var polygon = points(values)
-		cap_polygon(polygon, cap_background)
-		for r in geometry.foreground_rects:
-			var clip_rect = PackedVector2Array([Vector2(r[0],r[1]),Vector2(r[0]+r[2],r[1]),Vector2(r[0]+r[2],r[1]+r[3]),Vector2(r[0],r[1]+r[3])])
-			for part in Geometry2D.intersect_polygons(polygon, clip_rect):
-				cap_polygon(part, cap_front)
+	var north_rect = rect_polygon(manifest.walls.gate.occlusion_rect)
+	add_portal_shadow(cap_background)
+	for q in geometry.faces:
+		add_face(q, cap_front if q.foreground else cap_background)
+		if not q.foreground:
+			add_face(q, north_occluder, north_rect)
+	var bounds = geometry.bounds
+	# Closed caps have an interior hole. Small overlapping tiles keep that hole
+	# empty while retaining smooth exterior edges and continuous texture phase.
+	for y in range(int(floor(bounds[1]/64.0))*64,int(bounds[1]+bounds[3])+64,64):
+		for x in range(int(floor(bounds[0]/64.0))*64,int(bounds[0]+bounds[2])+64,64):
+			for part in cap_parts(rect_polygon([x,y,64,64],1)):
+				cap_polygon(part, cap_background)
+	for r in geometry.foreground_rects:
+		for part in cap_parts(rect_polygon(r,1)):
+			cap_polygon(part, cap_front)
+	for part in cap_parts(north_rect):
+		cap_polygon(part, north_occluder)
 	var back_bevel = Node2D.new()
 	back_bevel.draw.connect(func(): draw_bevels(back_bevel, false))
 	cap_background.add_child(back_bevel)
 	var front_bevel = Node2D.new()
 	front_bevel.draw.connect(func(): draw_bevels(front_bevel, true))
 	cap_front.add_child(front_bevel)
+
+func draw_portal_rim(target: Node2D):
+	var path = points(manifest.walls.gate.opening.contour)
+	for i in range(path.size()):
+		path[i] += ORIGIN
+	target.draw_polyline(path,Color(65/255.0,49/255.0,31/255.0,.30),3,true)
+	for i in range(path.size()):
+		path[i] -= Vector2(.5,.5)
+	target.draw_polyline(path,Color(1,239/255.0,199/255.0,.45),1,true)
 
 func draw_bevels(target: Node2D, front: bool):
 	for line in manifest.walls.layouts[layout].outlines:
@@ -326,15 +417,6 @@ func draw_bevels(target: Node2D, front: bool):
 				path[i] -= Vector2(.5,.5)
 			target.draw_polyline(path, Color(246/255.0,239/255.0,216/255.0,.40), 1.0, true)
 
-func draw_walls(front: bool):
-	var target = foreground if front else self
-	for q in manifest.walls.layouts[layout].faces:
-		if q.foreground == front:
-			var m = q.transform
-			target.draw_set_transform_matrix(Transform2D(Vector2(m[0],m[1]),Vector2(m[2],m[3]),ORIGIN+Vector2(m[4],m[5])))
-			target.draw_texture_rect_region(textures[q.asset], Rect2(0,0,1,1), rect(q.src))
-	target.draw_set_transform_matrix(Transform2D.IDENTITY)
-
 func _draw():
 	if manifest.is_empty():
 		return
@@ -346,7 +428,6 @@ func _draw():
 				draw_texture_rect_region(texture, Rect2(ORIGIN + Vector2(x, y) * CELL, Vector2.ONE * CELL), Rect2(Vector2(x % 6, y % 6) * tile, tile))
 	if door:
 		draw_texture_rect_region(texture, Rect2(ORIGIN + Vector2(6,-1)*CELL, Vector2.ONE*CELL), Rect2(Vector2(0,5)*tile,tile))
-	draw_walls(false)
 
 func wait_push():
 	while not push_data.is_empty():
@@ -360,9 +441,17 @@ func capture(name: String):
 func run_validation():
 	var checks: Array = []
 	assert(manifest.walls.gate.height == manifest.walls.height + manifest.walls.thickness)
-	assert(is_equal_approx(gate_sprite.position.y, ORIGIN.y - manifest.walls.height - manifest.walls.thickness/2))
+	assert(manifest.walls.height >= 104 and manifest.walls.gate.integrated)
+	assert(is_equal_approx(gate_sprite.position.y, ORIGIN.y + manifest.walls.gate.opening.leaf_rect[1]))
 	assert(manifest.walls.corner_radius >= 8)
-	checks.append("Equal wall/gate top line, 88px projected height and rounded enclosure contours")
+	checks.append("Tall 168px closed enclosure; carved doorway, continuous cap and shared masonry")
+	for x in [5.5,7.5]:
+		player = Vector2(x,1.5)
+		move_by(Vector2(0,-1))
+		assert(is_equal_approx(player.y,.5))
+		move_by(Vector2(0,-1))
+		assert(is_equal_approx(player.y,.5))
+	checks.append("Former detached jamb cells are free floor; the continuous north wall still blocks exits")
 	for entry in manifest.assets:
 		assert(textures[entry.id].get_size() == Vector2(entry.native_size[0], entry.native_size[1]))
 	for d in DIRECTIONS:
@@ -379,7 +468,7 @@ func run_validation():
 		assert(hero.frame != before and hero.is_playing())
 		set_motion(Vector2.ZERO)
 		assert(hero.animation == "idle_" + d and not hero.is_playing())
-	checks.append("20 native textures, 44 AtlasTexture action frames; fixed per-clip scale; four walking clocks and dedicated idle states")
+	checks.append("19 native textures, 44 AtlasTexture action frames; fixed per-clip scale; four walking clocks and dedicated idle states")
 	player = Vector2(.01, 2.5)
 	move_by(Vector2(-.1, 0))
 	assert(is_equal_approx(player.x, .01) and not hero.is_playing())
@@ -421,6 +510,11 @@ func run_validation():
 	for value in ["hall", "elbow", "puzzle"]:
 		set_layout(value)
 		assert(manifest.walls.layouts[value].cap_contours.size() > 0)
+		if value == "puzzle":
+			player = Vector2(7.5,3.5)
+			move_by(Vector2(1,0))
+			assert(is_equal_approx(player.x,8.5))
+			player = Vector2(2.5,5.5)
 		await get_tree().process_frame
 		await capture("walls-" + value)
 	checks.append("Three layouts use the same unioned wall-cap geometry as Canvas")

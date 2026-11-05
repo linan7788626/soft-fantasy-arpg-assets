@@ -7,7 +7,7 @@ import hashlib, json
 root = Path(__file__).resolve().parents[2]
 kit = root / 'Assets/NLI_Prototype_Kit'
 manifest = json.loads((kit / 'Documentation/manifest.json').read_text())
-for record_file in ['generation-records.json', 'round2-generation.json', 'round3-generation.json', 'round4-generation.json']:
+for record_file in ['generation-records.json', 'round2-generation.json', 'round3-generation.json', 'round4-generation.json', 'round5-generation.json']:
     for record in json.loads((kit / 'Documentation' / record_file).read_text())['records']:
         assert hashlib.sha256((kit / record['delivered_file']).read_bytes()).hexdigest() == record['sha256'], record['delivered_file']
 records = []

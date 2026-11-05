@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "faceHeight": 128,
+  "integrated": true,
+  "capMinimumAlpha": 255,
+  "holeAlpha": 60,
+  "jambAlpha": 255,
+  "puzzlePassage": {
+    "x": 8.5,
+    "alpha": 0
+  }
+}

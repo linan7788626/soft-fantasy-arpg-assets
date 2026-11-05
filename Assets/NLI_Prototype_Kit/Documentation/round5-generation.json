@@ -1,0 +1,17 @@
+{
+  "tool": "built-in image_gen",
+  "pixel_postprocessing": "none",
+  "records": [
+    {
+      "file": "Door_Leaf_Embedded_v5.png",
+      "prompt": "Use case: stylized-concept. Generate ONLY a single CLOSED DOOR LEAF PANEL for an embedded interior dungeon doorway. This is JUST the door slab, absolutely NO stone frame, NO jambs, NO lintel, NO cap, NO masonry, no architectural surround or threshold. Tall near-square proportion, about width 0.85 times height. Straight-on orthographic front view, flat edges with gently rounded upper corners. Softly painted cobalt blue wood planks, restrained slim warm-gold metal edging and two understated gold horizontal braces, one small centered gold ring handle. The supplied references are material/palette/2D painting style only; do NOT copy their wide stone construction. Clean complete opaque panel isolated on true alpha-zero transparent background with generous margins. Polished handpainted NLI Soft Fantasy finish, soft rounded bevels and fine warm outlines, no plastic 3D, no hard pixels. No outside shadow, glow, fog, floor, white paper, vignette, text, labels, extra objects. The panel will sit inside an opening carved in a separate continuous cream stone wall, so no attached stone of any kind.",
+      "refs": [
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Assets/NLI_Prototype_Kit/Sprites/Door_Closed_Soft_v4.png",
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Castle_Small.png"
+      ],
+      "src": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-020d9964-8431-49ff-978b-be749e0b17ce.png",
+      "delivered_file": "Sprites/Door_Leaf_Embedded_v5.png",
+      "sha256": "e29b4daf57942be2bf6534c3bac305be3977b49a932a7a823290622fa435c2c3"
+    }
+  ]
+}
