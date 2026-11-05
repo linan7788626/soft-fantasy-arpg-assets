@@ -11,7 +11,7 @@ function action(){return pushing?(pushState().phase==='approach'?'walk':'push'):
 const sceneClip=()=>({walk:KIT.walks,idle:KIT.idles,push:KIT.pushes})[action()][direction];
 const plateDown=()=>!pushing&&crate.x===plate.x&&crate.y===plate.y;
 function face(dx,dy){if(dx||dy){const next=Math.abs(dx)>=Math.abs(dy)?(dx>0?'east':'west'):(dy>0?'south':'north');if(direction!==next){direction=next;frame=IDLE_FRAME;acc=0;document.querySelector('#direction').value=direction;}}}
-const GATE={start:5,end:8,passage:6,width:3*T,height:192};
+const GATE=KIT.walls.gate;
 const northWallCells=Array.from({length:12},(_,x)=>x).filter(x=>x<GATE.start||x>=GATE.end);
 
 const asset=id=>KIT.assets.find(a=>a.id===id);
@@ -70,14 +70,21 @@ function hero(c,index,x,y,h=104,clip=sceneClip(),lock=true){
  c.save();if(s)c.globalAlpha=1-s.release;c.drawImage(images[id],...r,x-w*f.pivot[0],y-height*f.pivot[1],w,height);c.restore();
  if(s?.release){c.save();c.globalAlpha=s.release;hero(c,0,original.x,original.y,h,KIT.idles[direction],false);c.restore();}
 }
-function drawWalls(foreground){const geometry=KIT.walls.layouts[layout];for(const q of [...geometry.faces,...geometry.caps])if(q.foreground===foreground){const [x,y,w,h]=q.dest;ctx.drawImage(images.wall,...q.src,OX+x,OY+y,w,h);}}
+function drawWalls(foreground){
+ const g=KIT.walls.layouts[layout];ctx.save();ctx.translate(OX,OY);
+ for(const q of g.faces)if(q.foreground===foreground){ctx.save();ctx.transform(...q.transform);ctx.drawImage(images[q.asset],...q.src,0,0,1,1);ctx.restore();}
+ const cap=new Path2D();for(const p of g.cap_contours){cap.moveTo(...p[0]);for(const v of p.slice(1))cap.lineTo(...v);cap.closePath();}
+ ctx.save();ctx.clip(cap,'evenodd');if(foreground){const region=new Path2D();for(const r of g.foreground_rects)region.rect(...r);ctx.clip(region);}
+ const texture=images.wall_cap,pattern=ctx.createPattern(texture,'repeat');pattern.setTransform(new DOMMatrix().scale(KIT.walls.texture_period/texture.width,KIT.walls.texture_period/texture.height));ctx.fillStyle=pattern;ctx.fill(cap,'evenodd');ctx.restore();
+ ctx.lineJoin='round';ctx.lineCap='round';for(const line of g.outlines)if(line.foreground===foreground){ctx.beginPath();ctx.moveTo(...line.points[0]);for(const p of line.points.slice(1))ctx.lineTo(...p);ctx.strokeStyle='rgba(73,68,63,.30)';ctx.lineWidth=2;ctx.stroke();ctx.save();ctx.translate(-.5,-.5);ctx.strokeStyle='rgba(246,239,216,.40)';ctx.lineWidth=1;ctx.stroke();ctx.restore();}ctx.restore();
+}
 function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);const bg=document.querySelector('#background').value;ctx.fillStyle=bg==='light'?'#e8e2d7':'#25343d';ctx.fillRect(0,0,1120,780);if(bg==='checker')for(let y=0;y<780;y+=24)for(let x=0;x<1120;x+=24){ctx.fillStyle=((x+y)/24)%2?'#ddd':'#aab7be';ctx.fillRect(x,y,24,24);}
-ctx.save();ctx.beginPath();for(let y=-1;y<8;y++)for(let x=0;x<12;x++)if(floor(x,y))ctx.rect(OX+x*T,OY+y*T,T,T);if(door){const left=OX+GATE.passage*T-3,right=left+70,mid=(left+right)/2;ctx.moveTo(left,OY);ctx.lineTo(left,OY-54);ctx.quadraticCurveTo(left,OY-80,mid,OY-104);ctx.quadraticCurveTo(right,OY-80,right,OY-54);ctx.lineTo(right,OY);ctx.closePath();}ctx.clip();for(let y=-6;y<8;y+=6)for(let x=0;x<12;x+=6)sprite(ctx,'floor',OX+x*T,OY+y*T,6*T,6*T);ctx.restore();
+ctx.save();ctx.beginPath();for(let y=-1;y<8;y++)for(let x=0;x<12;x++)if(floor(x,y))ctx.rect(OX+x*T,OY+y*T,T,T);ctx.clip();for(let y=-6;y<8;y+=6)for(let x=0;x<12;x+=6)sprite(ctx,'floor',OX+x*T,OY+y*T,6*T,6*T);ctx.restore();
 // A single projected wall volume supplies the cap, facade and orthogonal corners.
 drawWalls(false);
 if(debug)for(let y=0;y<8;y++)for(let x=0;x<12;x++)if(room(x,y)){ctx.strokeStyle='#de7373';ctx.strokeRect(OX+x*T,OY+y*T,T,T);}
 // The arch replaces three wall segments, and its threshold aligns with the wall base.
-const drawGate=()=>sprite(ctx,door?'door_open':'door_closed',OX+GATE.start*T,OY+12-GATE.height,GATE.width,GATE.height);
+const drawGate=()=>sprite(ctx,door?'door_open':'door_closed',OX+GATE.x,OY+GATE.y,GATE.width,GATE.height);
 if(player.y>=0)drawGate();
 sprite(ctx,'plate',OX+plate.x*T,OY+plate.y*T,T,T*.7);
 if(plateBlend>0){ctx.save();ctx.globalAlpha=plateBlend;sprite(ctx,'plate_pressed',OX+plate.x*T,OY+plate.y*T,T,T*.7);ctx.restore();}

@@ -44,25 +44,41 @@
       "core_median_alpha": 253.0
     },
     {
-      "file": "Sprites/Door_Closed_v2.png",
+      "file": "Sprites/Wall_Cap_Soft_v4.png",
       "native_size": [
-        1312,
-        1199
+        1254,
+        1254
       ],
-      "sha256": "5641d978016a076fe522c6c0f836521d4764c94c6132a47b442177040b351959",
+      "sha256": "3419342773fc5ae8f8784d96418dd6be4f983bdd0438d0d30a65ccf8906c529e"
+    },
+    {
+      "file": "Sprites/Wall_Face_Soft_v4.png",
+      "native_size": [
+        2172,
+        724
+      ],
+      "sha256": "6d15b735a4b197ff1c2c22455e2b000fa1ca5c04336a6d08e83e92aa794fc5e4"
+    },
+    {
+      "file": "Sprites/Door_Closed_Soft_v4.png",
+      "native_size": [
+        1983,
+        793
+      ],
+      "sha256": "2c14c857fb683c37501cbddf7716879c299c5c9ecd92ae5ad3407bd8a533bc22",
       "canvas_edge_max_alpha": 1,
-      "near_opaque_fraction_of_nonzero_alpha": 0.9597704179981416,
+      "near_opaque_fraction_of_nonzero_alpha": 0.9701445500234902,
       "core_median_alpha": 253.0
     },
     {
-      "file": "Sprites/Door_Open_v2.png",
+      "file": "Sprites/Door_Open_Soft_v4.png",
       "native_size": [
-        1312,
-        1199
+        1983,
+        793
       ],
-      "sha256": "c05470840cbc7a488b73726fd7a949548b39cc86f854a2189cbff52fd8f4defa",
-      "canvas_edge_max_alpha": 1,
-      "near_opaque_fraction_of_nonzero_alpha": 0.9401394255244642,
+      "sha256": "0a12f3882e078af924b4de2b7a4f6f4c0a98ac48fbcc6278f954cd9dd719a01b",
+      "canvas_edge_max_alpha": 0,
+      "near_opaque_fraction_of_nonzero_alpha": 0.9440221891309006,
       "core_median_alpha": 253.0
     },
     {
@@ -303,7 +319,7 @@
       "foot_anchor_error_px": 0
     }
   ],
-  "unique_active_images": 18,
+  "unique_active_images": 20,
   "limits": [
     "Alpha bounds and metadata checks do not establish hand ownership or natural gait. See visual acceptance notes."
   ]

@@ -1,0 +1,50 @@
+{
+  "tool": "built-in image_gen",
+  "pixel_postprocessing": "none",
+  "records": [
+    {
+      "file": "Wall_Cap_Soft_v4.png",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Make an opaque SQUARE tileable top-down texture for the TOP SURFACE OF A SOFT FANTASY STONE WALL. Reference supplies the polished handpainted 2D NLI material style only. Fill ENTIRE canvas edge-to-edge with an orderly but gently irregular pavement of LARGE ROUNDED PILLOW-BEVELED blue-gray limestone cap blocks, warm desaturated slate blue, creamy gentle edge highlights, soft warm thin seams and slightly varying rounded shapes. Each stone has smooth rounded corners, subtle convex cushion surface and painterly gradients. About 5 blocks across and 5 rows. No hard pixel edges, no razor-sharp rectangles, no heavy black outlines, no jagged noise. Natural soft fantasy finish, not plastic 3D or photoreal. Orthographic directly overhead, no vertical walls or perspective. Uniform soft upper-left illumination, very low contrast, repeatable all edges, no vignette, border, objects, text or shadows. This is a complete opaque MATERIAL TEXTURE, not an isolated item or a sheet.",
+      "src": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-d93e205b-ecb7-45ba-8d54-1624db20e9e1.png",
+      "refs": [
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Castle_Small.png"
+      ],
+      "delivered_file": "Sprites/Wall_Cap_Soft_v4.png",
+      "sha256": "3419342773fc5ae8f8784d96418dd6be4f983bdd0438d0d30a65ccf8906c529e"
+    },
+    {
+      "file": "Wall_Face_Soft_v4.png",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Make an opaque WIDE horizontal repeatable texture for the FRONT FACE of a warm SOFT FANTASY dungeon wall, same polished 2D painted cream limestone as reference. Fill canvas edge-to-edge with TWO horizontal staggered courses of large cream/butter limestone blocks, each softly rounded and chamfered, gentle pillowed surfaces, warm brown fine mortar, soft diffuse gradients, restrained natural wear. Smooth organic rounded block corners and consistent cream/gold palette. Front flat orthographic elevation, no perspective skew, NO top cap, no pillars, no ornaments, no ground, no background margin, no halo, no text. Low contrast painterly material, no heavy outlines, no gritty noise, no pixel art, no plastic3D. Tileable left-right and edge-to-edge; no dark vignette. About 7 broad blocks per row. Wide aspect 3:1.",
+      "src": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-8f217ac2-17b5-473f-9910-7e8caecb3daa.png",
+      "refs": [
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Castle_Small.png"
+      ],
+      "delivered_file": "Sprites/Wall_Face_Soft_v4.png",
+      "sha256": "6d15b735a4b197ff1c2c22455e2b000fa1ca5c04336a6d08e83e92aa794fc5e4"
+    },
+    {
+      "file": "Door_Closed_Soft_v4.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. A NEW low squat dungeon doorway designed to SIT FLUSH WITH A LOW WALL, viewed from above at the elevated orthographic NLI adventure-game camera. Reference is material/style only, do NOT copy its castle silhouette. One single complete CLOSED doorway module, isolated on genuine transparent background. Outer silhouette is a WIDE rounded rectangular slab, about 2.2 times as wide as tall. A continuous broad rounded blue-gray stone TOP CAP across the entire width (visible top surface occupies upper 40 percent), and two short rounded cream limestone side jambs below, subtle fine gold trim. A central low cobalt-blue door with a small gold ring closes the opening, centered between jambs, taking the middle third of the width. SAME LOW HEIGHT all across, no raised central arch crown. Very soft smooth chamfered stone edges, pillowy round blocks, thin warm outlines, polished handpainted 2D Soft Fantasy, matching cream/gold/blue reference. The door and its surrounding wall segment form one shallow building cutaway, NOT a freestanding tall castle entrance. Absolutely NO towers, battlements, spikes, finials, banners, roofs, stairs, extra wall wings or floor. Small shallow threshold only. Fully opaque materials, true alpha-zero background with generous clean margins. No exterior shadow/fog/white paper/glow/text. The whole module will render at 192x88px: prioritize that wide low ratio.",
+      "src": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-6b6aa1e0-085c-4f8c-9817-ca62c6efbbc6.png",
+      "refs": [
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Castle_Small.png"
+      ],
+      "delivered_file": "Sprites/Door_Closed_Soft_v4.png",
+      "sha256": "2c14c857fb683c37501cbddf7716879c299c5c9ecd92ae5ad3407bd8a533bc22"
+    },
+    {
+      "file": "Door_Open_Soft_v4.png",
+      "prompt": "Use case: precise-object-edit. Edit ONLY this exact low wide doorway into its OPEN state. Preserve the entire blue-gray rounded top cap, gold trims, cream stone sides and short jambs, outer silhouette, position, camera and dimensions exactly. Remove ONLY the central cobalt-blue wooden door leaves, their hinges and gold ring inside the central opening. The opening must be fully TRANSPARENT alpha zero from inner left jamb to inner right jamb, down to the shallow threshold. Keep the shallow cream threshold. No dark or colored interior, no floor, fog, glow, shadow or paper in the opening. Outside the module stays truly alpha-zero. All remaining stone/gold stays opaque. Same original soft painted colors and round edges. Do not redraw a different gate, change stone shapes, add ornaments or alter the cap. A clean transparent game sprite, no text.",
+      "refs": [
+        "/Users/uranus/Developer/GitHub/soft-fantasy-arpg-assets/Assets/NLI_Prototype_Kit/Sprites/Door_Closed_Soft_v4.png"
+      ],
+      "transparent": true,
+      "src": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-06e9aa5a-adc4-4657-9f46-d5dc393bbe91.png",
+      "delivered_file": "Sprites/Door_Open_Soft_v4.png",
+      "sha256": "0a12f3882e078af924b4de2b7a4f6f4c0a98ac48fbcc6278f954cd9dd719a01b"
+    }
+  ]
+}

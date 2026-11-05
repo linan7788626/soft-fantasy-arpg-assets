@@ -9,26 +9,45 @@ Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
 [  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
 [92m[ DONE ][39m [1mfirst_scan_filesystem[22m
 [0m
-[   0% ] [90m[1m_update_scan_actions[22m | Started Scanning actions... (18 steps)[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Started Scanning actions... (20 steps)[39m[0m
 [   0% ] [90m[1m_update_scan_actions[22m | Crate_Push.png[39m[0m
-[   5% ] [90m[1m_update_scan_actions[22m | Door_Closed_v2.png[39m[0m
-[  10% ] [90m[1m_update_scan_actions[22m | Door_Open_v2.png[39m[0m
-[  15% ] [90m[1m_update_scan_actions[22m | Floor_Limestone.png[39m[0m
-[  21% ] [90m[1m_update_scan_actions[22m | Hero_Idle_Four.png[39m[0m
-[  26% ] [90m[1m_update_scan_actions[22m | Hero_Push_East_4.png[39m[0m
-[  31% ] [90m[1m_update_scan_actions[22m | Hero_Push_North_4.png[39m[0m
-[  36% ] [90m[1m_update_scan_actions[22m | Hero_Push_South_4.png[39m[0m
-[  42% ] [90m[1m_update_scan_actions[22m | Hero_Push_West_4.png[39m[0m
-[  47% ] [90m[1m_update_scan_actions[22m | Hero_Walk_East_6.png[39m[0m
-[  52% ] [90m[1m_update_scan_actions[22m | Hero_Walk_North_v2_6.png[39m[0m
-[  57% ] [90m[1m_update_scan_actions[22m | Hero_Walk_South_v2_6.png[39m[0m
-[  63% ] [90m[1m_update_scan_actions[22m | Hero_Walk_West_6.png[39m[0m
-[  68% ] [90m[1m_update_scan_actions[22m | Pillar_Connector_v2.png[39m[0m
-[  73% ] [90m[1m_update_scan_actions[22m | Pressure_Plate.png[39m[0m
-[  78% ] [90m[1m_update_scan_actions[22m | Pressure_Plate_Pressed.png[39m[0m
-[  84% ] [90m[1m_update_scan_actions[22m | Wall_Horizontal.png[39m[0m
-[  89% ] [90m[1m_update_scan_actions[22m | Wall_Vertical_v2.png[39m[0m
+[   4% ] [90m[1m_update_scan_actions[22m | Door_Closed_Soft_v4.png[39m[0m
+[   9% ] [90m[1m_update_scan_actions[22m | Door_Open_Soft_v4.png[39m[0m
+[  14% ] [90m[1m_update_scan_actions[22m | Floor_Limestone.png[39m[0m
+[  19% ] [90m[1m_update_scan_actions[22m | Hero_Idle_Four.png[39m[0m
+[  23% ] [90m[1m_update_scan_actions[22m | Hero_Push_East_4.png[39m[0m
+[  28% ] [90m[1m_update_scan_actions[22m | Hero_Push_North_4.png[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | Hero_Push_South_4.png[39m[0m
+[  38% ] [90m[1m_update_scan_actions[22m | Hero_Push_West_4.png[39m[0m
+[  42% ] [90m[1m_update_scan_actions[22m | Hero_Walk_East_6.png[39m[0m
+[  47% ] [90m[1m_update_scan_actions[22m | Hero_Walk_North_v2_6.png[39m[0m
+[  52% ] [90m[1m_update_scan_actions[22m | Hero_Walk_South_v2_6.png[39m[0m
+[  57% ] [90m[1m_update_scan_actions[22m | Hero_Walk_West_6.png[39m[0m
+[  61% ] [90m[1m_update_scan_actions[22m | Pillar_Connector_v2.png[39m[0m
+[  66% ] [90m[1m_update_scan_actions[22m | Pressure_Plate.png[39m[0m
+[  71% ] [90m[1m_update_scan_actions[22m | Pressure_Plate_Pressed.png[39m[0m
+[  76% ] [90m[1m_update_scan_actions[22m | Wall_Cap_Soft_v4.png[39m[0m
+[  80% ] [90m[1m_update_scan_actions[22m | Wall_Face_Soft_v4.png[39m[0m
+[  85% ] [90m[1m_update_scan_actions[22m | Wall_Horizontal.png[39m[0m
+[  90% ] [90m[1m_update_scan_actions[22m | Wall_Vertical_v2.png[39m[0m
 [92m[ DONE ][39m [1m_update_scan_actions[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (4 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  20% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  40% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  60% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing pre-reimport operations...[39m[0m
+[   0% ] [90m[1mreimport[22m | Door_Closed_Soft_v4.png[39m[0m
+[  20% ] [90m[1mreimport[22m | Door_Open_Soft_v4.png[39m[0m
+[  40% ] [90m[1mreimport[22m | Wall_Cap_Soft_v4.png[39m[0m
+[  60% ] [90m[1mreimport[22m | Wall_Face_Soft_v4.png[39m[0m
+[  80% ] [90m[1mreimport[22m | Finalizing Asset Import...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (4 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing post-reimport operations...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
 [0m
 [   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
 [   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m

@@ -7,7 +7,7 @@ import hashlib,json,uuid
 from wall_geometry import make_walls
 ROOT=Path(__file__).resolve().parents[1]
 KIT=ROOT/'Assets/NLI_Prototype_Kit'
-rows=[('floor','Floor_Limestone.png'),('wall','Wall_Horizontal.png'),('sidewall','Wall_Vertical_v2.png'),('pillar','Pillar_Connector_v2.png'),('door_closed','Door_Closed_v2.png'),('door_open','Door_Open_v2.png'),('crate','Crate_Push.png'),('plate','Pressure_Plate.png'),('plate_pressed','Pressure_Plate_Pressed.png')]
+rows=[('floor','Floor_Limestone.png'),('wall','Wall_Horizontal.png'),('sidewall','Wall_Vertical_v2.png'),('pillar','Pillar_Connector_v2.png'),('wall_cap','Wall_Cap_Soft_v4.png'),('wall_face','Wall_Face_Soft_v4.png'),('door_closed','Door_Closed_Soft_v4.png'),('door_open','Door_Open_Soft_v4.png'),('crate','Crate_Push.png'),('plate','Pressure_Plate.png'),('plate_pressed','Pressure_Plate_Pressed.png')]
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def rect_for(p):
  im=Image.open(p)
@@ -21,6 +21,11 @@ for id,name in rows:
  if id=='wall':rect[2]=round(rect[2]/4)
  if id=='sidewall':rect[3]=round(rect[3]/4)
  assets.append({'id':id,'file':'Sprites/'+name,'rect':rect,'native_size':list(im.size),'sha256':sha(p),'logical_cell':64,'alpha':im.mode=='RGBA'})
+# Both door states share one source frame so opening never rescales the masonry.
+doors=[a for a in assets if a['id'] in ['door_closed','door_open']]
+x0=min(a['rect'][0] for a in doors);y0=min(a['rect'][1] for a in doors)
+x1=max(a['rect'][0]+a['rect'][2] for a in doors);y1=max(a['rect'][1]+a['rect'][3] for a in doors)
+for a in doors:a['rect']=[x0,y0,x1-x0,y1-y0]
 def clip_for(filename,direction,count,kind):
  p=KIT/'Sprites'/filename;im=Image.open(p);a=np.array(im.getchannel('A'));labels,n=label(a>128)
  regions=[]
@@ -54,13 +59,13 @@ idles={}
 for i,d in enumerate(directions):
  idles[d]={**idle_sheet,'direction':d,'frames':[{**idle_sheet['frames'][i],'index':0}]}
 m={'version':'0.2.0-direction-trial','style_code':'NL-ARPG-SOFT-766DF2B7','pixel_postprocessing':'none','assets':assets,'walk':walks['east'],'walks':walks,'mechanisms':{'plate':{'released':'plate','pressed':'plate_pressed','trigger':'crate settled on plate; release after crate leaves','transition_ms':120}},'assembly':'Floor repeat; independent perimeter segments; connector pillars at corners. Render rectangles do not rewrite source PNGs.','limits':['Floor is a repeating prototype texture, not a mathematically edge-identical autotile set.','Sidewall mirror is a preview assembly transform; lighting is not recomputed.','Four-direction walking is a small-batch trial; idle reuses a still walk frame, not a separate breathing cycle.','Unity Editor import is not validated; Godot validation is reported separately.'],'validation':{'browser_report':'../../../Prototypes/DungeonWalk/Validation/report.json','engine_report':'../../../Prototypes/GodotImport/Validation/report.json'}}
-m['validation']['visual_report']='Acceptance_2026-11-04.md'
-m['walls']=make_walls()
-m['version']='0.3.0-actions-walls'
-m['assembly']='Union room boundary footprints, project one orthographic wall volume, and sample native wall material for continuous caps/facades; no source PNG edits.'
+m['validation']['visual_report']='Acceptance_2026-11-05.md'
+m['walls']=make_walls(Image.open(KIT/'Sprites/Wall_Cap_Soft_v4.png').size,Image.open(KIT/'Sprites/Wall_Face_Soft_v4.png').size)
+m['version']='0.4.0-soft-enclosure'
+m['assembly']='Rounded orthographic enclosure; shared wall/gate height and top line; native soft stone material repeated at render time; no source PNG edits.'
 m['pushes']=pushes
 m['idles']=idles
-m['limits']=['Floor is not an edge-identical autotile set.','The preview uses one orthographic wall volume and samples the original wall PNG at render time.','Idle is a dedicated static pose, not a breathing loop.','Unity Editor import remains unvalidated.']
+m['limits']=['Floor and wall materials are not certified edge-identical autotile sets.','Rounded enclosure geometry and door share a common top line.','Idle is a dedicated static pose, not a breathing loop.','Unity Editor import remains unvalidated.']
 (KIT/'Documentation/manifest.json').write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n')
 (ROOT/'Prototypes/DungeonWalk/kit-data.js').write_text('const KIT='+json.dumps(m,ensure_ascii=False)+';\n')
 # Conventional Unity sprite metadata for the native textures; calibrated cuts remain explicit in manifest.

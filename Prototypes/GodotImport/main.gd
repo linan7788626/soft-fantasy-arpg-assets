@@ -12,6 +12,8 @@ var crate_sprite: Sprite2D
 var plate_sprite: Sprite2D
 var gate_sprite: Sprite2D
 var foreground: Node2D
+var cap_background: Node2D
+var cap_front: Node2D
 var caption: Label
 var player = Vector2(2.5, 5.5)
 var crate = Vector2i(5, 4)
@@ -50,10 +52,12 @@ func _ready():
 				atlas.atlas = textures[name]
 				atlas.region = rect(f.rect)
 				hero.sprite_frames.add_frame(name, atlas)
-	gate_sprite = module_sprite("door_closed", ORIGIN + Vector2(5 * CELL, -180), Vector2(192, 192))
+	var gate = manifest.walls.gate
+	gate_sprite = module_sprite("door_closed", ORIGIN + Vector2(gate.x, gate.y), Vector2(gate.width, gate.height))
+	gate_sprite.z_index = 1
 	plate_sprite = module_sprite("plate", ORIGIN + Vector2(plate) * CELL, Vector2(64, 44.8))
 	crate_sprite = module_sprite("crate", ORIGIN + Vector2(crate) * CELL + Vector2(0, -8), Vector2(64, 72))
-	crate_sprite.z_index = 1
+	crate_sprite.z_index = 2
 	add_child(hero)
 	idle_blend = Sprite2D.new()
 	idle_blend.centered = false
@@ -65,6 +69,7 @@ func _ready():
 	foreground.z_index = 4
 	foreground.draw.connect(func(): draw_walls(true))
 	add_child(foreground)
+	rebuild_wall_caps()
 	for i in range(4):
 		var d = DIRECTIONS[i]
 		var data = clip("idle", d)
@@ -146,10 +151,10 @@ func align_hero():
 			idle_blend.modulate.a = pushing.release
 			idle_blend.visible = true
 	if is_instance_valid(crate_sprite):
-		hero.z_index = 0 if hero.position.y < crate_sprite.position.y + 72 else 2
+		hero.z_index = 1 if hero.position.y < crate_sprite.position.y + 72 else 3
 		if is_instance_valid(idle_blend):
 			idle_blend.z_index = hero.z_index
-		gate_sprite.z_index = 3 if player.y < 0 else 0
+		gate_sprite.z_index = 5 if player.y < 0 else 1
 
 func set_motion(v: Vector2):
 	if not v.is_zero_approx():
@@ -231,6 +236,7 @@ func set_layout(value: String):
 	set_motion(Vector2.ZERO)
 	queue_redraw()
 	foreground.queue_redraw()
+	rebuild_wall_caps()
 
 func push_crate() -> bool:
 	var v = Vector2(crate) + Vector2(.5, .96) - player
@@ -261,18 +267,73 @@ func update_mechanism():
 	door = pressed
 	set_module(plate_sprite, "plate_pressed" if pressed else "plate")
 	set_module(gate_sprite, "door_open" if door else "door_closed")
+	queue_redraw()
+
+func points(values) -> PackedVector2Array:
+	var out = PackedVector2Array()
+	for p in values:
+		out.append(Vector2(p[0], p[1]))
+	return out
+
+func cap_polygon(polygon: PackedVector2Array, parent: Node2D):
+	if polygon.size() < 3:
+		return
+	var shape = Polygon2D.new()
+	shape.polygon = polygon
+	shape.position = ORIGIN
+	shape.texture = textures.wall_cap
+	shape.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
+	shape.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	shape.antialiased = true
+	var uv = PackedVector2Array()
+	for p in polygon:
+		uv.append(p / float(manifest.walls.texture_period) * textures.wall_cap.get_size())
+	shape.uv = uv
+	parent.add_child(shape)
+
+func rebuild_wall_caps():
+	if is_instance_valid(cap_background):
+		cap_background.queue_free()
+	if is_instance_valid(cap_front):
+		cap_front.queue_free()
+	cap_background = Node2D.new()
+	add_child(cap_background)
+	cap_front = Node2D.new()
+	foreground.add_child(cap_front)
+	var geometry = manifest.walls.layouts[layout]
+	for values in geometry.cap_contours:
+		var polygon = points(values)
+		cap_polygon(polygon, cap_background)
+		for r in geometry.foreground_rects:
+			var clip_rect = PackedVector2Array([Vector2(r[0],r[1]),Vector2(r[0]+r[2],r[1]),Vector2(r[0]+r[2],r[1]+r[3]),Vector2(r[0],r[1]+r[3])])
+			for part in Geometry2D.intersect_polygons(polygon, clip_rect):
+				cap_polygon(part, cap_front)
+	var back_bevel = Node2D.new()
+	back_bevel.draw.connect(func(): draw_bevels(back_bevel, false))
+	cap_background.add_child(back_bevel)
+	var front_bevel = Node2D.new()
+	front_bevel.draw.connect(func(): draw_bevels(front_bevel, true))
+	cap_front.add_child(front_bevel)
+
+func draw_bevels(target: Node2D, front: bool):
+	for line in manifest.walls.layouts[layout].outlines:
+		if line.foreground == front:
+			var path = points(line.points)
+			for i in range(path.size()):
+				path[i] += ORIGIN
+			target.draw_polyline(path, Color(73/255.0,68/255.0,63/255.0,.30), 2.0, true)
+			for i in range(path.size()):
+				path[i] -= Vector2(.5,.5)
+			target.draw_polyline(path, Color(246/255.0,239/255.0,216/255.0,.40), 1.0, true)
 
 func draw_walls(front: bool):
-	var geometry = manifest.walls.layouts[layout]
-	for layer in [geometry.faces, geometry.caps]:
-		for q in layer:
-			if q.foreground == front:
-				var target = rect(q.dest)
-				target.position += ORIGIN
-				if front:
-					foreground.draw_texture_rect_region(textures.wall, target, rect(q.src))
-				else:
-					draw_texture_rect_region(textures.wall, target, rect(q.src))
+	var target = foreground if front else self
+	for q in manifest.walls.layouts[layout].faces:
+		if q.foreground == front:
+			var m = q.transform
+			target.draw_set_transform_matrix(Transform2D(Vector2(m[0],m[1]),Vector2(m[2],m[3]),ORIGIN+Vector2(m[4],m[5])))
+			target.draw_texture_rect_region(textures[q.asset], Rect2(0,0,1,1), rect(q.src))
+	target.draw_set_transform_matrix(Transform2D.IDENTITY)
 
 func _draw():
 	if manifest.is_empty():
@@ -283,6 +344,8 @@ func _draw():
 		for x in range(12):
 			if room(x, y):
 				draw_texture_rect_region(texture, Rect2(ORIGIN + Vector2(x, y) * CELL, Vector2.ONE * CELL), Rect2(Vector2(x % 6, y % 6) * tile, tile))
+	if door:
+		draw_texture_rect_region(texture, Rect2(ORIGIN + Vector2(6,-1)*CELL, Vector2.ONE*CELL), Rect2(Vector2(0,5)*tile,tile))
 	draw_walls(false)
 
 func wait_push():
@@ -296,6 +359,10 @@ func capture(name: String):
 
 func run_validation():
 	var checks: Array = []
+	assert(manifest.walls.gate.height == manifest.walls.height + manifest.walls.thickness)
+	assert(is_equal_approx(gate_sprite.position.y, ORIGIN.y - manifest.walls.height - manifest.walls.thickness/2))
+	assert(manifest.walls.corner_radius >= 8)
+	checks.append("Equal wall/gate top line, 88px projected height and rounded enclosure contours")
 	for entry in manifest.assets:
 		assert(textures[entry.id].get_size() == Vector2(entry.native_size[0], entry.native_size[1]))
 	for d in DIRECTIONS:
@@ -312,7 +379,7 @@ func run_validation():
 		assert(hero.frame != before and hero.is_playing())
 		set_motion(Vector2.ZERO)
 		assert(hero.animation == "idle_" + d and not hero.is_playing())
-	checks.append("18 native textures, 44 AtlasTexture action frames; fixed per-clip scale; four walking clocks and dedicated idle states")
+	checks.append("20 native textures, 44 AtlasTexture action frames; fixed per-clip scale; four walking clocks and dedicated idle states")
 	player = Vector2(.01, 2.5)
 	move_by(Vector2(-.1, 0))
 	assert(is_equal_approx(player.x, .01) and not hero.is_playing())
@@ -353,7 +420,7 @@ func run_validation():
 	checks.append("Pressure plate press/release and gate transitions")
 	for value in ["hall", "elbow", "puzzle"]:
 		set_layout(value)
-		assert(manifest.walls.layouts[value].caps.size() > 0)
+		assert(manifest.walls.layouts[value].cap_contours.size() > 0)
 		await get_tree().process_frame
 		await capture("walls-" + value)
 	checks.append("Three layouts use the same unioned wall-cap geometry as Canvas")

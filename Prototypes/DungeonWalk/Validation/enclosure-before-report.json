@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "revision": "bfec9d1",
+  "gate_projected_height": 192,
+  "wall_projected_height": 48,
+  "scenario": "enclosure.mjs: entrance must have same projected height as surrounding wall"
+}

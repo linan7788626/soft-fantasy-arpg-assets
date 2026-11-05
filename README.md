@@ -90,7 +90,7 @@ This repository contains **art assets only** — no PyQuest game runtime code wa
 
 ## Dungeon module kit + walking-cycle test
 
-[Open the interactive prototype](Prototypes/DungeonWalk/index.html): three layouts assembled from 9 dungeon/state modules, plus four-direction idle, walk and push actions (44 calibrated frames/poses). Includes movement-driven animation, dedicated static idle poses, contact-aligned crate pushes, plate press/release, gate transitions, direction/step/FPS controls and light/dark/checker backgrounds. All four walls now share one continuous orthographic cap/facade volume, including inner corners; visuals remain subject to user acceptance. [Kit guide and limitations](Assets/NLI_Prototype_Kit/README.md). The 224-sprite base pack remains unchanged.
+[Open the interactive prototype](Prototypes/DungeonWalk/index.html): three layouts assembled from 9 dungeon/state modules, plus four-direction idle, walk and push actions (44 calibrated frames/poses). Includes movement-driven animation, dedicated static idle poses, contact-aligned crate pushes, plate press/release, gate transitions, direction/step/FPS controls and light/dark/checker backgrounds. The rounded soft-stone walls and low doorway share one 88px projected height and a continuous top line. Inner/outer corners are rounded; visuals remain subject to user acceptance. [Kit guide and limitations](Assets/NLI_Prototype_Kit/README.md). The 224-sprite base pack remains unchanged.
 
 The dungeon prototype HTML now embeds all required images, so it can be copied and opened on its own. Run `npm run build:preview` after changing its source/manifest; `npm run test:kit` verifies both a full checkout and preview-only hosting.
 
