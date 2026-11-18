@@ -104,6 +104,39 @@
       "core_median_alpha": 253.0
     },
     {
+      "file": "Sprites/Key_Quest.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "78b876f191b1d74f218484a79a888c4335499dc5e7f5a24369d162c307dab463",
+      "canvas_edge_max_alpha": 0,
+      "near_opaque_fraction_of_nonzero_alpha": 0.935099948562408,
+      "core_median_alpha": 253.0
+    },
+    {
+      "file": "Sprites/Chest_Quest_Closed.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "d2f0c4701cfe513dc1b8f248922e3ae402270314acd364433e10f6f9bf3a2941",
+      "canvas_edge_max_alpha": 1,
+      "near_opaque_fraction_of_nonzero_alpha": 0.9750855938899131,
+      "core_median_alpha": 253.0
+    },
+    {
+      "file": "Sprites/Chest_Quest_Open.png",
+      "native_size": [
+        1199,
+        1312
+      ],
+      "sha256": "1d5757192ecfe6b461273c75c2bed581b62c177a1941ac3d2fe0a7ae991e3653",
+      "canvas_edge_max_alpha": 1,
+      "near_opaque_fraction_of_nonzero_alpha": 0.9742193329051262,
+      "core_median_alpha": 253.0
+    },
+    {
       "file": "Sprites/Hero_Walk_East_6.png",
       "native_size": [
         2172,
@@ -308,7 +341,7 @@
       "foot_anchor_error_px": 0
     }
   ],
-  "unique_active_images": 19,
+  "unique_active_images": 22,
   "limits": [
     "Alpha bounds and metadata checks do not establish hand ownership or natural gait. See visual acceptance notes."
   ]

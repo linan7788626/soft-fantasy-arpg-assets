@@ -20,7 +20,7 @@ try{
    const walls=new Set(KIT_TEST.images.wall_cap?[KIT_TEST.images.wall_cap]:['wall','sidewall','pillar'].map(id=>KIT_TEST.images[id]));
    context.drawImage=function(img,...args){if(walls.has(img))original.call(this,img,...args);};
    context.fillRect=()=>{};
-   draw();
+   draw({cutaway:false});
    const probes=[];
    // Cap plane must continue at uniform depth from a horizontal run into
    // both vertical runs; cream facade or empty space in these probes is a seam.

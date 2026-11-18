@@ -1,0 +1,22 @@
+{
+  "records": [
+    {
+      "delivered_file": "Sprites/Key_Quest.png",
+      "source": "Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Consumables/Key.png",
+      "sha256": "78b876f191b1d74f218484a79a888c4335499dc5e7f5a24369d162c307dab463"
+    },
+    {
+      "delivered_file": "Sprites/Chest_Quest_Closed.png",
+      "source": "Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Consumables/Chest_Blue.png",
+      "sha256": "d2f0c4701cfe513dc1b8f248922e3ae402270314acd364433e10f6f9bf3a2941"
+    },
+    {
+      "delivered_file": "Sprites/Chest_Quest_Open.png",
+      "source": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-e14f87a0-f2ce-47d4-a5ac-f83ef28c9d6d.png",
+      "sha256": "1d5757192ecfe6b461273c75c2bed581b62c177a1941ac3d2fe0a7ae991e3653",
+      "tool": "built-in image_gen",
+      "reference": "Assets/NLI_SoftFantasy_ARPG/Sprites/Items/Consumables/Chest_Blue.png",
+      "prompt": "Edit this exact original game sprite into its OPENED state. Match the reference blue enamel and oversized rounded gold bands, corners and base. Preserve footprint, trim design, exact three-quarter camera angle, warm soft-fantasy rendering and shading. Hinge the rounded blue lid backwards at about 100 degrees so interior clearly visible, resting in fully open state. Only a modest pile of golden coins and one blue gem inside. Keep lid silhouette distinct; no magical rays, glow, vignette, drop shadow, lettering or ground. Center one object, with clear transparent margins on all sides, genuinely transparent PNG alpha. Match base anchor and body dimensions of reference, extra vertical room for open lid. Original assets for NLI dungeon."
+    }
+  ]
+}

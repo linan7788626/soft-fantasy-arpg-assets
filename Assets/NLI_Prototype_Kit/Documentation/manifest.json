@@ -1,5 +1,5 @@
 {
-  "version": "0.6.0-linked-rooms",
+  "version": "0.7.0-dungeon-quest",
   "style_code": "NL-ARPG-SOFT-766DF2B7",
   "pixel_postprocessing": "none",
   "assets": [
@@ -170,6 +170,57 @@
         1254
       ],
       "sha256": "f6de72c048f4aabcf9c6610d7a8a16e2e393f34d6ba3b715bd119685a86bd00d",
+      "logical_cell": 64,
+      "alpha": true
+    },
+    {
+      "id": "quest_key",
+      "file": "Sprites/Key_Quest.png",
+      "rect": [
+        219,
+        135,
+        915,
+        961
+      ],
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "78b876f191b1d74f218484a79a888c4335499dc5e7f5a24369d162c307dab463",
+      "logical_cell": 64,
+      "alpha": true
+    },
+    {
+      "id": "chest_closed",
+      "file": "Sprites/Chest_Quest_Closed.png",
+      "rect": [
+        128,
+        233,
+        998,
+        830
+      ],
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "d2f0c4701cfe513dc1b8f248922e3ae402270314acd364433e10f6f9bf3a2941",
+      "logical_cell": 64,
+      "alpha": true
+    },
+    {
+      "id": "chest_open",
+      "file": "Sprites/Chest_Quest_Open.png",
+      "rect": [
+        124,
+        74,
+        926,
+        1084
+      ],
+      "native_size": [
+        1199,
+        1312
+      ],
+      "sha256": "1d5757192ecfe6b461273c75c2bed581b62c177a1941ac3d2fe0a7ae991e3653",
       "logical_cell": 64,
       "alpha": true
     }
@@ -9213,6 +9264,18 @@
         ]
       }
     }
+  },
+  "quest": {
+    "key_pos": [
+      9.5,
+      1.8
+    ],
+    "chest_pos": [
+      9.5,
+      2.5
+    ],
+    "pickup_radius": 0.55,
+    "open_radius": 1.1
   },
   "palette": {
     "hall": {

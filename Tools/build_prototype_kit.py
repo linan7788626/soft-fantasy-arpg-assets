@@ -15,6 +15,11 @@ def rect_for(p):
  a=np.array(im.getchannel('A'));ys,xs=np.where(a>=128)
  return [max(0,int(xs.min())-2),max(0,int(ys.min())-2),min(im.width,int(xs.max())+3)-max(0,int(xs.min())-2),min(im.height,int(ys.max())+3)-max(0,int(ys.min())-2)]
 assets=[]
+rows.extend([
+ ('quest_key','Key_Quest.png'),
+ ('chest_closed','Chest_Quest_Closed.png'),
+ ('chest_open','Chest_Quest_Open.png'),
+])
 for id,name in rows:
  p=KIT/'Sprites'/name;im=Image.open(p)
  rect=rect_for(p)
@@ -57,7 +62,8 @@ for i,d in enumerate(directions):
 m={'version':'0.2.0-direction-trial','style_code':'NL-ARPG-SOFT-766DF2B7','pixel_postprocessing':'none','assets':assets,'walk':walks['east'],'walks':walks,'mechanisms':{'plate':{'released':'plate','pressed':'plate_pressed','trigger':'crate settled on plate; release after crate leaves','transition_ms':120}},'assembly':'Floor repeat; independent perimeter segments; connector pillars at corners. Render rectangles do not rewrite source PNGs.','limits':['Floor is a repeating prototype texture, not a mathematically edge-identical autotile set.','Sidewall mirror is a preview assembly transform; lighting is not recomputed.','Four-direction walking is a small-batch trial; idle reuses a still walk frame, not a separate breathing cycle.','Unity Editor import is not validated; Godot validation is reported separately.'],'validation':{'browser_report':'../../../Prototypes/DungeonWalk/Validation/report.json','engine_report':'../../../Prototypes/GodotImport/Validation/report.json'}}
 m['validation']['visual_report']='Acceptance_2026-11-05_integrated.md'
 m['walls']=make_walls(Image.open(KIT/'Sprites/Wall_Cap_Soft_v4.png').size,Image.open(KIT/'Sprites/Wall_Face_Soft_v4.png').size)
-m['version']='0.6.0-linked-rooms'
+m['version']='0.7.0-dungeon-quest'
+m['quest']={'key_pos':[9.5,1.8],'chest_pos':[9.5,2.5],'pickup_radius':0.55,'open_radius':1.1}
 warm_palette={'floor':'#eac184','wall_face':'#f2ae72','wall_cap':'#80b8ce','door_closed':'#b4e7ff'}
 m['palette']={
  'hall':warm_palette,

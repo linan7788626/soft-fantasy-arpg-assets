@@ -15,6 +15,8 @@ const nativeMaterials=new Map();
 const tintedMaterials=new Map();
 let requireNorthRelease=false;
 let arrivedInElbow=false;
+let questStage='gate';
+let questNotice='';
 const walk=()=>KIT.walks[direction];
 const selectedClip=()=>({walk:KIT.walks,idle:KIT.idles,push:KIT.pushes})[document.querySelector('#action').value][direction];
 function pushState(t=performance.now()){if(!pushing)return null;const elapsed=t-pushing.started,moveTime=elapsed-pushing.approach;return{phase:elapsed<pushing.approach?'approach':moveTime<320?'push':'release',approach:Math.min(1,elapsed/pushing.approach),u:Math.max(0,Math.min(1,moveTime/320)),release:Math.max(0,Math.min(1,(moveTime-320)/100))};}
@@ -23,6 +25,7 @@ const sceneClip=()=>({walk:KIT.walks,idle:KIT.idles,push:KIT.pushes})[action()][
 const plateDown=()=>!pushing&&crate.x===plate.x&&crate.y===plate.y;
 function face(dx,dy){if(dx||dy){const next=Math.abs(dx)>=Math.abs(dy)?(dx>0?'east':'west'):(dy>0?'south':'north');if(direction!==next){direction=next;frame=IDLE_FRAME;acc=0;document.querySelector('#direction').value=direction;}}}
 const GATE=KIT.walls.gate;
+const QUEST=KIT.quest;
 const northWallCells=Array.from({length:12},(_,x)=>x);
 
 const asset=id=>KIT.assets.find(a=>a.id===id);
@@ -44,7 +47,42 @@ function move(dx,dy){
   enterLinkedRoom();
   return false;
  }
- return Math.hypot(player.x-old.x,player.y-old.y)>0.00001;
+ const moved=Math.hypot(player.x-old.x,player.y-old.y)>0.00001;
+ if(moved){
+  questNotice='';
+  if(layout==='elbow'&&questStage==='key'&&nearQuest(QUEST.key_pos,QUEST.pickup_radius)){
+   questStage='chest';
+  }
+ }
+ return moved;
+}
+function nearQuest([x,y],radius){
+ return Math.hypot(player.x-x,player.y-y)<=radius;
+}
+function interact(){
+ if(pushing)return;
+ if(layout==='hall'&&nearQuest(QUEST.chest_pos,QUEST.open_radius)){
+  if(questStage==='chest')questStage='complete';
+  else if(questStage!=='complete')questNotice='宝箱锁着。需要回廊里的钥匙。';
+  return;
+ }
+ push();
+}
+function drawQuestItem(id,[x,y],width){
+ const rect=asset(id).rect;
+ const height=width*rect[3]/rect[2];
+ sprite(ctx,id,OX+x*T-width/2,OY+y*T-height,width,height);
+}
+function questObjective(){
+ if(questNotice)return questNotice;
+ if(questStage==='complete')return '谜题完成 · 宝箱已打开';
+ if(questStage==='chest')return layout==='hall'
+  ? '已获得钥匙 · 靠近宝箱按 E 开锁'
+  : '已获得钥匙 · 穿过北门，返回大厅';
+ if(questStage==='key')return layout==='elbow'
+  ? '走近回廊右侧的金钥匙即可拾取'
+  : '沿北门进入回廊，寻找钥匙';
+ return '大厅谜题 · 按 E 把木箱推上压力板';
 }
 function applyRoomPalette(){
  for(const [id,color] of Object.entries(KIT.palette[layout])){
@@ -73,6 +111,7 @@ function enterLinkedRoom(){
  document.querySelector('#layout').value=layout;
  document.querySelector('#door').disabled=layout==='elbow'&&arrivedInElbow;
  reset({keepInput:true});
+ questNotice='';
  const saved=roomProgress.get(layout);
  if(saved)crate={...saved.crate};
  door=arrivedInElbow&&layout==='elbow' ? true : (saved?.door ?? true);
@@ -92,7 +131,11 @@ function finishPush(t){
  const state=pushState(t),k=state.u*state.u*(3-2*state.u);
  if(state.phase==='approach'){player.x=pushing.playerFrom.x+(pushing.contactRoot.x-pushing.playerFrom.x)*state.approach;player.y=pushing.playerFrom.y+(pushing.contactRoot.y-pushing.playerFrom.y)*state.approach;}
  else{player.x=pushing.contactRoot.x+(pushing.playerTo.x-pushing.contactRoot.x)*k;player.y=pushing.contactRoot.y+(pushing.playerTo.y-pushing.contactRoot.y)*k;}
- if(state.release===1){pushing=null;door=(layout==='elbow'&&arrivedInElbow)||plateDown();}
+ if(state.release===1){
+  pushing=null;
+  door=(layout==='elbow'&&arrivedInElbow)||plateDown();
+  if(layout==='hall'&&plateDown()&&questStage==='gate')questStage='key';
+ }
  return !!pushing;
 }
 function push(){
@@ -174,19 +217,19 @@ function foregroundFadeStrength(x,y){
  }
  return strength;
 }
-function drawForegroundWalls(fade){
+function drawForegroundWalls(fade,cutaway){
  const outside=player.y<0;
- const strength=fade?(outside?1:foregroundFadeStrength(player.x*T,player.y*T)):0;
+ const strength=fade?(outside?1:cutaway?0:foregroundFadeStrength(player.x*T,player.y*T)):0;
  if(strength===0){
   if(outside)drawNorthOcclusion(ctx);
-  drawWalls(true);
+  if(!cutaway)drawWalls(true);
   return;
  }
 
  const layer=wallOverlayContext;
  layer.clearRect(0,0,wallOverlay.width,wallOverlay.height);
  if(outside)drawNorthOcclusion(layer);
- drawWalls(true,layer);
+ if(!cutaway)drawWalls(true,layer);
 
  // Fade the assembled wall as one layer so overlaps don't hide the hero.
  layer.save();
@@ -203,7 +246,7 @@ function drawForegroundWalls(fade){
  layer.restore();
  ctx.drawImage(wallOverlay,0,0);
 }
-function draw({wallFade=true}={}){ctx.clearRect(0,0,canvas.width,canvas.height);const bg=document.querySelector('#background').value;ctx.fillStyle=bg==='light'?'#e8e2d7':'#25343d';ctx.fillRect(0,0,1120,780);if(bg==='checker')for(let y=0;y<780;y+=24)for(let x=0;x<1120;x+=24){ctx.fillStyle=((x+y)/24)%2?'#ddd':'#aab7be';ctx.fillRect(x,y,24,24);}
+function draw({wallFade=true,cutaway=true}={}){ctx.clearRect(0,0,canvas.width,canvas.height);const bg=document.querySelector('#background').value;ctx.fillStyle=bg==='light'?'#e8e2d7':'#25343d';ctx.fillRect(0,0,1120,780);if(bg==='checker')for(let y=0;y<780;y+=24)for(let x=0;x<1120;x+=24){ctx.fillStyle=((x+y)/24)%2?'#ddd':'#aab7be';ctx.fillRect(x,y,24,24);}
 ctx.save();ctx.beginPath();for(let y=-1;y<8;y++)for(let x=0;x<12;x++)if(floor(x,y))ctx.rect(OX+x*T,OY+y*T,T,T);ctx.clip();for(let y=-6;y<8;y+=6)for(let x=0;x<12;x+=6)sprite(ctx,'floor',OX+x*T,OY+y*T,6*T,6*T);ctx.restore();
 // A single projected wall volume supplies the cap, facade and orthogonal corners.
 drawWalls(false);
@@ -213,12 +256,17 @@ drawPortal();
 sprite(ctx,'plate',OX+plate.x*T,OY+plate.y*T,T,T*.7);
 if(plateBlend>0){ctx.save();ctx.globalAlpha=plateBlend;sprite(ctx,'plate_pressed',OX+plate.x*T,OY+plate.y*T,T,T*.7);ctx.restore();}
 const box=cratePosition();
-// Objects share a ground anchor so moving behind the crate gives correct occlusion.
-const drawCrate=()=>sprite(ctx,'crate',OX+box.x*T,OY+(box.y+1)*T-72,T,72);
-if(player.y<box.y+1){hero(ctx,frame,OX+player.x*T,OY+player.y*T,104);drawCrate();}else{drawCrate();}
-if(player.y>=box.y+1)hero(ctx,frame,OX+player.x*T,OY+player.y*T,104);
-// South-facing boundaries occlude objects behind the wall.
-drawForegroundWalls(wallFade);
+if(layout==='elbow'&&questStage==='key')drawQuestItem('quest_key',QUEST.key_pos,40);
+const actors=[
+ {depth:box.y+1,paint:()=>sprite(ctx,'crate',OX+box.x*T,OY+(box.y+1)*T-72,T,72)},
+ {depth:player.y,paint:()=>hero(ctx,frame,OX+player.x*T,OY+player.y*T,104)},
+];
+if(layout==='hall')actors.push({
+ depth:QUEST.chest_pos[1],
+ paint:()=>drawQuestItem(questStage==='complete'?'chest_open':'chest_closed',QUEST.chest_pos,60),
+});
+actors.sort((a,b)=>a.depth-b.depth).forEach(actor=>actor.paint());
+drawForegroundWalls(wallFade,cutaway);
 if(debug){ctx.strokeStyle='#58e8d8';ctx.beginPath();ctx.moveTo(OX+player.x*T-12,OY+player.y*T);ctx.lineTo(OX+player.x*T+12,OY+player.y*T);ctx.stroke();}
 fx.clearRect(0,0,1120,240);fx.fillStyle=bg==='light'?'#e8e2d7':'#25343d';fx.fillRect(0,0,1120,240);if(bg==='checker')for(let y=0;y<240;y+=24)for(let x=0;x<1120;x+=24){fx.fillStyle=((x+y)/24)%2?'#ddd':'#aab7be';fx.fillRect(x,y,24,24);}for(let i=0;i<selectedClip().frames.length;i++){hero(fx,i,90+i*180,195,170,selectedClip(),false);fx.strokeStyle=i===frame%selectedClip().frames.length?'#ffd270':'#677b80';fx.strokeRect(i*180+4,15,172,205);fx.beginPath();fx.moveTo(i*180+8,195);fx.lineTo(i*180+172,195);fx.stroke();fx.fillStyle='#f9d989';fx.fillText(String(i+1),i*180+8,232);}
 const mc=document.querySelector('#mechanisms').getContext('2d');mc.clearRect(0,0,480,160);for(const [i,id] of ['plate','plate_pressed'].entries()){sprite(mc,id,20+i*240,12,130,120);mc.fillStyle='#f5e7c7';mc.fillText(i?'按下 / 激活':'松开 / 未激活',20+i*240,150);}
@@ -232,10 +280,26 @@ function tick(t){
  actualMoving=moving;
  if(playing||moving){acc+=dt;const interval=1/Number(document.querySelector('#fps').value);if(acc>=interval){frame=(frame+1)%(playing?selectedClip().frames.length:walk().frames.length);acc%=interval;}}
  else if(!stepping){frame=IDLE_FRAME;acc=0;}
+ const objective=document.querySelector('#objective');
+ const message=questObjective();
+ if(objective.textContent!==message)objective.textContent=message;
  draw();requestAnimationFrame(tick);
 }
-window.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown',' '].includes(e.key))e.preventDefault();keys.add(e.key);if(e.key.toLowerCase()==='e'&&!e.repeat)push();});window.addEventListener('keyup',e=>keys.delete(e.key));window.addEventListener('blur',()=>keys.clear());
-document.querySelector('#layout').onchange=e=>{layout=e.target.value;roomProgress.clear();requireNorthRelease=false;arrivedInElbow=false;document.querySelector('#door').disabled=false;reset();applyRoomPalette();};document.querySelector('#play').onclick=()=>{playing=!playing;document.querySelector('#play').textContent=playing?'停止演示':'动作演示';};document.querySelector('#step').onclick=()=>{playing=false;stepping=true;document.querySelector('#play').textContent='动作演示';frame=(frame+1)%selectedClip().frames.length;};document.querySelector('#door').onclick=()=>{if(layout==='elbow'&&arrivedInElbow)return;door=!door;if(!door&&player.y<0)player.y=.5;};document.querySelector('#collision').onclick=()=>debug=!debug;
+window.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown',' '].includes(e.key))e.preventDefault();keys.add(e.key);if(e.key.toLowerCase()==='e'&&!e.repeat)interact();});window.addEventListener('keyup',e=>keys.delete(e.key));window.addEventListener('blur',()=>keys.clear());
+function startTrial(room){
+ layout=room;
+ roomProgress.clear();
+ requireNorthRelease=false;
+ arrivedInElbow=false;
+ questStage='gate';
+ questNotice='';
+ document.querySelector('#layout').value=layout;
+ document.querySelector('#door').disabled=false;
+ reset();
+ applyRoomPalette();
+}
+document.querySelector('#layout').onchange=e=>startTrial(e.target.value);
+document.querySelector('#restart').onclick=()=>startTrial('hall');document.querySelector('#play').onclick=()=>{playing=!playing;document.querySelector('#play').textContent=playing?'停止演示':'动作演示';};document.querySelector('#step').onclick=()=>{playing=false;stepping=true;document.querySelector('#play').textContent='动作演示';frame=(frame+1)%selectedClip().frames.length;};document.querySelector('#door').onclick=()=>{if(layout==='elbow'&&arrivedInElbow)return;door=!door;if(!door&&player.y<0)player.y=.5;};document.querySelector('#collision').onclick=()=>debug=!debug;
 document.querySelector('#action').onchange=()=>{frame=IDLE_FRAME;acc=0;};
 document.querySelector('#direction').onchange=e=>{direction=e.target.value;frame=IDLE_FRAME;acc=0;};
-Promise.all([...KIT.assets.map(a=>[a.id,a.file]),['walk',KIT.walk.file],['idle',KIT.idles.east.file],...Object.entries(KIT.pushes).map(([d,w])=>['push_'+d,w.file]),...Object.entries(KIT.walks).filter(([d])=>d!=='east').map(([d,w])=>['walk_'+d,w.file])].map(([id,path])=>new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>{images[id]=img;resolve();};img.onerror=()=>reject(Error('图片无法加载: '+path));img.src=KIT.embeddedImages?.[id] || '../../Assets/NLI_Prototype_Kit/'+path;}))).then(()=>{for(const id of Object.keys(KIT.palette.hall))nativeMaterials.set(id,images[id]);reset();applyRoomPalette();window.KIT_TEST={get state(){return{frame,playing,direction,action:action(),pushPhase:pushState()?.phase,plateDown:plateDown(),plateBlend,layout,door,player:{...player},crate:{...crate},pushing:!!pushing,crateVisual:cratePosition()};},geometry:{northWallCells,gate:GATE,corners},setPlayer:(x,y)=>{player={x,y};},move,push,draw,images};document.querySelector('#qa').textContent='四方向独立待机、行走和推箱；推箱先靠近接触，再同步移动箱子。每套图使用固定尺度，保留屈膝变化。';requestAnimationFrame(tick);}).catch(e=>document.querySelector('#status').textContent=e.message);
+Promise.all([...KIT.assets.map(a=>[a.id,a.file]),['walk',KIT.walk.file],['idle',KIT.idles.east.file],...Object.entries(KIT.pushes).map(([d,w])=>['push_'+d,w.file]),...Object.entries(KIT.walks).filter(([d])=>d!=='east').map(([d,w])=>['walk_'+d,w.file])].map(([id,path])=>new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>{images[id]=img;resolve();};img.onerror=()=>reject(Error('图片无法加载: '+path));img.src=KIT.embeddedImages?.[id] || '../../Assets/NLI_Prototype_Kit/'+path;}))).then(()=>{for(const id of Object.keys(KIT.palette.hall))nativeMaterials.set(id,images[id]);reset();applyRoomPalette();window.KIT_TEST={get state(){return{frame,playing,direction,action:action(),pushPhase:pushState()?.phase,plateDown:plateDown(),plateBlend,layout,door,questStage,player:{...player},crate:{...crate},pushing:!!pushing,crateVisual:cratePosition()};},geometry:{northWallCells,gate:GATE,corners},setPlayer:(x,y)=>{player={x,y};},move,push,draw,images};document.querySelector('#qa').textContent='四方向独立待机、行走和推箱；推箱先靠近接触，再同步移动箱子。每套图使用固定尺度，保留屈膝变化。';requestAnimationFrame(tick);}).catch(e=>document.querySelector('#status').textContent=e.message);

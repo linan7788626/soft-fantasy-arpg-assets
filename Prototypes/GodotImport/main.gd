@@ -5,6 +5,7 @@ const ORIGIN = Vector2(100, 196)
 const DIRECTIONS = ["east", "south", "west", "north"]
 const WALL_FADE_SHADER = preload("res://wall_fade.gdshader")
 const NORTH_EXIT_Y = -0.80
+enum QuestStage { FIND_KEY, HAS_KEY, COMPLETE }
 var manifest: Dictionary
 var textures: Dictionary = {}
 var modules: Dictionary = {}
@@ -13,12 +14,17 @@ var idle_blend: Sprite2D
 var crate_sprite: Sprite2D
 var plate_sprite: Sprite2D
 var gate_sprite: Sprite2D
+var key_sprite: Sprite2D
+var chest_sprite: Sprite2D
 var foreground: CanvasGroup
 var cap_background: Node2D
 var cap_front: Node2D
 var north_occluder: CanvasGroup
 var portal_detail: Node2D
 var caption: Label
+var objective: Label
+var quest_stage = QuestStage.FIND_KEY
+var hall_plate_activated = false
 var player = Vector2(2.5, 5.5)
 var crate = Vector2i(5, 4)
 var plate = Vector2i(7, 4)
@@ -66,6 +72,13 @@ func _ready():
 	plate_sprite = module_sprite("plate", ORIGIN + Vector2(plate) * CELL, Vector2(64, 44.8))
 	crate_sprite = module_sprite("crate", ORIGIN + Vector2(crate) * CELL + Vector2(0, -8), Vector2(64, 72))
 	crate_sprite.z_index = 2
+	key_sprite = Sprite2D.new()
+	chest_sprite = Sprite2D.new()
+	for sprite in [key_sprite, chest_sprite]:
+		sprite.centered = false
+		add_child(sprite)
+	place_quest_sprite(key_sprite, "quest_key", "key_pos", 40)
+	update_quest_props()
 	add_child(hero)
 	idle_blend = Sprite2D.new()
 	idle_blend.centered = false
@@ -74,6 +87,7 @@ func _ready():
 	hero.frame_changed.connect(align_hero)
 	hero.animation_changed.connect(align_hero)
 	foreground = wall_group(4)
+	foreground.hide()
 	rebuild_wall_layers()
 	portal_detail = Node2D.new()
 	portal_detail.z_index = 2
@@ -97,6 +111,10 @@ func _ready():
 	caption = Label.new()
 	caption.position = Vector2(26, 726)
 	add_child(caption)
+	objective = Label.new()
+	objective.position = Vector2(26, 749)
+	objective.modulate = Color("#ffe09a")
+	add_child(objective)
 	set_motion(Vector2.ZERO)
 	verifying = "--verify" in OS.get_cmdline_user_args()
 	if verifying:
@@ -121,6 +139,55 @@ func set_module(sprite: Sprite2D, id: String):
 	atlas.region = rect(modules[id].rect)
 	sprite.texture = atlas
 	sprite.scale = size / atlas.region.size
+
+func quest_position(field: String) -> Vector2:
+	var position_cells: Array = manifest.quest[field]
+	return Vector2(position_cells[0], position_cells[1])
+
+func place_quest_sprite(sprite: Sprite2D, id: String, field: String, width: float):
+	var atlas = AtlasTexture.new()
+	atlas.atlas = textures[id]
+	atlas.region = rect(modules[id].rect)
+	var scale_factor = width / atlas.region.size.x
+	var anchor = ORIGIN + quest_position(field) * CELL
+	sprite.texture = atlas
+	sprite.scale = Vector2.ONE * scale_factor
+	sprite.position = anchor - Vector2(width / 2.0, atlas.region.size.y * scale_factor)
+
+func update_quest_props():
+	key_sprite.visible = layout == "elbow" and hall_plate_activated and quest_stage == QuestStage.FIND_KEY
+	chest_sprite.visible = layout == "hall"
+	var chest_asset = "chest_open" if quest_stage == QuestStage.COMPLETE else "chest_closed"
+	if chest_sprite.texture == null or chest_sprite.texture.atlas != textures[chest_asset]:
+		place_quest_sprite(chest_sprite, chest_asset, "chest_pos", 60)
+
+func collect_nearby_key():
+	if key_sprite.visible and player.distance_to(quest_position("key_pos")) <= manifest.quest.pickup_radius:
+		quest_stage = QuestStage.HAS_KEY
+		update_quest_props()
+
+func interact():
+	if not push_data.is_empty():
+		return
+	if chest_sprite.visible and player.distance_to(quest_position("chest_pos")) <= manifest.quest.open_radius:
+		if quest_stage == QuestStage.HAS_KEY:
+			quest_stage = QuestStage.COMPLETE
+			update_quest_props()
+		return
+	push_crate()
+
+func quest_objective() -> String:
+	if layout == "puzzle":
+		return "Practice room: push the crate onto the pressure plate."
+	if quest_stage == QuestStage.COMPLETE:
+		return "Puzzle complete! Treasure chest opened."
+	if quest_stage == QuestStage.HAS_KEY:
+		return "Key collected. Return through the north door." if layout == "elbow" else "Approach the treasure chest and press E."
+	if layout == "elbow":
+		return "Walk up to the gold key." if key_sprite.visible else "Enter the gallery through the hall to start the treasure puzzle."
+	if player.distance_to(quest_position("chest_pos")) <= manifest.quest.open_radius:
+		return "The chest is locked. The key is in the gallery."
+	return "Walk through the north door to find the key." if door else "Push the crate onto the plate to open the north door."
 
 func push_state() -> Dictionary:
 	if push_data.is_empty():
@@ -163,6 +230,7 @@ func align_hero():
 		hero.z_index = 1 if hero.position.y < crate_sprite.position.y + 72 else 3
 		if is_instance_valid(idle_blend):
 			idle_blend.z_index = hero.z_index
+		chest_sprite.z_index = hero.z_index + 1 if player.y < quest_position("chest_pos").y else 0
 		gate_sprite.z_index = 7 if player.y < 0 else 1
 		if is_instance_valid(north_occluder):
 			north_occluder.visible = player.y < 0
@@ -222,6 +290,7 @@ func move_by(v: Vector2):
 		load_room("elbow" if layout == "hall" else "hall", true)
 		north_traversal_latched = true
 		return
+	collect_nearby_key()
 	if not v.is_zero_approx():
 		set_motion(v)
 	set_motion(player - before)
@@ -244,6 +313,7 @@ func update_push():
 	if state.release == 1:
 		push_data = {}
 		update_mechanism()
+		collect_nearby_key()
 		set_motion(Vector2.ZERO)
 
 func _process(delta):
@@ -253,17 +323,20 @@ func _process(delta):
 		var v = Vector2(float(Input.is_physical_key_pressed(KEY_RIGHT) or Input.is_physical_key_pressed(KEY_D)) - float(Input.is_physical_key_pressed(KEY_LEFT) or Input.is_physical_key_pressed(KEY_A)), float(Input.is_physical_key_pressed(KEY_DOWN) or Input.is_physical_key_pressed(KEY_S)) - float(Input.is_physical_key_pressed(KEY_UP) or Input.is_physical_key_pressed(KEY_W)))
 		move_by(v.normalized() * delta * 2.2)
 	align_hero()
-	caption.text = "WASD/arrows move | E push | 1/2/3 room | %s / %s / %s" % [layout, hero.animation, push_state().get("phase", "rest")]
+	caption.text = "WASD/arrows move | E interact | 1/2/3 room | %s" % layout
+	objective.text = quest_objective()
 
 func _unhandled_key_input(event):
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.physical_keycode == KEY_E:
-			push_crate()
+			interact()
 		if event.physical_keycode in [KEY_1, KEY_2, KEY_3] and push_data.is_empty():
 			set_layout(["hall", "elbow", "puzzle"][event.physical_keycode - KEY_1])
 
 func set_layout(value: String):
 	room_states.clear()
+	quest_stage = QuestStage.FIND_KEY
+	hall_plate_activated = false
 	north_traversal_latched = false
 	load_room(value)
 
@@ -283,6 +356,7 @@ func load_room(value: String, arriving: bool = false):
 	crate_sprite.position = ORIGIN + Vector2(crate) * CELL + Vector2(0, -8)
 	plate_sprite.position = ORIGIN + Vector2(plate) * CELL
 	update_mechanism(saved.get("door", true) if arriving else null)
+	update_quest_props()
 	gate_sprite.modulate = palette_color("door_closed")
 	set_motion(Vector2.ZERO)
 	queue_redraw()
@@ -314,6 +388,8 @@ func push_crate() -> bool:
 
 func update_mechanism(saved_door = null):
 	pressed = crate == plate
+	if layout == "hall" and pressed:
+		hall_plate_activated = true
 	var linked_elbow = layout == "elbow" and room_states.has("hall")
 	door = pressed or linked_elbow if saved_door == null else saved_door
 	set_module(plate_sprite, "plate_pressed" if pressed else "plate")
@@ -530,7 +606,7 @@ func run_validation():
 		assert(hero.frame != before and hero.is_playing())
 		set_motion(Vector2.ZERO)
 		assert(hero.animation == "idle_" + d and not hero.is_playing())
-	checks.append("19 native textures, 44 AtlasTexture action frames; fixed per-clip scale; four walking clocks and dedicated idle states")
+	checks.append("22 native textures, 44 AtlasTexture action frames; fixed per-clip scale; four walking clocks and dedicated idle states")
 	player = Vector2(.01, 2.5)
 	move_by(Vector2(-.1, 0))
 	assert(is_equal_approx(player.x, .01) and not hero.is_playing())
@@ -586,6 +662,9 @@ func run_validation():
 	checks.append("Wall fade follows the hero, stays local, and leaves collision intact")
 	await validate_room_link()
 	checks.append("North gate travels both ways and preserves each room's crate and gate state")
+	await validate_treasure_quest()
+	checks.append("Hall crate opens the gallery, key is collected once, and chest opens only after return")
+	checks.append("South foreground is hidden while the floor edge still blocks the hero")
 	if DisplayServer.get_name() != "headless":
 		checks.append("Rendered floors use distinct hall and elbow palettes")
 	var report = {"status":"passed","engine":Engine.get_version_info().string,"display_server":DisplayServer.get_name(),"checks":checks,"limits":["Art still requires user visual acceptance","Unity Editor not validated","Floor is not a complete autotile set"]}
@@ -595,6 +674,7 @@ func run_validation():
 
 func validate_wall_fade():
 	# Capture opaque and nearby views at the same wall locations.
+	foreground.show()
 	var opaque: Image
 	if DisplayServer.get_name() != "headless":
 		await RenderingServer.frame_post_draw
@@ -615,6 +695,7 @@ func validate_wall_fade():
 	player = Vector2(4.5, 5.5)
 	set_motion(Vector2.ZERO)
 	assert(is_zero_approx(foreground.material.get_shader_parameter("fade_strength")))
+	foreground.hide()
 
 func validate_room_link():
 	set_layout("hall")
@@ -673,3 +754,58 @@ func validate_room_link():
 	assert(layout == "elbow" and crate == Vector2i(5, 4) and door)
 	set_layout("elbow")
 	assert(crate == Vector2i(3, 4) and not door and room_states.is_empty())
+
+func validate_treasure_quest():
+	set_layout("elbow")
+	player = quest_position("key_pos")
+	move_by(Vector2.ZERO)
+	assert(quest_stage == QuestStage.FIND_KEY and not key_sprite.visible)
+
+	set_layout("hall")
+	assert(not foreground.visible and chest_sprite.visible)
+	player = Vector2(4.5, 7.75)
+	move_by(Vector2.DOWN * 0.35)
+	assert(is_equal_approx(player.y, 7.75))
+	if DisplayServer.get_name() != "headless":
+		await RenderingServer.frame_post_draw
+		var frame_image = get_viewport().get_texture().get_image()
+		assert(frame_image.get_pixel(660, 719).is_equal_approx(frame_image.get_pixel(660, 745)))
+		assert(not frame_image.get_pixel(660, 695).is_equal_approx(frame_image.get_pixel(660, 719)))
+
+	player = quest_position("chest_pos") + Vector2.DOWN * 0.7
+	interact()
+	assert(quest_stage == QuestStage.FIND_KEY and chest_sprite.texture.atlas == textures.chest_closed)
+	player = Vector2(4.5, 4.5)
+	interact()
+	assert(not push_data.is_empty())
+	await wait_push()
+	interact()
+	assert(not push_data.is_empty())
+	await wait_push()
+	assert(door and pressed and hall_plate_activated)
+
+	var gate_x = manifest.walls.gate.passage + 0.5
+	player = Vector2(gate_x, -0.72)
+	move_by(Vector2.UP * 0.12)
+	assert(layout == "elbow" and key_sprite.visible and not chest_sprite.visible)
+	await capture("quest-key")
+	player = quest_position("key_pos") + Vector2.LEFT * 0.65
+	move_by(Vector2.RIGHT * 0.2)
+	assert(quest_stage == QuestStage.HAS_KEY and not key_sprite.visible)
+
+	player = Vector2(gate_x, -0.72)
+	move_by(Vector2.UP * 0.12)
+	assert(layout == "hall" and quest_stage == QuestStage.HAS_KEY and crate == plate)
+	player = quest_position("chest_pos") + Vector2.DOWN * 1.5
+	interact()
+	assert(quest_stage == QuestStage.HAS_KEY)
+	player = quest_position("chest_pos") + Vector2.RIGHT * 0.95
+	interact()
+	assert(quest_stage == QuestStage.COMPLETE and chest_sprite.texture.atlas == textures.chest_open)
+	interact()
+	assert(quest_stage == QuestStage.COMPLETE)
+	set_motion(Vector2.ZERO)
+	await capture("quest-complete")
+
+	set_layout("hall")
+	assert(quest_stage == QuestStage.FIND_KEY and not hall_plate_activated and chest_sprite.texture.atlas == textures.chest_closed)

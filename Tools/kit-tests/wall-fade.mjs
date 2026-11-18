@@ -22,23 +22,20 @@ try {
       const pixel = ([x, y, width = 1, height = 1]) =>
         Array.from(context.getImageData(x, y, width, height).data);
       KIT_TEST.setPlayer(...player);
-      draw({wallFade: false});
+      draw({wallFade: false, cutaway: false});
       const solid = [pixel(near), pixel(far)];
-      draw();
+      draw({cutaway: false});
       const faded = [pixel(near), pixel(far)];
       KIT_TEST.setPlayer(...rest);
-      draw({wallFade: false});
+      draw({wallFade: false, cutaway: false});
       const restSolid = pixel(near);
-      draw();
+      draw({cutaway: false});
       return {solid, faded, restSolid, restFaded: pixel(near)};
     }, scenario);
     assert.notDeepEqual(result.faded[0], result.solid[0], `${scenario.layout} ${scenario.player}: local wall should fade`);
     assert.deepEqual(result.faded[1], result.solid[1], `${scenario.layout} ${scenario.player}: distant wall should stay opaque`);
     assert.deepEqual(result.restFaded, result.restSolid, `${scenario.layout} ${scenario.player}: wall should recover when hero leaves`);
   }
-  await page.locator('#layout').selectOption('hall');
-  await page.evaluate(() => KIT_TEST.setPlayer(2.5, 7.85));
-  await page.locator('#stage').screenshot({path: 'Prototypes/DungeonWalk/Validation/wall-fade.png'});
   console.log('Local wall fading, recovery and untouched far wall verified in four views.');
 } finally {
   await browser.close();
