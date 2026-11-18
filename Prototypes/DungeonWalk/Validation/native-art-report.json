@@ -137,6 +137,105 @@
       "core_median_alpha": 253.0
     },
     {
+      "file": "Sprites/Arena_Portal.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "a67cd9a34e371cf4e76d96913aff28b63ef9b7fbed986ee43e22b0c14b938ecf",
+      "canvas_edge_max_alpha": 1,
+      "near_opaque_fraction_of_nonzero_alpha": 0.9752764314943263,
+      "core_median_alpha": 253.0
+    },
+    {
+      "file": "Sprites/Combat_Attack_1.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "f1242878cacd1ba4450ca5dee4cf274424add6a868e700e83e6fcb4828dbf0f7",
+      "canvas_edge_max_alpha": 1,
+      "near_opaque_fraction_of_nonzero_alpha": 0.9448109607115871,
+      "core_median_alpha": 253.0
+    },
+    {
+      "file": "Sprites/Combat_Attack_2.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "9d12357cf47baa0b0afa86ee8e96eb4d24056f67e62318096f033877acfacc2a",
+      "canvas_edge_max_alpha": 1,
+      "near_opaque_fraction_of_nonzero_alpha": 0.8332386417438403,
+      "core_median_alpha": 253.0
+    },
+    {
+      "file": "Sprites/Combat_Attack_3.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "5307ed1f983c1f5aa5ecf04a12deddc8703c817ac32e934e4463e765bac84710",
+      "canvas_edge_max_alpha": 1,
+      "near_opaque_fraction_of_nonzero_alpha": 0.9427076345095935,
+      "core_median_alpha": 253.0
+    },
+    {
+      "file": "Sprites/Combat_Hurt_1.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "229578667475ac97e9ac5b370b71d72a5739f4ecd88a747d2dd30846ec4ccf3f",
+      "canvas_edge_max_alpha": 1,
+      "near_opaque_fraction_of_nonzero_alpha": 0.8909073538243162,
+      "core_median_alpha": 253.0
+    },
+    {
+      "file": "Sprites/Combat_Hurt_2.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "7a04f3b9010be5063a4189c5156141ee34212f6172bd9c0021095a76bfd965b5",
+      "canvas_edge_max_alpha": 1,
+      "near_opaque_fraction_of_nonzero_alpha": 0.8482021783076296,
+      "core_median_alpha": 253.0
+    },
+    {
+      "file": "Sprites/Combat_Slime_1.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "4a6472dfeac3a24a5be6984731ef3ccdfa94ce37aae9e5dce2407b76503a4570",
+      "canvas_edge_max_alpha": 1,
+      "near_opaque_fraction_of_nonzero_alpha": 0.9643457716142244,
+      "core_median_alpha": 253.0
+    },
+    {
+      "file": "Sprites/Combat_Slime_2.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "a1f2498367cb0721861518435b79de3f8645117e613e4462645d71174c17fd04",
+      "canvas_edge_max_alpha": 1,
+      "near_opaque_fraction_of_nonzero_alpha": 0.9668754458586227,
+      "core_median_alpha": 253.0
+    },
+    {
+      "file": "Sprites/Combat_Slime_3.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "6b5514cc44c923ce34ee48d1bbcc6dba6869938883a07258a492c60dea12f3d0",
+      "canvas_edge_max_alpha": 1,
+      "near_opaque_fraction_of_nonzero_alpha": 0.9564722652541875,
+      "core_median_alpha": 253.0
+    },
+    {
       "file": "Sprites/Hero_Walk_East_6.png",
       "native_size": [
         2172,
@@ -341,7 +440,7 @@
       "foot_anchor_error_px": 0
     }
   ],
-  "unique_active_images": 22,
+  "unique_active_images": 31,
   "limits": [
     "Alpha bounds and metadata checks do not establish hand ownership or natural gait. See visual acceptance notes."
   ]

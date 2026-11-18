@@ -19,6 +19,9 @@ rows.extend([
  ('quest_key','Key_Quest.png'),
  ('chest_closed','Chest_Quest_Closed.png'),
  ('chest_open','Chest_Quest_Open.png'),
+ ('arena_portal','Arena_Portal.png'),
+ *((f'{kind}_{i}',f'Combat_{kind.title()}_{i}.png')
+   for kind,count in [('attack',3),('hurt',2),('slime',3)] for i in range(1,count+1)),
 ])
 for id,name in rows:
  p=KIT/'Sprites'/name;im=Image.open(p)
@@ -62,13 +65,25 @@ for i,d in enumerate(directions):
 m={'version':'0.2.0-direction-trial','style_code':'NL-ARPG-SOFT-766DF2B7','pixel_postprocessing':'none','assets':assets,'walk':walks['east'],'walks':walks,'mechanisms':{'plate':{'released':'plate','pressed':'plate_pressed','trigger':'crate settled on plate; release after crate leaves','transition_ms':120}},'assembly':'Floor repeat; independent perimeter segments; connector pillars at corners. Render rectangles do not rewrite source PNGs.','limits':['Floor is a repeating prototype texture, not a mathematically edge-identical autotile set.','Sidewall mirror is a preview assembly transform; lighting is not recomputed.','Four-direction walking is a small-batch trial; idle reuses a still walk frame, not a separate breathing cycle.','Unity Editor import is not validated; Godot validation is reported separately.'],'validation':{'browser_report':'../../../Prototypes/DungeonWalk/Validation/report.json','engine_report':'../../../Prototypes/GodotImport/Validation/report.json'}}
 m['validation']['visual_report']='Acceptance_2026-11-05_integrated.md'
 m['walls']=make_walls(Image.open(KIT/'Sprites/Wall_Cap_Soft_v4.png').size,Image.open(KIT/'Sprites/Wall_Face_Soft_v4.png').size)
-m['version']='0.7.0-dungeon-quest'
+m['version']='0.8.0-combat-room'
 m['quest']={'key_pos':[9.5,1.8],'chest_pos':[9.5,2.5],'pickup_radius':0.55,'open_radius':1.1}
 warm_palette={'floor':'#eac184','wall_face':'#f2ae72','wall_cap':'#80b8ce','door_closed':'#b4e7ff'}
 m['palette']={
  'hall':warm_palette,
  'elbow':{'floor':'#c8dfb7','wall_face':'#eed092','wall_cap':'#78c7b9','door_closed':'#a4e5ff'},
  'puzzle':warm_palette,
+ 'arena':{'floor':'#c9afad','wall_face':'#e3958d','wall_cap':'#809dc9','door_closed':'#b4e7ff'},
+}
+poses={'attack_1':(104,.55),'attack_2':(124,.43),'attack_3':(110,.44),'hurt_1':(97,.49),'hurt_2':(95,.52)}
+m['combat']={
+ 'hall_portal':[9.5,5.7],'arena_portal':[2.5,6.4],'portal_radius':1.1,
+ 'enemy_spawn':[7.5,3.5],'hero_hp':3,'enemy_hp':3,
+ 'enemy_speed':1.15,'enemy_range':.95,'enemy_windup':.45,'enemy_recovery':.75,
+ 'attack_range':1.45,'attack_dot':.35,'attack_duration':.34,'attack_impact':.13,
+ 'hurt_duration':.30,'invulnerability':.85,
+ 'hero_poses':{entry['id']:{'scale':poses[entry['id']][0]/entry['rect'][2],
+                            'pivot':[poses[entry['id']][1],.99]}
+               for entry in assets if entry['id'] in poses},
 }
 m['assembly']='Tall rounded orthographic enclosure; doorway carved into continuous masonry beneath an unbroken wall cap; native door leaf embedded in opening; no source PNG edits.'
 m['pushes']=pushes

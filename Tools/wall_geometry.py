@@ -42,7 +42,7 @@ def make_walls(cap_size, face_size):
     opening.append([x+w,y+h])
     gate={'start':5,'end':8,'passage':6,'x':5*CELL,'y':-HALF-HEIGHT,'width':3*CELL,'height':HEIGHT+2*HALF,'baseline':HALF,'integrated':True,'render_mode':'carved-wall','closed_asset':'door_closed','open_asset':None,'opening':{'rect':[x,y,w,h],'contour':opening,'leaf_rect':[x+2,y+2,w-4,h-4]},'occlusion_rect':[5*CELL-HALF,-HALF-HEIGHT,3*CELL+2*HALF,HEIGHT+2*HALF]}
     result={'thickness':2*HALF,'height':HEIGHT,'corner_radius':RADIUS,'cap_asset':'wall_cap','face_asset':'wall_face','texture_period':256,'gate':gate,'puzzle_open_rows':[3,6],'projection':'rounded orthographic wall volume; shared continuous cap above the carved portal','layouts':{}}
-    for layout in ['hall','elbow','puzzle']:
+    for layout in ['hall','elbow','puzzle','arena']:
         def room(x,y): return 0<=x<12 and 0<=y<8 and (layout!='elbow' or x<6 or y<4)
         mask, edges={},[]
         def add_rect(x0,y0,x1,y1,fg=False):
@@ -114,4 +114,15 @@ def make_walls(cap_size, face_size):
             outlines.extend(line_runs)
         area=lambda p:sum(p[i][0]*p[(i+1)%len(p)][1]-p[(i+1)%len(p)][0]*p[i][1] for i in range(len(p)))/2
         result['layouts'][layout]={'cap_contours':cap_contours,'cap_outer_contours':[p for p in cap_contours if area(p)>0],'cap_hole_contours':[p for p in cap_contours if area(p)<0],'foreground_rects':fg_rects,'faces':faces,'outlines':outlines,'bounds':[-HALF,-HALF-HEIGHT,12*CELL+2*HALF,8*CELL+2*HALF+HEIGHT]}
+        ends=[(0,8),(6,8),(12,4)] if layout=='elbow' else [(0,8),(12,8)]
+        if layout=='puzzle':
+            ends.append((8,8))
+        strips=[]
+        for cx,cy in ends:
+            x,y=cx*CELL,cy*CELL
+            top=y-HEIGHT-HALF-4
+            strips.append([[x-HALF,top],[x+HALF,top],[x+HALF,y-12],
+                           [x+16,y-5],[x+9,y],[x-9,y],[x-16,y-5],[x-HALF,y-12]])
+        result['layouts'][layout]['cutaway_ends']=strips
+        result['layouts'][layout]['cutaway_lips']=[[0,8*CELL,6*CELL],[6*CELL,4*CELL,12*CELL]] if layout=='elbow' else [[0,8*CELL,12*CELL]]
     return result

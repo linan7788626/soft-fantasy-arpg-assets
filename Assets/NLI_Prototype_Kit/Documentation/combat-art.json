@@ -1,0 +1,49 @@
+{
+  "records": [
+    {
+      "source": "Assets/NLI_SoftFantasy_ARPG/Sprites/Environment/Buildings_And_Props/Portal_Blue_Gold.png",
+      "delivered_file": "Sprites/Arena_Portal.png",
+      "sha256": "a67cd9a34e371cf4e76d96913aff28b63ef9b7fbed986ee43e22b0c14b938ecf"
+    },
+    {
+      "source": "Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row02_Pose02.png",
+      "delivered_file": "Sprites/Combat_Attack_1.png",
+      "sha256": "f1242878cacd1ba4450ca5dee4cf274424add6a868e700e83e6fcb4828dbf0f7"
+    },
+    {
+      "source": "Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row02_Pose05.png",
+      "delivered_file": "Sprites/Combat_Attack_2.png",
+      "sha256": "9d12357cf47baa0b0afa86ee8e96eb4d24056f67e62318096f033877acfacc2a"
+    },
+    {
+      "source": "Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row02_Pose04.png",
+      "delivered_file": "Sprites/Combat_Attack_3.png",
+      "sha256": "5307ed1f983c1f5aa5ecf04a12deddc8703c817ac32e934e4463e765bac84710"
+    },
+    {
+      "source": "Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row04_Pose04.png",
+      "delivered_file": "Sprites/Combat_Hurt_1.png",
+      "sha256": "229578667475ac97e9ac5b370b71d72a5739f4ecd88a747d2dd30846ec4ccf3f"
+    },
+    {
+      "source": "Assets/NLI_SoftFantasy_ARPG/Sprites/Characters/Hero_Poses/Hero_Row04_Pose05.png",
+      "delivered_file": "Sprites/Combat_Hurt_2.png",
+      "sha256": "7a04f3b9010be5063a4189c5156141ee34212f6172bd9c0021095a76bfd965b5"
+    },
+    {
+      "source": "Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Slimes/Slime_Pose01.png",
+      "delivered_file": "Sprites/Combat_Slime_1.png",
+      "sha256": "4a6472dfeac3a24a5be6984731ef3ccdfa94ce37aae9e5dce2407b76503a4570"
+    },
+    {
+      "source": "Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Slimes/Slime_Pose05.png",
+      "delivered_file": "Sprites/Combat_Slime_2.png",
+      "sha256": "a1f2498367cb0721861518435b79de3f8645117e613e4462645d71174c17fd04"
+    },
+    {
+      "source": "Assets/NLI_SoftFantasy_ARPG/Sprites/Enemies/Slimes/Slime_Pose06.png",
+      "delivered_file": "Sprites/Combat_Slime_3.png",
+      "sha256": "6b5514cc44c923ce34ee48d1bbcc6dba6869938883a07258a492c60dea12f3d0"
+    }
+  ]
+}

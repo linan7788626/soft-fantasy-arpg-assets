@@ -8,7 +8,7 @@ const images={},T=64,OX=100,OY=196,IDLE_FRAME=1;
 let frame=IDLE_FRAME,playing=false,stepping=false,debug=false,door=false,layout='hall',last=0,acc=0,pushing=null;
 let player={x:2,y:5},crate={x:5,y:4},plate={x:7,y:4};const keys=new Set();
 let direction='east',plateBlend=0,actualMoving=false;
-const roomNames={hall:'战斗大厅',elbow:'L 形回廊',puzzle:'机关房'};
+const roomNames={hall:'战斗大厅',elbow:'L 形回廊',puzzle:'机关房',arena:'史莱姆战斗房'};
 const linkedRooms={hall:'elbow',elbow:'hall'};
 const roomProgress=new Map();
 const nativeMaterials=new Map();
@@ -17,12 +17,20 @@ let requireNorthRelease=false;
 let arrivedInElbow=false;
 let questStage='gate';
 let questNotice='';
+const COMBAT=KIT.combat;
+const facing={east:[1,0],south:[0,1],west:[-1,0],north:[0,-1]};
+let battle=newBattle();
+function newBattle(){
+ const [x,y]=COMBAT.enemy_spawn;
+ return {heroHp:COMBAT.hero_hp,enemyHp:COMBAT.enemy_hp,enemy:{x,y},enemyPhase:'chase',
+  enemyTimer:0,elapsed:0,attack:null,hurt:0,invulnerable:0,enemyHurt:0,escaped:false};
+}
 const walk=()=>KIT.walks[direction];
 const selectedClip=()=>({walk:KIT.walks,idle:KIT.idles,push:KIT.pushes})[document.querySelector('#action').value][direction];
 function pushState(t=performance.now()){if(!pushing)return null;const elapsed=t-pushing.started,moveTime=elapsed-pushing.approach;return{phase:elapsed<pushing.approach?'approach':moveTime<320?'push':'release',approach:Math.min(1,elapsed/pushing.approach),u:Math.max(0,Math.min(1,moveTime/320)),release:Math.max(0,Math.min(1,(moveTime-320)/100))};}
 function action(){return pushing?(pushState().phase==='approach'?'walk':'push'):actualMoving?'walk':(playing||stepping)?document.querySelector('#action').value:'idle';}
 const sceneClip=()=>({walk:KIT.walks,idle:KIT.idles,push:KIT.pushes})[action()][direction];
-const plateDown=()=>!pushing&&crate.x===plate.x&&crate.y===plate.y;
+const plateDown=()=>layout!=='arena'&&!pushing&&crate.x===plate.x&&crate.y===plate.y;
 function face(dx,dy){if(dx||dy){const next=Math.abs(dx)>=Math.abs(dy)?(dx>0?'east':'west'):(dy>0?'south':'north');if(direction!==next){direction=next;frame=IDLE_FRAME;acc=0;document.querySelector('#direction').value=direction;}}}
 const GATE=KIT.walls.gate;
 const QUEST=KIT.quest;
@@ -34,7 +42,7 @@ function sprite(c,id,x,y,w,h,flip=false){const a=asset(id),r=a.rect;c.save();if(
 function room(x,y){return x>=0&&y>=0&&x<12&&y<8&&(layout!=='elbow'||x<6||y<4);}
 function floor(x,y){return room(x,y)||(door&&y===-1&&x===GATE.passage);}
 function obstacle(x,y){return !floor(x,y)||(layout==='puzzle'&&x===8&&(y<KIT.walls.puzzle_open_rows[0]||y>=KIT.walls.puzzle_open_rows[1]));}
-function solid(x,y){const ix=Math.floor(x),iy=Math.floor(y);return obstacle(ix,iy)||(x>crate.x+.08&&x<crate.x+.92&&y>crate.y+.84&&y<crate.y+1)||(pushing&&ix===pushing.from.x&&iy===pushing.from.y);}
+function solid(x,y){const ix=Math.floor(x),iy=Math.floor(y);return obstacle(ix,iy)||(layout!=='arena'&&x>crate.x+.08&&x<crate.x+.92&&y>crate.y+.84&&y<crate.y+1)||(pushing&&ix===pushing.from.x&&iy===pushing.from.y);}
 function reset({keepInput=false}={}){player={x:2.5,y:5.5};crate={x:5,y:4};plate=layout==='elbow'?{x:4,y:4}:{x:7,y:4};if(layout==='elbow')crate={x:3,y:4};if(layout==='puzzle'){crate={x:5,y:3};plate={x:7,y:3};}door=false;pushing=null;frame=IDLE_FRAME;playing=false;stepping=false;acc=0;direction='east';plateBlend=0;actualMoving=false;document.querySelector('#direction').value=direction;if(!keepInput)keys.clear();document.querySelector('#play').textContent='动作演示';}
 function move(dx,dy){
  if(dy>=0)requireNorthRelease=false;
@@ -43,6 +51,11 @@ function move(dx,dy){
  const old={...player};
  if(!solid(player.x+dx,player.y))player.x+=dx;
  if(!solid(player.x,player.y+dy))player.y+=dy;
+ if(layout==='arena'&&door&&player.y<=-.8){
+  battle.escaped=true;
+  player.y=-.78;
+  return false;
+ }
  if(dy<0&&door&&player.y<=-.8&&linkedRooms[layout]){
   enterLinkedRoom();
   return false;
@@ -61,6 +74,15 @@ function nearQuest([x,y],radius){
 }
 function interact(){
  if(pushing)return;
+ if(layout==='arena'){
+  if(battle.heroHp===0)retryBattle();
+  else if(nearQuest(COMBAT.arena_portal,COMBAT.portal_radius))travelArena(false);
+  return;
+ }
+ if(layout==='hall'&&questStage==='complete'&&nearQuest(COMBAT.hall_portal,COMBAT.portal_radius)){
+  travelArena(true);
+  return;
+ }
  if(layout==='hall'&&nearQuest(QUEST.chest_pos,QUEST.open_radius)){
   if(questStage==='chest')questStage='complete';
   else if(questStage!=='complete')questNotice='宝箱锁着。需要回廊里的钥匙。';
@@ -75,7 +97,13 @@ function drawQuestItem(id,[x,y],width){
 }
 function questObjective(){
  if(questNotice)return questNotice;
- if(questStage==='complete')return '谜题完成 · 宝箱已打开';
+ if(layout==='arena'){
+  if(battle.escaped)return '地牢通关 · 已穿过战斗房出口';
+  if(battle.heroHp===0)return '主角倒下 · 按 R 或 E 重试战斗';
+  if(battle.enemyHp===0)return '史莱姆已击败 · 从北门离开';
+  return `生命 ${battle.heroHp}/${COMBAT.hero_hp} · 史莱姆 ${battle.enemyHp}/${COMBAT.enemy_hp} · 空格挥剑`;
+ }
+ if(questStage==='complete')return '谜题完成 · 宝箱已打开 · 靠近大厅右下的蓝色传送门按 E';
  if(questStage==='chest')return layout==='hall'
   ? '已获得钥匙 · 靠近宝箱按 E 开锁'
   : '已获得钥匙 · 穿过北门，返回大厅';
@@ -83,6 +111,96 @@ function questObjective(){
   ? '走近回廊右侧的金钥匙即可拾取'
   : '沿北门进入回廊，寻找钥匙';
  return '大厅谜题 · 按 E 把木箱推上压力板';
+}
+function travelArena(entering){
+ if(entering)roomProgress.set('hall',{crate:{...crate},door});
+ battle.attack=null;
+ battle.hurt=0;
+ layout=entering?'arena':'hall';
+ document.querySelector('#layout').value=layout;
+ document.querySelector('#door').disabled=entering;
+ reset();
+ questNotice='';
+ requireNorthRelease=false;
+ if(entering){
+  door=battle.enemyHp===0;
+ }else{
+  const hall=roomProgress.get('hall');
+  crate={...hall.crate};
+  door=hall.door;
+  plateBlend=plateDown()?1:0;
+  player={x:9.5,y:4.6};
+ }
+ applyRoomPalette();
+}
+function retryBattle(){
+ battle=newBattle();
+ player={x:2.5,y:5.5};
+ door=false;
+}
+function startAttack(){
+ if(layout==='arena'&&battle.heroHp>0&&battle.enemyHp>0&&!battle.escaped&&!battle.attack&&battle.hurt===0){
+  battle.attack={elapsed:0,hit:false,direction};
+ }
+}
+function hitHero(dx,dy,distance){
+ if(battle.invulnerable>0||battle.heroHp===0)return;
+ battle.heroHp--;
+ battle.hurt=COMBAT.hurt_duration;
+ battle.invulnerable=COMBAT.invulnerability;
+ battle.attack=null;
+ if(distance>.001){
+  const x=player.x+dx/distance*.28;
+  const y=player.y+dy/distance*.28;
+  if(!solid(x,y))player={x,y};
+ }
+}
+function updateBattle(dt){
+ if(layout!=='arena'||battle.escaped)return;
+ battle.elapsed+=dt;
+ for(const timer of ['hurt','invulnerable','enemyHurt']){
+  battle[timer]=Math.max(0,battle[timer]-dt);
+ }
+ const enemy=battle.enemy;
+ const dx=enemy.x-player.x,dy=enemy.y-player.y;
+ const distance=Math.hypot(dx,dy);
+ const swing=battle.attack;
+ if(swing){
+  swing.elapsed+=dt;
+  if(!swing.hit&&swing.elapsed>=COMBAT.attack_impact){
+   swing.hit=true;
+   const [fx,fy]=facing[swing.direction];
+   const aimed=distance<.01||(fx*dx+fy*dy)/distance>=COMBAT.attack_dot;
+   if(aimed&&distance<=COMBAT.attack_range&&battle.enemyHp>0){
+    battle.enemyHp--;
+    battle.enemyHurt=.22;
+    battle.enemyTimer=battle.enemyPhase==='recover'?Math.max(battle.enemyTimer,.28):.28;
+    battle.enemyPhase='recover';
+    if(battle.enemyHp===0)door=true;
+   }
+  }
+  if(swing.elapsed>=COMBAT.attack_duration)battle.attack=null;
+ }
+ if(battle.heroHp===0||battle.enemyHp===0)return;
+ if(battle.enemyPhase==='chase'){
+  if(distance<=COMBAT.enemy_range+.002){
+   battle.enemyPhase='windup';
+   battle.enemyTimer=COMBAT.enemy_windup;
+  }else{
+   const delta=Math.min(dt*COMBAT.enemy_speed,distance-COMBAT.enemy_range);
+   enemy.x+=dx/distance* -delta;
+   enemy.y+=dy/distance* -delta;
+  }
+ }else{
+  battle.enemyTimer-=dt;
+  if(battle.enemyTimer<=0){
+   if(battle.enemyPhase==='windup'){
+    if(distance<=COMBAT.enemy_range+.13)hitHero(-dx,-dy,distance);
+    battle.enemyPhase='recover';
+    battle.enemyTimer=COMBAT.enemy_recovery;
+   }else battle.enemyPhase='chase';
+  }
+ }
 }
 function applyRoomPalette(){
  for(const [id,color] of Object.entries(KIT.palette[layout])){
@@ -246,21 +364,105 @@ function drawForegroundWalls(fade,cutaway){
  layer.restore();
  ctx.drawImage(wallOverlay,0,0);
 }
+function drawCutawayEnds(){
+ const geometry=KIT.walls.layouts[layout];
+ ctx.save();
+ ctx.translate(OX,OY);
+ for(const [left,y,right] of geometry.cutaway_lips){
+  ctx.fillStyle='rgba(26,30,35,.7)';
+  ctx.fillRect(left,y,right-left,4);
+  ctx.fillStyle='rgba(225,169,103,.48)';
+  ctx.fillRect(left,y-2,right-left,2);
+ }
+ const texture=images.wall_cap;
+ const pattern=ctx.createPattern(texture,'repeat');
+ pattern.setTransform(new DOMMatrix().scale(KIT.walls.texture_period/texture.width,KIT.walls.texture_period/texture.height));
+ for(const points of geometry.cutaway_ends){
+  ctx.beginPath();
+  ctx.moveTo(...points[0]);
+  for(const p of points.slice(1))ctx.lineTo(...p);
+  ctx.closePath();
+  ctx.fillStyle=pattern;
+  ctx.fill();
+  ctx.lineJoin='round';
+  ctx.strokeStyle='rgba(37,48,59,.28)';
+  ctx.stroke();
+ }
+ ctx.restore();
+}
+function drawBattleHero(){
+ const x=OX+player.x*T,y=OY+player.y*T;
+ const swing=battle.attack;
+ const collapsed=battle.heroHp===0;
+ let pose;
+ if(collapsed||battle.hurt>0)pose=collapsed||battle.hurt>COMBAT.hurt_duration/2?'hurt_2':'hurt_1';
+ else if(swing){
+  pose=swing.elapsed<COMBAT.attack_impact?'attack_1':swing.elapsed<.23?'attack_2':'attack_3';
+  if(pose==='attack_2'&&(direction==='north'||direction==='south'))pose='attack_3';
+ }
+ if(!pose){
+  hero(ctx,frame,x,y);
+  return;
+ }
+ const a=asset(pose),{pivot,scale}=COMBAT.hero_poses[pose];
+ const w=a.rect[2]*scale,h=a.rect[3]*scale;
+ ctx.save();
+ ctx.translate(x,y);
+ if(direction==='west')ctx.scale(-1,1);
+ ctx.drawImage(images[pose],...a.rect,-w*pivot[0],-h*pivot[1],w,h);
+ ctx.restore();
+ if(swing&&swing.elapsed>=COMBAT.attack_impact&&swing.elapsed<.25){
+  const [fx,fy]=facing[swing.direction];
+  const angle=Math.atan2(fy,fx);
+  ctx.save();
+  ctx.strokeStyle='rgba(255,226,142,.85)';
+  ctx.lineWidth=4;
+  ctx.lineCap='round';
+  ctx.beginPath();
+  ctx.ellipse(x,y-27,62,34,0,angle-.65,angle+.65);
+  ctx.stroke();
+  ctx.restore();
+ }
+}
+function drawSlime(){
+ const {enemy,enemyHp,enemyPhase,enemyHurt,elapsed}=battle;
+ if(!enemyHp&&enemyHurt===0)return;
+ const windup=enemyPhase==='windup';
+ ctx.save();
+ if(!enemyHp)ctx.globalAlpha=enemyHurt/.22;
+ if(windup&&enemyHp){
+  ctx.fillStyle='rgba(243,146,66,.28)';
+  ctx.beginPath();
+  ctx.ellipse(OX+enemy.x*T,OY+enemy.y*T-7,38,21,0,0,Math.PI*2);
+  ctx.fill();
+ }
+ const id=enemyHurt>0?'slime_3':windup?'slime_2':Math.floor(elapsed*5)%2?'slime_2':'slime_1';
+ drawQuestItem(id,[enemy.x,enemy.y],66);
+ ctx.restore();
+}
 function draw({wallFade=true,cutaway=true}={}){ctx.clearRect(0,0,canvas.width,canvas.height);const bg=document.querySelector('#background').value;ctx.fillStyle=bg==='light'?'#e8e2d7':'#25343d';ctx.fillRect(0,0,1120,780);if(bg==='checker')for(let y=0;y<780;y+=24)for(let x=0;x<1120;x+=24){ctx.fillStyle=((x+y)/24)%2?'#ddd':'#aab7be';ctx.fillRect(x,y,24,24);}
 ctx.save();ctx.beginPath();for(let y=-1;y<8;y++)for(let x=0;x<12;x++)if(floor(x,y))ctx.rect(OX+x*T,OY+y*T,T,T);ctx.clip();for(let y=-6;y<8;y+=6)for(let x=0;x<12;x+=6)sprite(ctx,'floor',OX+x*T,OY+y*T,6*T,6*T);ctx.restore();
 // A single projected wall volume supplies the cap, facade and orthogonal corners.
 drawWalls(false);
+if(cutaway)drawCutawayEnds();
 if(debug)for(let y=0;y<8;y++)for(let x=0;x<12;x++)if(room(x,y)){ctx.strokeStyle='#de7373';ctx.strokeRect(OX+x*T,OY+y*T,T,T);}
 // The doorway is a void in this wall face, under its continuous lintel and cap.
 drawPortal();
-sprite(ctx,'plate',OX+plate.x*T,OY+plate.y*T,T,T*.7);
-if(plateBlend>0){ctx.save();ctx.globalAlpha=plateBlend;sprite(ctx,'plate_pressed',OX+plate.x*T,OY+plate.y*T,T,T*.7);ctx.restore();}
+if(layout!=='arena'){
+ sprite(ctx,'plate',OX+plate.x*T,OY+plate.y*T,T,T*.7);
+ if(plateBlend>0){ctx.save();ctx.globalAlpha=plateBlend;sprite(ctx,'plate_pressed',OX+plate.x*T,OY+plate.y*T,T,T*.7);ctx.restore();}
+}
 const box=cratePosition();
 if(layout==='elbow'&&questStage==='key')drawQuestItem('quest_key',QUEST.key_pos,40);
-const actors=[
- {depth:box.y+1,paint:()=>sprite(ctx,'crate',OX+box.x*T,OY+(box.y+1)*T-72,T,72)},
- {depth:player.y,paint:()=>hero(ctx,frame,OX+player.x*T,OY+player.y*T,104)},
-];
+const actors=[];
+if(layout==='arena'){
+ drawQuestItem('arena_portal',COMBAT.arena_portal,86);
+ actors.push({depth:battle.enemy.y,paint:drawSlime},{depth:player.y,paint:drawBattleHero});
+}else{
+ actors.push({depth:box.y+1,paint:()=>sprite(ctx,'crate',OX+box.x*T,OY+(box.y+1)*T-72,T,72)},
+  {depth:player.y,paint:()=>hero(ctx,frame,OX+player.x*T,OY+player.y*T,104)});
+ if(layout==='hall'&&questStage==='complete')drawQuestItem('arena_portal',COMBAT.hall_portal,86);
+}
 if(layout==='hall')actors.push({
  depth:QUEST.chest_pos[1],
  paint:()=>drawQuestItem(questStage==='complete'?'chest_open':'chest_closed',QUEST.chest_pos,60),
@@ -273,10 +475,12 @@ const mc=document.querySelector('#mechanisms').getContext('2d');mc.clearRect(0,0
 document.querySelector('#status').textContent=`${roomNames[layout]}${door&&linkedRooms[layout]?' → '+roomNames[linkedRooms[layout]]:''} · ${direction} · ${action()} · 第 ${(action()==='idle'?0:action()==='push'&&pushing?Math.min(3,Math.floor(pushState().u*4)):frame)+1}/${sceneClip().frames.length} 帧 · 压力板${plateDown()?'按下':'松开'} · ${door?'门已开启':'门关闭'} · 玩家 ${player.x.toFixed(2)},${player.y.toFixed(2)}`;}
 function tick(t){
  const dt=Math.min((t-last)/1000,.05)||0;last=t;const pushed=finishPush(t);
+ updateBattle(dt);
  const target=plateDown()?1:0;plateBlend+=Math.sign(target-plateBlend)*Math.min(Math.abs(target-plateBlend),dt/.12);
  let dx=(keys.has('ArrowRight')||keys.has('d')?1:0)-(keys.has('ArrowLeft')||keys.has('a')?1:0),dy=(keys.has('ArrowDown')||keys.has('s')?1:0)-(keys.has('ArrowUp')||keys.has('w')?1:0);
  if(dy>=0)requireNorthRelease=false;
- let moving=pushed;actualMoving=pushed;if(!pushed&&(dx||dy)){const n=Math.hypot(dx,dy);moving=move(dx/n*dt*2.2,dy/n*dt*2.2);stepping=false;}
+ const battleLocks=layout==='arena'&&(battle.attack||battle.hurt>0||battle.heroHp===0);
+ let moving=pushed;actualMoving=pushed;if(!pushed&&!battleLocks&&(dx||dy)){const n=Math.hypot(dx,dy);moving=move(dx/n*dt*2.2,dy/n*dt*2.2);stepping=false;}
  actualMoving=moving;
  if(playing||moving){acc+=dt;const interval=1/Number(document.querySelector('#fps').value);if(acc>=interval){frame=(frame+1)%(playing?selectedClip().frames.length:walk().frames.length);acc%=interval;}}
  else if(!stepping){frame=IDLE_FRAME;acc=0;}
@@ -285,7 +489,7 @@ function tick(t){
  if(objective.textContent!==message)objective.textContent=message;
  draw();requestAnimationFrame(tick);
 }
-window.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown',' '].includes(e.key))e.preventDefault();keys.add(e.key);if(e.key.toLowerCase()==='e'&&!e.repeat)interact();});window.addEventListener('keyup',e=>keys.delete(e.key));window.addEventListener('blur',()=>keys.clear());
+window.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown',' '].includes(e.key))e.preventDefault();keys.add(e.key);if(e.key.toLowerCase()==='e'&&!e.repeat)interact();if(e.code==='Space'&&!e.repeat)startAttack();if(e.key.toLowerCase()==='r'&&layout==='arena'&&battle.heroHp===0)retryBattle();});window.addEventListener('keyup',e=>keys.delete(e.key));window.addEventListener('blur',()=>keys.clear());
 function startTrial(room){
  layout=room;
  roomProgress.clear();
@@ -293,6 +497,7 @@ function startTrial(room){
  arrivedInElbow=false;
  questStage='gate';
  questNotice='';
+ battle=newBattle();
  document.querySelector('#layout').value=layout;
  document.querySelector('#door').disabled=false;
  reset();
@@ -302,4 +507,4 @@ document.querySelector('#layout').onchange=e=>startTrial(e.target.value);
 document.querySelector('#restart').onclick=()=>startTrial('hall');document.querySelector('#play').onclick=()=>{playing=!playing;document.querySelector('#play').textContent=playing?'停止演示':'动作演示';};document.querySelector('#step').onclick=()=>{playing=false;stepping=true;document.querySelector('#play').textContent='动作演示';frame=(frame+1)%selectedClip().frames.length;};document.querySelector('#door').onclick=()=>{if(layout==='elbow'&&arrivedInElbow)return;door=!door;if(!door&&player.y<0)player.y=.5;};document.querySelector('#collision').onclick=()=>debug=!debug;
 document.querySelector('#action').onchange=()=>{frame=IDLE_FRAME;acc=0;};
 document.querySelector('#direction').onchange=e=>{direction=e.target.value;frame=IDLE_FRAME;acc=0;};
-Promise.all([...KIT.assets.map(a=>[a.id,a.file]),['walk',KIT.walk.file],['idle',KIT.idles.east.file],...Object.entries(KIT.pushes).map(([d,w])=>['push_'+d,w.file]),...Object.entries(KIT.walks).filter(([d])=>d!=='east').map(([d,w])=>['walk_'+d,w.file])].map(([id,path])=>new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>{images[id]=img;resolve();};img.onerror=()=>reject(Error('图片无法加载: '+path));img.src=KIT.embeddedImages?.[id] || '../../Assets/NLI_Prototype_Kit/'+path;}))).then(()=>{for(const id of Object.keys(KIT.palette.hall))nativeMaterials.set(id,images[id]);reset();applyRoomPalette();window.KIT_TEST={get state(){return{frame,playing,direction,action:action(),pushPhase:pushState()?.phase,plateDown:plateDown(),plateBlend,layout,door,questStage,player:{...player},crate:{...crate},pushing:!!pushing,crateVisual:cratePosition()};},geometry:{northWallCells,gate:GATE,corners},setPlayer:(x,y)=>{player={x,y};},move,push,draw,images};document.querySelector('#qa').textContent='四方向独立待机、行走和推箱；推箱先靠近接触，再同步移动箱子。每套图使用固定尺度，保留屈膝变化。';requestAnimationFrame(tick);}).catch(e=>document.querySelector('#status').textContent=e.message);
+Promise.all([...KIT.assets.map(a=>[a.id,a.file]),['walk',KIT.walk.file],['idle',KIT.idles.east.file],...Object.entries(KIT.pushes).map(([d,w])=>['push_'+d,w.file]),...Object.entries(KIT.walks).filter(([d])=>d!=='east').map(([d,w])=>['walk_'+d,w.file])].map(([id,path])=>new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>{images[id]=img;resolve();};img.onerror=()=>reject(Error('图片无法加载: '+path));img.src=KIT.embeddedImages?.[id] || '../../Assets/NLI_Prototype_Kit/'+path;}))).then(()=>{for(const id of Object.keys(KIT.palette.hall))nativeMaterials.set(id,images[id]);reset();applyRoomPalette();window.KIT_TEST={get state(){return{frame,playing,direction,action:action(),pushPhase:pushState()?.phase,plateDown:plateDown(),plateBlend,layout,door,questStage,battle:{heroHp:battle.heroHp,enemyHp:battle.enemyHp,enemy:{...battle.enemy},enemyPhase:battle.enemyPhase,attack:battle.attack!==null,hurt:battle.hurt,escaped:battle.escaped},player:{...player},crate:{...crate},pushing:!!pushing,crateVisual:cratePosition()};},geometry:{northWallCells,gate:GATE,corners},setPlayer:(x,y)=>{player={x,y};},move,push,draw,images};document.querySelector('#qa').textContent='四方向独立待机、行走和推箱；推箱先靠近接触，再同步移动箱子。每套图使用固定尺度，保留屈膝变化。';requestAnimationFrame(tick);}).catch(e=>document.querySelector('#status').textContent=e.message);
