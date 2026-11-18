@@ -3,6 +3,7 @@ extends Node2D
 const CELL = 64.0
 const ORIGIN = Vector2(100, 196)
 const DIRECTIONS = ["east", "south", "west", "north"]
+const WALL_FADE_SHADER = preload("res://wall_fade.gdshader")
 var manifest: Dictionary
 var textures: Dictionary = {}
 var modules: Dictionary = {}
@@ -11,10 +12,10 @@ var idle_blend: Sprite2D
 var crate_sprite: Sprite2D
 var plate_sprite: Sprite2D
 var gate_sprite: Sprite2D
-var foreground: Node2D
+var foreground: CanvasGroup
 var cap_background: Node2D
 var cap_front: Node2D
-var north_occluder: Node2D
+var north_occluder: CanvasGroup
 var portal_detail: Node2D
 var caption: Label
 var player = Vector2(2.5, 5.5)
@@ -68,9 +69,7 @@ func _ready():
 	add_child(idle_blend)
 	hero.frame_changed.connect(align_hero)
 	hero.animation_changed.connect(align_hero)
-	foreground = Node2D.new()
-	foreground.z_index = 4
-	add_child(foreground)
+	foreground = wall_group(4)
 	rebuild_wall_layers()
 	portal_detail = Node2D.new()
 	portal_detail.z_index = 2
@@ -163,6 +162,22 @@ func align_hero():
 		gate_sprite.z_index = 7 if player.y < 0 else 1
 		if is_instance_valid(north_occluder):
 			north_occluder.visible = player.y < 0
+			update_wall_fade()
+
+func update_wall_fade():
+	var foot = player * CELL
+	var center = to_global(ORIGIN + foot - Vector2(0, 50))
+	var strength = 0.0
+	for r in manifest.walls.layouts[layout].foreground_rects:
+		var depth = foot.y - r[1]
+		var distance_x = maxf(0.0, maxf(r[0] - foot.x, foot.x - r[0] - r[2]))
+		var approach = smoothstep(-12.0, 16.0, depth)
+		var lateral = 1.0 - smoothstep(0.0, 36.0, distance_x)
+		var near_side = 1.0 - smoothstep(148.0, 176.0, depth)
+		strength = maxf(strength, approach * lateral * near_side)
+	foreground.material.set_shader_parameter("fade_center", center)
+	foreground.material.set_shader_parameter("fade_strength", strength)
+	north_occluder.material.set_shader_parameter("fade_center", center)
 
 func set_motion(v: Vector2):
 	if not v.is_zero_approx():
@@ -246,7 +261,6 @@ func set_layout(value: String):
 	update_mechanism()
 	set_motion(Vector2.ZERO)
 	queue_redraw()
-	foreground.queue_redraw()
 	rebuild_wall_layers()
 
 func push_crate() -> bool:
@@ -305,15 +319,18 @@ func cap_polygon(polygon: PackedVector2Array, parent: Node2D):
 func rect_polygon(r: Array, padding: float = 0) -> PackedVector2Array:
 	return PackedVector2Array([Vector2(r[0]-padding,r[1]-padding),Vector2(r[0]+r[2]+padding,r[1]-padding),Vector2(r[0]+r[2]+padding,r[1]+r[3]+padding),Vector2(r[0]-padding,r[1]+r[3]+padding)])
 
-func cap_parts(region: PackedVector2Array) -> Array:
+func cap_parts(region: PackedVector2Array, excluded: Array = []) -> Array:
 	var geometry = manifest.walls.layouts[layout]
 	var result: Array = []
 	for outer in geometry.cap_outer_contours:
 		var parts: Array = Geometry2D.intersect_polygons(points(outer), region)
+		var holes = excluded.duplicate()
 		for hole in geometry.cap_hole_contours:
+			holes.append(points(hole))
+		for hole in holes:
 			var next: Array = []
 			for part in parts:
-				next.append_array(Geometry2D.clip_polygons(part, points(hole)))
+				next.append_array(Geometry2D.clip_polygons(part, hole))
 			parts = next
 		result.append_array(parts)
 	return result
@@ -359,18 +376,27 @@ func add_portal_shadow(parent: Node2D):
 	shape.antialiased = true
 	parent.add_child(shape)
 
+func wall_group(depth: int) -> CanvasGroup:
+	var group = CanvasGroup.new()
+	var shader = ShaderMaterial.new()
+	shader.shader = WALL_FADE_SHADER
+	group.material = shader
+	group.z_index = depth
+	add_child(group)
+	return group
+
 func rebuild_wall_layers():
 	for layer in [cap_background,cap_front,north_occluder]:
 		if is_instance_valid(layer):
+			layer.hide()
 			layer.queue_free()
 	cap_background = Node2D.new()
 	add_child(cap_background)
 	cap_front = Node2D.new()
 	foreground.add_child(cap_front)
-	north_occluder = Node2D.new()
-	north_occluder.z_index = 6
+	north_occluder = wall_group(6)
 	north_occluder.visible = player.y < 0
-	add_child(north_occluder)
+	north_occluder.material.set_shader_parameter("fade_strength", 1.0)
 	var geometry = manifest.walls.layouts[layout]
 	var north_rect = rect_polygon(manifest.walls.gate.occlusion_rect)
 	add_portal_shadow(cap_background)
@@ -379,14 +405,17 @@ func rebuild_wall_layers():
 		if not q.foreground:
 			add_face(q, north_occluder, north_rect)
 	var bounds = geometry.bounds
+	var foreground_regions: Array = []
+	for r in geometry.foreground_rects:
+		foreground_regions.append(rect_polygon(r))
 	# Closed caps have an interior hole. Small overlapping tiles keep that hole
 	# empty while retaining smooth exterior edges and continuous texture phase.
 	for y in range(int(floor(bounds[1]/64.0))*64,int(bounds[1]+bounds[3])+64,64):
 		for x in range(int(floor(bounds[0]/64.0))*64,int(bounds[0]+bounds[2])+64,64):
-			for part in cap_parts(rect_polygon([x,y,64,64],1)):
+			for part in cap_parts(rect_polygon([x,y,64,64],1), foreground_regions):
 				cap_polygon(part, cap_background)
-	for r in geometry.foreground_rects:
-		for part in cap_parts(rect_polygon(r,1)):
+	for region in foreground_regions:
+		for part in cap_parts(region):
 			cap_polygon(part, cap_front)
 	for part in cap_parts(north_rect):
 		cap_polygon(part, north_occluder)
@@ -396,6 +425,7 @@ func rebuild_wall_layers():
 	var front_bevel = Node2D.new()
 	front_bevel.draw.connect(func(): draw_bevels(front_bevel, true))
 	cap_front.add_child(front_bevel)
+	update_wall_fade()
 
 func draw_portal_rim(target: Node2D):
 	var path = points(manifest.walls.gate.opening.contour)
@@ -520,7 +550,32 @@ func run_validation():
 	checks.append("Three layouts use the same unioned wall-cap geometry as Canvas")
 	set_layout("hall")
 	await capture("engine")
+	await validate_wall_fade()
+	checks.append("Wall fade follows the hero, stays local, and leaves collision intact")
 	var report = {"status":"passed","engine":Engine.get_version_info().string,"display_server":DisplayServer.get_name(),"checks":checks,"limits":["Art still requires user visual acceptance","Unity Editor not validated","Floor is not a complete autotile set"]}
 	FileAccess.open("res://Validation/report.json", FileAccess.WRITE).store_string(JSON.stringify(report,"\t") + "\n")
 	print(JSON.stringify(report))
 	get_tree().quit()
+
+func validate_wall_fade():
+	# Capture opaque and nearby views at the same wall locations.
+	var opaque: Image
+	if DisplayServer.get_name() != "headless":
+		await RenderingServer.frame_post_draw
+		opaque = get_viewport().get_texture().get_image()
+	player = Vector2(4.5, 7.5)
+	set_motion(Vector2.ZERO)
+	assert(is_equal_approx(foreground.material.get_shader_parameter("fade_strength"), 1.0))
+	assert(foreground.material.get_shader_parameter("fade_center") == Vector2(388, 626))
+	assert(blocked(player + Vector2.DOWN))
+	if opaque != null:
+		await RenderingServer.frame_post_draw
+		var faded = get_viewport().get_texture().get_image()
+		faded.save_png("res://Validation/wall-fade.png")
+		# Transparent cap reveals the warm room floor; the facade below it reveals the dark surround.
+		assert(faded.get_pixel(433, 590).r > opaque.get_pixel(433, 590).r + 0.08)
+		assert(faded.get_pixel(413, 719).r < opaque.get_pixel(413, 719).r - 0.05)
+		assert(faded.get_pixel(660, 590).is_equal_approx(opaque.get_pixel(660, 590)))
+	player = Vector2(4.5, 5.5)
+	set_motion(Vector2.ZERO)
+	assert(is_zero_approx(foreground.material.get_shader_parameter("fade_strength")))

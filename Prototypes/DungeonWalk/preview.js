@@ -1,5 +1,9 @@
 /* Source pixels are never rewritten. The manifest supplies calibrated source rectangles. */
 const canvas=document.querySelector('#stage'),ctx=canvas.getContext('2d'),strip=document.querySelector('#frames'),fx=strip.getContext('2d');
+const wallOverlay=document.createElement('canvas');
+wallOverlay.width=canvas.width;
+wallOverlay.height=canvas.height;
+const wallOverlayContext=wallOverlay.getContext('2d');
 const images={},T=64,OX=100,OY=196,IDLE_FRAME=1;
 let frame=IDLE_FRAME,playing=false,stepping=false,debug=false,door=false,layout='hall',last=0,acc=0,pushing=null;
 let player={x:2,y:5},crate={x:5,y:4},plate={x:7,y:4};const keys=new Set();
@@ -70,25 +74,81 @@ function hero(c,index,x,y,h=104,clip=sceneClip(),lock=true){
  c.save();if(s)c.globalAlpha=1-s.release;c.drawImage(images[id],...r,x-w*f.pivot[0],y-height*f.pivot[1],w,height);c.restore();
  if(s?.release){c.save();c.globalAlpha=s.release;hero(c,0,original.x,original.y,h,KIT.idles[direction],false);c.restore();}
 }
-function drawWalls(foreground){
+function drawWalls(foreground,ctx=canvas.getContext('2d')){
  const g=KIT.walls.layouts[layout];ctx.save();ctx.translate(OX,OY);
  const faceMask=new Path2D();faceMask.rect(...g.bounds);const opening=portalPath(2);faceMask.addPath(opening);ctx.save();ctx.clip(faceMask,'evenodd');
  for(const q of g.faces)if(q.foreground===foreground){ctx.save();ctx.transform(...q.transform);ctx.drawImage(images[q.asset],...q.src,0,0,1,1);ctx.restore();}
  ctx.restore();
  const cap=new Path2D();for(const p of g.cap_contours){cap.moveTo(...p[0]);for(const v of p.slice(1))cap.lineTo(...v);cap.closePath();}
- ctx.save();ctx.clip(cap,'evenodd');if(foreground){const region=new Path2D();for(const r of g.foreground_rects)region.rect(...r);ctx.clip(region);}
+ ctx.save();ctx.clip(cap,'evenodd');
+ const region=new Path2D();
+ if(!foreground)region.rect(...g.bounds);
+ for(const r of g.foreground_rects)region.rect(...r);
+ ctx.clip(region,'evenodd');
  const texture=images.wall_cap,pattern=ctx.createPattern(texture,'repeat');pattern.setTransform(new DOMMatrix().scale(KIT.walls.texture_period/texture.width,KIT.walls.texture_period/texture.height));ctx.fillStyle=pattern;ctx.fill(cap,'evenodd');ctx.restore();
  ctx.lineJoin='round';ctx.lineCap='round';for(const line of g.outlines)if(line.foreground===foreground){ctx.beginPath();ctx.moveTo(...line.points[0]);for(const p of line.points.slice(1))ctx.lineTo(...p);ctx.strokeStyle='rgba(73,68,63,.30)';ctx.lineWidth=2;ctx.stroke();ctx.save();ctx.translate(-.5,-.5);ctx.strokeStyle='rgba(246,239,216,.40)';ctx.lineWidth=1;ctx.stroke();ctx.restore();}ctx.restore();
 }
 function portalPath(extend=0){const path=new Path2D(),p=GATE.opening.contour;path.moveTo(p[0][0],p[0][1]+extend);for(let i=1;i<p.length;i++)path.lineTo(p[i][0],p[i][1]+(i===p.length-1?extend:0));path.closePath();return path;}
-function drawPortal(shadow=true){
+function drawPortal(shadow=true,ctx=canvas.getContext('2d')){
  ctx.save();ctx.translate(OX,OY);const path=portalPath(),[x,y,w,h]=GATE.opening.rect;
  if(shadow){ctx.save();ctx.clip(path);const shade=ctx.createLinearGradient(0,y,0,y+h);shade.addColorStop(0,'rgba(44,36,28,.48)');shade.addColorStop(1,'rgba(44,36,28,0)');ctx.fillStyle=shade;ctx.fill(path);ctx.restore();}
  if(!door){ctx.save();ctx.clip(path);sprite(ctx,'door_closed',...GATE.opening.leaf_rect);ctx.restore();}
  const p=GATE.opening.contour;ctx.beginPath();ctx.moveTo(...p[0]);for(const q of p.slice(1))ctx.lineTo(...q);ctx.lineJoin='round';ctx.lineWidth=3;ctx.strokeStyle='rgba(65,49,31,.30)';ctx.stroke();ctx.translate(-.5,-.5);ctx.lineWidth=1;ctx.strokeStyle='rgba(255,239,199,.45)';ctx.stroke();ctx.restore();
 }
-function drawNorthOcclusion(){ctx.save();ctx.beginPath();ctx.rect(OX+GATE.occlusion_rect[0],OY+GATE.occlusion_rect[1],GATE.occlusion_rect[2],GATE.occlusion_rect[3]);ctx.clip();drawWalls(false);drawPortal(false);ctx.restore();}
-function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);const bg=document.querySelector('#background').value;ctx.fillStyle=bg==='light'?'#e8e2d7':'#25343d';ctx.fillRect(0,0,1120,780);if(bg==='checker')for(let y=0;y<780;y+=24)for(let x=0;x<1120;x+=24){ctx.fillStyle=((x+y)/24)%2?'#ddd':'#aab7be';ctx.fillRect(x,y,24,24);}
+function drawNorthOcclusion(ctx){
+ const [x,y,w,h]=GATE.occlusion_rect;
+ ctx.save();
+ ctx.beginPath();
+ ctx.rect(OX+x,OY+y,w,h);
+ ctx.clip();
+ drawWalls(false,ctx);
+ drawPortal(false,ctx);
+ ctx.restore();
+}
+function smoothstep(from,to,value){
+ const t=Math.max(0,Math.min(1,(value-from)/(to-from)));
+ return t*t*(3-2*t);
+}
+function foregroundFadeStrength(x,y){
+ let strength=0;
+ for(const [left,top,width] of KIT.walls.layouts[layout].foreground_rects){
+  const depth=y-top;
+  const distance=Math.max(left-x,0,x-left-width);
+  const proximity=smoothstep(-12,16,depth)*(1-smoothstep(148,176,depth));
+  strength=Math.max(strength,proximity*(1-smoothstep(0,36,distance)));
+ }
+ return strength;
+}
+function drawForegroundWalls(fade){
+ const outside=player.y<0;
+ const strength=fade?(outside?1:foregroundFadeStrength(player.x*T,player.y*T)):0;
+ if(strength===0){
+  if(outside)drawNorthOcclusion(ctx);
+  drawWalls(true);
+  return;
+ }
+
+ const layer=wallOverlayContext;
+ layer.clearRect(0,0,wallOverlay.width,wallOverlay.height);
+ if(outside)drawNorthOcclusion(layer);
+ drawWalls(true,layer);
+
+ // Fade the assembled wall as one layer so overlaps don't hide the hero.
+ layer.save();
+ layer.translate(OX+player.x*T,OY+player.y*T-50);
+ layer.scale(82,110);
+ layer.globalCompositeOperation='destination-out';
+ const mask=layer.createRadialGradient(0,0,.52,0,0,1);
+ for(let step=0;step<=8;step++){
+  const t=step/8;
+  mask.addColorStop(t,`rgba(0,0,0,${.82*strength*(1-smoothstep(0,1,t))})`);
+ }
+ layer.fillStyle=mask;
+ layer.fillRect(-1,-1,2,2);
+ layer.restore();
+ ctx.drawImage(wallOverlay,0,0);
+}
+function draw({wallFade=true}={}){ctx.clearRect(0,0,canvas.width,canvas.height);const bg=document.querySelector('#background').value;ctx.fillStyle=bg==='light'?'#e8e2d7':'#25343d';ctx.fillRect(0,0,1120,780);if(bg==='checker')for(let y=0;y<780;y+=24)for(let x=0;x<1120;x+=24){ctx.fillStyle=((x+y)/24)%2?'#ddd':'#aab7be';ctx.fillRect(x,y,24,24);}
 ctx.save();ctx.beginPath();for(let y=-1;y<8;y++)for(let x=0;x<12;x++)if(floor(x,y))ctx.rect(OX+x*T,OY+y*T,T,T);ctx.clip();for(let y=-6;y<8;y+=6)for(let x=0;x<12;x+=6)sprite(ctx,'floor',OX+x*T,OY+y*T,6*T,6*T);ctx.restore();
 // A single projected wall volume supplies the cap, facade and orthogonal corners.
 drawWalls(false);
@@ -102,9 +162,8 @@ const box=cratePosition();
 const drawCrate=()=>sprite(ctx,'crate',OX+box.x*T,OY+(box.y+1)*T-72,T,72);
 if(player.y<box.y+1){hero(ctx,frame,OX+player.x*T,OY+player.y*T,104);drawCrate();}else{drawCrate();}
 if(player.y>=box.y+1)hero(ctx,frame,OX+player.x*T,OY+player.y*T,104);
-if(player.y<0)drawNorthOcclusion();
 // South-facing boundaries occlude objects behind the wall.
-drawWalls(true);
+drawForegroundWalls(wallFade);
 if(debug){ctx.strokeStyle='#58e8d8';ctx.beginPath();ctx.moveTo(OX+player.x*T-12,OY+player.y*T);ctx.lineTo(OX+player.x*T+12,OY+player.y*T);ctx.stroke();}
 fx.clearRect(0,0,1120,240);fx.fillStyle=bg==='light'?'#e8e2d7':'#25343d';fx.fillRect(0,0,1120,240);if(bg==='checker')for(let y=0;y<240;y+=24)for(let x=0;x<1120;x+=24){fx.fillStyle=((x+y)/24)%2?'#ddd':'#aab7be';fx.fillRect(x,y,24,24);}for(let i=0;i<selectedClip().frames.length;i++){hero(fx,i,90+i*180,195,170,selectedClip(),false);fx.strokeStyle=i===frame%selectedClip().frames.length?'#ffd270':'#677b80';fx.strokeRect(i*180+4,15,172,205);fx.beginPath();fx.moveTo(i*180+8,195);fx.lineTo(i*180+172,195);fx.stroke();fx.fillStyle='#f9d989';fx.fillText(String(i+1),i*180+8,232);}
 const mc=document.querySelector('#mechanisms').getContext('2d');mc.clearRect(0,0,480,160);for(const [i,id] of ['plate','plate_pressed'].entries()){sprite(mc,id,20+i*240,12,130,120);mc.fillStyle='#f5e7c7';mc.fillText(i?'按下 / 激活':'松开 / 未激活',20+i*240,150);}
