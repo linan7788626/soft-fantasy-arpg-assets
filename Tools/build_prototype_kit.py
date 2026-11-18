@@ -57,11 +57,17 @@ for i,d in enumerate(directions):
 m={'version':'0.2.0-direction-trial','style_code':'NL-ARPG-SOFT-766DF2B7','pixel_postprocessing':'none','assets':assets,'walk':walks['east'],'walks':walks,'mechanisms':{'plate':{'released':'plate','pressed':'plate_pressed','trigger':'crate settled on plate; release after crate leaves','transition_ms':120}},'assembly':'Floor repeat; independent perimeter segments; connector pillars at corners. Render rectangles do not rewrite source PNGs.','limits':['Floor is a repeating prototype texture, not a mathematically edge-identical autotile set.','Sidewall mirror is a preview assembly transform; lighting is not recomputed.','Four-direction walking is a small-batch trial; idle reuses a still walk frame, not a separate breathing cycle.','Unity Editor import is not validated; Godot validation is reported separately.'],'validation':{'browser_report':'../../../Prototypes/DungeonWalk/Validation/report.json','engine_report':'../../../Prototypes/GodotImport/Validation/report.json'}}
 m['validation']['visual_report']='Acceptance_2026-11-05_integrated.md'
 m['walls']=make_walls(Image.open(KIT/'Sprites/Wall_Cap_Soft_v4.png').size,Image.open(KIT/'Sprites/Wall_Face_Soft_v4.png').size)
-m['version']='0.5.0-integrated-room'
+m['version']='0.6.0-linked-rooms'
+warm_palette={'floor':'#eac184','wall_face':'#f2ae72','wall_cap':'#80b8ce','door_closed':'#b4e7ff'}
+m['palette']={
+ 'hall':warm_palette,
+ 'elbow':{'floor':'#c8dfb7','wall_face':'#eed092','wall_cap':'#78c7b9','door_closed':'#a4e5ff'},
+ 'puzzle':warm_palette,
+}
 m['assembly']='Tall rounded orthographic enclosure; doorway carved into continuous masonry beneath an unbroken wall cap; native door leaf embedded in opening; no source PNG edits.'
 m['pushes']=pushes
 m['idles']=idles
-m['limits']=['Floor and wall materials are not certified edge-identical autotile sets.','Tall foreground walls occlude nearby actors; no gameplay visibility fade is implemented.','Idle is a dedicated static pose, not a breathing loop.','Unity Editor import remains unvalidated.']
+m['limits']=['Floor and wall materials are not certified edge-identical autotile sets.','Idle is a dedicated static pose, not a breathing loop.','Unity Editor import remains unvalidated.']
 (KIT/'Documentation/manifest.json').write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n')
 (ROOT/'Prototypes/DungeonWalk/kit-data.js').write_text('const KIT='+json.dumps(m,ensure_ascii=False)+';\n')
 # Conventional Unity sprite metadata for the native textures; calibrated cuts remain explicit in manifest.

@@ -4,6 +4,7 @@ const CELL = 64.0
 const ORIGIN = Vector2(100, 196)
 const DIRECTIONS = ["east", "south", "west", "north"]
 const WALL_FADE_SHADER = preload("res://wall_fade.gdshader")
+const NORTH_EXIT_Y = -0.80
 var manifest: Dictionary
 var textures: Dictionary = {}
 var modules: Dictionary = {}
@@ -23,6 +24,8 @@ var crate = Vector2i(5, 4)
 var plate = Vector2i(7, 4)
 var direction = "east"
 var layout = "hall"
+var room_states: Dictionary = {}
+var north_traversal_latched = false
 var push_data: Dictionary = {}
 var door = false
 var pressed = false
@@ -59,6 +62,7 @@ func _ready():
 	var leaf = gate.opening.leaf_rect
 	gate_sprite = module_sprite("door_closed", ORIGIN + Vector2(leaf[0], leaf[1]), Vector2(leaf[2], leaf[3]))
 	gate_sprite.z_index = 1
+	gate_sprite.modulate = palette_color("door_closed")
 	plate_sprite = module_sprite("plate", ORIGIN + Vector2(plate) * CELL, Vector2(64, 44.8))
 	crate_sprite = module_sprite("crate", ORIGIN + Vector2(crate) * CELL + Vector2(0, -8), Vector2(64, 72))
 	crate_sprite.z_index = 2
@@ -203,11 +207,21 @@ func blocked(p: Vector2) -> bool:
 	return obstacle(Vector2i(floor(p.x), floor(p.y))) or (p.x > crate.x + .08 and p.x < crate.x + .92 and p.y > crate.y + .84 and p.y < crate.y + 1)
 
 func move_by(v: Vector2):
+	if v.y >= 0:
+		north_traversal_latched = false
+	elif north_traversal_latched:
+		v.y = 0
 	var before = player
 	if not blocked(player + Vector2(v.x, 0)):
 		player.x += v.x
 	if not blocked(player + Vector2(0, v.y)):
 		player.y += v.y
+	var through_north_gate = player.y <= NORTH_EXIT_Y and floori(player.x) == int(manifest.walls.gate.passage)
+	if v.y < 0 and door and through_north_gate and layout != "puzzle" and push_data.is_empty():
+		room_states[layout] = {"crate": crate, "door": door}
+		load_room("elbow" if layout == "hall" else "hall", true)
+		north_traversal_latched = true
+		return
 	if not v.is_zero_approx():
 		set_motion(v)
 	set_motion(player - before)
@@ -249,6 +263,11 @@ func _unhandled_key_input(event):
 			set_layout(["hall", "elbow", "puzzle"][event.physical_keycode - KEY_1])
 
 func set_layout(value: String):
+	room_states.clear()
+	north_traversal_latched = false
+	load_room(value)
+
+func load_room(value: String, arriving: bool = false):
 	layout = value
 	player = Vector2(2.5, 5.5)
 	crate = Vector2i(3, 4) if value == "elbow" else Vector2i(5, 4)
@@ -256,9 +275,15 @@ func set_layout(value: String):
 	if value == "puzzle":
 		crate = Vector2i(5,3)
 		plate = Vector2i(7,3)
+	var saved = room_states.get(value, {})
+	if arriving:
+		player = Vector2(manifest.walls.gate.passage + 0.5, 0.58)
+		direction = "south"
+		crate = saved.get("crate", crate)
 	crate_sprite.position = ORIGIN + Vector2(crate) * CELL + Vector2(0, -8)
 	plate_sprite.position = ORIGIN + Vector2(plate) * CELL
-	update_mechanism()
+	update_mechanism(saved.get("door", true) if arriving else null)
+	gate_sprite.modulate = palette_color("door_closed")
 	set_motion(Vector2.ZERO)
 	queue_redraw()
 	rebuild_wall_layers()
@@ -287,9 +312,10 @@ func push_crate() -> bool:
 	set_module(plate_sprite, "plate")
 	return true
 
-func update_mechanism():
+func update_mechanism(saved_door = null):
 	pressed = crate == plate
-	door = pressed
+	var linked_elbow = layout == "elbow" and room_states.has("hall")
+	door = pressed or linked_elbow if saved_door == null else saved_door
 	set_module(plate_sprite, "plate_pressed" if pressed else "plate")
 	gate_sprite.visible = not door
 	queue_redraw()
@@ -300,6 +326,9 @@ func points(values) -> PackedVector2Array:
 		out.append(Vector2(p[0], p[1]))
 	return out
 
+func palette_color(id: String) -> Color:
+	return Color.from_string(manifest.get("palette", {}).get(layout, {}).get(id, "#ffffff"), Color.WHITE)
+
 func cap_polygon(polygon: PackedVector2Array, parent: Node2D):
 	if polygon.size() < 3:
 		return
@@ -307,6 +336,7 @@ func cap_polygon(polygon: PackedVector2Array, parent: Node2D):
 	shape.polygon = polygon
 	shape.position = ORIGIN
 	shape.texture = textures.wall_cap
+	shape.modulate = palette_color("wall_cap")
 	shape.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
 	shape.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	shape.antialiased = true
@@ -356,6 +386,7 @@ func add_face(q: Dictionary, parent: Node2D, clip_region = null):
 		shape.position = ORIGIN
 		shape.polygon = part
 		shape.texture = textures[q.asset]
+		shape.modulate = palette_color(q.asset)
 		# Adjacent material bands share exact edges; avoid internal AA seam lines.
 		shape.antialiased = false
 		var uv = PackedVector2Array()
@@ -452,12 +483,13 @@ func _draw():
 		return
 	var texture: Texture2D = textures.floor
 	var tile = texture.get_size() / 6.0
+	var tint = palette_color("floor")
 	for y in range(8):
 		for x in range(12):
 			if room(x, y):
-				draw_texture_rect_region(texture, Rect2(ORIGIN + Vector2(x, y) * CELL, Vector2.ONE * CELL), Rect2(Vector2(x % 6, y % 6) * tile, tile))
+				draw_texture_rect_region(texture, Rect2(ORIGIN + Vector2(x, y) * CELL, Vector2.ONE * CELL), Rect2(Vector2(x % 6, y % 6) * tile, tile), tint)
 	if door:
-		draw_texture_rect_region(texture, Rect2(ORIGIN + Vector2(6,-1)*CELL, Vector2.ONE*CELL), Rect2(Vector2(0,5)*tile,tile))
+		draw_texture_rect_region(texture, Rect2(ORIGIN + Vector2(manifest.walls.gate.passage,-1)*CELL, Vector2.ONE*CELL), Rect2(Vector2(0,5)*tile,tile), tint)
 
 func wait_push():
 	while not push_data.is_empty():
@@ -552,6 +584,10 @@ func run_validation():
 	await capture("engine")
 	await validate_wall_fade()
 	checks.append("Wall fade follows the hero, stays local, and leaves collision intact")
+	await validate_room_link()
+	checks.append("North gate travels both ways and preserves each room's crate and gate state")
+	if DisplayServer.get_name() != "headless":
+		checks.append("Rendered floors use distinct hall and elbow palettes")
 	var report = {"status":"passed","engine":Engine.get_version_info().string,"display_server":DisplayServer.get_name(),"checks":checks,"limits":["Art still requires user visual acceptance","Unity Editor not validated","Floor is not a complete autotile set"]}
 	FileAccess.open("res://Validation/report.json", FileAccess.WRITE).store_string(JSON.stringify(report,"\t") + "\n")
 	print(JSON.stringify(report))
@@ -579,3 +615,61 @@ func validate_wall_fade():
 	player = Vector2(4.5, 5.5)
 	set_motion(Vector2.ZERO)
 	assert(is_zero_approx(foreground.material.get_shader_parameter("fade_strength")))
+
+func validate_room_link():
+	set_layout("hall")
+	var gate_center = manifest.walls.gate.passage + 0.5
+	player = Vector2(gate_center, 0.05)
+	move_by(Vector2.UP * 0.12)
+	assert(layout == "hall" and is_equal_approx(player.y, 0.05))
+	player = Vector2(4.5, 4.5)
+	assert(push_crate())
+	await wait_push()
+	assert(push_crate())
+	await wait_push()
+	assert(pressed and door)
+	await capture("linked-hall")
+	var hall_floor: Color
+	if DisplayServer.get_name() != "headless":
+		hall_floor = get_viewport().get_texture().get_image().get_pixel(260, 330)
+
+	player = Vector2(gate_center, -0.72)
+	move_by(Vector2.UP * 0.12)
+	assert(layout == "elbow" and door and not pressed and direction == "south")
+	assert(player.is_equal_approx(Vector2(gate_center, 0.58)))
+	await capture("linked-elbow")
+	if DisplayServer.get_name() != "headless":
+		var elbow_floor = get_viewport().get_texture().get_image().get_pixel(260, 330)
+		assert(hall_floor.r > elbow_floor.r + 0.06 and elbow_floor.g > hall_floor.g + 0.06)
+
+	# Continuing to hold north must not immediately take the return passage.
+	for i in range(15):
+		move_by(Vector2.UP * 0.12)
+	assert(layout == "elbow" and is_equal_approx(player.y, 0.58))
+	move_by(Vector2.ZERO)
+	for i in range(12):
+		move_by(Vector2.UP * 0.12)
+	assert(layout == "hall" and crate == plate and pressed and door)
+	move_by(Vector2.ZERO)
+	player = Vector2(gate_center, -0.72)
+	move_by(Vector2.UP * 0.12)
+	assert(layout == "elbow")
+
+	# The return route stays open when the elbow's independent puzzle changes.
+	player = Vector2(2.5, 4.5)
+	assert(push_crate())
+	await wait_push()
+	assert(pressed and door)
+	assert(push_crate())
+	await wait_push()
+	assert(crate == Vector2i(5, 4) and not pressed and door)
+	move_by(Vector2.ZERO)
+	player = Vector2(gate_center, -0.72)
+	move_by(Vector2.UP * 0.12)
+	assert(layout == "hall" and crate == Vector2i(7, 4) and door)
+	move_by(Vector2.ZERO)
+	player = Vector2(gate_center, -0.72)
+	move_by(Vector2.UP * 0.12)
+	assert(layout == "elbow" and crate == Vector2i(5, 4) and door)
+	set_layout("elbow")
+	assert(crate == Vector2i(3, 4) and not door and room_states.is_empty())

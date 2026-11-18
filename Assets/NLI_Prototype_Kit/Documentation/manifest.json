@@ -1,5 +1,5 @@
 {
-  "version": "0.5.0-integrated-room",
+  "version": "0.6.0-linked-rooms",
   "style_code": "NL-ARPG-SOFT-766DF2B7",
   "pixel_postprocessing": "none",
   "assets": [
@@ -867,7 +867,6 @@
   "assembly": "Tall rounded orthographic enclosure; doorway carved into continuous masonry beneath an unbroken wall cap; native door leaf embedded in opening; no source PNG edits.",
   "limits": [
     "Floor and wall materials are not certified edge-identical autotile sets.",
-    "Tall foreground walls occlude nearby actors; no gameplay visibility fade is implemented.",
     "Idle is a dedicated static pose, not a breathing loop.",
     "Unity Editor import remains unvalidated."
   ],
@@ -9213,6 +9212,26 @@
           680
         ]
       }
+    }
+  },
+  "palette": {
+    "hall": {
+      "floor": "#eac184",
+      "wall_face": "#f2ae72",
+      "wall_cap": "#80b8ce",
+      "door_closed": "#b4e7ff"
+    },
+    "elbow": {
+      "floor": "#c8dfb7",
+      "wall_face": "#eed092",
+      "wall_cap": "#78c7b9",
+      "door_closed": "#a4e5ff"
+    },
+    "puzzle": {
+      "floor": "#eac184",
+      "wall_face": "#f2ae72",
+      "wall_cap": "#80b8ce",
+      "door_closed": "#b4e7ff"
     }
   },
   "pushes": {
