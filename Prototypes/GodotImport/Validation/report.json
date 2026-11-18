@@ -2,7 +2,7 @@
 	"checks": [
 		"Tall 168px closed enclosure; carved doorway, continuous cap and shared masonry",
 		"Former detached jamb cells are free floor; the continuous north wall still blocks exits",
-		"31 native textures including eight combat poses, plus 44 AtlasTexture movement action frames",
+		"25 native module textures, plus 44 calibrated AtlasTexture movement frames",
 		"Four-direction approach/contact/effort/release; repeat push rejection; continued south pushing without tile trapping",
 		"Auto-approach cannot carry the character outside the south wall",
 		"Pressure plate press/release and gate transitions",
@@ -12,6 +12,7 @@
 		"Hall crate opens the gallery, key is collected once, and chest opens only after return",
 		"South foreground is hidden while the floor edge still blocks the hero",
 		"Chest unlocks arena travel, windup causes hurt, one hit per swing, defeated slime opens the north exit",
+		"Four attack and hurt directions use independent atlas frames and anchored feet; locked hit sectors reject the opposite side and targets beyond reach",
 		"The cutaway retains rounded side wall ends and a low floor lip",
 		"Rendered floors use distinct hall and elbow palettes"
 	],

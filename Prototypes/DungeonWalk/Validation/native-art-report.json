@@ -148,6 +148,39 @@
       "core_median_alpha": 253.0
     },
     {
+      "file": "Sprites/Hero_Combat_South.png",
+      "native_size": [
+        2172,
+        724
+      ],
+      "sha256": "91aec265434943626b099dd3443d7e1736bd701456eeb0d2abd86c4218f79d82",
+      "canvas_edge_max_alpha": 1,
+      "near_opaque_fraction_of_nonzero_alpha": 0.8804264767369772,
+      "core_median_alpha": 253.0
+    },
+    {
+      "file": "Sprites/Hero_Combat_West.png",
+      "native_size": [
+        2172,
+        724
+      ],
+      "sha256": "78c7297c71b08782bda4900be3886a1fc1002df908614f20bc769cc6f4ad48ef",
+      "canvas_edge_max_alpha": 1,
+      "near_opaque_fraction_of_nonzero_alpha": 0.8546243409490334,
+      "core_median_alpha": 253.0
+    },
+    {
+      "file": "Sprites/Hero_Combat_North.png",
+      "native_size": [
+        2172,
+        724
+      ],
+      "sha256": "abfb3de74220414c4a58e7b2c0240001a225fea3c45582c1a9c1f574f022c468",
+      "canvas_edge_max_alpha": 0,
+      "near_opaque_fraction_of_nonzero_alpha": 0.8983632655091787,
+      "core_median_alpha": 253.0
+    },
+    {
       "file": "Sprites/Combat_Attack_1.png",
       "native_size": [
         1254,
@@ -440,7 +473,8 @@
       "foot_anchor_error_px": 0
     }
   ],
-  "unique_active_images": 31,
+  "unique_active_images": 34,
+  "unique_directional_combat_regions": 20,
   "limits": [
     "Alpha bounds and metadata checks do not establish hand ownership or natural gait. See visual acceptance notes."
   ]

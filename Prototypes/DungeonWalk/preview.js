@@ -19,17 +19,22 @@ let questStage='gate';
 let questNotice='';
 const COMBAT=KIT.combat;
 const facing={east:[1,0],south:[0,1],west:[-1,0],north:[0,-1]};
+const attackHalfAngle=Math.acos(COMBAT.attack_dot);
 let battle=newBattle();
 function newBattle(){
  const [x,y]=COMBAT.enemy_spawn;
  return {heroHp:COMBAT.hero_hp,enemyHp:COMBAT.enemy_hp,enemy:{x,y},enemyPhase:'chase',
-  enemyTimer:0,elapsed:0,attack:null,hurt:0,invulnerable:0,enemyHurt:0,escaped:false};
+  enemyTimer:0,elapsed:0,attack:null,hurt:0,hurtDirection:'east',invulnerable:0,enemyHurt:0,escaped:false};
 }
 const walk=()=>KIT.walks[direction];
-const selectedClip=()=>({walk:KIT.walks,idle:KIT.idles,push:KIT.pushes})[document.querySelector('#action').value][direction];
+function clipFor(kind){
+ if(kind==='attack'||kind==='hurt')return {kind,frames:COMBAT.hero_actions[direction][kind]};
+ return ({walk:KIT.walks,idle:KIT.idles,push:KIT.pushes})[kind][direction];
+}
+const selectedClip=()=>clipFor(document.querySelector('#action').value);
 function pushState(t=performance.now()){if(!pushing)return null;const elapsed=t-pushing.started,moveTime=elapsed-pushing.approach;return{phase:elapsed<pushing.approach?'approach':moveTime<320?'push':'release',approach:Math.min(1,elapsed/pushing.approach),u:Math.max(0,Math.min(1,moveTime/320)),release:Math.max(0,Math.min(1,(moveTime-320)/100))};}
 function action(){return pushing?(pushState().phase==='approach'?'walk':'push'):actualMoving?'walk':(playing||stepping)?document.querySelector('#action').value:'idle';}
-const sceneClip=()=>({walk:KIT.walks,idle:KIT.idles,push:KIT.pushes})[action()][direction];
+const sceneClip=()=>clipFor(action());
 const plateDown=()=>layout!=='arena'&&!pushing&&crate.x===plate.x&&crate.y===plate.y;
 function face(dx,dy){if(dx||dy){const next=Math.abs(dx)>=Math.abs(dy)?(dx>0?'east':'west'):(dy>0?'south':'north');if(direction!==next){direction=next;frame=IDLE_FRAME;acc=0;document.querySelector('#direction').value=direction;}}}
 const GATE=KIT.walls.gate;
@@ -146,6 +151,7 @@ function startAttack(){
 function hitHero(dx,dy,distance){
  if(battle.invulnerable>0||battle.heroHp===0)return;
  battle.heroHp--;
+ battle.hurtDirection=battle.attack?.direction??direction;
  battle.hurt=COMBAT.hurt_duration;
  battle.invulnerable=COMBAT.invulnerability;
  battle.attack=null;
@@ -170,7 +176,7 @@ function updateBattle(dt){
   if(!swing.hit&&swing.elapsed>=COMBAT.attack_impact){
    swing.hit=true;
    const [fx,fy]=facing[swing.direction];
-   const aimed=distance<.01||(fx*dx+fy*dy)/distance>=COMBAT.attack_dot;
+   const aimed=distance<.00001||(fx*dx+fy*dy)/distance>=COMBAT.attack_dot;
    if(aimed&&distance<=COMBAT.attack_range&&battle.enemyHp>0){
     battle.enemyHp--;
     battle.enemyHurt=.22;
@@ -282,6 +288,10 @@ function corners(){
  return out;
 }
 function hero(c,index,x,y,h=104,clip=sceneClip(),lock=true){
+ if(clip.kind==='attack'||clip.kind==='hurt'){
+  drawCombatPose(c,clip.frames[index%clip.frames.length],x,y,h/104);
+  return;
+ }
  const id=clip.kind==='idle'?'idle':clip.kind==='push'?'push_'+direction:direction==='east'?'walk':'walk_'+direction;
  const s=pushing&&c===ctx&&clip.kind==='push'&&lock?pushState():null;
  if(s)index=Math.min(3,Math.floor(s.u*4));
@@ -390,39 +400,49 @@ function drawCutawayEnds(){
  }
  ctx.restore();
 }
+function currentBattlePose(){
+ const swing=battle.attack;
+ if(battle.heroHp===0||battle.hurt>0){
+  const frame=battle.heroHp>0&&battle.hurt>COMBAT.hurt_duration/2?0:1;
+  return COMBAT.hero_actions[battle.hurtDirection].hurt[frame];
+ }
+ if(swing){
+  const frame=swing.elapsed<COMBAT.attack_impact?0:swing.elapsed<COMBAT.attack_recover?1:2;
+  return COMBAT.hero_actions[swing.direction].attack[frame];
+ }
+ return null;
+}
+function drawCombatPose(c,pose,x,y,zoom=1){
+ const {id,rect,pivot,scale}=pose;
+ const w=rect[2]*scale*zoom,h=rect[3]*scale*zoom;
+ c.drawImage(images[id],...rect,x-w*pivot[0],y-h*pivot[1],w,h);
+}
 function drawBattleHero(){
  const x=OX+player.x*T,y=OY+player.y*T;
+ const pose=currentBattlePose();
+ if(pose)drawCombatPose(ctx,pose,x,y);
+ else hero(ctx,frame,x,y);
+}
+function drawAttackCue(){
  const swing=battle.attack;
- const collapsed=battle.heroHp===0;
- let pose;
- if(collapsed||battle.hurt>0)pose=collapsed||battle.hurt>COMBAT.hurt_duration/2?'hurt_2':'hurt_1';
- else if(swing){
-  pose=swing.elapsed<COMBAT.attack_impact?'attack_1':swing.elapsed<.23?'attack_2':'attack_3';
-  if(pose==='attack_2'&&(direction==='north'||direction==='south'))pose='attack_3';
- }
- if(!pose){
-  hero(ctx,frame,x,y);
-  return;
- }
- const a=asset(pose),{pivot,scale}=COMBAT.hero_poses[pose];
- const w=a.rect[2]*scale,h=a.rect[3]*scale;
+ if(!swing||swing.elapsed<COMBAT.attack_impact||swing.elapsed>=COMBAT.attack_recover)return;
+ const [fx,fy]=facing[swing.direction];
+ const angle=Math.atan2(fy,fx);
+ const x=OX+player.x*T,y=OY+player.y*T;
+ const radius=COMBAT.attack_range*T;
  ctx.save();
- ctx.translate(x,y);
- if(direction==='west')ctx.scale(-1,1);
- ctx.drawImage(images[pose],...a.rect,-w*pivot[0],-h*pivot[1],w,h);
+ ctx.fillStyle='rgba(255,199,97,.19)';
+ ctx.beginPath();
+ ctx.moveTo(x,y);
+ ctx.arc(x,y,radius,angle-attackHalfAngle,angle+attackHalfAngle);
+ ctx.closePath();
+ ctx.fill();
+ ctx.strokeStyle='rgba(255,226,142,.85)';
+ ctx.lineWidth=3;
+ ctx.beginPath();
+ ctx.arc(x,y,radius,angle-attackHalfAngle,angle+attackHalfAngle);
+ ctx.stroke();
  ctx.restore();
- if(swing&&swing.elapsed>=COMBAT.attack_impact&&swing.elapsed<.25){
-  const [fx,fy]=facing[swing.direction];
-  const angle=Math.atan2(fy,fx);
-  ctx.save();
-  ctx.strokeStyle='rgba(255,226,142,.85)';
-  ctx.lineWidth=4;
-  ctx.lineCap='round';
-  ctx.beginPath();
-  ctx.ellipse(x,y-27,62,34,0,angle-.65,angle+.65);
-  ctx.stroke();
-  ctx.restore();
- }
 }
 function drawSlime(){
  const {enemy,enemyHp,enemyPhase,enemyHurt,elapsed}=battle;
@@ -457,6 +477,7 @@ if(layout==='elbow'&&questStage==='key')drawQuestItem('quest_key',QUEST.key_pos,
 const actors=[];
 if(layout==='arena'){
  drawQuestItem('arena_portal',COMBAT.arena_portal,86);
+ drawAttackCue();
  actors.push({depth:battle.enemy.y,paint:drawSlime},{depth:player.y,paint:drawBattleHero});
 }else{
  actors.push({depth:box.y+1,paint:()=>sprite(ctx,'crate',OX+box.x*T,OY+(box.y+1)*T-72,T,72)},
@@ -506,5 +527,5 @@ function startTrial(room){
 document.querySelector('#layout').onchange=e=>startTrial(e.target.value);
 document.querySelector('#restart').onclick=()=>startTrial('hall');document.querySelector('#play').onclick=()=>{playing=!playing;document.querySelector('#play').textContent=playing?'停止演示':'动作演示';};document.querySelector('#step').onclick=()=>{playing=false;stepping=true;document.querySelector('#play').textContent='动作演示';frame=(frame+1)%selectedClip().frames.length;};document.querySelector('#door').onclick=()=>{if(layout==='elbow'&&arrivedInElbow)return;door=!door;if(!door&&player.y<0)player.y=.5;};document.querySelector('#collision').onclick=()=>debug=!debug;
 document.querySelector('#action').onchange=()=>{frame=IDLE_FRAME;acc=0;};
-document.querySelector('#direction').onchange=e=>{direction=e.target.value;frame=IDLE_FRAME;acc=0;};
-Promise.all([...KIT.assets.map(a=>[a.id,a.file]),['walk',KIT.walk.file],['idle',KIT.idles.east.file],...Object.entries(KIT.pushes).map(([d,w])=>['push_'+d,w.file]),...Object.entries(KIT.walks).filter(([d])=>d!=='east').map(([d,w])=>['walk_'+d,w.file])].map(([id,path])=>new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>{images[id]=img;resolve();};img.onerror=()=>reject(Error('图片无法加载: '+path));img.src=KIT.embeddedImages?.[id] || '../../Assets/NLI_Prototype_Kit/'+path;}))).then(()=>{for(const id of Object.keys(KIT.palette.hall))nativeMaterials.set(id,images[id]);reset();applyRoomPalette();window.KIT_TEST={get state(){return{frame,playing,direction,action:action(),pushPhase:pushState()?.phase,plateDown:plateDown(),plateBlend,layout,door,questStage,battle:{heroHp:battle.heroHp,enemyHp:battle.enemyHp,enemy:{...battle.enemy},enemyPhase:battle.enemyPhase,attack:battle.attack!==null,hurt:battle.hurt,escaped:battle.escaped},player:{...player},crate:{...crate},pushing:!!pushing,crateVisual:cratePosition()};},geometry:{northWallCells,gate:GATE,corners},setPlayer:(x,y)=>{player={x,y};},move,push,draw,images};document.querySelector('#qa').textContent='四方向独立待机、行走和推箱；推箱先靠近接触，再同步移动箱子。每套图使用固定尺度，保留屈膝变化。';requestAnimationFrame(tick);}).catch(e=>document.querySelector('#status').textContent=e.message);
+document.querySelector('#direction').onchange=e=>{if(layout==='arena'&&(battle.attack||battle.hurt>0||battle.heroHp===0)){e.target.value=direction;return;}direction=e.target.value;frame=IDLE_FRAME;acc=0;};
+Promise.all([...KIT.assets.map(a=>[a.id,a.file]),['walk',KIT.walk.file],['idle',KIT.idles.east.file],...Object.entries(KIT.pushes).map(([d,w])=>['push_'+d,w.file]),...Object.entries(KIT.walks).filter(([d])=>d!=='east').map(([d,w])=>['walk_'+d,w.file])].map(([id,path])=>new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>{images[id]=img;resolve();};img.onerror=()=>reject(Error('图片无法加载: '+path));img.src=KIT.embeddedImages?.[id] || '../../Assets/NLI_Prototype_Kit/'+path;}))).then(()=>{for(const id of Object.keys(KIT.palette.hall))nativeMaterials.set(id,images[id]);reset();applyRoomPalette();window.KIT_TEST={get state(){return{frame,playing,direction,action:action(),pushPhase:pushState()?.phase,plateDown:plateDown(),plateBlend,layout,door,questStage,battle:{heroHp:battle.heroHp,enemyHp:battle.enemyHp,enemy:{...battle.enemy},enemyPhase:battle.enemyPhase,attack:battle.attack!==null,swingDirection:battle.attack?.direction??null,hurtDirection:battle.hurtDirection,pose:layout==='arena'?currentBattlePose():null,hurt:battle.hurt,escaped:battle.escaped},player:{...player},crate:{...crate},pushing:!!pushing,crateVisual:cratePosition()};},geometry:{northWallCells,gate:GATE,corners},setPlayer:(x,y)=>{player={x,y};},move,push,draw,images};document.querySelector('#qa').textContent='四方向独立待机、行走和推箱；推箱先靠近接触，再同步移动箱子。在朝向和动作中选择攻击或受击，再用下一帧检查。战斗时，出剑方向与脚下高亮的命中范围一致。';requestAnimationFrame(tick);}).catch(e=>document.querySelector('#status').textContent=e.message);

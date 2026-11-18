@@ -20,6 +20,7 @@ rows.extend([
  ('chest_closed','Chest_Quest_Closed.png'),
  ('chest_open','Chest_Quest_Open.png'),
  ('arena_portal','Arena_Portal.png'),
+ *((f'combat_{d}',f'Hero_Combat_{d.title()}.png') for d in ('south','west','north')),
  *((f'{kind}_{i}',f'Combat_{kind.title()}_{i}.png')
    for kind,count in [('attack',3),('hurt',2),('slime',3)] for i in range(1,count+1)),
 ])
@@ -65,7 +66,7 @@ for i,d in enumerate(directions):
 m={'version':'0.2.0-direction-trial','style_code':'NL-ARPG-SOFT-766DF2B7','pixel_postprocessing':'none','assets':assets,'walk':walks['east'],'walks':walks,'mechanisms':{'plate':{'released':'plate','pressed':'plate_pressed','trigger':'crate settled on plate; release after crate leaves','transition_ms':120}},'assembly':'Floor repeat; independent perimeter segments; connector pillars at corners. Render rectangles do not rewrite source PNGs.','limits':['Floor is a repeating prototype texture, not a mathematically edge-identical autotile set.','Sidewall mirror is a preview assembly transform; lighting is not recomputed.','Four-direction walking is a small-batch trial; idle reuses a still walk frame, not a separate breathing cycle.','Unity Editor import is not validated; Godot validation is reported separately.'],'validation':{'browser_report':'../../../Prototypes/DungeonWalk/Validation/report.json','engine_report':'../../../Prototypes/GodotImport/Validation/report.json'}}
 m['validation']['visual_report']='Acceptance_2026-11-05_integrated.md'
 m['walls']=make_walls(Image.open(KIT/'Sprites/Wall_Cap_Soft_v4.png').size,Image.open(KIT/'Sprites/Wall_Face_Soft_v4.png').size)
-m['version']='0.8.0-combat-room'
+m['version']='0.9.0-directional-combat'
 m['quest']={'key_pos':[9.5,1.8],'chest_pos':[9.5,2.5],'pickup_radius':0.55,'open_radius':1.1}
 warm_palette={'floor':'#eac184','wall_face':'#f2ae72','wall_cap':'#80b8ce','door_closed':'#b4e7ff'}
 m['palette']={
@@ -75,15 +76,49 @@ m['palette']={
  'arena':{'floor':'#c9afad','wall_face':'#e3958d','wall_cap':'#809dc9','door_closed':'#b4e7ff'},
 }
 poses={'attack_1':(104,.55),'attack_2':(124,.43),'attack_3':(110,.44),'hurt_1':(97,.49),'hurt_2':(95,.52)}
+combat_actions={}
+asset_by_id={entry['id']:entry for entry in assets}
+def east_pose(id):
+ r=asset_by_id[id]['rect']
+ width,x=poses[id]
+ return {'id':id,'rect':r,'scale':width/r[2],'pivot':[x,.99]}
+combat_actions['east']={
+ 'attack':[east_pose(f'attack_{i}') for i in (1,2,3)],
+ 'hurt':[east_pose(f'hurt_{i}') for i in (2,1)],
+}
+# Manually inspected boot centers and baselines in native pixels. In the
+# south impact frame the sword projects below the feet and must not set the anchor.
+combat_anchors={
+ 'south':(.190,[(278,612),(684,609),(1100,612),(1525,612),(1931,614)]),
+ 'west':(.215,[(245,565),(705,565),(1115,566),(1535,566),(1966,566)]),
+ 'north':(.196,[(205,626),(636,626),(1060,626),(1506,624),(1920,626)]),
+}
+for d,(scale,anchors) in combat_anchors.items():
+ id=f'combat_{d}'
+ im=Image.open(KIT/asset_by_id[id]['file'])
+ alpha=np.asarray(im.getchannel('A'))
+ components,_=label(alpha>=128)
+ sizes=np.bincount(components.ravel())
+ regions=sorted(((x.start,y.start,x.stop,y.stop)
+                 for i,(y,x) in enumerate(find_objects(components),1)
+                 if sizes[i]>2000))
+ assert len(regions)==5,(id,regions)
+ frames=[]
+ for (left,top,right,bottom),(ax,ay) in zip(regions,anchors):
+  x,y=max(0,left-5),max(0,top-5)
+  w,h=min(im.width,right+5)-x,min(im.height,bottom+5)-y
+  assert x<=ax<x+w and y<=ay<y+h
+  frames.append({'id':id,'rect':[x,y,w,h],'scale':scale,
+                 'pivot':[(ax-x)/w,(ay-y)/h],'foot_px':[ax,ay]})
+ assert all(a['rect'][0]+a['rect'][2]<b['rect'][0] for a,b in zip(frames,frames[1:])),id
+ combat_actions[d]={'attack':frames[:3],'hurt':frames[3:]}
 m['combat']={
  'hall_portal':[9.5,5.7],'arena_portal':[2.5,6.4],'portal_radius':1.1,
  'enemy_spawn':[7.5,3.5],'hero_hp':3,'enemy_hp':3,
  'enemy_speed':1.15,'enemy_range':.95,'enemy_windup':.45,'enemy_recovery':.75,
- 'attack_range':1.45,'attack_dot':.35,'attack_duration':.34,'attack_impact':.13,
+ 'attack_range':1.45,'attack_dot':.35,'attack_duration':.34,'attack_impact':.13,'attack_recover':.23,
  'hurt_duration':.30,'invulnerability':.85,
- 'hero_poses':{entry['id']:{'scale':poses[entry['id']][0]/entry['rect'][2],
-                            'pivot':[poses[entry['id']][1],.99]}
-               for entry in assets if entry['id'] in poses},
+ 'hero_actions':combat_actions,
 }
 m['assembly']='Tall rounded orthographic enclosure; doorway carved into continuous masonry beneath an unbroken wall cap; native door leaf embedded in opening; no source PNG edits.'
 m['pushes']=pushes

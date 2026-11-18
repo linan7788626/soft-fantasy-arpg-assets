@@ -87,6 +87,49 @@ try {
   await page.keyboard.press('r');
   assert.equal((await state()).battle.heroHp, 3);
   assert.equal((await state()).questStage, 'complete', 'retry keeps the solved room puzzle');
+
+  const aimCase = async (dir, offset) => {
+    await page.evaluate(([dx, dy]) => {
+      retryBattle();
+      KIT_TEST.setPlayer(6.5, 3.5);
+      battle.enemy = {x:6.5 + dx, y:3.5 + dy};
+      battle.enemyPhase = 'recover';
+      battle.enemyTimer = 5;
+    }, offset);
+    await page.locator('#direction').selectOption(dir);
+  };
+  for (const [dir, [dx, dy]] of Object.entries({east:[1,0], south:[0,1], west:[-1,0], north:[0,-1]})) {
+    await aimCase(dir, [dx, dy]);
+    await page.keyboard.press('Space');
+    await page.waitForFunction(d => {
+      const {battle} = KIT_TEST.state;
+      return battle.enemyHp === 2 && battle.swingDirection === d &&
+        JSON.stringify(battle.pose) === JSON.stringify(KIT.combat.hero_actions[d].attack[1]);
+    }, dir);
+    if (dir === 'south' || dir === 'north') {
+      await page.locator('#stage').screenshot({path: `Prototypes/DungeonWalk/Validation/directional-attack-${dir}.png`});
+    }
+
+    for (const offset of [[-dx, -dy], [dx * 1.65, dy * 1.65], [dy, -dx]]) {
+      await aimCase(dir, offset);
+      await page.keyboard.press('Space');
+      await page.waitForFunction(() => !KIT_TEST.state.battle.attack);
+      assert.equal((await state()).battle.enemyHp, 3, `${dir}: outside sector must miss`);
+    }
+
+    await aimCase(dir, [dx * .85, dy * .85]);
+    await page.evaluate(() => {
+      battle.enemyPhase = 'windup';
+      battle.enemyTimer = .02;
+    });
+    await page.waitForFunction(d => {
+      const {battle} = KIT_TEST.state;
+      return battle.heroHp === 2 && battle.hurtDirection === d &&
+        JSON.stringify(battle.pose) === JSON.stringify(KIT.combat.hero_actions[d].hurt[0]);
+    }, dir);
+  }
+  await page.evaluate(() => retryBattle());
+
   // Aiming with the movement direction should connect exactly once per swing.
   for (const hp of [2, 1, 0]) {
     await faceSlime(1);
@@ -118,7 +161,14 @@ try {
   await place(9, 1.8);
   await walkUntil('ArrowRight', () => KIT_TEST.state.player.x >= 9.5);
   assert.equal((await state()).questStage, 'gate', 'the preview door toggle cannot grant the quest key');
-  console.log('Treasure quest, combat aiming and hurt, retry, exit, and finished cutaway walls passed.');
+  await page.locator('#direction').selectOption('north');
+  await page.locator('#action').selectOption('attack');
+  await page.locator('#step').click();
+  assert.equal((await state()).action, 'attack');
+  await page.locator('#action').selectOption('hurt');
+  await page.locator('#step').click();
+  assert.equal((await state()).action, 'hurt');
+  console.log('Treasure quest, directional poses and hit sectors, retry, exit, and cutaway walls passed.');
 } finally {
   await browser.close();
 }

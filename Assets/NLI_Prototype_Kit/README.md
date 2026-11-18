@@ -1,6 +1,6 @@
-# NLI 地牢与主角动作套件 v0.8
+# NLI 地牢与主角动作套件 v0.9
 
-战斗房使用同套素材中的原生传送门、三张挥剑、两张受击和三张史莱姆姿势。套件累计保留37张原生图，预览内嵌31张。
+主角拥有四个方向的战斗动作，每向3帧挥剑、2帧受击。北、南、西使用三张新绘制的透明图集，东向沿用本套已验证的原图。套件累计保留40张原生图，预览内嵌34张。
 
 ## 预览与操作
 
@@ -33,7 +33,7 @@
 
 网页报告/截图位于 `Prototypes/DungeonWalk/Validation/`，引擎报告/截图位于 `Prototypes/GodotImport/Validation/`。最新验收为 `Documentation/Acceptance_2026-11-05_integrated.md`。
 
-战斗姿势、史莱姆和传送门的原图路径与哈希见 `Documentation/combat-art.json`。攻击和受击为斜侧向原画姿势，向左时镜像，实际判定区分四方向。钥匙和宝箱的来源、开盖图提示词与哈希见 `Documentation/quest-art.json`。前几轮提示词、参考图、原始生成输出与哈希分别见 `generation-records.json`、`round2-generation.json`、`round3-generation.json`、`round4-generation.json`、`round5-generation.json`。此前不合格白雾背景曾通过内置image_gen重新生成透明版本；交付文件均逐字节复制最后选用输出，没有本地抠图、缩放或裁切。
+新图集的提示词、参考图、原始生成输出与 SHA-256 见 `Documentation/directional-combat-art.json`。东向姿势、史莱姆和传送门的原图路径与哈希见 `Documentation/combat-art.json`。攻击从出手到收招锁定同一朝向。脚下扇区与实际命中判定共用脚底原点、朝向、距离和角度。受击在碰撞瞬间锁定姿势方向。南向挥剑帧用靴底作为锚点，剑尖低于靴底时也不影响角色位置。网页可选择「攻击」或「受击」，用「下一帧」逐个检查。钥匙和宝箱的来源、开盖图提示词与哈希见 `Documentation/quest-art.json`。前几轮提示词、参考图、原始生成输出与哈希分别见 `generation-records.json`、`round2-generation.json`、`round3-generation.json`、`round4-generation.json`、`round5-generation.json`。此前不合格白雾背景曾通过内置image_gen重新生成透明版本；交付文件均逐字节复制最后选用输出，没有本地抠图、缩放或裁切。
 
 ## 边界
 

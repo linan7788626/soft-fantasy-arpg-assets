@@ -1,0 +1,43 @@
+{
+  "records": [
+    {
+      "direction": "north",
+      "delivered_file": "Sprites/Hero_Combat_North.png",
+      "source": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-b40deacd-197a-4c89-8be9-600234a4e3b8.png",
+      "tool": "built-in image_gen",
+      "references": [
+        "Sprites/Hero_Idle_Four.png",
+        "Sprites/Combat_Attack_2.png",
+        "Sprites/Combat_Hurt_2.png"
+      ],
+      "prompt": "A professional game sprite atlas of the exact original NLI chibi knight shown in the references. Use the north orientation from the first four-direction idle reference, and soft painterly enamel and gold armor from the other reference. North (away from the viewer, moving toward the top of the screen). MUST be true rear view in all five frames: no gold visor openings visible, only back of white helmet, blue cape broad across back, shield is on viewer LEFT, right sword hand on viewer RIGHT. In panel 2 the bare sword clearly thrusts toward the TOP of the image beyond the right shoulder and above head for the north-facing follow-through; no side-facing swing. EXACTLY FIVE isolated full-body sprites in ONE single horizontal row, five separated equidistant columns on a wide panoramic transparent RGBA canvas; generous fully transparent gutters, sufficient side margins, no labels, no grid lines, no ground, no shadows, no effects/trails/stars. Same camera, character body/head scale, armor, anatomy, feet baseline and approximately same boot center across all five. Frame 1 sword windup (body planted, sword prepared); frame 2 attack contact (blade aligned as specified); frame 3 return from follow-through, blade lowered; frame 4 recoils from hit (same view, flinch, boots grounded, shield drawn inward); frame 5 low crouched hurt (same facing, no falling, head lowered). Gold crescent helmet ornament, blue cape, round blue shield with gold diamond, right hand steel sword with gold guard. No extra sprite, duplicate weapons or stray props. Cutout on real transparency.",
+      "sha256": "abfb3de74220414c4a58e7b2c0240001a225fea3c45582c1a9c1f574f022c468"
+    },
+    {
+      "direction": "south",
+      "delivered_file": "Sprites/Hero_Combat_South.png",
+      "source": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-12457aaf-1754-484c-8167-2d8aad104a61.png",
+      "tool": "built-in image_gen",
+      "references": [
+        "Sprites/Hero_Idle_Four.png",
+        "Sprites/Combat_Attack_2.png",
+        "Sprites/Combat_Hurt_2.png"
+      ],
+      "prompt": "A professional game sprite atlas of the exact original NLI chibi knight shown in the references. Use the south orientation from the first four-direction idle reference, and soft painterly enamel and gold armor from the other reference. South (toward camera and toward the bottom of the screen). MUST clearly see full front gold visor in all five frames, shield on viewer RIGHT, right sword hand on viewer LEFT. In panel 2 the bare blade clearly extends DOWN into foreground at a diagonal from right hand toward below the feet, broad end foreshortened, clearly directed at bottom. No side-facing swing. EXACTLY FIVE isolated full-body sprites in ONE single horizontal row, five separated equidistant columns on a wide panoramic transparent RGBA canvas; generous fully transparent gutters, sufficient side margins, no labels, no grid lines, no ground, no shadows, no effects/trails/stars. Same camera, character body/head scale, armor, anatomy, feet baseline and approximately same boot center across all five. Frame 1 sword windup (body planted, sword prepared); frame 2 attack contact (blade aligned as specified); frame 3 return from follow-through, blade lowered; frame 4 recoils from hit (same view, flinch, boots grounded, shield drawn inward); frame 5 low crouched hurt (same facing, no falling, head lowered). Gold crescent helmet ornament, blue cape, round blue shield with gold diamond, right hand steel sword with gold guard. No extra sprite, duplicate weapons or stray props. Cutout on real transparency.",
+      "sha256": "91aec265434943626b099dd3443d7e1736bd701456eeb0d2abd86c4218f79d82"
+    },
+    {
+      "direction": "west",
+      "delivered_file": "Sprites/Hero_Combat_West.png",
+      "source": "/Users/uranus/.codex/generated_images/01a177df-90b4-7f32-906b-0f3fe686b611/exec-42455a82-04bc-4c80-a23c-4df0e45d582d.png",
+      "tool": "built-in image_gen",
+      "references": [
+        "Sprites/Hero_Idle_Four.png",
+        "Sprites/Combat_Attack_2.png",
+        "Sprites/Combat_Hurt_2.png"
+      ],
+      "prompt": "A professional game sprite atlas of the exact original NLI chibi knight shown in the references. Use the west orientation from the first four-direction idle reference, and soft painterly enamel and gold armor from the other reference. West (facing directly LEFT across the screen) in all five frames, clear left-side profile, visor pointing left, blue shield on character's own left forearm, right hand holds sword on farther side of torso. In panel 2 bare sword points LEFT and away from the figure. Maintain shield hand and lighting from upper left across all frames; do not mirror any reference. EXACTLY FIVE isolated full-body sprites in ONE single horizontal row, five separated equidistant columns on a wide panoramic transparent RGBA canvas; generous fully transparent gutters, sufficient side margins, no labels, no grid lines, no ground, no shadows, no effects/trails/stars. Same camera, character body/head scale, armor, anatomy, feet baseline and approximately same boot center across all five. Frame 1 sword windup (body planted, sword prepared); frame 2 attack contact (blade aligned as specified); frame 3 return from follow-through, blade lowered; frame 4 recoils from hit (same view, flinch, boots grounded, shield drawn inward); frame 5 low crouched hurt (same facing, no falling, head lowered). Gold crescent helmet ornament, blue cape, round blue shield with gold diamond, right hand steel sword with gold guard. No extra sprite, duplicate weapons or stray props. Cutout on real transparency.",
+      "sha256": "78c7297c71b08782bda4900be3886a1fc1002df908614f20bc769cc6f4ad48ef"
+    }
+  ]
+}

@@ -54,6 +54,7 @@ var attack_time = 0.0
 var attack_resolved = false
 var attack_direction = "east"
 var hurt_time = 0.0
+var hurt_direction = "east"
 var invulnerability = 0.0
 var arena_completed = false
 
@@ -107,7 +108,7 @@ func _ready():
 	slime_cue.draw.connect(draw_slime_cue)
 	add_child(slime_cue)
 	attack_cue = Node2D.new()
-	attack_cue.z_index = 4
+	attack_cue.z_index = 1
 	attack_cue.draw.connect(draw_attack_cue)
 	add_child(attack_cue)
 	reset_combat()
@@ -502,6 +503,7 @@ func reset_combat():
 	enemy_hurt = 0
 	attack_time = 0
 	hurt_time = 0
+	hurt_direction = "east"
 	invulnerability = 0
 	arena_completed = false
 
@@ -524,9 +526,7 @@ func resolve_attack():
 	if enemy_health <= 0:
 		return
 	var to_enemy = enemy_position - player
-	if to_enemy.length() > manifest.combat.attack_range:
-		return
-	if not to_enemy.is_zero_approx() and to_enemy.normalized().dot(FACING[attack_direction]) < manifest.combat.attack_dot:
+	if not in_attack_sector(to_enemy):
 		return
 	enemy_health -= 1
 	enemy_hurt = .22
@@ -535,6 +535,14 @@ func resolve_attack():
 	enemy_windup = 0
 	enemy_recovery = maxf(enemy_recovery, 0.28)
 
+func attack_forward() -> Vector2:
+	return FACING[attack_direction]
+
+func in_attack_sector(offset: Vector2) -> bool:
+	return offset.length() <= manifest.combat.attack_range and (
+		offset.is_zero_approx() or offset.normalized().dot(attack_forward()) >= manifest.combat.attack_dot
+	)
+
 func hurt_hero():
 	if invulnerability > 0:
 		return
@@ -542,6 +550,7 @@ func hurt_hero():
 	if not blocked(player + retreat):
 		player += retreat
 	hero_health -= 1
+	hurt_direction = attack_direction if attack_time > 0 else direction
 	attack_time = 0
 	hurt_time = manifest.combat.hurt_duration
 	invulnerability = manifest.combat.invulnerability
@@ -594,23 +603,22 @@ func update_combat_props():
 	if not show_pose:
 		return
 	var settings: Dictionary = manifest.combat
-	var id: String
-	if attack_time > 0:
-		var elapsed: float = settings.attack_duration - attack_time
-		id = "attack_1" if elapsed < settings.attack_impact else "attack_2" if elapsed < .23 else "attack_3"
-		if id == "attack_2" and attack_direction in ["north", "south"]:
-			id = "attack_3"
+	var pose: Dictionary
+	if hurt_time > 0 or hero_health <= 0:
+		var hurt_frame = 0 if hurt_time > settings.hurt_duration * .5 and hero_health > 0 else 1
+		pose = settings.hero_actions[hurt_direction].hurt[hurt_frame]
 	else:
-		id = "hurt_2" if hero_health <= 0 or hurt_time > settings.hurt_duration * .5 else "hurt_1"
-	var pose: Dictionary = settings.hero_poses[id]
-	var region: Rect2 = rect(modules[id].rect)
-	if combat_pose.texture == null or combat_pose.texture.atlas != textures[id]:
+		var elapsed: float = settings.attack_duration - attack_time
+		var attack_frame = 0 if elapsed < settings.attack_impact else 1 if elapsed < settings.attack_recover else 2
+		pose = settings.hero_actions[attack_direction].attack[attack_frame]
+	var region: Rect2 = rect(pose.rect)
+	var source: Texture2D = textures[pose.id]
+	if combat_pose.texture == null or combat_pose.texture.atlas != source or combat_pose.texture.region != region:
 		var atlas = AtlasTexture.new()
-		atlas.atlas = textures[id]
+		atlas.atlas = source
 		atlas.region = region
 		combat_pose.texture = atlas
-	combat_pose.flip_h = (attack_direction if attack_time > 0 else direction) == "west"
-	var pivot = Vector2(1.0 - pose.pivot[0] if combat_pose.flip_h else pose.pivot[0], pose.pivot[1])
+	var pivot = Vector2(pose.pivot[0], pose.pivot[1])
 	combat_pose.scale = Vector2.ONE * float(pose.scale)
 	combat_pose.position = ORIGIN + player * CELL - region.size * pivot * float(pose.scale)
 	combat_pose.z_index = hero.z_index
@@ -627,13 +635,19 @@ func draw_slime_cue():
 		slime_cue.draw_rect(Rect2(foot + Vector2(-15 + 11 * i, -64), Vector2(9,4)), Color("#a9e178") if i < enemy_health else Color("#584b4c"))
 
 func draw_attack_cue():
-	var elapsed: float = manifest.combat.attack_duration - attack_time
-	if elapsed < manifest.combat.attack_impact or elapsed >= .25:
+	var settings: Dictionary = manifest.combat
+	var elapsed: float = settings.attack_duration - attack_time
+	if elapsed < settings.attack_impact or elapsed >= settings.attack_recover:
 		return
-	var center = ORIGIN + player * CELL - Vector2(0, 27)
-	var angle: float = FACING[attack_direction].angle()
-	attack_cue.draw_set_transform_matrix(Transform2D(0, Vector2(1, .55), 0, center))
-	attack_cue.draw_arc(Vector2.ZERO, 62, angle - .65, angle + .65, 18, Color(1,.88,.56,.85), 4, true)
+	var center = ORIGIN + player * CELL
+	var angle = attack_forward().angle()
+	var half = acos(float(settings.attack_dot))
+	var radius = float(settings.attack_range) * CELL
+	var sector = PackedVector2Array([center])
+	for step in range(25):
+		sector.append(center + Vector2.from_angle(angle - half + 2.0 * half * step / 24.0) * radius)
+	attack_cue.draw_colored_polygon(sector, Color(1, .76, .30, .17))
+	attack_cue.draw_arc(center, radius, angle - half, angle + half, 24, Color(1, .88, .56, .85), 3, true)
 
 func points(values) -> PackedVector2Array:
 	var out = PackedVector2Array()
@@ -852,7 +866,7 @@ func run_validation():
 		assert(hero.frame != before and hero.is_playing())
 		set_motion(Vector2.ZERO)
 		assert(hero.animation == "idle_" + d and not hero.is_playing())
-	checks.append("31 native textures including eight combat poses, plus 44 AtlasTexture movement action frames")
+	checks.append("%d native module textures, plus 44 calibrated AtlasTexture movement frames" % modules.size())
 	player = Vector2(.01, 2.5)
 	move_by(Vector2(-.1, 0))
 	assert(is_equal_approx(player.x, .01) and not hero.is_playing())
@@ -912,6 +926,8 @@ func run_validation():
 	checks.append("Hall crate opens the gallery, key is collected once, and chest opens only after return")
 	checks.append("South foreground is hidden while the floor edge still blocks the hero")
 	checks.append("Chest unlocks arena travel, windup causes hurt, one hit per swing, defeated slime opens the north exit")
+	await validate_directional_combat()
+	checks.append("Four attack and hurt directions use independent atlas frames and anchored feet; locked hit sectors reject the opposite side and targets beyond reach")
 	checks.append("The cutaway retains rounded side wall ends and a low floor lip")
 	if DisplayServer.get_name() != "headless":
 		checks.append("Rendered floors use distinct hall and elbow palettes")
@@ -1117,3 +1133,69 @@ func validate_combat_room():
 	move_by(Vector2.UP * .12)
 	assert(layout == "arena" and arena_completed)
 	await capture("arena-complete")
+
+func assert_combat_frame(pose: Dictionary):
+	assert(combat_pose.visible and not combat_pose.flip_h)
+	assert(combat_pose.texture.atlas == textures[pose.id])
+	var region = rect(pose.rect)
+	assert(combat_pose.texture.region == region)
+	var anchor = combat_pose.position + region.size * Vector2(pose.pivot[0], pose.pivot[1]) * float(pose.scale)
+	assert(anchor.is_equal_approx(ORIGIN + player * CELL))
+
+func validate_directional_combat():
+	load_room("arena")
+	var settings: Dictionary = manifest.combat
+	var used_regions: Dictionary = {}
+	for d in DIRECTIONS:
+		var actions: Dictionary = settings.hero_actions[d]
+		assert(actions.attack.size() == 3 and actions.hurt.size() == 2)
+		for pose in actions.attack + actions.hurt:
+			var key = "%s:%s" % [pose.id, pose.rect]
+			assert(not used_regions.has(key))
+			used_regions[key] = true
+			var region = rect(pose.rect)
+			assert(Rect2(Vector2.ZERO, textures[pose.id].get_size()).encloses(region))
+			assert(region.size.x > 0 and region.size.y > 0 and pose.scale > 0)
+			assert(pose.pivot[0] >= 0 and pose.pivot[0] <= 1 and pose.pivot[1] >= 0 and pose.pivot[1] <= 1)
+
+		reset_combat()
+		player = Vector2(6.5, 4)
+		var forward: Vector2 = FACING[d]
+		direction = d
+		start_attack()
+		assert(attack_direction == d and attack_forward().is_equal_approx(forward))
+		var reach: float = settings.attack_range
+		assert(in_attack_sector(forward * reach * .99))
+		assert(not in_attack_sector(-forward))
+		assert(not in_attack_sector(forward * (reach + .02)))
+		assert(not in_attack_sector(forward.orthogonal()))
+		# A direction change elsewhere must not rotate this in-progress swing.
+		direction = DIRECTIONS[(DIRECTIONS.find(d) + 2) % DIRECTIONS.size()]
+		update_combat_props()
+		assert_combat_frame(actions.attack[0])
+		enemy_position = player + forward * (reach * .85)
+		update_combat(settings.attack_impact + .01)
+		assert(enemy_health == settings.enemy_hp - 1)
+		update_combat_props()
+		assert_combat_frame(actions.attack[1])
+		await capture("directional-attack-" + d)
+		attack_time = settings.attack_duration - settings.attack_recover - .01
+		update_combat_props()
+		assert_combat_frame(actions.attack[2])
+		hurt_hero()
+		assert(hurt_direction == d and attack_time == 0)
+		update_combat_props()
+		assert_combat_frame(actions.hurt[0])
+		await capture("directional-hurt-" + d)
+		hurt_time = settings.hurt_duration * .2
+		update_combat_props()
+		assert_combat_frame(actions.hurt[1])
+
+		for bad_target in [-forward, forward * (reach + .2)]:
+			reset_combat()
+			direction = d
+			enemy_position = player + bad_target
+			start_attack()
+			update_combat(settings.attack_impact + .01)
+			assert(enemy_health == settings.enemy_hp)
+	set_layout("hall")
